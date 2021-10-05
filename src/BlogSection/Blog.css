@@ -1,0 +1,395 @@
+/* * {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+} */
+
+/* .main-blog {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 80px;
+  padding-top: 150px;
+  padding-left: 50px;
+} */
+
+/* .right-blog {
+  height: 100%;
+  width: 60%;
+}
+
+.right-blog img {
+  width: 733px;
+  height: 400px;
+} */
+
+/* .left-blog {
+  height: 100%;
+  width: 40%;
+  padding: 0rem 2rem 2rem 2rem;
+} */
+
+/* .left-blog h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #125d98;
+} */
+
+/* .left-blog h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.left-blog p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.blog-author {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+} */
+
+/* .blog-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.blog-author h1 {
+  font-size: 16px;
+  margin-left: 10px;
+} */
+
+/* .sub-section {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-blog {
+  display: flex;
+  flex-direction: row;
+
+  width: 600px;
+  height: 250px;
+}
+
+.header-blog-image {
+  width: 400px;
+}
+.header-blog-image img {
+  width: 100%;
+  height: 250px;
+} */
+
+/* .blog-headings {
+  width: 300px;
+  padding-left: 1rem;
+}
+
+.blog-headings h1 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #125d98;
+  margin-bottom: 10px;
+} */
+
+/* .blog-headings h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.blog-headings p {
+} */
+
+/* .section-blog1 {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  padding-top: 2px;
+}
+
+.section-blog {
+  width: 100%;
+  margin-top: 20px;
+  border-top: 1px solid grey;
+  padding-top: 2px;
+}
+
+.heading-blog {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 20px;
+} */
+
+/* .heading-blog h1 {
+  font-size: 1.2rem;
+  padding-top: 16px;
+  letter-spacing: 0.4px;
+}
+
+.heading-blog button {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-right: 20px;
+  padding: 8px 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  transition: all 0.5s ease;
+  outline: none;
+}
+
+.heading-blog button:hover {
+  background-color: #125d98;
+  border-radius: 20px;
+  color: white;
+} */
+
+/* .blog-card-head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.blog-card {
+  width: 400px;
+  height: 500px;
+}
+
+.blog-card-image {
+  width: 100%;
+  height: 250px;
+}
+
+.blog-data {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+} */
+
+/* .blog-data h1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2940d3;
+  margin-top: 5px;
+}
+
+.blog-data h2 {
+  font-size: 1.5rem;
+}
+
+.blog-data p {
+  font-weight: 400;
+} */
+
+/* @media screen and (max-width: 960px){
+
+  .main-blog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 80px;
+  padding-top: 150px;
+  padding-left: 50px;
+}
+
+.sub-section {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap');
+
+.changeToDefault{
+  padding-bottom: 50px;
+}
+
+.changeToDefault h1{
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color:#8e8d90;
+  font-family: 'Droid Sans', sans-serif;
+
+}
+
+.changeToDefault h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+
+.changeToDefault h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+.changeToDefault h4 {
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+.changeToDefault h5 {
+  display: block;
+  font-size: 0.83em;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+ 
+.changeToDefault h6 {
+  display: block;
+  font-size: 0.67em;
+  margin-block-start: 2.33em;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+.changeToDefault p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+
+.changeToDefault li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+
+.changeToDefault ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  color:#8e8d90;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+.changeToDefault a{
+  color: #007bff;
+  font-family: 'Hind Siliguri', sans-serif;
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+.scanfcode
+{
+  background-color:#ff5050;
+  padding:5px;
+  border:0px;
+  color:#fff;
+  font-size:12px;
+  margin:10px 15px;
+  position:relative;
+  text-transform:uppercase;
+  width: max-content;
+}
+.scanfcode:before,
+.scanfcode:after {
+  border-color: #ff5050;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content:"";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.scanfcode:before {
+  border-left-width: 2px;
+  border-top-width: 2px;
+  left: -5px;
+  top: -5px;
+}
+
+.scanfcode:after {
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  bottom: -5px;
+  right: -5px;
+}
+.scanfcode:hover:before,
+.scanfcode:hover:after
+{
+  height:100%;
+  width:100%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;400&display=swap');
+.share1222{
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: inherit;
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+  font-size: 21px;
+  padding-bottom: 5px;
+}

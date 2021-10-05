@@ -1,0 +1,528 @@
+import React from 'react'
+import { Grid,Card,CardMedia,CardContent,CardHeader,CardActions,Avatar,Typography,Divider,Chip,Box,Container } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import SwipeableViews from 'react-swipeable-views';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Paper from '@material-ui/core/Paper';
+// import Typography from '@material-ui/core/Typography';
+// import Box from '@material-ui/core/Box';
+import Checkbox from '@material-ui/core/Checkbox';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import clsx from 'clsx';
+import Rating from '@material-ui/lab/Rating';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+import axios from 'axios';
+import CustomPagination from './CustomPagination'
+import BlurOffOutlinedIcon from '@material-ui/icons/BlurOffOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import CompareIcon from '@material-ui/icons/Compare';
+import CloseIcon from '@material-ui/icons/Close';
+import { useHistory } from "react-router-dom";
+
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`full-width-tabpanel-${index}`}
+        aria-labelledby={`full-width-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box pt={3}>
+            <Typography style={{display:'flex'}}>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+  };
+  
+  function a11yProps(index) {
+    return {
+      id: `full-width-tab-${index}`,
+      'aria-controls': `full-width-tabpanel-${index}`,
+    };
+  }
+  
+
+
+
+
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      backgroundColor: theme.palette.background.paper,
+      width: 'inherit',
+
+    },
+
+    root2: {
+      width: 'inherit',
+      marginTop:'37px'
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+      backgroundColor: red[500],
+    },
+    button1: {
+      marginTop:'15px',
+      marginRight:'5px', 
+      width:'50%',
+      backgroundColor:'transparent',
+      color:'#009cb6',
+      boxShadow:'none',
+      border:'1px solid rgba(0, 156, 156, 0.5)',
+
+      '&:hover':{
+        background:'rgb(0 156 156 / 4%)',
+        boxShadow:'none'
+
+      }
+    },
+
+    button2: {
+      marginTop:'15px',
+      marginRight:'5px', 
+      width:'50%',
+      backgroundColor:'transparent',
+      color:'#009cb6',
+      boxShadow:'none',
+      border:'none',
+
+      '&:hover':{
+        background:'rgb(0 156 156 / 4%)',
+        boxShadow:'none'
+
+      }
+    },
+
+    btn:{
+      marginLeft:'5px',
+      height:'100px',
+      position:'sticky',
+      top:'100px',
+
+
+    },
+
+    closeicon:{
+      padding:'5px',
+      '& .MuiIconButton-root':{
+        padding:'0px',
+      },
+
+    },
+
+    comparisonBtn:{
+      marginLeft:'5px',
+      height:'100px',
+      position:'sticky',
+      top:'100px',
+
+
+    },
+
+    headingpara:{
+      fontFamily:'Roboto',
+      fontWeight:'600',
+      opacity:'0.8',
+
+
+      '&:hover':{
+        textDecoration:'underline',
+        cursor:'pointer',
+      },
+  
+    },
+
+
+  }));
+
+
+
+
+
+
+
+
+
+  
+
+function AllBrands() {
+
+    const classes = useStyles();
+    const theme = useTheme();
+    const [value, setValue] = React.useState(0);
+    const [checked, setChecked] = React.useState(new Array(3).fill(false));
+    const [expanded, setExpanded] = React.useState(false);
+    const [post,setPost] = React.useState([])
+    const [loading,setLoading] = React.useState(false)
+    const [currentPage,setCurrentPage]= React.useState(1)
+    const [postPerPage,setPostPerPage]= React.useState(10)
+    const [open,setOpen] = React.useState(false)
+    const [cartItems,setCartItems] = React.useState([])
+    const [compare,setCompare] = React.useState([]);
+    const [arr1,setArr1]= React.useState([])
+    const gt=[]
+
+  // console.log(checked)    
+
+    React.useEffect(()=>{
+       axios.post(`http://infilate.com/backend/public/api/app/organisation/listbytype?org_type_id=${2}`).then((res)=>{ 
+         
+        setPost(res.data.Data)
+        setCompare(new Array(res.data.Data.length).fill(false)) 
+  
+      }).catch((error)=>{
+        console.log(error)
+      })
+        setLoading(false)
+
+    },[])
+
+    const fetchfilteredData=(num) =>{
+      axios.post(`http://infilate.com/backend/public/api/app/organisation/listbytype?org_type_id=${num}`).then((res)=>{ 
+         
+        setPost(res.data.Data)
+        console.log(res.data.Data)
+  
+      }).catch((error)=>{
+        console.log(error)
+      })
+        setLoading(false)
+    }
+   
+
+    const handleExpandClick = () => {
+      setExpanded(!expanded);
+    };
+
+
+    const handleChange2 = (value,num) => {
+     
+      // fetchfilteredData(num)
+
+
+      const updatedChecked = checked.map((v,i)=>i === value ? !v : v)
+      // console.log(updatedChecked)
+      setChecked(updatedChecked);
+    };
+  
+
+
+
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+  
+    const handleChangeIndex = (index) => {
+      setValue(index);
+    };
+
+
+
+
+  
+      const handleCompare = (item,index) =>{
+
+        if(arr1.length==0){
+          setArr1(arrold => [...arrold,item])
+        }
+  
+        else if(arr1.length>0 && arr1.includes(item)){
+          
+          // arr1.splice(arr1.indexOf(item),1)
+          setArr1(arr1.filter(i=>i.id!==item.id))
+            // console.log(arr1)
+            
+          }
+          else if(arr1.length<4) {
+            setArr1(arrold=>[...arrold,item])
+          }
+      
+
+        }
+
+     
+      // console.log(arr1)
+      const history = useHistory()
+      const passDatatoPage =(array) =>{
+        history.push({pathname:'/Comparison', Post:array});
+        // console.log(array)
+      }
+
+      const OpenBrand =(item) =>{
+        history.push({pathname:`/Brand/${item.id}`, Post:item});
+        // console.log(array)
+      }
+
+
+
+
+
+
+
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+    const indexOfLastPost=currentPage * postPerPage
+    const indexOfFirstPost=indexOfLastPost - postPerPage
+    const currentPosts=post.slice(indexOfFirstPost,indexOfLastPost)
+
+    // console.log(post)
+
+    return (
+        <>
+        <div style={{paddingTop:'160px'}}>
+           <Box display='flex' justifyContent='center' mb={10}>
+            
+              {/* <div className={classes.btn}> */}
+              {/* <Button  variant="contained" color="secondary" startIcon={<CompareIcon />}>{0}</Button> */}
+
+              {/*  */}
+                {/* </div> */}
+             
+         
+           
+             
+            <Grid container md={8}>
+            <div className={classes.root}>
+                <AppBar position="static" color="default">
+                    <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    // variant="fullWidth"
+                    aria-label="full width tabs example"
+                    >
+                    <Tab label="Item One" {...a11yProps(0)} />
+                    <Tab label="Item Two" {...a11yProps(1)} />
+                    <Tab label="Compare Tray" {...a11yProps(2)} />
+                    </Tabs>
+                </AppBar>
+
+
+                <SwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={value}
+                    onChangeIndex={handleChangeIndex}>
+                    <TabPanel value={value} index={0} dir={theme.direction}>
+
+                    <Container style={{width: '24%',padding:'0px'}}>
+                    <Paper elevation={3} style={{padding:'15px'}}>
+                    <Typography variant="h6" gutterBottom>
+                    Filter Results
+                    
+                      </Typography>
+                      {/* <br/> */}
+                      <Divider />
+
+                      <Typography variant="overline" display="block" gutterBottom>
+                        <br/>
+                      Sort Brands by
+                    </Typography>
+                    <Grid item container style={{display:'flex',alignItems:'center',justifyContent:'space-between'}} >
+                    <Grid item>
+                    <Checkbox
+                              checked={checked[0]}
+                              onChange={()=>handleChange2(0,1)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                            />
+                            User reviews
+                    </Grid>
+                    <p>(2)</p>
+                    </Grid>
+
+                    <Grid item container style={{display:'flex',alignItems:'center',justifyContent:'space-between'}} >
+                    <Grid item>
+                    <Checkbox
+                              checked={checked[1]}
+                              onChange={()=>handleChange2(1,2)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                            />
+                            Most Recent
+                    </Grid>
+                    <p>(2)</p> 
+                    </Grid>
+
+                    <Grid item container style={{display:'flex',alignItems:'center',justifyContent:'space-between'}} >
+                      <Grid item>
+                      <Checkbox
+                              checked={checked[2]}
+                              onChange={()=>handleChange2(2,3)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                            />
+                            Brands
+                        </Grid>
+                            <p>(2)</p>            
+
+                    </Grid>
+                    </Paper>
+                    </Container>
+
+
+
+                    <Grid style={{padding:"5px"}} container md={9} >
+                    {
+
+                      currentPosts.map((item,index)=>
+                      <Card elevation={3} key={index} className={classes.root2}>
+                      <br/>
+                      <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
+                      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.image}`} alt='' />
+                      <Grid style={{paddingLeft:'10px'}} item xs={8}>
+
+                      <p onClick={()=>OpenBrand(item)} className={classes.headingpara}>{item.name}</p>
+
+                      <Rating name="read-only" value='3' readOnly style={{fontSize:'22px'}} />
+                      <p>(477)</p>
+                      <p>{item.title}</p>
+                      </Grid>
+                      <Grid item xs={4} style={{display:'flex',flexDirection:'column'}}>
+                      <Button variant="contained" color="secondary" style={{width:'98%'}}>
+                      <Typography variant="button" display="block">
+                      Visit website
+                      </Typography>
+                      </Button>
+                      <Grid item style={{display:'flex',justifyContent:'center'}}>
+                      <Button
+                              variant="contained"
+                              color="primary"
+                              onClick={()=>handleCompare(item,index)}
+                              className={classes.button1}
+                              startIcon={<BlurOffOutlinedIcon />}
+                            >
+                                    <Typography style={{fontSize:'14px',textTransform:'lowercase'}} variant="button" display="block">
+                                      Compare
+                                    </Typography>
+                            </Button>
+
+                            <Button
+                              variant="contained"
+                              color="primary"
+                           
+                              className={classes.button2}
+                              startIcon={<FavoriteBorderOutlinedIcon />}
+                            >
+                                 <Typography style={{fontSize:'14px',textTransform:'lowercase'}} variant="button" display="block">
+                                      Save
+                                    </Typography>
+                            </Button>      
+                      </Grid>      
+                      </Grid>
+                      </Grid>
+                     
+                      <CardContent>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                        <IconButton
+                          className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                          })}
+                          onClick={handleExpandClick}
+                          aria-expanded={expanded}
+                          aria-label="show more"
+                        >
+                          <ExpandMoreIcon />
+                        </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+    
+                        </CardContent>
+                      </Collapse>
+                    </Card>       
+                    
+                      
+                      
+                      )
+                    
+
+                    }
+                    <Grid style={{display:'flex',justifyContent:'center'}} item xs={12}>
+                    <CustomPagination style={{marginTop:'10px'}} postPerPage={postPerPage} totalPost={post.length} paginate={paginate} />
+                    </Grid>
+                    
+                    </Grid>
+
+                    </TabPanel>
+                    <TabPanel value={value} index={1} dir={theme.direction}>
+                    Item Two
+                    </TabPanel>
+                    <TabPanel value={value} index={2} dir={theme.direction}>
+                    Item Three
+                    </TabPanel>
+                </SwipeableViews>
+                </div>
+            </Grid>
+
+            <div className={classes.btn}>
+            <Button onClick={()=>setOpen(v=>!v)} color="secondary" startIcon={<CompareIcon />}>{arr1.length}</Button>
+
+
+            {
+
+               open === true ? <Paper elevation={3} style={{}}>
+
+                 {arr1 && arr1.map((v,i)=>
+                               <Grid key={i} style={{display:'flex',alignItems:'center'}} item>
+               <img style={{width:'55px',height:'43px',padding:'5px'}} 
+               src={`http://infilate.com/backend/public/images/${v.image}`}
+               alt='' />
+               <p style={{padding:'5px'}}>{v.name}</p>
+               <IconButton aria-label="delete" className={classes.closeicon}>
+                <CloseIcon onClick={() => handleCompare(v)} style={{fontSize:'17px'}}/>
+                </IconButton>
+               </Grid> 
+                 
+                 
+                 )}
+                {arr1.length > 1 ? <Button onClick={()=>passDatatoPage(arr1)} color="secondary" >Full Comparison</Button> 
+                : <Button disabled >Full Comparison</Button>   } 
+             </Paper> :
+             null
+            }
+
+            </div>
+           </Box>
+               
+             
+        </div>
+        </>
+    )
+}
+
+export default AllBrands

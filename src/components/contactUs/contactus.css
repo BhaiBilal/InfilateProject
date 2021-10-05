@@ -1,0 +1,226 @@
+.page-title-area2 {
+    
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 1;
+    /* background-image: url(./page-title-bg-1.jpg); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.page-title-area2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #30296c; */
+    opacity: .9;
+    z-index: -1;
+}
+
+.form-controlpa {
+    height: 55px;
+    color: #f68820;
+    border: 1px solid #d7d7d7;
+    background-color: #f9fbfe;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.form-controlpa:focus {
+border-color: #f68820;
+outline: none;
+
+}
+
+
+
+.default-btn {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1;
+    -webkit-transition: all ease .5s;
+    transition: all ease .5s;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-table;
+    padding: 20px 45px;
+    font-weight: 600;
+    border-radius: 4px;
+    background-image: -webkit-gradient(linear,left top,right top,from(#ffa203),to(#ff5e29));
+    background-image: linear-gradient(to right,#ffa203,#ff5e29);
+
+}
+
+.default-btn:focus {
+
+outline:none;
+
+}
+
+
+
+
+
+.map-area iframe {
+    height: 480px;
+    width: 100%;
+    border: none!important;
+    display: block;
+}
+
+
+
+
+
+
+.changeToDefault3{
+    padding-bottom: 50px;
+  }
+  
+  .changeToDefault3 h1{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color:#8e8d90;
+    font-family: 'Droid Sans', sans-serif;
+  
+  }
+  
+  .changeToDefault3 h2 {
+    display: block;
+    font-size: 40px;
+    /* margin-block-start: 0.83em; */
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color:#30296c;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+  
+  .changeToDefault3 h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+  .changeToDefault3 h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+    
+  }
+  
+  .changeToDefault3 ul li p {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: 600;
+    color:#30296c;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 20px;
+    
+  }
+  
+  
+  .changeToDefault3 h5 {
+    display: block;
+    font-size: 0.83em;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+   
+  .changeToDefault3 h6 {
+    display: block;
+    font-size: 0.67em;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+  .changeToDefault3 p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+  
+  .changeToDefault3 li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }
+  
+  .changeToDefault3 li::marker {
+    color: #f68820;
+  }
+  
+  
+  .changeToDefault3 ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    color:#8e8d90;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  
+  .changeToDefault3 a{
+    color: #007bff;
+    font-family: 'Hind Siliguri', sans-serif;
+  
+  }

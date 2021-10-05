@@ -1,0 +1,187 @@
+.red{
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+   25%  {background-color:green; left:0px; top:200px;}
+    50%  {background-color:green; left:0px; top:0px;}
+  
+  
+  }
+
+  .moreText {
+     display: none;
+  }
+
+  .text.show-more .moreText{
+      
+      display:block
+      
+  }
+
+
+  #article{
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: hidden;
+    transition: max-height 0.7s ease;
+    transition-delay: 0ms;
+    position: relative;
+
+  }
+
+  #article.expanded {
+    max-height: 1500px;
+}
+
+
+  #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 100px;
+    width: inherit;
+    filter: brightness(50%);
+  }
+
+  #myImg:hover {
+
+    border-radius:50px;
+    filter: brightness(100%);
+    }
+
+
+    #blurrEffect{
+      position: absolute;
+      width:54vw;
+      height:100px;
+      margin-top: 300px; 
+      /* border:1px solid gold; */
+     background-image: linear-gradient(to bottom, #ff000000, #ffffff);      
+    }
+
+    #blurrEffect.hide{
+ display: none;
+    }
+
+   
+    .changeToDefault h1{
+      display: block;
+      font-size: 2em;
+      margin-block-start: 0.67em;
+      margin-block-end: 0.67em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      color:#8e8d90;
+      font-family: 'Droid Sans', sans-serif;
+    
+    }
+    
+    .changeToDefault h2 {
+      display: block;
+      font-size: 1.5em;
+      margin-block-start: 0.83em;
+      margin-block-end: 0.83em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    
+    .changeToDefault h3 {
+      display: block;
+      font-size: 1.17em;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    .changeToDefault h4 {
+      display: block;
+      margin-block-start: 1.33em;
+      margin-block-end: 1.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    .changeToDefault h5 {
+      display: block;
+      font-size: 0.83em;
+      margin-block-start: 1.67em;
+      margin-block-end: 1.67em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+     
+    .changeToDefault h6 {
+      display: block;
+      font-size: 0.67em;
+      margin-block-start: 2.33em;
+      margin-block-end: 2.33em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    .changeToDefault p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    
+    .changeToDefault li {
+      display: list-item;
+      text-align: -webkit-match-parent;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    
+    .changeToDefault ul {
+      display: block;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+      color:#8e8d90;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }
+    
+    .changeToDefault a{
+      color: #007bff;
+      font-family: 'Hind Siliguri', sans-serif;
+    
+    }

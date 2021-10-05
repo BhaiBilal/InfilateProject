@@ -1,0 +1,123 @@
+.category-page{
+display:flex;
+width: 100%;
+background-color: orange;
+
+padding-top: 20px;
+}
+
+.custom-checkbox-label{
+    /* border: 1px solid black; */
+    width:300px;
+
+    margin-left: 20px
+}
+
+.myfirsttest{
+    display:flex;
+    align-items: center;
+    border: 1px solid #C0C0C0;
+    width:300px;
+    height: 36px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.myfirsttest > img{
+    width:20px;
+    height: auto
+    
+}
+
+.myfirsttest:hover{
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+div.b{
+width:300px;
+text-overflow: ellipsis; 
+overflow: hidden;
+white-space: nowrap;
+font-weight: bold;
+font-size: 14px;
+padding-left: 10px;
+}
+
+.chakde{
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    cursor: pointer;
+    font-weight: 400;
+    position:-webkit-sticky;
+    position:sticky;
+    top: 100px;
+    padding-left: 20px;
+}
+
+.myfirsttestticked{
+    display:flex;
+    align-items: center;
+    border: 1px solid #C0C0C0;
+    width:300px;
+    height: 36px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.myfirsttestticked > img{
+    width:20px;
+    height: auto
+    
+}
+
+div.c{
+    width:450px;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10px;
+    }
+
+
+.MuiBox-root-3{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.row_chabba {
+    margin-bottom: 30px;
+}
+
+.row_chabba:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column_chabba {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    
+  }
+
+
+  .form-controlpa2 {
+    height: 55px;
+    color: #f68820;
+    border: 1px solid #d7d7d7;
+    background-color: #f9fbfe;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.form-controlpa2:focus {
+    border-color: #f68820;
+    outline: none;
+ }

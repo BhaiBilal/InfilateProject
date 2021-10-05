@@ -1,0 +1,43 @@
+.letsdothis {
+        width: 100px;
+        height: 1500px;
+        transition: margin-left 2s;
+        border:1px solid red;
+
+      }
+
+.letsdothis2{
+
+        width: 20px;
+        height: 20px;
+        transition: top 0.1s;
+        position: absolute;
+        top:-230px;
+        
+      }
+
+      .letsdothis3 {
+
+        top:-170px;
+        
+      }
+
+      .letsdothis4 {
+
+        top:-110px;
+        
+      }
+
+      .letsdothis5 {
+
+        top:-50px;
+        
+      }
+      
+  
+.insideDesign{
+  width:210px;
+  height:40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius:25px;
+}

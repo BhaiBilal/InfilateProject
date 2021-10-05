@@ -1,0 +1,520 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.top-heading-rec::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 880px;
+  transform: translateY(-2.5rem);
+  margin-left: 20rem;
+}
+
+.top-heading-fre::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 860px;
+  transform: translateY(-2.5rem);
+  margin-left: 21rem;
+}
+
+.top-heading-rev::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 1000px;
+  transform: translateY(-0.5rem);
+  margin-left: 2rem;
+}
+
+.home-main {
+  position: relative;
+  background-image: url("https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -100px;
+}
+
+.brand-logo {
+  position: absolute;
+  float: left;
+  top: -40px;
+  margin-left: 160px;
+  background-color: white;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0px 1px 15px 2px rgb(100 100 100 / 49%);
+  transition: all 0.3s;
+}
+
+.brand-sublogo {
+  background-image: url("../images/logo7.png");
+  width: 208px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  transition: all 0.3s;
+}
+
+.brand-detail {
+  padding: 0px 160px;
+}
+
+.brand-detail h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.brand-detail p {
+  line-height: 25px;
+}
+
+/*---------------Domain-Page-----------------*/
+
+.domain-page {
+  width: 100%;
+  height: 80vh;
+}
+
+.card-head {
+  width: 90%;
+}
+
+.card {
+  width: 255px;
+  height: 305px;
+  border-radius: 3px;
+  border: solid 1px #d9e0e2;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
+}
+
+.domain-button {
+  margin-top: 35px;
+  margin-left: 135px;
+  width: 84%;
+  margin-bottom: 50px;
+  border-bottom: 1px solid grey;
+}
+
+.domain-button button {
+  width: 100px;
+  height: 40px;
+  outline: none;
+  color: #34495e;
+  font-size: 1.08rem;
+  margin-right: 10px;
+  margin: 0px 10px;
+  font-weight: 600;
+  transition: all 0.9s ease;
+  font-family: "Barlow", sans-serif;
+}
+
+.domain-button button:hover {
+  background-color: white;
+  color: #125d98;
+  border: 0px;
+  border-bottom: 2.5px solid black;
+}
+
+.visit-button {
+  background-color: #ffffff;
+  height: 90px;
+  padding-top: 5px;
+  width: 100%;
+  display: flex;
+  
+  padding-left: 400px;
+}
+
+
+.website-button button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1e62a7;
+  width: 130px;
+  height: 38px;
+  border-radius: 30px;
+  margin-left: 450px;
+  margin-top: 20px;
+}
+.website-button button a {
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+}
+
+
+.website-button1 button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #34495e;
+  width: 130px;
+  height: 38px;
+  border-radius: 25px 5px 5px 25px;
+  border-radius: 30px;
+  margin-left: 50px;
+  background-color: #1e62a7;
+  margin-top: 20px;
+}
+.website-button1 button a {
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+}
+
+.image-box {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #34495e;
+}
+
+.image-box-c {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #34495e;
+  margin-left: -10px;
+}
+
+.review-buttons {
+  margin-top: 40px;
+
+  transition: all 0.5s ease;
+  padding: 0px 160px;
+}
+.review-buttonline{
+  width: 100%;
+  border-bottom: 1px solid rgb(160, 156, 156);
+  margin: 5px 0px;
+  transition: all .5s ease;
+}
+.review-buttonline:hover{
+  border: 0px;
+}
+
+
+.review-buttons:hover {
+  border-bottom: 0px;
+}
+
+.review-buttons .rev1 {
+  margin-right: 50px;
+}
+
+.rev1 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #34495e;
+  font-family: "Barlow", sans-serif;
+  transition: all 0.5 ease;
+}
+.rev1:hover {
+  border-bottom: 2px solid #34495e;
+  color: #125d98;
+}
+
+.rev2 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #34495e;
+  font-family: "Barlow", sans-serif;
+  transition: all 0.5 ease;
+  cursor: pointer;
+}
+
+.rev2:hover {
+  border-bottom: 2px solid #34495e;
+  color: #125d98;
+}
+
+/*----------------------Recommend----------------------*/
+
+.recommend-card {
+  position: relative;
+  max-width: 255px;
+  height: 305px;
+  border-radius: 3px;
+  border: solid 1px #d9e0e2;
+  background-color: #ffffff;
+
+  cursor: pointer;
+}
+
+.recommend-card:hover {
+  box-shadow: 5px 5px 10px grey;
+}
+
+.card-offer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #159816;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0px;
+}
+
+.card-share{
+  display: flex;
+  justify-content: space-around;
+  background-color: #d10610;
+  color: white;
+  height: 34px;
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.02px;
+  text-align: center;
+  width: 226px;
+ margin-top: 20px;
+  vertical-align: middle;
+  transition: all 0.5s ease;
+}
+
+.card-share:hover{
+  background-color: white;
+  color: black;
+}
+
+
+.card-des {
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.13px;
+  text-align: center;
+  color: #4a4a4a;
+  margin: 12px 26px 0px 27px;
+  white-space: all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 48px;
+}
+
+.card-logo {
+  width: 100%;
+  background-color: #ffffff;
+  margin: auto;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-banner {
+  position: relative;
+  width: 100%;
+
+  background-color: #ffffff;
+  margin: auto;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-deal {
+  background-color: #d10610;
+  height: 34px;
+  margin: auto;
+  margin-top: 20px;
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.02px;
+  text-align: center;
+  width: 226px;
+  color: white;
+  vertical-align: middle;
+  transition: all 0.5s ease;
+}
+.card-deal:hover {
+  background-color: white;
+  border: 1px solid #d10610;
+  color: black;
+}
+
+.card-coupon {
+  background-color: white;
+  border: 1px solid #d10610;
+  height: 34px;
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.02px;
+  text-align: center;
+  width: 226px;
+  color: black;
+  vertical-align: middle;
+  transition: all 0.5s ease;
+}
+
+.card-coupon:hover {
+  background-color: #d10610;
+  border: 0px;
+  color: white;
+}
+
+.card-price {
+  margin-top: 5px;
+  padding-top: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 33px;
+  width: 100%;
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/*--------------Frequintly-------------*/
+
+/*-------------------Review----------*/
+
+.review-head {
+  display: flex;
+  padding: 0px 200px;
+  margin-top: 50px;
+  border-bottom: 1px solid grey;
+}
+
+.card-review {
+  padding: 20px;
+}
+
+.review-image {
+}
+
+.review-image img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-main {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+
+.review-name {
+  margin-left: 20px;
+}
+
+.review-name h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.review-name h2 {
+  font-size: 18px;
+}
+
+.review-name p {
+  color: green;
+  font-weight: bold;
+}
+
+.card-des1 h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-des1 p {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.card-review {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin-right: ;
+}
+
+.checked {
+  color: orange;
+}
+
+/*----------------------------SLIDER--------------*/
+
+.slick-next {
+  background-color: transparent;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 40px;
+}
+
+.slick-prev {
+  background-color: transparent;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: grey;
+  font-size: 30px;
+  width: 20px;
+  height: 20px;
+}
+
+.slick-next:before {
+  margin-left: 20px;
+}
+
+.slick-list {
+  margin-left: 40px;
+}
+
+.slick-track {
+  margin-top: 30px;
+}
+
+.review-more {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-more a {
+  color: #34495e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(3, 3, 44);
+}

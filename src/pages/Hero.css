@@ -1,0 +1,149 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-hero {
+  margin-left: 0;
+  width: 790px;
+  height: 125px;
+}
+
+.form-cont {
+  width: 100%;
+  height: 120px;
+  padding-top: 20px;
+}
+
+.category {
+  width: 100%;
+  height: 40px;
+}
+
+.category-list {
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  transition: all 0.3s ease;
+}
+.category-list :hover {
+  border-bottom: 2px solid white;
+}
+
+.category-list a {
+ 
+  padding-left: 5px;
+  font-size: 18px;
+  background-color: white;
+ 
+  width: 80px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: -2px -2px 6px rgb(197, 188, 188);
+}
+
+.tabs{
+  color:rgb(145, 139, 139);
+   border-bottom: 1px solid rgb(197, 188, 188);
+}
+
+.tabs.active{
+  color: #77ACF1;
+   border-bottom: 1px solid #77ACF1;
+ 
+}
+
+.select-style {
+  width: 140px;
+  height: 50px;
+  border-left: 0.5px solid rgb(202, 196, 196);
+}
+
+.select-style {
+  font-size: 16px;
+  color: rgb(112, 109, 109);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.search-btn {
+  background-color: cornflowerblue;
+  border: 2px solid white;
+  width: 125px;
+  height: 50px;
+
+  outline: none;
+  transition: all ease 0.3s;
+  text-align: center;
+}
+
+.search-btn:hover {
+  border: 2px solid cornflowerblue;
+  background-color: white;
+}
+
+.down-button {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+
+  padding: 0 300px;
+}
+
+.down-button button {
+  width: 120px;
+  height: 40px;
+
+  border-radius: 5px;
+  border: 2px solid rgb(175, 160, 160);
+}
+
+.down-button button a {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(2, 2, 56);
+}
+
+.down-button button:hover {
+  border: 0px;
+  background-color: rgb(194, 182, 182);
+}
+
+
+.search_result_container {
+  position: absolute;
+  top:53px;
+  left:4px;
+  width: inherit;
+  z-index: 1;
+  /* border: 1px solid red; */
+  overflow: auto;
+  justify-content: space-between;
+  border-radius: 20px;
+  color: #8e8d90;
+  max-height: 270px;
+  background: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* #inlineFormInputGroupUsername:focus {
+
+background-color:white;
+} */
+

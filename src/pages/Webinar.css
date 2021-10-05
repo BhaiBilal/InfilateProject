@@ -1,0 +1,112 @@
+.heading::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 1120px;
+  transform: translateY(-0.4rem);
+  margin-left: 1rem;
+}
+
+.popular-head::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 980px;
+  transform: translateY(-2rem);
+  margin-left: 15rem;
+}
+
+.webinar-head {
+  background-image: url("../images/webinar10.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 10px;
+}
+
+.web-image {
+  background-image: url("../images/webinar8.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -60px;
+}
+
+.web-offer {
+  background-image: url(../images/offer1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: -20px;
+  background-position-y: 40px;
+  background-color: white;
+  position: absolute;
+  margin-left: 400px;
+  margin-top: 300px;
+}
+
+.web-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 100px;
+  background-color: #b6c9f0;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
+  margin-top: 60px;
+}
+
+.web-feat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  height: 55%;
+}
+
+.web-feat h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.web-feat h4 {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.web-book {
+  background: linear-gradient(to right, #3d84b8 0%, #344fa1 100%);
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0px 10px;
+}
+
+.web-book a {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: white;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.web-book button {
+  width: 120px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+
+.web-book button:hover {
+  border: 1px solid white;
+}
+
+.web-book h1 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: white;
+}

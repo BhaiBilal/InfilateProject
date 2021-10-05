@@ -1,0 +1,52 @@
+.service-container {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.service-head {
+  margin-left: 5px;
+}
+
+.service-head::after {
+  display: inline-block;
+  content: "";
+  border-top: 2px solid rgb(180, 173, 173);
+  width: 800px;
+  transform: translateY(-0.4rem);
+  margin-left: 1rem;
+}
+
+.service-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.service-link {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: rgb(4, 4, 85);
+}
+
+.service-link:hover {
+  color: rgb(138, 90, 184);
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.link a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.link a:hover {
+  color: black;
+}

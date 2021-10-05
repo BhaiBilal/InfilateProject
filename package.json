@@ -1,0 +1,84 @@
+{
+  "name": "infi_late",
+  "homepage": "http://my.infilate.com/",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^30.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/roboto": "^4.5.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.2",
+    "@reach/router": "^1.3.4",
+    "@react-google-maps/api": "^2.2.0",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "feather-icons": "^4.26.0",
+    "framer-motion": "^1.10.2",
+    "google-map-react": "^2.1.9",
+    "google-maps-react": "^2.0.6",
+    "html-react-parser": "^1.2.8",
+    "node-sass": "^4.14.1",
+    "razorpay": "^2.0.7",
+    "react": "^16.13.1",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^16.13.1",
+    "react-geocode": "^0.2.3",
+    "react-google-maps": "^9.4.5",
+    "react-hook-form": "^7.16.1",
+    "react-modal": "^3.11.2",
+    "react-motion": "^0.5.2",
+    "react-read-more-read-less": "^1.0.7",
+    "react-redux": "^7.2.4",
+    "react-rnd": "^10.1.9",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-scroll-into-view": "^1.9.4",
+    "react-slick": "^0.25.2",
+    "react-swipeable-views": "^0.14.0",
+    "react-tabs": "^3.2.2",
+    "redux-persist": "^6.0.0",
+    "sass-loader": "^12.1.0",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.0.1",
+    "tailwindcss": "^1.2.0",
+    "twin.macro": "^1.0.0-alpha.7",
+    "use-in-view": "^1.0.15",
+    "yarn": "^1.22.10",
+    "zustand": "^3.5.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
