@@ -160,6 +160,7 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='l_name'
+            rules={{ required:true }}
             render={({field}) => (
             <TextField
              style={{background:"white"}}
@@ -186,6 +187,7 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='email'
+            rules={{ required:true }}
             render={({field}) => (
             <TextField
              style={{background:"white"}}
@@ -211,6 +213,7 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='password'
+            rules={{ required:true }}
             render={({field}) => (
             <TextField
              style={{background:"white"}}
@@ -234,8 +237,9 @@ const UserDetails = () => {
                 />
             </div>
               <div className="container">
-                            <Controller 
+            <Controller 
             control={control}
+            rules={{ required:true }}
             name='password_confirmation'
             render={({field}) => (
               <TextField
@@ -245,7 +249,7 @@ const UserDetails = () => {
                 variant="outlined"
                 placeholder="Enter Your confirm password"
                 fullWidth
-               
+                required
                 margin="normal"
                 // name="Password"
                 inputProps={{
@@ -272,6 +276,7 @@ return (
     <Controller 
             control={control}
             name='org_name'
+            rules={{ required:true }}
             render={({field}) => (
       <TextField
          style={{background:"white"}}
@@ -280,7 +285,7 @@ return (
         variant="outlined"
         placeholder="Organisation Name"
         fullWidth
-     
+        required
         margin="normal"
         inputProps={{
           style: {fontSize: 15} 
@@ -294,6 +299,7 @@ return (
        <Controller 
         control={control}
         name='org_title'
+        rules={{ required:true }}
         render={({field}) => (
       <TextField
        style={{background:"white"}}
@@ -302,7 +308,7 @@ return (
         variant="outlined"
         placeholder="Organisation Title"
         fullWidth
-       
+        required
         margin="normal"
         inputProps={{
           style: {fontSize: 15} 
@@ -317,6 +323,7 @@ return (
             <Controller 
             control={control}
             name='org_description'
+            rules={{ required:true }}
             render={({field}) => (  
       <TextField
        style={{background:"white"}}
@@ -325,7 +332,7 @@ return (
         variant="outlined"
         placeholder="Organisation Description"
         fullWidth
-        
+        required
         margin="normal"
         // name="Organisation Description"
         margin="normal"
@@ -341,6 +348,7 @@ return (
             <Controller 
             control={control}
             name='org_email'
+            rules={{ required:true }}
             render={({field}) => (        
       <TextField
        style={{background:"white"}}
@@ -349,7 +357,7 @@ return (
         variant="outlined"
         placeholder="Organisation Email"
         fullWidth
-        
+        required
         margin="normal"
         // name="Organisation Email"
         inputProps={{
@@ -364,6 +372,7 @@ return (
                     <Controller 
             control={control}
             name='org_type'
+            rules={{ required:true }}
             render={({field}) => (
       <TextField
        style={{background:"white"}}
@@ -372,7 +381,7 @@ return (
         variant="outlined"
         placeholder="Organisation Type"
         fullWidth
-      
+        required
         margin="normal"
         // name="Organisation Type"
         inputProps={{
@@ -386,6 +395,7 @@ return (
       <div className="container">
                     <Controller 
             control={control}
+            rules={{ required:true }}
             name='address_line_1'
             render={({field}) => (
       <TextField
@@ -395,7 +405,7 @@ return (
         variant="outlined"
         placeholder="Address line 1"
         fullWidth
-       
+        required
         margin="normal"
         // name="Address line 1"
         inputProps={{
@@ -410,6 +420,7 @@ return (
                     <Controller 
             control={control}
             name='address_line_2'
+            rules={{ required:true }}
             render={({field}) => (
       <TextField
        style={{background:"white"}}
@@ -418,7 +429,7 @@ return (
         variant="outlined"
         placeholder="Address Line 2"
         fullWidth
-       
+        required
         margin="normal"
         // name="Address Line 2"
         inputProps={{
@@ -447,6 +458,7 @@ const ContactDetails = () => {
         <Controller 
             control={control}
             name='city'
+            rules={{ required:true }}
             render={({field}) => (
         <TextField
          style={{background:"white"}}
@@ -455,7 +467,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="City"
           fullWidth
-        
+          required
           margin="normal"
           // name="City"
           inputProps={{
@@ -469,6 +481,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='pincode'
+            rules={{ required:true }}
             render={({field}) => (
         <TextField
          style={{background:"white"}}
@@ -477,7 +490,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="Pincode"
           fullWidth
-         
+          required
           margin="normal"
           // name="Pincode"
           inputProps={{
@@ -490,6 +503,7 @@ const ContactDetails = () => {
         <div className="container">
                       <Controller 
             control={control}
+            rules={{ required:true }}
             name='state'
             render={({field}) => (
         <TextField
@@ -499,7 +513,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="State"
           fullWidth
-        
+          required
           margin="normal"
           // name="State"
           inputProps={{
@@ -514,6 +528,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='country'
+            rules={{ required:true }}
             render={({field}) => (
         <TextField
          style={{background:"white"}}
@@ -522,7 +537,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="Country"
           fullWidth
-       
+          required
           margin="normal"
           // name="Country"
           inputProps={{
@@ -536,6 +551,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='contact_no'
+            rules={{ required:true }}
             render={({field}) => (
         <TextField
          style={{background:"white"}}
@@ -544,7 +560,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="Contact Number"
           fullWidth
-          
+          required
           margin="normal"
           // name="Contact Number"
           inputProps={{
@@ -557,6 +573,7 @@ const ContactDetails = () => {
         <div className="container">
                       <Controller 
             control={control}
+            rules={{ required:true }}
             name='gst_no'
             render={({field}) => (
         <TextField
@@ -566,7 +583,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="GST Number"
           fullWidth
-      
+          required
           margin="normal"
           // name="GST Number"
           inputProps={{
@@ -579,6 +596,7 @@ const ContactDetails = () => {
         <div className="container">
                       <Controller 
             control={control}
+            rules={{ required:true }}
             name='latitude'
             render={({field}) => (
         <TextField
@@ -588,7 +606,7 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="Latitudinal Position"
           fullWidth
-    
+          required
           margin="normal"
           // name="Latitudinal Position"
           inputProps={{
@@ -601,6 +619,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='longitude'
+            rules={{ required:true }}
             render={({field}) => (
         <TextField
          style={{background:"white"}}
@@ -608,8 +627,8 @@ const ContactDetails = () => {
           label="Longitudinal Position"
           variant="outlined"
           placeholder="Longitudinal Position"
-          fullWidth
-     
+          fullWidth 
+          required
           margin="normal"
           // name="Longitudinal Position"
           inputProps={{
@@ -638,10 +657,12 @@ const Uploads = () => {
       <Controller 
             control={control}
             name='corporate_image'
-            render={({field}) => (
+            rules={{ required:'please select image' }}
+            render={({field,formState}) => (
        <>       
       <label for="myfile">Corporate IMAGE:</label>
       <input type="file" id="myfile1"  onChange={(e)=>field.onChange(e.target.files[0])} />
+      <p style={{color:'red'}}>{formState.errors.corporate_image?.message}</p>
       </>
       )}  
       />
@@ -650,11 +671,13 @@ const Uploads = () => {
       <div className="container">
                     <Controller 
             control={control}
+            rules={{required:'please upload aadhaar'}}
             name='corporate_aadhar'
-            render={({field}) => (
+            render={({field,formState}) => (
        <>       
       <label for="myfile">Corporate ADHAAR:</label>
       <input type="file" id="myfile2"  multiple  onChange={(e)=>field.onChange(e.target.files[0])} />
+      <p style={{color:'red'}}>{formState.errors.corporate_aadhar?.message}</p>
       </>
       )}  
       />
@@ -664,10 +687,12 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='corporate_pan'
-            render={({field}) => (
+            rules={{required:'please upload Pan card'}}
+            render={({field,formState}) => (
       <>        
       <label for="myfile">Corporate PAN:</label>
       <input type="file" id="myfile3" multiple  onChange={(e)=>field.onChange(e.target.files[0])} />
+      <p style={{color:'red'}}>{formState.errors.corporate_pan?.message}</p>
       </>
       )}  
       />
@@ -679,6 +704,7 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='org_category'
+            rules={{required:true}}
             render={({field}) => (
       <TextField
        style={{background:"white"}}
@@ -687,8 +713,8 @@ const Uploads = () => {
         variant="outlined"
         placeholder="Organisation category"
         fullWidth
-       margin="normal"
-       
+        margin="normal"
+        required
         inputProps={{
           style: {fontSize: 15} 
         }}
@@ -703,7 +729,8 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='holder_type'
-            render={({field}) => (
+            rules={{required:true}}
+            render={({field,formState}) => (
       <TextField
        style={{background:"white"}}
         id="holder_type"
@@ -712,7 +739,7 @@ const Uploads = () => {
         placeholder="Holder type"
         fullWidth
         margin="normal"
-        
+        required
         inputProps={{
           style: {fontSize: 15} 
         }}
@@ -726,10 +753,12 @@ const Uploads = () => {
                     <Controller 
             control={control}
             name='organisation_media'
-            render={({field}) => (
+            rules={{required:'please upload your organisation`s image'}}
+            render={({field,formState}) => (
        <>       
       <label for="myfile">Organisation Media:</label>
       <input type="file" id="myfile4" multiple onChange={(e)=>field.onChange(e.target.files[0])} />
+      <p style={{color:'red'}}>{formState.errors.organisation_media?.message}</p>
       </>
       )}  
       />
@@ -823,14 +852,21 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [errors,setErrors] = React.useState('')
 
 
-  console.log(methods)
+  // console.log(methods)
 
-  const auth= (data)=>{
+  const auth= (formdata)=>{
 
 
-    axios.post("http://infilate.com/backend/public/api/auth/corporate-register",data
+    axios({
+      
+      method:'POST',
+      url:"http://infilate.com/backend/public/api/auth/corporate-register",
+      headers: {
+        "Content-Type":"multipart/form-data"
+      },
+      data:formdata,
     
-    
+  }
     // {
 
     //     f_name:fName,
@@ -875,7 +911,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         //handle error
         alert('OOps'+err)
         setErrors('you have not filled the credentails correctly')
-        // console.log(err+' user already registered');
+        console.log(err.message);
       });
 
 
@@ -890,10 +926,40 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const steps = getSteps();
 
-  const handleNext = () => {
+  const handleNext = (data) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    
-    console.log(activeStep)
+    if(activeStep==3){
+      // console.log('thankyou')
+      const formdata = new FormData()
+      formdata.append('f_name',data.f_name)
+      formdata.append('l_name',data.l_name)
+      formdata.append('email',data.email)
+      formdata.append('password',data.password)
+      formdata.append('password_confirmation',data.password_confirmation)
+      formdata.append('org_name',data.org_name)
+      formdata.append('org_title',data.org_title)
+      formdata.append('org_description',data.org_description)
+      formdata.append('org_email',data.org_email)
+      formdata.append('org_type',data.org_type)
+      formdata.append('address_line_1',data.address_line_1)
+      formdata.append('address_line_2',data.address_line_2)
+      formdata.append('city',data.city)
+      formdata.append('pincode',data.pincode)
+      formdata.append('state',data.state)
+      formdata.append('country',data.country)
+      formdata.append('contact_no',data.contact_no)
+      formdata.append('gst_no',data.gst_no)
+      formdata.append('latitude',data.latitude)
+      formdata.append('longitude',data.longitude)
+      formdata.append('corporate_image',data.corporate_image)
+      formdata.append('corporate_aadhar',data.corporate_aadhar)
+      formdata.append('corporate_pan',data.corporate_pan)
+      formdata.append('org_category',data.org_category)
+      formdata.append('holder_type',data.holder_type)
+      formdata.append('organisation_media',data.organisation_media)
+      auth(formdata)
+    }
+    console.log(data)
     
   };
 
@@ -906,11 +972,8 @@ export default function HorizontalLabelPositionBelowStepper() {
   };
 
   const onSubmit = (data) => {
-    if(activeStep==4){
-      console.log('thankyou')
-      auth(data)
-    }
-    console.log(data)
+
+    // console.log(data)
   }
 
   return (
@@ -932,7 +995,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         ) : (
           <div>
             <FormProvider {...methods}>
-            <form id='form1' onSubmit={methods.handleSubmit(onSubmit)}>{getStepContent(activeStep,errors)}</form>
+            <form id='form1' onSubmit={methods.handleSubmit(handleNext)}>{getStepContent(activeStep,errors)}</form>
             </FormProvider>
             <div style={{ display: "flex", justifyContent: "space-between", padding: "40px 100px" }}>
               <Button
@@ -942,7 +1005,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNext} type='submit' form='form1'> 
+              <Button variant="contained" color="primary" type='submit' form='form1'> 
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>

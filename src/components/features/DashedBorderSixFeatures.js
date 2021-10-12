@@ -32,24 +32,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '56.25%', // 16:9
   },
 }));
-
-
-
-
-
 const Container = tw.div`relative`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col  items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24   `}
 `;
 const Heading = tw(SectionHeading)`w-full`;
-
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 px-6 flex`}
 `;
-
-
-
 const Card = styled.div`
   ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10  transition hover:shadow-2xl   duration-1000 ease-in-out rounded-lg mt-12  `}
   .imageContainer {
@@ -126,7 +117,7 @@ export default ({index}) => {
     },[index]);
 
   
-// console.log(index)
+   const handleClick = (item) => console.log(item)
 
   function conditionRender(){
     if(matches==true){
@@ -164,7 +155,10 @@ export default ({index}) => {
           {/* <Heading>Our Professional <span tw="text-primary-500">Services</span></Heading> */}
           {couponData && couponData.slice(0,9).map((item, index) => (
             <Column key={index} style={{ width: '30%', paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
-              <Card style={{ border: "1px solid grey", padding: "0px", marginRight: "20px", marginBottom: "-30px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+              <Card 
+              onClick={() => handleClick(item)} 
+              
+              style={{ border: "1px solid grey", padding: "0px", marginRight: "20px", marginBottom: "-30px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <span className="imageContainer" style={{ backgroundColor: "white", padding: ".8rem", height: "108px", width: "60%", border: "0px" }}>
                 <CardMedia
                   className={classes.media}

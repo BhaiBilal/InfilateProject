@@ -26,6 +26,10 @@ import logo2 from 'images/Activechat.png';
 import { Card, Grid, Paper, TextField, Button, withWidth } from '@material-ui/core';
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
+import doodle from '../digital-marketing.jpg'
+import doodle1 from '../1.png'
+import doodle2 from '../2.png'
+import doodle3 from '../3.png'
 
 
 
@@ -313,14 +317,16 @@ export default ({
 
     else{
       return(
-        <Container style={{ paddingTop: "12rem", marginBottom: "8rem" }}>
+        <Container style={{ paddingTop: "9rem", marginBottom: "8rem", 
+        backgroundImage:`url(${doodle1})` 
+        }}>
 
-        <HeadingContainer style={{ marginBottom: '3%', paddingLeft: "10rem" }}>
-          <HeadingRow>
-            <Heading style={{ fontSize: '2rem', fontWeight: '600' }}>{heading}</Heading>
+        <HeadingContainer style={{ }}>
+          <HeadingRow style={{justifyContent:'center'}}>
+            <Heading style={{ fontSize: '2rem', fontWeight: '600', }}>{heading}</Heading>
           </HeadingRow>
-          <Text style={{margin:"0"}}>Deals from your favourite Digital Brand.</Text>
-          <Text style={{margin:"0"}}>Try searching for Data Servers, Institutes & Agencies in worldwide.</Text>
+          <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Deals from your favourite Digital Brand.</Text>
+          <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Try searching for Data Servers, Institutes & Agencies in worldwide.</Text>
     
         </HeadingContainer>
 
@@ -330,7 +336,7 @@ export default ({
           
           
           
-          <Grid item md={3} style={{paddingTop:'141px'}}>
+          {/* <Grid item md={3} style={{paddingTop:'141px'}}>
 
        
           <Grid item style={{display:'flex',justifyContent:'space-around'}}>
@@ -352,7 +358,7 @@ export default ({
           </div>
 
           </Grid>
-            </Grid>
+            </Grid> */}
           
           
           {/* seachbox start  */}
@@ -521,18 +527,18 @@ export default ({
 
     
           
-          <Grid item md={3} style={{}}>
+          {/* <Grid item md={3} style={{}}> */}
 
        
-
+{/* 
           <Grid style={{display:'flex',justifyContent:'center',}} item>
 
           <div className={classes.homeImage} >
           <img src={`http://infilate.com/backend/public/images/${homeImages[3] && homeImages[3].image}`} />
           </div>
 
-          </Grid>
-
+          </Grid> */}
+{/* 
           <Grid item style={{display:'flex',justifyContent:'space-around',paddingTop:'40px'}}>
 
           <div className={classes.homeImage}  style={{width:'120px'}}>
@@ -543,23 +549,23 @@ export default ({
           <img src={`http://infilate.com/backend/public/images/${homeImages[5] && homeImages[5].image}`} />
           </div> 
 
-          </Grid>
+          </Grid> */}
 
 
-            </Grid>
+            {/* </Grid> */}
 
 
 
 
         </div>
-        <div className="down-button" >
+        {/* <div className="down-button" >
           <button><a>I-metric</a></button>
           <button><a>Server</a></button>
           <Link to="/AllBrands">
           <button style={{width: "188px"}}><a>View all corporates</a></button>
           </Link>  
           
-        </div>
+        </div> */}
 
 
     

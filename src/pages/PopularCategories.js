@@ -143,7 +143,7 @@ export default ({
     <Container style={{ backgroundColor: "white" }} >
       <ContentWithPaddingXl style={{ paddingTop: '0rem', paddingBottom: "0rem" }}>
         <HeadingContainer style={{ paddingBottom: '2%', paddingBottom: "-100px" }}>
-          <Heading className="popular-head" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginRight: "1000px" }}>Popular Categories</Heading>
+          <Heading  style={{ fontSize: '20px', fontWeight: 'bold',textAlign:'inherit' }}>Popular Categories</Heading>
         </HeadingContainer>
         <div className={classes.root}>
           <Grid container spacing={2}>
@@ -174,100 +174,7 @@ export default ({
                   )
                     
                 }
-               
-                
-               
-                
-                {/* 
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
 
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Marketing Automation</Typography>} />
-                </ListItem>
-                
-                <ListItem className={classes.list}
-                  button
-                // selected={selectedIndex === 1}
-                //  onClick={handleTab2}
-                >
-                  <ListItemIcon>
-                    <DraftsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Accounting</Typography>} />
-                </ListItem>
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab3}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>CRM</Typography>} />
-                </ListItem>
-
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab4}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Video Conferencing</Typography>} />
-                </ListItem>
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab4}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Project Management</Typography>} />
-                </ListItem>
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab4}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Video Conferencing</Typography>} />
-                </ListItem>
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab4}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>VPN Service</Typography>} />
-                </ListItem>
-                <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-                // onClick={handleTab4}
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Website Hosting</Typography>} />
-                </ListItem> */}
 
               </List>
 

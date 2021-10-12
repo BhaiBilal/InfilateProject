@@ -5,24 +5,59 @@ import { Controller, useForm } from "react-hook-form"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MUImultiSelect from '../MUImultiSelect/MultipleSelectChip'
-import MUIBasicSelect from '../MUIBasicSelect/BasicSelect'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import './styles.css'
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import { useParams } from 'react-router-dom'
 
 
-function Addblog() {
+function Updateblog() {
     const selector = useSelector((state) => (state));
     const dispatch = useDispatch()
+    const { id } = useParams()
+    const [categoryArray, setCategoryArray] = React.useState([]);
+    const [blogDetail, setBlogDetail] = React.useState([])
     const [addData,setData] = React.useState('')
     const { handleSubmit, reset, control, register,setValue } = useForm({
       defaultValues:{
-        // category_ids:[],
+        category_ids:categoryArray,
         description:'',
       }
     });
    
+    React.useEffect(() => {
+
+      axios({
+        method:'POST',
+        url:`http://infilate.com/backend/public/api/corporate/blog/blog-detail/${id}`,
+        headers: {
+            "token":selector.userLoginLogout.token,
+        },
+
+    })
+      .then(function (response) {
+
+        // console.log(response);
+        setBlogDetail(response.data.Data)
+        setValue('title',response.data.Data[0].title)
+      })
+      .catch(function (err) {
+        console.log(err)
+        dispatch(userLogoutRequest())
+        // setErrors('error')
+        // console.log(err+' user already registered');
+      });  
+    },[])   
+
+
+
+    React.useEffect(() => {
+
+        setValue("category_ids",categoryArray)
+
+
+    },[categoryArray])
   
     const auth= (formData)=>{
 
@@ -40,7 +75,10 @@ function Addblog() {
         })
           .then(function (response) {
             //handle success
+            if(response){
               alert('successfully added')
+              
+            }
             console.log(response);
             // window.location.href='http://my.infilate.com/Login'
           })
@@ -59,7 +97,7 @@ function Addblog() {
 
     const handleChange = (e,editor) => {
           const data = editor.getData()
-          // setData(data)
+          setData(data)
           setValue("description",data)
     }
 
@@ -71,9 +109,9 @@ function Addblog() {
       formData.append("description",data.description)
       formData.append("category_ids",data.category_ids)
       formData.append("media",data.media)
-      formData.append("category_name",data.category_name)
+      formData.append("category_name",'Marketing')
 
-        auth(formData)
+        // auth(formData)
 
         console.log(data)
     }
@@ -147,32 +185,9 @@ function Addblog() {
           )}
         />
 
-
-<Controller
-          name="category_name"
-          control={control}
-          // rules={{required:'field is required'}}
-          render={({ field, formState }) => (
-            // <TextField id="outlined-basic" label="Outlined"  />
-          <MUIBasicSelect field={field} type='addblog' /> 
-          )}
-        />
-
-
-<Controller
-          name="description"
-          control={control}
-          rules={{required:'field is required'}}
-          render={({ field, formState }) => (
-            // <TextField id="outlined-basic" label="Outlined"  />
-            <div className='changeToDefault_blog'>
-            <CKEditor editor = { ClassicEditor } 
-            // data={addData} 
-            onChange={handleChange} />
-            </div>       
-          )}
-        />
-
+        <div className='changeToDefault_blog'>
+        <CKEditor editor = { ClassicEditor } data={addData} onChange={handleChange} />
+        </div>
              
 
         <Controller
@@ -196,4 +211,4 @@ function Addblog() {
 
 
 
-export default Addblog
+export default Updateblog

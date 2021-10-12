@@ -10,7 +10,7 @@ import ContentCut from '@mui/icons-material/ContentCut';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import Cloud from '@mui/icons-material/Cloud';
-import { FormControl } from '@mui/material';
+import { Link } from "react-router-dom";
 
 function Menuitem({setSelected}) {
 
@@ -24,7 +24,8 @@ function Menuitem({setSelected}) {
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={() => setSelected('Home')}>Home</ListItemText>
+          <Link to='/Dashboard/Home'>
+          <ListItemText>Home</ListItemText></Link>
           <Typography variant="body2" color="text.secondary">
         
           </Typography>
@@ -34,7 +35,8 @@ function Menuitem({setSelected}) {
           <ListItemIcon>
             <ContentCut fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={() => setSelected('AddBlog')}>Add a Blog</ListItemText>
+          <Link to='/Dashboard/addBlog'>
+          <ListItemText >Add Blog</ListItemText></Link>
           <Typography variant="body2" color="text.secondary">
         
           </Typography>
@@ -43,12 +45,13 @@ function Menuitem({setSelected}) {
           <ListItemIcon>
             <ContentCopy fontSize="small" />
           </ListItemIcon>
-          <ListItemText onClick={() => setSelected('Upload Coupons')}>Upload Coupons</ListItemText>
+          <Link to='/Dashboard/addCoupon'>
+          <ListItemText >Coupons</ListItemText></Link>
           <Typography variant="body2" color="text.secondary">
        
           </Typography>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <ListItemIcon>
             <ContentPaste fontSize="small" />
           </ListItemIcon>
@@ -56,14 +59,24 @@ function Menuitem({setSelected}) {
           <Typography variant="body2" color="text.secondary">
             
           </Typography>
-        </MenuItem>
+        </MenuItem> */}
         <Divider />
         <MenuItem>
           <ListItemIcon>
             <Cloud fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Web Clipboard</ListItemText>
+          <Link to='/Dashboard/addProduct'>
+          <ListItemText >Add Products</ListItemText></Link>
         </MenuItem>
+
+        <MenuItem>
+          <ListItemIcon>
+            <Cloud fontSize="small" />
+          </ListItemIcon>
+          <Link to='/Dashboard/addService'>
+          <ListItemText >Add Services</ListItemText></Link>
+        </MenuItem>
+
       </MenuList>
       
     </Paper>

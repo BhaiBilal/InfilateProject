@@ -3,6 +3,8 @@ import AddWebinars from './Contents/AddWebinar'
 import AddCoupons from './Contents/AddCoupons'
 import Addblog from './Contents/Addblog'
 import Home from './Contents/Home'
+import AddProduct from './Contents/AddProducts'
+import AddService from './Contents/AddServices'
 
 function MiddleContent({selected}) {
 
@@ -36,6 +38,23 @@ function MiddleContent({selected}) {
             return (
 
                 <Home />
+            )
+        }
+
+        else if(selected == 'AddProducts') {
+
+            return (
+
+                <AddProduct />
+            )
+        }
+
+
+        else if(selected == 'AddServices') {
+
+            return (
+
+                <AddService />
             )
         }
 

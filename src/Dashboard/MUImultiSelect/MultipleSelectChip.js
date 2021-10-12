@@ -7,6 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+import axios from 'axios'
+
+
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -44,32 +48,71 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip({setCategoryArray}) {
+export default function MultipleSelectChip({field}) {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
+  const [test, setTest] = React.useState([])
+  const [categoryList,setCategoryList] = React.useState([])
+  let arr = []
 
+  React.useEffect(() => {
+
+    axios({
+      method:'GET',
+      url:"http://infilate.com/backend/public/api/offer-category/category-list",
+  })
+    .then(function (response) {
+      //handle success
+      setCategoryList(response.data.Data)
+      console.log(response);
+      // window.location.href='http://my.infilate.com/Login'
+    })
+    .catch(function (err) {
+      //handle error
+      console.log(err)
+      // dispatch(userLogoutRequest())
+      // setErrors('error')
+      // console.log(err+' user already registered');
+    });
+  },[])
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
+
     setPersonName(
       // On autofill we get a the stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
-    setCategoryArray(
-      // On autofill we get a the stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-    
   };
+
+  function addID(id){
+
+    if(test.length==0){
+      return setTest([id])
+    }
+
+    else if(test.length >=1 && test.includes(id)){
+      return setTest(test.filter(i => i!==id))
+    }
+
+    else {
+      return setTest(p => [...p,id])
+    }
+
+  }
+
+
+field.onChange(test)
+// console.log(test)
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-chip-label">Category</InputLabel>
         <Select
-       
+          // {...field}
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
@@ -87,7 +130,23 @@ export default function MultipleSelectChip({setCategoryArray}) {
           )}
           MenuProps={MenuProps}>
 
-          {names.map((name) => (
+
+
+        {categoryList && categoryList.map((item,index) => (
+            <MenuItem
+              onClick={() => {
+                addID(item.id)
+                // field.onChange(test)
+              }}
+              key={index}
+              value={item.name}
+              style={getStyles(item.name, personName, theme)}
+            >
+              {item.name}
+            </MenuItem>
+          ))}
+
+          {/* {names.map((name) => (
             <MenuItem
               key={name}
               value={name}
@@ -95,7 +154,7 @@ export default function MultipleSelectChip({setCategoryArray}) {
             >
               {name}
             </MenuItem>
-          ))}
+          ))} */}
         </Select>
       </FormControl>
     </div>

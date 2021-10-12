@@ -31,7 +31,7 @@ export default () => (
 
     <Hero />
     {/* <Tabs/> */}
-    <AnimationRevealPage>
+    {/* <AnimationRevealPage> */}
       <PopularCategories />
       <JoinWebinar />
 
@@ -52,7 +52,7 @@ export default () => (
       <SimplePrimaryBackgroundTestimonial />
       <Service />
     
-    </AnimationRevealPage>
+    {/* </AnimationRevealPage> */}
    
   </div>
 );
