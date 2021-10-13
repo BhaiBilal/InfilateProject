@@ -22,7 +22,7 @@ import { userLogoutRequest } from "redux/UserloginlogoutSlice";
 import Grid from '@mui/material/Grid';
 import axios from 'axios'
 import mastImage from '../../PolygonLuminary.svg'
-import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 const divStyle = {
@@ -303,7 +303,7 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
     // backgroundImage:`url(${mastImage})`
     }} >
 
-      <CardContent>
+      <CardContent style={{paddingBottom:'0px',paddingTop:'0px'}}>
       { Products && (
       <div class="container">
       <div class="row">
@@ -381,7 +381,7 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       
       
-        <CardContent>
+        <CardContent >
         { 
             blogList && blogList.map((item,index) => 
             <div key={index} style={divStyle}>
@@ -462,9 +462,7 @@ function Home() {
   const [deleteState,setDeleteState] = React.useState(false)
   const selector = useSelector((state) => (state));
   const dispatch = useDispatch()
-  const matches = useMediaQuery('(min-width:900px)');
 
-  console.log(matches)
 
 
   React.useEffect(() => {

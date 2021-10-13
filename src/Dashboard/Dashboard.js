@@ -15,17 +15,25 @@ import UpdateCoupon from './Contents/UpdateCoupon'
 import Home from './Contents/Home'
 import MenuItem2 from './MenuItem2'
 import { Redirect } from 'react-router-dom';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function Dashboard() {
 
+    const matches = useMediaQuery('(min-width:900px)');
+    console.log(matches)
+
+    const styles ={
+        flexDirection:`${matches == false ? 'column' : 'row'}`
+    }
     return (
 
         <Router>
-        <Box component='div' pt={22} display='flex'pb={10} >
+        <Box component='div' pt={matches == false ? 12 : 22} display='flex'pb={10}
+        style={styles}
+        >
 
             <Grid item md={3}>
-              <MenuItem2 />
+              <MenuItem2 mediaQuery={matches} />
             </Grid>
             
             <Container maxWidth='lg' style={{marginLeft:'0px',marginRight:'0px'}}>   

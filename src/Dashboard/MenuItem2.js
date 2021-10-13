@@ -15,6 +15,7 @@ import BlogIcon from '@mui/icons-material/Book';
 import CouponIcon from '@mui/icons-material/Beenhere';
 import ProductsIcon from '@mui/icons-material/DesktopWindows';
 import ServiceIcon from '@mui/icons-material/Dock';
+import { useMediaQuery } from '@material-ui/core';
 
 
 
@@ -54,7 +55,7 @@ const actions = [
 ];
 
 
-export default function PlaygroundSpeedDial() {
+export default function PlaygroundSpeedDial({mediaQuery}) {
 
   const classes = useStyles()
   const history = useHistory()
@@ -86,9 +87,10 @@ export default function PlaygroundSpeedDial() {
 
   return (
     <Box 
+    pb={mediaQuery == false ? 3 : 0}
     sx={{ 
       // transform: 'translateZ(0px)', flexGrow: 1 
-      display:'flex',justifyContent:'center',paddingTop:'9px'
+      display:'flex',justifyContent:`${mediaQuery == false ? 'unset' : 'center' }`,paddingTop:'9px',paddingLeft:'35px',
     }}>
       <Box sx={{ 
         // position: 'relative', 
@@ -98,15 +100,15 @@ export default function PlaygroundSpeedDial() {
           ariaLabel="SpeedDial playground example"
           // hidden={hidden}
           icon={<SpeedDialIcon />}
-          direction={'down'}
+          direction={mediaQuery==false ? 'right' : 'down'}
         >
           {actions.map((action) => (
             <SpeedDialAction
               key={action.name}
               icon={action.icon}
               tooltipTitle={action.name}
-              tooltipOpen
-              tooltipPlacement='right'
+              tooltipOpen={mediaQuery == false ? false : true}
+              tooltipPlacement={mediaQuery == false ? '' : 'right'}
               // classes={classes}
               onClick={() => handleClick(action)}
             />
