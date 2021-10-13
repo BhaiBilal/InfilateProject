@@ -21,13 +21,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
 import Grid from '@mui/material/Grid';
 import axios from 'axios'
+import mastImage from '../../PolygonLuminary.svg'
 
 
 const divStyle = {
   display:'flex',
   width:'inherit',
   height:'35px',
-  border:'1px solid black',
+  // border:'1px solid black',
   justifyContent:'space-between',
   alignItems:'center'
 }
@@ -289,15 +290,86 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
   };
 
   return (
-    <Card sx={{ width: 'inherit' }} style={{margin:'0px 10px 10px 0px',height:'max-content'}} >
+    <Card sx={{ width: 'inherit' }} 
+    style={{margin:'0px 10px 10px 0px',height:'max-content',boxShadow:'none',
+    // backgroundImage:`url(${mastImage})`
+    }} >
 
       <CardContent>
-        <Typography style={{fontSize:'40px'}} variant="body2" color="text.secondary">
+      { Products && (
+      <div class="container">
+      <div class="row">
+      <div class="four col-md-3">
+          <div class="counter-box colored" style={{background:'#ef5350', display:'flex', justifyContent:'space-between',}}> 
+          <i class="fa fa-database"></i> 
+          <div>
+          <span class="counter">{productlist.length}</span>
+              <p>products uploaded</p>
+          </div>
+          </div>
+      </div>
+      </div>
+      </div>) }
+
+
+      { Blogs && (
+      <div class="container">
+      <div class="row">
+      <div class="four col-md-3">
+          <div class="counter-box colored" style={{background:'#007bff', display:'flex', justifyContent:'space-between',}}> 
+          <i class="fa fa-code-fork"></i> 
+          <div>
+          <span class="counter">{blogList.length}</span>
+              <p>blogs uploaded</p>
+          </div>
+          </div>
+      </div>
+      </div>
+      </div>) }
+
+
+
+      { Services && (
+      <div class="container">
+      <div class="row">
+      <div class="four col-md-3">
+          <div class="counter-box colored" style={{background:'#66bb6a', display:'flex', justifyContent:'space-between',}}> 
+          <i class="fa fa-users"></i> 
+          <div>
+          <span class="counter">{servicelist.length}</span>
+              <p>services uploaded</p>
+          </div>
+          </div>
+      </div>
+      </div>
+      </div>) }
+
+
+      { Coupons && (
+      <div class="container">
+      <div class="row">
+      <div class="four col-md-3">
+          <div class="counter-box colored" style={{background:'#26c6da', display:'flex', justifyContent:'space-between',}}> 
+          <i class="fa fa-ticket"></i> 
+          <div>
+          <span class="counter">{couponlist.length}</span>
+              <p>coupons uploaded</p>
+          </div>
+          </div>
+      </div>
+      </div>
+      </div>) }
+
+
+
+
+
+        {/* <Typography style={{fontSize:'40px',color:'#00000047'}} variant="body2" color="text.secondary">
          { Blogs && (<>{blogList.length} blogs uploaded&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>) } 
          { Products && (<>{productlist.length} products uploaded</>) }
          { Services && (<>{servicelist.length} services uploaded</>) }
          { Coupons && (<>{couponlist.length} coupons uploaded</>) }
-        </Typography>
+        </Typography> */}
       </CardContent>
       <CardActions disableSpacing>
         <ExpandMore
