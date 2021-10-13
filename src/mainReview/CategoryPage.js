@@ -1,4 +1,5 @@
-import React,{useEffect} from 'react'
+import React,{useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -58,7 +59,10 @@ function CategoryPage(props) {
     const [checkedState,setCheckedState] = React.useState([])
     const [checkedState2,setCheckedState2] = React.useState([])
     const [subSubCategoriesData, setSubSubCategoriesData] = React.useState([])
-    const [subSubCategoriesData2, setSubSubCategoriesData2] = React.useState([])
+    const [subSubCategoriesData2, setSubSubCategoriesData2] = React.useState([]);
+
+    const selector = useSelector(state => state);
+    console.log(selector)
     
     const [id,setId] = React.useState(0)
     
@@ -77,6 +81,9 @@ function CategoryPage(props) {
             cancelToken: new axios.CancelToken(c=>cancel=c)
           }).then((res) => {
             setCategoriesData(res.data.Data)
+            if(res.data.Data && res.data.Data.length) {
+              setId(res.data.Data[0].id);
+            }
           }).catch(e=>{
             if(axios.isCancel(e)) return
           })   
@@ -230,6 +237,12 @@ function CategoryPage(props) {
             setId(item.id)
          }
 
+         const reviewSelectHandler = () => {
+           if(selector.userLoginLogout.isUserLoggedIn) {
+             props.next(checkedState, checkedState2);
+           }
+         }
+
     return (
         <div>
             <Box display='flex' ml={12}>
@@ -375,7 +388,7 @@ function CategoryPage(props) {
                         <Typography>You have selected { checkedState.length + checkedState2.length } products</Typography>
 
                         { checkedState2.length + checkedState.length > 0 ?  
-                        <Button onClick={()=>props.next(checkedState,checkedState2)} variant="contained" color='primary'>Continue</Button> 
+                        <Button onClick={()=> reviewSelectHandler() } variant="contained" color='primary'>Continue</Button> 
                         : <Button variant="contained" color='primary' disabled>Continue</Button>
                         }
                         
