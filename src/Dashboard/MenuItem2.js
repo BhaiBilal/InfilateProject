@@ -10,6 +10,14 @@ import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import BlogIcon from '@mui/icons-material/Book';
+import CouponIcon from '@mui/icons-material/Beenhere';
+import ProductsIcon from '@mui/icons-material/DesktopWindows';
+import ServiceIcon from '@mui/icons-material/Dock';
+
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
-  position: 'absolute',
+  // position: 'absolute',
   '&.MuiSpeedDial-directionUp, &.MuiSpeedDial-directionLeft': {
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    // bottom: theme.spacing(2),
+    // right: theme.spacing(2),
   },
   '&.MuiSpeedDial-directionDown, &.MuiSpeedDial-directionRight': {
     // top: theme.spacing(2),
@@ -38,11 +46,11 @@ const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
 }));
 
 const actions = [
-  { icon: <FileCopyIcon />, name: 'Home' },
-  { icon: <SaveIcon />, name: 'Blog' },
-  { icon: <PrintIcon />, name: 'Product' },
-  { icon: <ShareIcon />, name: 'Service' },
-  { icon: <ShareIcon />, name: 'Coupon' },
+  { icon: <HomeIcon />, name: 'Home' },
+  { icon: <BlogIcon />, name: 'Blog' },
+  { icon: <ProductsIcon />, name: 'Product' },
+  { icon: <ServiceIcon />, name: 'Service' },
+  { icon: <CouponIcon />, name: 'Coupon' },
 ];
 
 
@@ -77,10 +85,15 @@ export default function PlaygroundSpeedDial() {
   }
 
   return (
-    <Box sx={{ transform: 'translateZ(0px)', flexGrow: 1 }}>
+    <Box 
+    sx={{ 
+      // transform: 'translateZ(0px)', flexGrow: 1 
+      display:'flex',justifyContent:'center',paddingTop:'9px'
+    }}>
       <Box sx={{ 
         // position: 'relative', 
-        mt: 3, height: 320 }}>
+        // mt: 3, height: 320 
+      }}>
         <StyledSpeedDial
           ariaLabel="SpeedDial playground example"
           // hidden={hidden}

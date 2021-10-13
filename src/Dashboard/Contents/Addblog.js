@@ -73,7 +73,7 @@ function Addblog() {
       formData.append("media",data.media)
       formData.append("category_name",data.category_name)
 
-        // auth(formData)
+        auth(formData)
 
         console.log(data)
     }

@@ -22,6 +22,7 @@ import { userLogoutRequest } from "redux/UserloginlogoutSlice";
 import Grid from '@mui/material/Grid';
 import axios from 'axios'
 import mastImage from '../../PolygonLuminary.svg'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const divStyle = {
@@ -43,7 +44,14 @@ const ITEM_HEIGHT = 48;
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-  return <IconButton {...other} />;
+  const styles= {
+    '&:hover':{
+      background:'black',
+     
+    },
+    paddingRight:'12px',
+  }
+  return <IconButton {...other} style={styles} />;
 })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
@@ -328,7 +336,6 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
       </div>) }
 
 
-
       { Services && (
       <div class="container">
       <div class="row">
@@ -360,25 +367,15 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
       </div>
       </div>) }
 
-
-
-
-
-        {/* <Typography style={{fontSize:'40px',color:'#00000047'}} variant="body2" color="text.secondary">
-         { Blogs && (<>{blogList.length} blogs uploaded&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>) } 
-         { Products && (<>{productlist.length} products uploaded</>) }
-         { Services && (<>{servicelist.length} services uploaded</>) }
-         { Coupons && (<>{couponlist.length} coupons uploaded</>) }
-        </Typography> */}
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing style={{marginTop:'-61px'}}>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <ExpandMoreIcon style={{color:'white'}} />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -465,6 +462,10 @@ function Home() {
   const [deleteState,setDeleteState] = React.useState(false)
   const selector = useSelector((state) => (state));
   const dispatch = useDispatch()
+  const matches = useMediaQuery('(min-width:900px)');
+
+  console.log(matches)
+
 
   React.useEffect(() => {
 
@@ -571,16 +572,16 @@ function Home() {
         <>
 
            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-           <Grid item xs={6}>
+           <Grid item md={6} xs={12}>
             <CardView blogList={blogList} setdeleteState={setDeleteState} Blogs={'Blogs'} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
             <CardView productlist={productList} setdeleteState={setDeleteState} Products={'Products'} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
             <CardView servicelist={serviceList} setdeleteState={setDeleteState} Services={'Services'} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
             <CardView couponlist={couponList} setdeleteState={setDeleteState} Coupons={'Coupons'} />
             </Grid>
             </Grid>

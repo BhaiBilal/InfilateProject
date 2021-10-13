@@ -14,7 +14,7 @@ import UpdateBlog from './Contents/Updateblog'
 import UpdateCoupon from './Contents/UpdateCoupon'
 import Home from './Contents/Home'
 import MenuItem2 from './MenuItem2'
-
+import { Redirect } from 'react-router-dom';
 
 
 function Dashboard() {
@@ -24,13 +24,11 @@ function Dashboard() {
         <Router>
         <Box component='div' pt={22} display='flex'pb={10} >
 
-
             <Grid item md={3}>
               <MenuItem2 />
             </Grid>
-            <Container maxWidth='lg'>
-
             
+            <Container maxWidth='lg' style={{marginLeft:'0px',marginRight:'0px'}}>   
             <Switch>
             <Route path='/Dashboard/Home'> <Home /> </Route>
             </Switch>
@@ -68,8 +66,8 @@ function Dashboard() {
             <Switch>
             <Route path='/Dashboard/updateBlog/:id'> <UpdateBlog /> </Route>
             </Switch>
-            
 
+            <Redirect to="/Dashboard/Home" />
             </Container>
         </Box>
         </Router>

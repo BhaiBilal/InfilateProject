@@ -1,5 +1,5 @@
 import "tailwindcss/dist/base.css";
-import "styles/globalStyles.css";
+// import "styles/globalStyles.css";
 import React from "react";
 import HotelTravelLandingPage from "demos/HotelTravelLandingPage.js";
 import Home from "pages/Home.js";
