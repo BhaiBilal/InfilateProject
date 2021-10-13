@@ -13,17 +13,20 @@ import UpdateProduct from './Contents/UpdateProduct'
 import UpdateBlog from './Contents/Updateblog'
 import UpdateCoupon from './Contents/UpdateCoupon'
 import Home from './Contents/Home'
+import MenuItem2 from './MenuItem2'
+
+
 
 function Dashboard() {
 
     return (
 
         <Router>
-        <Box component='div' pt={22} display='flex'>
+        <Box component='div' pt={22} display='flex'pb={10} >
 
 
             <Grid item md={3}>
-              <MenuItem />
+              <MenuItem2 />
             </Grid>
             <Container maxWidth='lg'>
 
