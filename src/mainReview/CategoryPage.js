@@ -80,9 +80,11 @@ function CategoryPage(props) {
             },
             cancelToken: new axios.CancelToken(c=>cancel=c)
           }).then((res) => {
-            setCategoriesData(res.data.Data)
-            if(res.data.Data && res.data.Data.length) {
-              setId(res.data.Data[0].id);
+            if(res && res.data) {
+              setCategoriesData(res.data.Data)
+              if(res.data.Data && res.data.Data.length) {
+                setId(res.data.Data[0].id);
+              }
             }
           }).catch(e=>{
             if(axios.isCancel(e)) return
@@ -238,7 +240,7 @@ function CategoryPage(props) {
          }
 
          const reviewSelectHandler = () => {
-           if(selector.userLoginLogout.isUserLoggedIn) {
+           if(!selector.userLoginLogout.isUserLoggedIn) {
              props.next(checkedState, checkedState2);
            }
          }
