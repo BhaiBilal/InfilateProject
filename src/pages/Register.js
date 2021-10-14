@@ -17,6 +17,10 @@ import { BorderLeft } from "@material-ui/icons";
 import register5 from "../images/register5.jpg"
 import { Link } from "react-router-dom"
 import Login from "Users/Login";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+
+
 
 const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
@@ -90,6 +94,8 @@ export default ({
    *  3) description - the description of the card
    *  4) url - the url that the card should goto on click
    */
+
+  const matches = useMediaQuery('(max-width:1200px)');
   const clicked = () => {
     alert("you are clicked")
   }

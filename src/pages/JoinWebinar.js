@@ -100,7 +100,7 @@ export default ({
 
   return (
     <>
-      <h1 style={{ fontSize: "1.5rem", marginLeft: "2rem", fontStyle: "normal", fontWeight: "bold" }} >Webinars</h1>
+      {/* <h1 style={{ fontSize: "1.5rem", marginLeft: "2rem", fontStyle: "normal", fontWeight: "bold" }} >Webinars</h1> */}
       <Container className="webinar-head" style={{ backgroundColor: "green", display: "flex", flexDirection: "row", height: "80vh", margin: "0rem -2rem" }}>
 
 

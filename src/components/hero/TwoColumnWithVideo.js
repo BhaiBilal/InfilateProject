@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import Container from 'react-bootstrap/Container'
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Header from "../headers/light.js";
 import axios from 'axios';
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
@@ -78,6 +78,9 @@ export default ({
   const [webinar, setWebinar] = useState('')
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   const toggleModa = () => setModalIsOpen(!modalIsOpen);
+  const matches = useMediaQuery('(max-width:627px)');
+
+  // console.log(matches)
 
   React.useEffect(() => {
     let cancel
@@ -102,9 +105,10 @@ export default ({
 
   return (
     <>
-
       
-      <LeftColumn >
+      {
+         matches == true ? (<> </>) : 
+         <LeftColumn >
         <IllustrationContainer style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} >
           <div className="web-image" style={{ width: "400px", height: "400px", borderRadius: "50%", overflow: "hidden", backgroundColor: "white" }}>
 
@@ -112,7 +116,11 @@ export default ({
           <div className="web-offer" style={{ width: "150px", height: "150px", borderRadius: "50%", overflow: "hidden" }} ></div>
           {imageDecoratorBlob && <DecoratorBlob2 />}
         </IllustrationContainer>
-      </LeftColumn >
+      </LeftColumn >      
+        
+      }
+      
+
      
       
       <RightColumn style={{paddingTop:'100px',paddingLeft:'100px'}}>

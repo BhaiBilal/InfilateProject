@@ -35,11 +35,11 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     // borderRadius:'64px',
-    border: '2px solid grey',
+    border: '0px',
     borderRadius: '5px',
     marginBottom: '8px',
     width: "350px",
-    transition: "all .5s ease",
+    transition: "all .4s ease",
     '&:hover': {
       border: "2px solid #2b4f60",
       width: "450px",
@@ -143,7 +143,7 @@ export default ({
     <Container style={{ backgroundColor: "white" }} >
       <ContentWithPaddingXl style={{ paddingTop: '0rem', paddingBottom: "0rem" }}>
         <HeadingContainer style={{ paddingBottom: '2%', paddingBottom: "-100px" }}>
-          <Heading  style={{ fontSize: '20px', fontWeight: 'bold',textAlign:'inherit' }}>Popular Categories</Heading>
+          <Heading  style={{ fontSize: '20px', fontWeight: 'bold',textAlign:'inherit',paddingBottom:'13px',paddingLeft:'17px' }}>Popular Categories</Heading>
         </HeadingContainer>
         <div className={classes.root}>
           <Grid container spacing={2}>
@@ -165,7 +165,9 @@ export default ({
                 
                 {
                   data && data.slice(0,8).map((v,i)=>
-                  <ListItem style={{cursor:'pointer'}} key={i} className={classes.list} onClick={()=>handleListItemClick(v.id)}>
+                  <ListItem style={{
+                    cursor:'pointer',marginBottom:'12px',paddingTop:'0px',paddingBottom:'0px',borderRadius:'0px'}} 
+                    key={i} className={classes.list} onClick={()=>handleListItemClick(v.id)}>
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>

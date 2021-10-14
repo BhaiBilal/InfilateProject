@@ -130,9 +130,9 @@ export default ({
   const [visible,setVisible] = React.useState(false)
   const [mouseEnter,setMouseEnter] = React.useState(false)
   let divRef = React.useRef()
-  const matches = useMediaQuery('(max-width:960px)');
+  const matches = useMediaQuery('(max-width:710px)');
 
-  console.log(mouseEnter)
+  // console.log(matches)
 
   const  themeStyles={
     display: visible ? 'block' : 'none'
@@ -273,52 +273,9 @@ export default ({
 
   function compres(){
 
-
-    if(matches==true){
       return(
-        <Grid xs={12} style={{paddingTop:"160px"}} container spacing={1}>
-          <Grid style={{border:"1px solid black"}} item xs={8}>
-          <input style={{width:"100%",padding:"0px",margin:"0px"}} type="text" placeholder="Search.." name="search"/>
-          <div className="search_result_container">
-                  
-               
-                      <p>1</p>
-                      <p>1</p>
-                      <p>1</p>
-                      <p>1</p>
-                      
-                      
-
-                  
-                    </div>
-          </Grid>
-
-
-        </Grid>
-      )
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    else{
-      return(
-        <Container style={{ paddingTop: "9rem", marginBottom: "8rem", 
-        backgroundImage:`url(${doodle1})` 
+        <Container style={{ paddingTop: "9rem", marginBottom: "4rem", 
+        backgroundImage:`url(${doodle})`,backgroundSize:'370px' 
         }}>
 
         <HeadingContainer style={{ }}>
@@ -331,7 +288,7 @@ export default ({
         </HeadingContainer>
 
 
-        <div style={{ width: "100%", height: "220px", display: "flex", alignItems: "center", justifyContent:'space-around'}}>
+        <div style={{ width: "100%", height: "220px", display: "flex", alignItems: "center", justifyContent:`${matches == true ? 'unset' : 'space-around'}`}}>
           
           
           
@@ -385,7 +342,7 @@ export default ({
 
 
 
-                    <input  onKeyUp={myFunction} style={{ width: "402px", height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
+                    <input  onKeyUp={myFunction} style={{ width: `${matches == true ? '142px' : '402px'}`, height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
 
                 
                 
@@ -516,7 +473,8 @@ export default ({
     
     
                   <div >
-                    <button  style={{ borderRadius: "10px", width: "160px", 
+                    <button  style={{ borderRadius: "10px",
+                    //  width: `${matches == true ? '90px' : '160px'}`, 
                     height: "50px" }} type="submit" className="search-btn"><a>Search</a></button>
                   </div>
                 </div>
@@ -575,7 +533,6 @@ export default ({
       </Container >
       )
     }
-  }
 
 
 

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const Container = tw.div`relative`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col  items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24   `}
+  ${tw`flex flex-row  items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24   `}
 `;
 const Heading = tw(SectionHeading)`w-full`;
 const Column = styled.div`
@@ -93,8 +93,29 @@ export default ({index}) => {
     { imageSrc: logo4, title: "AGM" },
   ];
   const [couponData,setCouponData] = React.useState('')
-  const matches = useMediaQuery('(max-width:767px)');
+  const matches = useMediaQuery('(max-width:400px)');
+  const matches2 = useMediaQuery('(max-width:855px)');
   const classes = useStyles();
+
+  const H1 = (item) => {
+
+
+    if(matches2 == false){
+      return(<> 
+          <h1 style={{ fontSize: '15px', fontWeight: "600", marginBottom: "10px" }} >{item.item.name}</h1>
+       </> )
+    }
+    else {
+      return(
+        <> 
+            <h1 style={{ fontSize: `${matches == false ? '1.9vw' : '2.5vw' }`, fontWeight: "600", marginBottom: "10px" }} >{item.item.name}</h1>
+         </>
+        )
+    }
+
+  }
+
+  // console.log(matches2)
 
   React.useEffect(() => {
 
@@ -120,45 +141,16 @@ export default ({index}) => {
    const handleClick = (item) => console.log(item)
 
   function conditionRender(){
-    if(matches==true){
-      return(
-        <Container >
-        <ThreeColumnContainer style={{ paddingTop: '0rem', }}>
-          {/* <Heading>Our Professional <span tw="text-primary-500">Services</span></Heading> */}
-          {cards.map((card, i) => (
-            <Column key={i} style={{ width: '30%', paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
-              <Card style={{ border: "1px solid grey", padding: "0px", marginRight: "20px", marginBottom: "-30px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <span className="imageContainer" style={{ backgroundColor: "white", padding: ".8rem", height: "108px", width: "60%", border: "0px" }}>
-                  <img style={{ height: "80px" }} src={card.imageSrc} alt="" />
-                </span>
-                <span style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", width: "40%", height: "111px", borderLeft: "1px solid black" }} className="textContainer">
-                  <h1 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "10px" }} >BigRock</h1>
-                  <h3 style={{ color: "green" }}>26 offers</h3>
-                  {/* <p className="description">
-                    {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
-                  </p> */}
-                </span>
-              </Card>
-            </Column>
-          ))}
-        </ThreeColumnContainer>
-        {/* <DecoratorBlob /> */}
-      </Container >
-
-      )
-
-    }
-    else {
       return(
         <Container >
         <ThreeColumnContainer style={{ paddingTop: '0rem', }}>
           {/* <Heading>Our Professional <span tw="text-primary-500">Services</span></Heading> */}
           {couponData && couponData.slice(0,9).map((item, index) => (
-            <Column key={index} style={{ width: '30%', paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
+            <Column key={index} style={{width:`${matches == true ? '175px' : '30%'}`,paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
               <Card 
               onClick={() => handleClick(item)} 
               
-              style={{ border: "1px solid grey", padding: "0px", marginRight: "20px", marginBottom: "-30px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+              style={{ border: "1px solid grey",marginTop:'0px', padding: "0px", marginRight: "20px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <span className="imageContainer" style={{ backgroundColor: "white", padding: ".8rem", height: "108px", width: "60%", border: "0px" }}>
                 <CardMedia
                   className={classes.media}
@@ -168,7 +160,8 @@ export default ({index}) => {
                 </span>
                 <span style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", width: "40%", height: "111px", borderLeft: "1px solid black" }} className="textContainer">
                   
-                  <h1 style={{ fontSize: "16px", fontWeight: "600", marginBottom: "10px" }} >{item.name}</h1>
+              
+                  <H1 item={item} />
                   <h3 style={{ color: "green" }}>26 offers</h3>
                   {/* <p className="description">
                     {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
@@ -181,7 +174,6 @@ export default ({index}) => {
         {/* <DecoratorBlob /> */}
       </Container >
       )
-    }
   }
 
   return (
