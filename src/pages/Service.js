@@ -30,7 +30,7 @@ function Service() {
 
     //   console.log(list)
   
-
+ 
     return (
         <>
             <Container style={{ width: "100%", height: "80vh", marginTop: "20px" }} >

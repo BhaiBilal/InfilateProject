@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,12 +8,7 @@
   background: linear-gradient(to right, #87c8de 0%, #a7dbe9 100%);
 }
 
-.section {
-  background-image: url("../images/register13.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: -200px;
-}
+
 
 .register-button {
   display: flex;
@@ -68,4 +63,95 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color:black;
+} 
+
+
+.section {
+  background-image: url("../images/register13.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 1rem;
+  width: 100vw;
+  box-sizing: border-box;
+  height: 500px;
+  display: flex;
+  align-items: center;
 }
+
+.section2{
+  margin-left: auto;
+  margin-right: 2rem;
+  padding: 2rem 0rem;
+  background-color: rgba(255,255,255,1);
+  width: 275px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.register-upper {
+  text-align: center;
+
+}
+
+.register-upper h1 {
+  background-color: #000;
+  width: 8rem;
+  letter-spacing: 1px;
+  font-size: 14px;
+  height: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.register-upper img {
+  width: 12rem;
+  height: 3.5rem;
+  margin: 1rem auto 2rem auto;
+}
+
+.register-lower {
+  border-top: 1px solid #AEAEAE;
+  margin: 0rem 0.5rem;
+  padding: 2rem 1rem 0rem 1rem;
+}
+
+.register-button button {
+  background-color: green;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px #AEAEAE;
+  margin-bottom: 1rem;
+}
+
+.signup-button button {
+  background-color: #3690CC;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px #AEAEAE;
+  margin-bottom: 1rem;
+}
+
+.register-lower h2 {
+  font-size: 14px;
+  color: #808080;
+  text-align: center;
+  font-weight: 700;
+}
+
