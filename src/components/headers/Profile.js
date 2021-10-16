@@ -9,6 +9,17 @@ function Profile({handleProfile}) {
 
     const selector = useSelector((state) => state);
     const dispatch = useDispatch()
+    const loginbtn = {
+        textAlign:'center',
+        fontWeight:'unset',
+        background:'white',
+        borderRadius:'5px',
+
+        '&:hover':{
+            background:'#ff4032'
+        }
+
+    }
 
     const handleLogout=() => {
         dispatch(userLogoutRequest())
@@ -77,16 +88,16 @@ function Profile({handleProfile}) {
 
             <button className="dropbtn"><i style={{paddingRight:'7px'}} class="fas fa-user fa-2"></i>{selector.userLoginLogout.FullName}</button>
             <div className="dropdown-content">
-                <div style={{ display: "flex", justifyContent: "space-between", width: "100%", height: "115px", padding: "10px", backgroundColor: "#e1e5ea" }}>
-                    <div>
+                <div style={{ display: "flex", justifyContent: "space-between", width: "100%", height: "115px", padding: "10px", background:'white' }}>
+                     <div>
                         <img style={{ width: "150px", height: "100px" }} src={cashback} alt="images" /></div>
                     <div style={{ paddingLeft: "10px" }}>
                         <h3 style={{ fontSize: "16px" }}>Welcome</h3>
                         <h6 style={{ fontSize: "13px" }}>
                             Earn extra cashback on top of other discounts on your shopping via Infilate.</h6>
-                    </div>
+                    </div> 
                 </div >
-                <div style={{ width: "100%", height: "130px", padding: "10px", display: "flex", justifyContent: "space-around", alignItems: "center", flexDirection: "row" }}>
+                <div style={{ width: "100%", height: "130px", padding: "10px", display: "flex", justifyContent: "space-around", alignItems: "center", flexDirection: "row",background:'white' }}>
                     {/* <ul className="hList10">
                         <li>
                             <div className="menu10">
@@ -113,7 +124,7 @@ function Profile({handleProfile}) {
             <div style={{ zIndex: "999" }} className="dropdown">
             <button className="dropbtn"><i style={{paddingRight:'7px'}} class="fas fa-user fa-2"></i>Profile</button>
             <div className="dropdown-content">
-                <div style={{ display: "flex", justifyContent: "space-between", width: "100%", height: "115px", padding: "10px", backgroundColor: "#e1e5ea" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", width: "100%", height: "115px", padding: "10px", backgroundColor: "white" }}>
                     <div>
                         <img style={{ width: "150px", height: "100px" }} src={cashback} alt="images" /></div>
                     <div style={{ paddingLeft: "10px" }}>
@@ -122,7 +133,8 @@ function Profile({handleProfile}) {
                             Earn extra cashback on top of other discounts on your shopping via Infilate.</h6>
                     </div>
                 </div >
-                <div style={{ width: "100%", height: "130px", padding: "10px", display: "flex", justifyContent: "space-around", alignItems: "center", flexDirection: "row" }}>
+                <div style={{ width: "100%", height: "130px", padding: "10px", display: "flex", 
+                justifyContent: "space-around", alignItems: "center", flexDirection: "row", background:'white' }}>
                     <ul className="hList10">
                         <li>
                             <div className="menu10">
