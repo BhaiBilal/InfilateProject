@@ -25,6 +25,12 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,16 +126,7 @@ const ControlButton = styled.button`
   }
 `;
 
-const setting = {
-  // dots: true,
-  infinite: true,
-  speed: 1000,
-  slidesToShow: 4,
-  slidesToScroll: 3,
-  autoplay: false,
-  autoplaySpeed: 4000,
-  cssEase: "linear"
-}
+
 
 export default ({
   subheading = "",
@@ -190,7 +187,17 @@ export default ({
   const history = useHistory();
   const [blogData,setBlogData]=useState([])
   const classes = useStyles();
-
+  const matches = useMediaQuery('(max-width:950px)');
+  const setting = {
+    // dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow:`${matches == true ? '3' : '4'}`,
+    slidesToScroll: 3,
+    autoplay: false,
+    autoplaySpeed: 4000,
+    cssEase: "linear"
+  }
 
 
   async function fetchData() {

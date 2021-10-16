@@ -13,6 +13,15 @@ import { Link } from "react-router-dom";
 import imagesrc from "../images/review8.png";
 import imagesrc1 from "../images/webinar4.jpeg";
 import imagesrc2 from "../images/review5.jpg";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
+
+
+
+
+
+
 const Container = tw(ContainerBase)`bg-secondary-800 -mx-8`
 const HeadingContainer = tw.div``;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -56,6 +65,8 @@ export default ({
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
+  const matches = useMediaQuery('(max-width:1022px)');
+
   return (
     <>
       <Container className="register-head" style={{marginTop:'-33px'}}>
@@ -70,7 +81,7 @@ export default ({
           }}>
             < LeftColumn style={{ height: "400px" }}>
               <Title style={{ fontSize: '2.5rem', marginBottom: "20px", marginTop: "100px",color:'white' }}>{heading}</Title>
-              <h6 style={{ marginBottom: "60px",color:'white' }}>{description}</h6>
+              <h6 style={{ marginBottom: "60px",color:'white', paddingLeft:'27px',width:'92%' }}>{description}</h6>
               <Actions style={{ marginTop: "20px", marginLeft: "80px" }}>
                 <Link to='/reviewSelect'>
                 <PrimaryButton as="a" href="">{primaryButtonText}</PrimaryButton>
@@ -84,18 +95,24 @@ export default ({
               </Actions>
 
             </LeftColumn>
-            <RightColumn >
-              <IllustrationContainer style={{ position: "relative", display: "flex", justifyContent: "center" }}>
-                <img
 
-                  src={imagesrc}
-                  alt="Hero"
+            { matches == true ? (<></>) : 
+                   <RightColumn >
+                   <IllustrationContainer style={{ position: "relative", display: "flex", justifyContent: "center" }}>
+                     <img
+     
+                       src={imagesrc}
+                       alt="Hero"
+     
+                     />
+     
+                   </IllustrationContainer>
+     
+                 </RightColumn>     
+            
+            
+            }
 
-                />
-
-              </IllustrationContainer>
-
-            </RightColumn>
           </TwoColumn>
 
 

@@ -236,8 +236,8 @@ const useStyles = makeStyles((theme) => ({
           method: 'POST',
           cancelToken: new axios.CancelToken(c=>cancel=c)
         }).then((res) => {
-          setBlogData(res.data.Data)
-          // console.log(res.data.Data)
+          setBlogData(res.data)
+          // console.log(res.data)
         }).catch(e=>{
           if(axios.isCancel(e)) return
         })   
@@ -290,14 +290,14 @@ const useStyles = makeStyles((theme) => ({
     <Container maxWidth="md" key={1} style={{paddingTop:"160px"}}>
 
     <Card className={classes.root} elevation={0}>
-        <h1 className="scanfcode">{blogData[0] ? blogData[0].category_name : "no data"}</h1>
+        <h1 className="scanfcode">{blogData && blogData[0] ? blogData[0].category_name : "no data"}</h1>
       <CardMedia
         className={classes.media}
         image='http://infilate.com/backend/public/images/orange2.jpg-1629803334.jpg'
       />
       <CardContent  onClick={()=>handleClick(blogData[0] && blogData[0])}>
         <Typography style={{display:'-webkit-box',webkitLineClamp:'2',webkitBoxOrient:'vertical',overflow:'hidden'}} className={classes.forTypo} variant="body2" color="textSecondary" component="p">
-            {blogData[0] && blogData[0].title}
+            {blogData && blogData[0] && blogData[0].title}
         </Typography>
       </CardContent>
       <CardHeader style={{paddingTop:"0px",paddingLeft:"16px",paddingRight:"16px",paddingBottom:"16px"}}
@@ -306,8 +306,8 @@ const useStyles = makeStyles((theme) => ({
             R
           </Avatar>
         }
-        title={blogData[0] ? blogData[0].title1 : ""}
-        subheader={`by ${blogData[0] && blogData[0].user.name}`}
+        title={blogData && blogData[0] ? blogData[0].title1 : ""}
+        subheader={`by ${blogData && blogData[0] && blogData[0].user.name}`}
       />
 
     </Card>

@@ -170,7 +170,7 @@ export default function App() {
       
     <Router>
       <ScrollToTop />
-      {/* <Headerj/> */}
+      <Headerj/>
       <Switch>
         <Route path="/components/:type/:subtype/:name">
           <ComponentRenderer />
