@@ -1,0 +1,134 @@
+.categories {
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+}
+
+.categories-list h2 {
+    padding-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.categories-list {
+    padding: 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-list .category-name {
+    padding: 4px 8px;
+    border : 1px solid #ff4032;
+    text-align: center;
+    transition: 0.5s;
+    max-width: 300px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.categories-list .category-name:last-child {
+    margin-bottom: 0rem;
+}
+
+.categories-list .category-name span {
+    font-size: 15px;
+    color: #000;
+}
+
+.categories-list .category-name:hover {
+    max-width: 100%;
+    background-color: #ff4032;
+}
+
+.categories-list .category-name:hover span {
+    color: #fff;
+}
+
+.home-coupons-content {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.home-coupons-content h6 {
+    font-size: 15px;
+    color: #000;
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+
+.home-coupons-content span {
+    font-size: 14px;
+    color: #ff4032;
+}
+
+.home-coupons {
+    padding : 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    box-sizing: border-box;
+}
+
+.home-coupons-card {
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.17);
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.home-coupons-card .img-wrapper {
+    text-align: center;
+}
+
+.home-coupons-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-coupons-view a{ 
+    padding: 0.25rem 0.5rem;
+    font-weight: 100;
+    font-size: 14px;
+    transition: 0.5s;
+    border : 1px solid #ff4032;
+    color: #000;
+    background-color: #fff;
+}
+
+.home-coupons-view a:hover {
+    background-color: #ff4032;
+    color: #fff;
+    transform: scale(1.1);
+    border-color: #ff4032;
+}
+.home-coupons-card .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+@media only screen and (min-width : 768px) {
+    .categories {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .home-coupons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width : 1024px) {
+    .categories {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .home-coupons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

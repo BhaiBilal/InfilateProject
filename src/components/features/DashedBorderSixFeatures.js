@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { Link } from "react-router-dom";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import { SectionHeading } from "components/misc/Headings.js";
@@ -142,37 +143,25 @@ export default ({index}) => {
 
   function conditionRender(){
       return(
-        <Container >
-        <ThreeColumnContainer style={{ paddingTop: '0rem', }}>
-          {/* <Heading>Our Professional <span tw="text-primary-500">Services</span></Heading> */}
-          {couponData && couponData.slice(0,9).map((item, index) => (
-            <Column key={index} style={{width:`${matches == true ? '175px' : '30%'}`,paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
-              <Card 
-              onClick={() => handleClick(item)} 
-              
-              style={{ border: "1px solid grey",marginTop:'0px', padding: "0px", marginRight: "20px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <span className="imageContainer" style={{ backgroundColor: "white", padding: ".8rem", height: "108px", width: "60%", border: "0px" }}>
-                <CardMedia
-                  className={classes.media}
-                  image={`http://infilate.com/backend/public/images/${item.media}`}
-                  title="Paella dish"
-                                    />
-                </span>
-                <span style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", width: "40%", height: "111px", borderLeft: "1px solid black" }} className="textContainer">
-                  
-              
-                  <H1 item={item} />
-                  <h3 style={{ color: "green" }}>26 offers</h3>
-                  {/* <p className="description">
-                    {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
-                  </p> */}
-                </span>
-              </Card>
-            </Column>
-          ))}
-        </ThreeColumnContainer>
-        {/* <DecoratorBlob /> */}
-      </Container >
+        <div className = "home-coupons">
+          {couponData && couponData.slice(0,9).map((coupon, index) => {
+            console.log(coupon)
+            return (
+              <div className = "home-coupons-card">
+                <div className = "img-wrapper">
+                  <img src = {`http://infilate.com/backend/public/images/${coupon.media}`}/>
+                </div>
+                <div className = "home-coupons-content">
+                  <h6>{coupon.name}</h6>
+                  <span>26 offers</span>
+                </div>
+              </div>
+            )
+          })}
+          <div className = "home-coupons-view">
+            <Link className = "view-btn" to = "/Coupon">View all coupons</Link>
+          </div>
+      </div>
       )
   }
 
@@ -182,3 +171,26 @@ export default ({index}) => {
     </>
   );
 };
+
+
+
+{/* <Column key={index} style={{width:`${matches == true ? '175px' : '30%'}`,paddingLeft: '0rem', paddingRight: '0rem', marginBottom: "10px", }}>
+<Card 
+onClick={() => handleClick(item)} 
+
+style={{ border: "1px solid grey",marginTop:'0px', padding: "0px", marginRight: "20px", width: "400px", height: "111px", position: "relative", borderRadius: "0px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+  <span className="imageContainer" style={{ backgroundColor: "white", padding: ".8rem", height: "108px", width: "60%", border: "0px" }}>
+  <CardMedia
+    className={classes.media}
+    image={`http://infilate.com/backend/public/images/${item.media}`}
+    title="Paella dish"
+                      />
+  </span>
+  <span style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", width: "40%", height: "111px", borderLeft: "1px solid black" }} className="textContainer">
+    
+
+    <H1 item={item} />
+    <h3 style={{ color: "green" }}>26 offers</h3>
+  </span>
+</Card>
+</Column> */}
