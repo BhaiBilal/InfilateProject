@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import tw from "twin.macro";
@@ -26,7 +25,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import Slider from "react-slick";
 
 
 
@@ -132,56 +131,6 @@ export default ({
   subheading = "",
   heading = "Latest  Blogs",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing eli",
-  testimonials = [
-    {
-      customerName: "Education",
-      customerProfile: "CTO, Coronax",
-      imageSrc:
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "It has been 8 months since we have switched to servana "
-    },
-    {
-      customerName: "The Change",
-      customerProfile: "CEO, Koalify",
-      imageSrc:
-        "https://images.unsplash.com/photo-1610928712141-a292b96f43e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGh1bWFuaXR5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "We are delighted with the quality and performance of the servers that."
-    },
-    {
-      customerName: "Let's Unite",
-      customerProfile: "Founder, Travana",
-      imageSrc:
-        " https://images.unsplash.com/photo-1556484687-30636164638b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGh1bWFuaXR5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "We are delighted with the quality and performance of the servers that."
-    },
-    {
-      customerName: "Medical & Healthcare",
-      customerProfile: "CTO, Coronax",
-      imageSrc:
-        "https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWVkaWNhbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "It has been 8 months since we have switched to servana "
-    },
-    {
-      customerName: "Technology",
-      customerProfile: "Founder, Travana",
-      imageSrc:
-        " https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHRlY2hub2xvZ3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "We are delighted with the quality and performance of the servers that."
-    },
-    {
-      customerName: "Health & Wellness",
-      customerProfile: "CEO, Koalify",
-      imageSrc:
-        "https://images.unsplash.com/photo-1608138404239-d2f557515ecb?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyfF9oYi1kbDRRLTRVfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      quote:
-        "We are delighted with the quality and performance of the servers that."
-    }
-  ]
 }) => {
   const [sliderRef, setSliderRef] = useState(null)
   const history = useHistory();
@@ -258,7 +207,8 @@ const handleCardClick=(item)=>{
             {
               blogData.map((item,index) => ((
                 <div class="card" key={index} onClick={() => handleCardClick(item)}>
-                  <p style={{ fontSize: "16px", fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>
+                  <p style={{ fontSize: `${matches == true ? '11px' : '16px'}`, 
+                  fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>
 
                   <CardMedia
                    className={classes.media}
