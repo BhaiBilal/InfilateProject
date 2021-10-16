@@ -102,30 +102,22 @@ export default ({
 
   return (
 
-    <Container className="head-con" style={{ marginLeft: "-32px", marginRight: "-32px" }}>
-      <div className="section" style={{ display: "flex", flexDirection: "row", width: "100%", padding: "0px" }}>
-        <div className="section1" style={{ width: "50%", height: "80vh" }}>
-
-        </div>
-        <div className="section2" style={{ width: "50%", height: "80vh", display: "flex", alignItems: "center", flexDirection: "center" }}>
-
-          <div style={{ backgroundColor: "white", width: "50%", height: "80%", display: "flex", flexDirection: "column", alignItems: "center", marginLeft: "100px", boxShadow: "5px 5px 10px grey" }}>
+    <Container className="head-con">
+      <div className="section">
+        <div className="section2">
             <div className="register-upper">
-              <h1 style={{ backgroundColor: "black", height: "40px", width: "130px", marginTop: "20px", borderRadius: "0 15px 15px 0", fontSize: "16px", fontWeight: "bold", padding: "10px", color: "white" }}>Register With</h1>
+              <h1>Register With</h1>
+              <img src = "/Assets/Images/infi-logo.png" />
             </div>
             <div className="register-lower">
-              <div style={{ backgroundColor: "green" }} className="register-button"><a href="/RegisterCorporate"><button style={{ outline: "none", }}>Sign Up as CORPORATE  </button></a></div>
-              <div className="register-button"><a href="/RegisterUser"><button style={{ outline: "none" }}  > Sign Up as DMC</button> </a></div>
+              <div className="register-button"><a href="/RegisterCorporate"><button>Sign Up as CORPORATE  </button></a></div>
+              <div className="signup-button"><a href="/RegisterUser"><button > Sign Up as DMC</button> </a></div>
 
-              <div>
-
-                <h2 style={{ fontSize: "1.rem", fontWeight: "600", color: "grey" }}>Already a Member? <a href="/Login"  style={{ fontSize: "rem", fontWeight: "600", color: " rgba(36,62,99,var(--text-opacity))" }}>Sign in</a></h2>
-              </div>
+              <h2>Already a Member? <a href="/Login">Sign in</a></h2>
             </div>
-          </div>
 
 
-
+ 
         </div>
 
       </div>
