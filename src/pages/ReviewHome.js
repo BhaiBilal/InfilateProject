@@ -65,26 +65,18 @@ export default ({
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
-  const matches = useMediaQuery('(max-width:1022px)');
+  const matches = useMediaQuery('(max-width:1024px)');
 
   return (
     <>
-      <Container className="register-head" style={{marginTop:'-33px'}}>
-        <ContentWithPaddingLg style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <HeadingContainer>
-
-
-            {/* <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Description> */}
-          </HeadingContainer>
-          <TwoColumn style={{
-            paddingTop: '4%', paddingBottom: '4%'
-          }}>
-            < LeftColumn style={{ height: "400px" }}>
-              <Title style={{ fontSize: '2.5rem', marginBottom: "20px", marginTop: "100px",color:'white' }}>{heading}</Title>
-              <h6 style={{ marginBottom: "60px",color:'white', paddingLeft:'27px',width:'92%' }}>{description}</h6>
-              <Actions style={{ marginTop: "20px", marginLeft: "80px" }}>
+      <div className="register-head" style = {{backgroundColor : "#fff", padding: "2rem 1rem", width : "100%"}}>
+          <TwoColumn>
+            < LeftColumn className = "register-head-left">
+              <Title style = {{color : "#000"}}>{heading}</Title>
+              <p style = {{color : "#000"}}>{description}</p>
+              <Actions>
                 <Link to='/reviewSelect'>
-                <PrimaryButton as="a" href="">{primaryButtonText}</PrimaryButton>
+                <PrimaryButton style = {{backgroundColor : "#FF4032"}} as="a" href="">{primaryButtonText}</PrimaryButton>
                 </Link>
                 {/* <WatchVideoButton onClick={toggleModal}>
                 <span className="playIconContainer">
@@ -97,10 +89,10 @@ export default ({
             </LeftColumn>
 
             { matches == true ? (<></>) : 
-                   <RightColumn >
-                   <IllustrationContainer style={{ position: "relative", display: "flex", justifyContent: "center" }}>
+                   <RightColumn className = "register-head-right" >
+                   <IllustrationContainer style = {{textAlign : "center"}}>
                      <img
-     
+                      style = {{height : "400px", width : "400px"}}     
                        src={imagesrc}
                        alt="Hero"
      
@@ -114,10 +106,7 @@ export default ({
             }
 
           </TwoColumn>
-
-
-        </ContentWithPaddingLg>
-      </Container >
+      </div >
     </>
   );
 };
