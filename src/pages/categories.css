@@ -3,6 +3,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 2rem;
+    max-width: 1000px;
+    margin: 0rem auto;
 }
 
 .categories-list h2 {
