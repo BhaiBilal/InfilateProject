@@ -31,17 +31,19 @@
   position: relative;
   float: left;
   margin-left: 160px;
-  background-color: black;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0px 1px 15px 2px rgb(100 100 100 / 49%);
+  /* background-color: black; */
+  /* border-radius: 0 0 4px 4px; */
+  /* box-shadow: 0px 1px 15px 2px rgb(100 100 100 / 49%); */
   transition: all 0.3s;
   z-index: 1;
 }
 
 .nav-logo {
   background-image: url("../../images/infi-logo.png");
-  width: 208px;
-  height: 150px;
+  /* width: 208px; */
+  /* height: 150px; */
+  height: 102px;
+  width: 195px;
   background-position: center;
   background-repeat: no-repeat;
   object-fit: contain;
