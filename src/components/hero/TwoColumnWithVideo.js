@@ -78,7 +78,6 @@ export default ({
   const [webinar, setWebinar] = useState('')
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   const toggleModa = () => setModalIsOpen(!modalIsOpen);
-  const matches = useMediaQuery('(max-width:627px)');
 
   // console.log(matches)
 
@@ -104,35 +103,29 @@ export default ({
   // console.log(webinar[0] && webinar[0].webinar_name)
 
   return (
-    <>
+    <div className = "webinar-section">
       
-      {
-         matches == true ? (<> </>) : 
-         <LeftColumn >
-        <IllustrationContainer style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} >
-          <div className="web-image" style={{ width: "400px", height: "400px", borderRadius: "50%", overflow: "hidden", backgroundColor: "white" }}>
+        <div className = "web-header">
+          <div className="web-image">
 
           </div>
-          <div className="web-offer" style={{ width: "150px", height: "150px", borderRadius: "50%", overflow: "hidden" }} ></div>
+          <div className="web-offer" ></div>
           {imageDecoratorBlob && <DecoratorBlob2 />}
-        </IllustrationContainer>
-      </LeftColumn >      
-        
-      }
+        </div>
       
 
      
       
-      <RightColumn style={{paddingTop:'100px',paddingLeft:'100px'}}>
+      <div className = "webinar-section-footer">
 
-        <h3 style={{ fontSize: "3rem", fontWeight: "bold", color: "white", }}>{webinar[0] && webinar[0].webinar_name}</h3>
+        <h3>{webinar[0] && webinar[0].webinar_name}</h3>
         {/* <h6 style={{ display: "flex", fontSize: "20px", color: "white" }}>{description}</h6> */}
         {/* <h6 style={{ display: "flex", fontSize: "20px", marginBottom: "2rem", color: "white" }}>{description}</h6> */}
 
-        <div className="web-feature" style={{width:'100%',marginTop:'190px'}}>
+        <div>
           <div className="web-feat">
             <h3 >Featured Event</h3>
-            <h4  >online <span style={{ color: "green", fontSize: ".8rem" }}><i class="fas fa-circle"></i></span></h4>
+            <h4  >online <span style = {{color : "green"}}><i class="fas fa-circle"></i></span></h4>
           </div>
 
           <div className="web-book" >
@@ -142,22 +135,22 @@ export default ({
           
         </div>
 
-          <Grid style={{display:'flex',justifyContent:'space-between'}} item md={12} >
+          <div className = "webinar-section-actions" >
            
-            <div>
-            <button style={{ color: "white", }} onClick={toggleModal} > <a href="#">Watch Video</a></button>
+            <div style = {{flex : 1}}>
+            <button onClick={toggleModal} > <a href="#">Watch Video</a></button>
             </div>
             
            
             <div>
-            <button style={{ color: "white"}} onClick={WebinarList}><a href="#">view all webinar</a></button>  
+            <button onClick={WebinarList}><a href="#">view all webinar</a></button>  
             </div>
             
-          </Grid>
+          </div>
     
 
 
-      </RightColumn>
+      </div>
 
       <DecoratorBlob1 />
       <StyledModal
@@ -175,6 +168,6 @@ export default ({
         </div>
       </StyledModal>
 
-    </>
+    </div>
   );
 };

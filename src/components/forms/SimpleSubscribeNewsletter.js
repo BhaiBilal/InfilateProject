@@ -25,20 +25,20 @@ const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none
 
 export default () => {
   return (
-    <Container  style={{background:'black',paddingTop:'29px',paddingBottom:'29px'}}>
+    <Container  style={{background:'#fff',padding: "30px 16px",display : "flex", justifyContent :"center", alignItems : "center"}}>
       <Content style={{paddingTop:'3rem',paddingBottom:'3rem'}}>
         <Row>
           <TextColumn>
             {/* <EmailNewsletterIcon /> */}
             <HeadingInfoContainer>
-              <Heading style={{color:"white"}}>Newsletter</Heading>
-              <Description>Subscribe now to get our latest blog posts.</Description>
+              <Heading style={{color:"#000", paddingBottom : "8px"}}>Newsletter</Heading>
+              <Description style = {{color : "#8B8B8B", letterSpacing : "1px"}}>Subscribe now to get our latest blog posts.</Description>
             </HeadingInfoContainer>
           </TextColumn>
           <FormColumn>
           <Form>
-            <Input name="newsletter" type="email" placeholder="Your Email Address" style={{background:'white'}}/>
-            <Button type="submit" style={{backgroundColor: '#425982',borderWidth:'0px'}}>Subscribe Now</Button>
+            <Input name="newsletter" type="email" placeholder="Your Email Address" style={{background:'white', outlineStyle : "none", borderColor : "#FF4032"}}/>
+            <Button type="submit" style={{backgroundColor: '#FF4032',borderWidth:'1px', borderColor : "#FF4032"}}>Subscribe Now</Button>
           </Form>
           </FormColumn>
         </Row>

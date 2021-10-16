@@ -58,12 +58,6 @@
 
 /*-----------------Register-----------*/
 
-.register-head {
-  /* background-image: url("../feedback.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color:black;
-} 
 
 
 .section {
@@ -71,7 +65,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 2rem 1rem;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   box-sizing: border-box;
   height: 500px;
   display: flex;
@@ -154,4 +149,5 @@
   text-align: center;
   font-weight: 700;
 }
+
 

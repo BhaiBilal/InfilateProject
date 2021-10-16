@@ -7,6 +7,15 @@
   margin-left: 1rem;
 }
 
+.webinar-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+
+
 .popular-head::after {
   display: inline-block;
   content: "";
@@ -15,31 +24,52 @@
   transform: translateY(-2rem);
   margin-left: 15rem;
 }
-
+.web-header{
+  display: flex;
+  justify-content: center;
+}
 .webinar-head {
   background-image: url("../images/webinar10.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  overflow: hidden;
   margin-top: 10px;
+  position: relative;
+}
+
+.webinar-section-footer {
+  display: flex;
+  flex-direction: column;
 }
 
 .web-image {
   background-image: url("../images/webinar8.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: -60px;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.webinar-section-footer h3 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .web-offer {
   background-image: url(../images/offer1.png);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position-x: -20px;
-  background-position-y: 40px;
   background-color: white;
-  position: absolute;
-  margin-left: 400px;
-  margin-top: 300px;
+  width: 80px;
+  height: 80px;
+  margin-top: 200px;
+  margin-left: -10px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .web-feature {
@@ -47,12 +77,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 75%;
   height: 100px;
   background-color: #b6c9f0;
   border-radius: 5px;
   box-shadow: 5px 5px 5px black;
-  margin-top: 60px;
 }
 
 .web-feat {
@@ -61,13 +89,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
+  background-color: #B6C9F0;
+  border-radius: 8px 8px 0px 0px;
   width: 100%;
-  height: 55%;
+  max-width: 300px;
+  margin: 2rem auto 0rem auto;
 }
 
 .web-feat h3 {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #000;
 }
 
 .web-feat h4 {
@@ -78,13 +110,13 @@
 .web-book {
   background: linear-gradient(to right, #3d84b8 0%, #344fa1 100%);
   width: 100%;
-  height: 45%;
+  padding: 8px;
+  max-width: 300px;
   display: flex;
+  margin: auto;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  padding: 0px 10px;
 }
 
 .web-book a {
@@ -93,6 +125,20 @@
   color: white;
   width: 100px;
   border-radius: 5px;
+}
+
+.webinar-section-actions {
+  color: #fff;
+  max-width: 300px;
+  margin: 0rem auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.webinar-section-actions div button a {
+  color: #FF4032;
+  font-weight: 100;
 }
 
 .web-book button {
@@ -109,4 +155,31 @@
   font-size: 1.125rem;
   font-weight: bold;
   color: white;
+}
+
+@media only screen and (min-width : 768px) {
+  .webinar-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  .web-header {
+    margin-right: 2rem;
+  }
+  .web-feat, .web-book, .webinar-section-actions {
+    margin-left: 2rem;
+  }
+
+  .web-feat{
+    margin-top: 5rem;
+  }
+  .webinar-section-footer h3 {
+    text-align: left;
+    margin-left: 2rem;
+  }
+
+  .web-feat h3 {
+    margin-left: 0rem;
+  }
+  .webinar-section-footer {
+    margin-top: 1rem;
+  }
 }

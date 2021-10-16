@@ -33,7 +33,7 @@ function Service() {
  
     return (
         <>
-            <Container style={{ width: "100%", height: "80vh", marginTop: "20px" }} >
+            <Container style={{ width: "100%", marginTop: "20px" }} >
                 <h1 className="service-head" style={{ fontSize: "1.625rem", fontweight: "bold" }} >Research popular software & services</h1>
                 <div className="service-container">
 

@@ -24,6 +24,7 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import { Typography } from "@material-ui/core";
 import "./Webinar.css"
+import "./categories.css"
 import { Link } from "react-router-dom";
 
 
@@ -140,59 +141,20 @@ export default ({
 
   return (
     // <AnimationRevealPage>
-    <Container style={{ backgroundColor: "white" }} >
-      <ContentWithPaddingXl style={{ paddingTop: '0rem', paddingBottom: "0rem" }}>
-        <HeadingContainer style={{ paddingBottom: '2%', paddingBottom: "-100px" }}>
-          <Heading  style={{ fontSize: '20px', fontWeight: 'bold',textAlign:'inherit',paddingBottom:'13px',paddingLeft:'17px' }}>Popular Categories</Heading>
-        </HeadingContainer>
-        <div className={classes.root}>
-          <Grid container spacing={2}>
-
-            <Grid item md={4}>
-              <List component="nav" aria-label="main mailbox folders">
-                
-              {/* <ListItem
-                  className={classes.list}
-                  button
-                // selected={selectedIndex === 0}
-
-                >
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>Marketing Automation</Typography>} />
-                </ListItem> */}
-                
-                {
-                  data && data.slice(0,8).map((v,i)=>
-                  <ListItem style={{
-                    cursor:'pointer',marginBottom:'12px',paddingTop:'0px',paddingBottom:'0px',borderRadius:'0px'}} 
-                    key={i} className={classes.list} onClick={()=>handleListItemClick(v.id)}>
-                  <ListItemIcon>
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={<Typography style={{ fontSize: "1rem", color: "rgba(36,62,99,var(--text-opacity))" }}>{v.name}</Typography>} />
-                  </ListItem>
-                  )
-                    
-                }
-
-
-              </List>
-
-            </Grid>
-            <Grid item md={8}>
-              <Features index={selectedIndex} />
-              <Grid style={{display:'flex', justifyContent: "center",marginTop:'-50px'}} item>
-              <Link to="/Coupon"><Button color="primary"> View More Coupons </Button></Link>
-              </Grid>
-              
-            </Grid>
-          </Grid>
-
-        </div>
-      </ContentWithPaddingXl>
-    </Container>
+    <div className = "categories">
+      <div className = "categories-list">
+        <h2>Popular Categories</h2>
+        {
+          data && data.slice(0,8).map((v,i)=>
+          <div key={i} className="category-name" onClick={()=>handleListItemClick(v.id)}>
+            <span>{v.name}</span>
+          </div>
+          )
+            
+        }
+    </div>
+    <Features index = {selectedIndex} />
+    </div>
 
     // </AnimationRevealPage> 
 
