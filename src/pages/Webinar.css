@@ -29,12 +29,13 @@
   justify-content: center;
 }
 .webinar-head {
-  background-image: url("../images/webinar10.jpg");
+  background-image: url("../bannercopy.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   overflow: hidden;
   margin-top: 10px;
+  height: 600px;
   position: relative;
 }
 
