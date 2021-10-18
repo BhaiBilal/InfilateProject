@@ -98,8 +98,8 @@ function AllServices() {
   
 
     return (
-
-           <Box display='flex'>
+<>
+           <Box display='flex' style={{backgroundColor:"#F9F9F9"}}>
                 <MenuFilters  type={type} setType={setType} />
 
 
@@ -145,7 +145,7 @@ function AllServices() {
             </div>
                 
            </Box> 
-           
+           </>
 
     )
 

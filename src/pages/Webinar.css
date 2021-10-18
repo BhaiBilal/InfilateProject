@@ -111,9 +111,9 @@
 
 .web-book {
   background: linear-gradient(to right, #3d84b8 0%, #344fa1 100%);
-  width: 100%;
+  /* width: 100%; */
   padding: 8px;
-  /* max-width: 300px; */
+  max-width: 300px;
   width: 100%;
   display: flex;
   /* margin: auto; */

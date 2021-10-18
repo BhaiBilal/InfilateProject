@@ -64,15 +64,15 @@ function ServicesCard({list,handleCompare}) {
      <p>(477)</p>
      <p> {item.type} </p>
      </Grid>
-     <Grid item xs={4} style={{display:'flex',flexDirection:'column'}}>
-     <Button variant="contained" color="secondary" style={{width:'98%'}}>
+     <Grid item xs={4} style={{display:'flex',flexDirection:'column',padding:"10px"}}>
+     <Button variant="contained" color="secondary" style={{marginBottom:"10px"}} >
      <Typography variant="button" display="block">
      Visit website
      </Typography>
      </Button>
      <Grid item style={{display:'flex',justifyContent:'center'}}>
      <Button
-             variant="contained"
+             variant="outlined"
              color="primary"
              onClick={()=>handleCompare(item,index)}
              className={classes.button1}
@@ -84,7 +84,7 @@ function ServicesCard({list,handleCompare}) {
            </Button>
 
            <Button
-             variant="contained"
+            variant="text"
              color="primary"
           
              className={classes.button2}
