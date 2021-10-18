@@ -11,7 +11,35 @@ import DatePicker from '../MUIDatePicker/MuiDatePicker'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import { alpha, styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import MUIBasicSelect from '../MUIBasicSelect/BasicSelect'
+import MUIMultiSelect from '../MUImultiSelect/MultipleSelectChip'
 
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: '#1976d2',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#1976d2',
+  },
+  '& .MuiOutlinedInput-root': {
+    marginBottom:'10px',
+    '& fieldset': {
+      borderColor: '#1976d2',
+      height:'60px',
+      
+    },
+    '&:hover fieldset': {
+      borderColor: '#1976d2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#1976d2',
+    },
+  },
+});
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +82,7 @@ const One = () => {
     control={control}
     rules={{ required: "field is required" }}
     render={({ field,formState }) => 
-    <TextField
+    <CssTextField
     label="Coupon Name"
     size='small'
     variant="outlined"
@@ -71,7 +99,7 @@ const One = () => {
         control={control}
         rules={{ required: "field is required" }}
         render={({ field,formState }) => 
-        <TextField
+        <CssTextField
         label="Coupon Title"
         size='small'
         variant="outlined"
@@ -89,7 +117,7 @@ const One = () => {
         control={control}
         rules={{ required: "field is required" }}
         render={({ field,formState }) => 
-        <TextField
+        <CssTextField
         // id="first-Name"
         label="Coupon URL"
         size='small'
@@ -108,7 +136,7 @@ const One = () => {
         control={control}
         rules={{ required: "field is required" }}
         render={({ field,formState }) => 
-        <TextField
+        <CssTextField
         // id="first-Name"
         label="Coupon code"
         size='small'
@@ -133,17 +161,19 @@ const Two = () => {
       control={control}
       rules={{ required: "field is required" }}
       render={({ field,formState }) => 
-      <TextField
-      // id="first-Name"
-      label="Coupon type"
-      size='small'
-      variant="outlined"
-      placeholder='Coupon type...'
-      fullWidth
-      {...field}
-      helperText={formState.errors.coupon_type?.message}
-      error={formState.errors.coupon_type}
-      />
+
+      <MUIBasicSelect type={'coupon'} couponfield1={field} />
+      // <TextField
+      // // id="first-Name"
+      // label="Coupon type"
+      // size='small'
+      // variant="outlined"
+      // placeholder='Coupon type...'
+      // fullWidth
+      // {...field}
+      // helperText={formState.errors.coupon_type?.message}
+      // error={formState.errors.coupon_type}
+      // />
   }/>
 
   <Controller
@@ -188,17 +218,19 @@ const Two = () => {
       control={control}
       rules={{ required: "field is required" }}
       render={({ field,formState }) => 
-      <TextField
-      // id="first-Name"
-      label="Applied On Attribute"
-      size='small'
-      variant="outlined"
-      placeholder='Applied on attribute...'
-      fullWidth
-      {...field}
-      helperText={formState.errors.applied_on_attribute?.message}
-      error={formState.errors.applied_on_attribute}
-      />
+
+      <MUIBasicSelect type={'coupon'} couponfield2={field} />
+      // <TextField
+      // // id="first-Name"
+      // label="Applied On Attribute"
+      // size='small'
+      // variant="outlined"
+      // placeholder='Applied on attribute...'
+      // fullWidth
+      // {...field}
+      // helperText={formState.errors.applied_on_attribute?.message}
+      // error={formState.errors.applied_on_attribute}
+      // />
   }/> 
 
 
@@ -290,19 +322,22 @@ const Three = () => {
 <Controller
       name="location"
       control={control}
-      rules={{ required: "field is required" }}
+      // rules={{ required: "field is required" }}
       render={({ field,formState }) => 
-      <TextField
-      // id="first-Name"
-      label="Location"
-      size='small'
-      variant="outlined"
-      placeholder='Location...'
-      fullWidth
-      {...field}
-      helperText={formState.errors.location?.message}
-      error={formState.errors.location}
-      />
+
+
+      <MUIMultiSelect type={'location'} couponfield={field} />
+      // <TextField
+      // // id="first-Name"
+      // label="Location"
+      // size='small'
+      // variant="outlined"
+      // placeholder='Location...'
+      // fullWidth
+      // {...field}
+      // helperText={formState.errors.location?.message}
+      // error={formState.errors.location}
+      // />
   }/> 
 </>
   )   
@@ -317,17 +352,19 @@ const Four = () => {
       control={control}
       rules={{ required: "field is required" }}
       render={({ field,formState }) => 
-      <TextField
-      // id="first-Name"
-      label="Allow reviews"
-      size='small'
-      variant="outlined"
-      placeholder='Allow Reviews...'
-      fullWidth
-      {...field}
-      helperText={formState.errors.allow_reviews?.message}
-      error={formState.errors.allow_reviews}
-      />
+
+      <MUIBasicSelect type={'coupon'} couponfield3={field} />
+      // <TextField
+      // // id="first-Name"
+      // label="Allow reviews"
+      // size='small'
+      // variant="outlined"
+      // placeholder='Allow Reviews...'
+      // fullWidth
+      // {...field}
+      // helperText={formState.errors.allow_reviews?.message}
+      // error={formState.errors.allow_reviews}
+      // />
   }/>
 
   <Controller
@@ -335,17 +372,20 @@ const Four = () => {
   control={control}
   rules={{ required: "field is required" }}
   render={({ field,formState }) => 
-  <TextField
-  // id="first-Name"
-  label="Priority"
-  size='small'
-  variant="outlined"
-  placeholder='Priority...'
-  fullWidth
-  {...field}
-  helperText={formState.errors.priority?.message}
-  error={formState.errors.priority}
-  />
+
+
+  <MUIBasicSelect type={'coupon'} couponfield4={field} />
+  // <TextField
+  // // id="first-Name"
+  // label="Priority"
+  // size='small'
+  // variant="outlined"
+  // placeholder='Priority...'
+  // fullWidth
+  // {...field}
+  // helperText={formState.errors.priority?.message}
+  // error={formState.errors.priority}
+  // />
 }/>
 
 <Controller
@@ -495,9 +535,9 @@ export default function AddCoupons() {
         formdata.append('priority',data.priority)
         formdata.append('permalink',data.permalink)
         formdata.append('category',["8","9"])
-        auth(formdata)
+        // auth(formdata)
     }
-    // console.log(activeStep)
+    console.log(data)
   };
 
   const handleBack = () => {

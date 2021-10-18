@@ -279,7 +279,7 @@ export default ({
         <HeadingContainer style={{ }}>
           <HeadingRow style={{justifyContent:'center'}}>
             <Heading style={{ fontSize: '2rem', color:'white', fontWeight: '600', background:'#fffdfd4f',zIndex:'1',textShadow: '5px 3px 5px #312e2e',
-          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',padding:'6px',textDecoration:'underline overline'
+          boxShadow: '5px 10px 20px #817e7e inset',padding:'6px',textDecoration:'underline overline'
           }}>{heading}</Heading>
           </HeadingRow>
           <HeadingRow style={{justifyContent:'center'}}>

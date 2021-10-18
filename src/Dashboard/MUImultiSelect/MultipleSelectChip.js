@@ -23,20 +23,44 @@ const MenuProps = {
   },
 };
 
-const names = [
-  '17',
-  '18',
-  '20',
-  // 'Web hosting',
-  // 'SMM',
-  // 'Digital Marketing',
-//   'Ralph Hubbard',
-//   'Omar Alexander',
-//   'Carlos Abbott',
-//   'Miriam Wagner',
-//   'Bradley Wilkerson',
-//   'Virginia Andrews',
-//   'Kelly Snyder',
+const locationnames = [
+  '',
+  'Andaman Nicobar',
+  'Andhra Pradesh',
+  'Arunachal Pradesh',
+  'Assam',
+  'Bihar',
+  'Chattisgarh',
+  'Dadra Nagar Haveli',
+  'Daman Diu',
+  'Delhi',
+  'Goa',
+  'Gujrat',
+  'Haryana',
+  'Himachal Pradesh',
+  'jammu Kashmir',
+  'jharkhand',
+  'Karnataka',
+  'Kerela',
+  'Lakshadweep',
+  'Madhay Pradesh',
+  'Maharashtra',
+  'Manipur',
+  'Meghalaya',
+  'Mizoram',
+  'Nagaland',
+  'Odisha',
+  'Puducherry',
+  'Punjab',
+  'Rajasthan',
+  'Sikkim',
+  'Tamil Nadu',
+  'Telangana',
+  'Tripura',
+  'Uttar Pradesh',
+  'Uttarakhand',
+  'West Bengal',
+
 ];
 
 function getStyles(name, personName, theme) {
@@ -48,9 +72,12 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip({field}) {
+export default function MultipleSelectChip({Blogfield,type,couponfield}) {
+
+
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
+  const [locationName, setLocationName] = React.useState([]);
   const [test, setTest] = React.useState([])
   const [categoryList,setCategoryList] = React.useState([])
   let arr = []
@@ -87,6 +114,16 @@ export default function MultipleSelectChip({field}) {
     );
   };
 
+  const handleChange2 = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setLocationName(
+      // On autofill we get a the stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+
   function addID(id){
 
     if(test.length==0){
@@ -104,12 +141,13 @@ export default function MultipleSelectChip({field}) {
   }
 
 
-field.onChange(test)
 // console.log(test)
 
+if(type == 'addblog'){
+  Blogfield.onChange(test)
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{mb:2, width: '100%' }}>
         <InputLabel id="demo-multiple-chip-label">Category</InputLabel>
         <Select
           // {...field}
@@ -159,4 +197,61 @@ field.onChange(test)
       </FormControl>
     </div>
   );
+    
+}
+
+else if(type == 'location'){
+
+  couponfield.onChange(locationName)
+
+  return (
+    <div>
+      <FormControl sx={{mb:2, width: '100%' }}>
+        <InputLabel id="demo-multiple-chip-label">Location</InputLabel>
+        <Select
+          // {...field}
+          labelId="demo-multiple-chip-label"
+          id="demo-multiple-chip"
+          multiple
+          value={locationName}
+          onChange={handleChange2}
+          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value) => (
+                <>
+                <Chip key={value} label={value} />
+                </>
+              ))}
+            </Box>
+          )}
+          MenuProps={MenuProps}>
+
+
+
+        {locationnames.map((name,index) => (
+            <MenuItem
+              key={index}
+              value={name}
+              style={getStyles(name, personName, theme)}
+            >
+              {name}
+            </MenuItem>
+          ))}
+
+          {/* {names.map((name) => (
+            <MenuItem
+              key={name}
+              value={name}
+              style={getStyles(name, personName, theme)}
+            >
+              {name}
+            </MenuItem>
+          ))} */}
+        </Select>
+      </FormControl>
+    </div>
+  );
+}
+
 }
