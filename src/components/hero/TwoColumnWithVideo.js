@@ -105,13 +105,13 @@ export default ({
 
   return (
       
-      <Grid item md={6}>
+      <Grid item md={12}>
 
 
     
       <div className = "webinar-section-footer">
 
-        <h3 style={{width:'40%'}}>{webinar[0] && webinar[0].webinar_name}</h3>
+        <h3>{webinar[0] && webinar[0].webinar_name}</h3>
         {/* <h6 style={{ display: "flex", fontSize: "20px", color: "white" }}>{description}</h6> */}
         {/* <h6 style={{ display: "flex", fontSize: "20px", marginBottom: "2rem", color: "white" }}>{description}</h6> */}
 

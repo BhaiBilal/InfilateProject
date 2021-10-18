@@ -105,9 +105,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+let hour = parseInt(new Date().getHours());
+let greet = "";
+if(hour >= 4 && hour < 12) {
+  greet = "Good Morning Marketers"
+} else if(hour >=12 && hour < 16) {
+  greet = "Good Afternoon Marketers"
+} else if(hour >=16 && hour < 22) {
+  greet = "Good Evening Marketers"
+} else {
+  greet = "Good Night Marketers"
+}
+
 
 export default ({
-  heading = "Good Morning, Marketers",
+  heading = greet,
 }) => {
 
   const [searchItem,setSearchItem] = useState('')

@@ -9,7 +9,6 @@ import DnsIcon from '@material-ui/icons/Dns';
 import { createTheme, ThemeProvider, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MiddleContent from './MiddleContent'
-import RightContent from './RightContent'
 import {useLocation} from 'react-router-dom'
 import ScrollIntoView from 'react-scroll-into-view';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -100,9 +99,7 @@ function CardDetails() {
                     <div className = "content-header">
                         <h6>{dataState.webinar_name} <CheckCircleIcon style = {{color : "#3FAEFF"}} /></h6>
                         <div className = "content-header-icons">
-                            <FavoriteBorderIcon />
                             <ShareIcon />
-                            <MoreVertIcon />
                         </div>
                     </div>
                     <ul className = "content-tags">
@@ -114,10 +111,19 @@ function CardDetails() {
                     <p><EventIcon style = {{color : "#3FAEFF"}}/>  {dataState.webinar_date} | {dataState.webinar_start_time} - {dataState.webinar_end_time}</p>
                 </div>
             </div>
+            <div className = "webinar-details-lower">
+                <div className = "webinar-details-lower-card">
+                    <div className =  "webinar-details-lower-card1-content">
+                        <p>Webinar Price: ₹{dataState.price ? dataState.price : "0"} /-</p>
+                        <span>*Exclusive of Taxes</span>
+                    </div>
+                    <div className = "webinar-details-lower-card1-actions">
+                        <button>Add to cart</button>
+                    </div>
+                </div>
             </div>
-        <MiddleContent data={dataState} />               
-
-        <RightContent data={dataState} />    
+            </div>
+        <MiddleContent data={dataState} />      
         </div>
     )
 }

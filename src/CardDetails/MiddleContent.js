@@ -285,48 +285,6 @@ function MiddleContent(props) {
                     </div>
                 </div>
             </div>
-
-
-            <div className = "webinar-organizer">
-                <div className = "organizer-card">
-                    <div className = "organizer-image">
-                        <img src = "https://www.thetechtoys.com/wp-content/uploads/2017/06/50-cool-websites-for-killing-time-compressed.jpg" />
-                    </div>
-                    <div className = "organizer-middle">
-                        <div className = "img">
-                            <img src = "/Assets/Images/infi-logo.png" />
-                            <div className = "actions">
-                                <button>Follow <i class="far fa-heart"></i></button>
-                                <QuestionAnswerIcon style={{color:'#3FAEFF',cursor:'pointer'}} />
-                            </div>
-                        </div>
-                        <ul className = "content">
-                            <li><h6>Infilate Originals</h6></li>
-                            <li><span>Joined on Mar 20, 2020</span></li>
-                            <li>
-                                <ul>
-                                    <li>
-                                        <span>100</span>
-                                        <p>Events organized</p>
-                                    </li>
-                                    <li>
-                                        <span>679</span>
-                                        <p>Followers</p>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul className = "organizer-footer">
-                        <li>
-                            <p><b>About : </b>Celebrating One Year of Infilate Originals</p>
-                        </li>
-                        <li>
-                            <p><b>Find Us :  </b><FacebookIcon style={{color:'#3FAEFF',cursor:'pointer'}} />  <TwitterIcon style={{color:'#3FAEFF',cursor:'pointer'}} /></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
         
     )
