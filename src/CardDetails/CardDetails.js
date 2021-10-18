@@ -11,7 +11,12 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MiddleContent from './MiddleContent'
 import RightContent from './RightContent'
 import {useLocation} from 'react-router-dom'
-import ScrollIntoView from 'react-scroll-into-view'
+import ScrollIntoView from 'react-scroll-into-view';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import ShareIcon from '@material-ui/icons/Share';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import EventIcon from '@material-ui/icons/Event';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import axios from 'axios';
 import './style.css'
@@ -86,12 +91,30 @@ function CardDetails() {
 
     return (
         <div className = "webinar-details">
-            <div className = "webinar-details-links">
-                <a href = "#eventinformation">Event Information</a>
-                <a href = "#venue">Venue</a>
-                <a href = "#gallery">Gallery</a>
-                <a href = "#organizer">Organizer</a>
-            </div>   
+            <div className = "webinar-details-upper">
+            <div className = "webinar-profile">
+                <div className = "img-wrapper">
+                    <img src = {`http://infilate.com/backend/public/images/${dataState.image}`} />
+                </div>
+                <div className = "webinar-profile-content">
+                    <div className = "content-header">
+                        <h6>{dataState.webinar_name} <CheckCircleIcon style = {{color : "#3FAEFF"}} /></h6>
+                        <div className = "content-header-icons">
+                            <FavoriteBorderIcon />
+                            <ShareIcon />
+                            <MoreVertIcon />
+                        </div>
+                    </div>
+                    <ul className = "content-tags">
+                        <li>#running</li>
+                        <li>#virtual runs</li>
+                    </ul>
+                </div>
+                <div className = "webinar-timings">
+                    <p><EventIcon style = {{color : "#3FAEFF"}}/>  {dataState.webinar_date} | {dataState.webinar_start_time} - {dataState.webinar_end_time}</p>
+                </div>
+            </div>
+            </div>
         <MiddleContent data={dataState} />               
 
         <RightContent data={dataState} />    

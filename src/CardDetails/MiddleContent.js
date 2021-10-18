@@ -189,35 +189,8 @@ const useStyles2 = makeStyles((theme) => ({
 
     cardActions:{
         flexDirection: "row-reverse",
-        // '& .MuiCardActions-root':{
-        //     flexDirection: "row-reverse",
-        // }
     }
   }));
-
-
-
-//   const btn=document.querySelector('.read-more-btn')
-
-//   const text=document.querySelector('.card__read-more')
-
-
-//   const cardHolder=document.querySelector('.card-hoder')
-
-//   cardHolder.addEventListener('click', e=>{
-//       const current = e.target
-
-//       const isReadMorebtn=current.className.includes('read-more-btn')
-
-//       if(!isReadMorebtn)
-//       return;
-
-//       const currentText=e.target.parentNode.querySelector('.card__read-more')
-
-//       currentText.classList.toggle('card__read-more--open')
-
-//       current.textContent = current.textContent.includes('Read More...') ? 'Read Less...' : 'Read More...'
-//   })
 
 
 
@@ -251,49 +224,23 @@ function MiddleContent(props) {
         setDesc(props.data.webinar_description)
     },[props.data.webinar_description])
 
-    console.log(props.data)
-
 
     return (
         <div className = "webinar-details-middle">
-            <div className = "webinar-profile">
-                <div data-aos="fade-up-right" data-aos-duration="500" className = "img-wrapper">
-                    <img src = {`http://infilate.com/backend/public/images/${props.data.image}`} />
-                </div>
-                <div data-aos="fade-right" data-aos-duration="500" className = "webinar-profile-content">
-                    <div className = "content-header">
-                        <h6>{props.data.webinar_name} <CheckCircleIcon style = {{color : "#3FAEFF"}} /></h6>
-                        <div className = "content-header-icons">
-                            <FavoriteBorderIcon />
-                            <ShareIcon />
-                            <MoreVertIcon />
-                        </div>
-                    </div>
-                    <ul className = "content-tags">
-                        <li>#running</li>
-                        <li>#virtual runs</li>
-                    </ul>
-                </div>
-                <div className = "webinar-timings">
-                    <p><EventIcon style = {{color : "#3FAEFF"}}/>  {props.data.webinar_date} | {props.data.webinar_start_time} - {props.data.webinar_end_time}</p>
-                </div>
-            </div>
+            
 
-            <div data-aos="fade-right" data-aos-duration="500" className = "event-information" id = "eventinformation">
+            <div className = "event-information" id = "eventinformation">
                 <div className = "event-card">
                     <div className = "event-card-header">
-                        <span>{props.data.webinar_description}</span>
+                        <span>Event Information</span>
                     </div>
-                    <div className = "event-card-content">
+                    <div className = "event-card-content" id = "event-div">
                         <p>{props.data.webinar_description}</p>
-                    </div>
-                    <div className = "event-card-expand">
-                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
             </div>
 
-            <div className = "webinar-venue" id = "venue">
+            <div className = "webinar-venue">
                 <div class = "venue-card">
                     <div className = "venue-card-header">
                         <h3>Venue</h3>
@@ -303,24 +250,20 @@ function MiddleContent(props) {
                             <h6>This is a Virtual Fitness event</h6>
                             <p>Do the activity inside your home or outside as per your convenience and government guidelines.</p>
                         </div>
-                        <div classNam= "venue-card-img">
+                        <div className= "venue-card-img">
                             <img src = "https://townscript-common-resources.s3.ap-south-1.amazonaws.com/assets/ts_images/Virtual+Run.png" />
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div data-aos="zoom-out-down" data-aos-duration="800" className = 'webinar-gallery' id = "gallery">
+            <div className = 'webinar-gallery'>
                 <div className = "gallery-card">
                     <div className = "gallery-card-header">
                         <h3>Gallery</h3>
                     </div>
                     <div className = "gallery-card-content">
                     <img id="myImg" onClick={handleOpen} src="https://s3.ap-south-1.amazonaws.com/townscript-production/gallery-images/1988875/3420b22e-f70d-4b25-a162-8a916eb99fef.jpg" alt="" />
-                    {/* <button type="button" onClick={handleOpen}>
-                 react-transition-group
-                 </button> */}
-
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
@@ -344,7 +287,7 @@ function MiddleContent(props) {
             </div>
 
 
-            <div data-aos="zoom-in-up" data-aos-duration="800" className = "webinar-organizer" id = "organizer">
+            <div className = "webinar-organizer">
                 <div className = "organizer-card">
                     <div className = "organizer-image">
                         <img src = "https://www.thetechtoys.com/wp-content/uploads/2017/06/50-cool-websites-for-killing-time-compressed.jpg" />
@@ -352,6 +295,10 @@ function MiddleContent(props) {
                     <div className = "organizer-middle">
                         <div className = "img">
                             <img src = "/Assets/Images/infi-logo.png" />
+                            <div className = "actions">
+                                <button>Follow <i class="far fa-heart"></i></button>
+                                <QuestionAnswerIcon style={{color:'#3FAEFF',cursor:'pointer'}} />
+                            </div>
                         </div>
                         <ul className = "content">
                             <li><h6>Infilate Originals</h6></li>
@@ -369,22 +316,13 @@ function MiddleContent(props) {
                                 </ul>
                             </li>
                         </ul>
-                        <div className = "actions">
-                            <button>Follow <i class="far fa-heart"></i></button>
-                            <QuestionAnswerIcon style={{color:'#3782c4',cursor:'pointer'}} />
-                        </div>
                     </div>
                     <ul className = "organizer-footer">
                         <li>
-                            <h6>About</h6>
-                            <p>Celebrating One Year of Infilate Originals</p>
+                            <p><b>About : </b>Celebrating One Year of Infilate Originals</p>
                         </li>
                         <li>
-                            <h6>Find Us</h6>
-                            <ul className = "social-links">
-                                <FacebookIcon />
-                                <TwitterIcon />
-                            </ul>
+                            <p><b>Find Us :  </b><FacebookIcon style={{color:'#3FAEFF',cursor:'pointer'}} />  <TwitterIcon style={{color:'#3FAEFF',cursor:'pointer'}} /></p>
                         </li>
                     </ul>
                 </div>

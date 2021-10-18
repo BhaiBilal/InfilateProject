@@ -69,11 +69,10 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
     flexWrap: "wrap",
     outline: "none",
-    paddingLeft: "70px",
-    paddingRight: "70px"
   },
   root: {
-    width: 329,
+    maxWidth: 329,
+    width : "100%",
     marginBottom: "40px",
     transition: "all 0.5s ease",
     outline: "none",
@@ -305,33 +304,6 @@ export default ({
       <AnimationRevealPage>
         <Container>
           <ContentWithPaddingXl>
-            <Grid Container>
-              <Grid className={classes.banner} item md={12}>
-                <img className={classes.bannerImage} src="https://image.shutterstock.com/image-vector/vector-illustration-circuit-board-hexagons-260nw-1186861738.jpg" alt="images" />
-                <div className={classes.host}>
-                  <h2>Host Your Online Events With Infilate</h2>
-
-                  <Button >Learn More</Button>
-                </div>
-              </Grid>
-            </Grid>
-            {/*-----
-          <Posts>
-            {webinarss.slice(0, visible).map((post, index) => (
-              <PostContainer key={index}>
-                <Post className="group" as="a" href={post.url}>
-                  <Image imageSrc={ post.image}/>
-                  <Info>
-                    <Category>{post.webinar_name}</Category>
-                    <CreationDate>{post.webinar_date}</CreationDate>
-                    <Title>Rs {post.price}</Title>
-                    <Description>{post.webinar_description}</Description>
-                  </Info>
-                </Post>
-              </PostContainer>
-            ))}
-            </Posts>
-            --*/}
             <div className={classes.cardHead} >
               {webinar &&  webinar.slice(0,visible).map((item,index) => (
                 
