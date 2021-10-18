@@ -69,8 +69,8 @@ export default ({
 
   return (
     <>
-      <div className="register-head" style = {{backgroundColor : "#fff", padding: "2rem 1rem", width : "100%"}}>
-          <TwoColumn>
+      <div className="register-head" style = {{backgroundColor : "#F5F5F5", padding: "2rem 1rem", width : "100%"}}>
+          <TwoColumn style = {{ margin : "auto", maxWidth: "1000px"}}>
             < LeftColumn className = "register-head-left">
               <Title style = {{color : "#000"}}>{heading}</Title>
               <p style = {{color : "#000"}}>{description}</p>
@@ -89,10 +89,10 @@ export default ({
             </LeftColumn>
 
             { matches == true ? (<></>) : 
-                   <RightColumn className = "register-head-right" >
-                   <IllustrationContainer style = {{textAlign : "center"}}>
+                   <RightColumn className = "register-head-right" style = {{width : "100%"}} >
+                   <IllustrationContainer style = {{width : "100%", textAlign : "right"}}>
                      <img
-                      style = {{height : "400px", width : "400px"}}     
+                      style = {{height : "300px", width : "300px"}}     
                        src={imagesrc}
                        alt="Hero"
      
