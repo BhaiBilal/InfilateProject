@@ -156,7 +156,7 @@ export default ({
   }
 
   const matches2 = useMediaQuery('(max-width:1280px)');
-
+  const matches1 = useMediaQuery('(min-width:1024px)')
 
 React.useEffect(() => {
 
@@ -177,11 +177,16 @@ const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
 }
   return (
+<<<<<<< HEAD
+    <Grid container style={matches1 ? {padding : "2rem 6rem", maxWidth : "1440px", margin : "2rem auto"} : {padding : "0rem 1rem"}}>
+    <h1 style = {{fontSize : "2rem", fontWeight : "700", marginBottom : "1.5rem"}}>Latest Blogs</h1>
+=======
 
     <>
 
 
     <Grid container style={{justifyContent:`${matches2 == true ? 'unset' : 'center'}`}}>
+>>>>>>> 9bd66defc18d63d575a5f6479be17512adcd18c4
 
 
       <Grid item container style={{display:'flex',alignItems:'baseline'}}>
@@ -200,6 +205,9 @@ const handleCardClick=(item)=>{
       
 
 
+<<<<<<< HEAD
+        <div className="card-head"> 
+=======
         <div className="card-head" style = {{width:`${matches2 == true ? '90%' : '75%' }`}}> 
         <Grid item xs={4}>
 
@@ -208,6 +216,7 @@ const handleCardClick=(item)=>{
       Latest Blogs</h1>
       </Heading>
 </Grid>
+>>>>>>> 9bd66defc18d63d575a5f6479be17512adcd18c4
           <Slider {...setting} style={{ width: "100%"}}  >
             {
               blogData.map((item,index) => ((
