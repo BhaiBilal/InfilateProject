@@ -22,6 +22,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import image from '../bannercopy.png'
 
 
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -102,7 +103,6 @@ export default ({
     <>
       {/* <h1 style={{ fontSize: "1.5rem", marginLeft: "2rem", fontStyle: "normal", fontWeight: "bold" }} >Webinars</h1> */}
       <Container className="webinar-head">
-
 
 
         <Hero
