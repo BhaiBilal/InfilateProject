@@ -48,7 +48,7 @@ export default function ContentTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }} pt={22}>
+    <Box sx={{ width: '100%' }} pt={22} px={45}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Products" {...a11yProps(0)} />
