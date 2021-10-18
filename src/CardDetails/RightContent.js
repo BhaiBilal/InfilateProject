@@ -116,14 +116,14 @@ function RightContent(props) {
             // alert("hhhhhhhh", response.error.metadata.payment_id);
     });
     
-        window.onload = function () {
-            document.getElementById('rzp-button1').onclick = function (e) {
+        // window.onload = function () {
+        //     document.getElementById('rzp-button1').onclick = function (e) {
                 
-                // rzp1.open();
-                e.preventDefault();
+        //         // rzp1.open();
+        //         e.preventDefault();
                
-            }
-        }
+        //     }
+        // }
 
 
 
@@ -185,129 +185,44 @@ function RightContent(props) {
             
         // }).then((res) => console.log(res))
         // .catch((err) => console.log(err) )
-    
 
     return (
-        <>
-       
-        <Grid className={classes.gridstyle} container spacing={0} xs={3}>
-
-
-            <Grid style={{ border: "0.5px solid #C0C0C0",height:"max-content",justifyContent:"center",paddingTop:"10px",paddingBottom:"10px" }} container xs={9}>
-
-
-               {/* cart */}
-                <div className={classes.btn2}>
-                <Button onClick={()=>setOpen(v=>!v)} color="secondary" startIcon={<CompareIcon />}>{arr1.length}</Button>
-                {
-
-               open === true ? <Paper elevation={3} style={{}}>
-
-                 {arr1 && arr1.map((v,i)=>
-               <Grid key={i} style={{display:'flex',alignItems:'center'}} item>
-               <img style={{width:'55px',height:'43px',padding:'5px'}} 
-               src={`http://infilate.com/backend/public/images/${v.image}`}
-               alt='' />
-               <p style={{padding:'5px'}}>{v.webinar_name}</p>
-               <IconButton aria-label="delete" className={classes.closeicon}>
-                <CloseIcon onClick={() => handleCompare(v)} style={{fontSize:'17px'}}/>
-                </IconButton>
-               </Grid> 
-                 
-                 
-                 )}
-                <Button 
-                // onClick={()=>passDatatoPage(arr1)} 
-                color="secondary" >Checkout</Button>  
-             </Paper> 
-             
-             :
-
-             null
-
-            }
-
-            </div>   
-
-            <Grid container style={{justifyContent:"center"}} item xs={12}>
-            <Grid item >
-                <p style={{fontFamily:"'Segoe UI',Arial,sans-serif", fontSize: "1.8vw", fontWeight: "600", opacity: "0.8" }}>₹{props.data.price}/-</p>
-            </Grid>
-            <Grid style={{paddingTop:"0.7vw",justifyContent:"center",display:'flex'}} item xs={3}>
-                <p style={{fontFamily:"'Segoe UI',Arial,sans-serif", fontSize: "1vw", fontWeight: "600", opacity: "0.6" }}>onwards</p>
-            </Grid>
-            </Grid>
-
-            <Grid style={{justifyContent:"center" }} item container xs={12}>
-                <Grid item xs={6}>
-                <p style={{fontFamily:"'Segoe UI',Arial,sans-serif", fontSize: "1vw", fontWeight: "600", opacity: "0.6" }}>*Exclusive of Taxes</p>
-
-                </Grid>
-                
-            </Grid>
-
-            </Grid>
-
-
-            <Grid style={{marginTop:"10px",height:"max-content"}} container spacing={0} xs={9}>
-
-            <Grid item xs={12}>
-            <Button id="rzp-button1" onClick={()=>handleCompare(props.data)} fullWidth variant="outlined" color="primary" className={classes.btn}>
-             Add to Cart
-             </Button>
-                        
-         
-            
-            </Grid> 
-
-            </Grid>
-
-            
-            <Grid style={{height:"max-content",border: "0.5px solid #C0C0C0",marginTop:"40px",paddingTop:"1.5vw",paddingLeft:"1.5vw",paddingBottom:"1.5vw"}} container spacing={0} xs={9}>
-
-            <Grid item xs={8}>
-            <p style={{fontSize:"1.2vw",opacity:"0.6",fontFamily:"'Segoe UI',Arial,sans-serif",fontWeight:"bold"}}>Have a question?</p>
-            <p style={{fontSize:"0.9vw",opacity:"0.8",fontFamily:"'Segoe UI',Arial,sans-serif"}}>Send your queries to the event organizer</p>
-            </Grid>
-
-            <Grid item xs={4}>
-           <img style={{height:"60px",width:"60px"}} src="https://s3.ap-south-1.amazonaws.com/townscript-production/images/dbf30228-8f17-4a3e-84cf-2e2962ca8460.jpg"  alt="" />    
-                
-            </Grid> 
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <Grid item xs={11}>
-            <Button fullWidth style={{fontSize:"0.9vw"}} variant="outlined" color="primary">
-            CONTACT ORGANIZER
-            </Button>   
-            </Grid>
-
-            </Grid>
-
-
-
-            {/* hostonlineEvent */}
-            <Grid style={{height:"max-content",border: "0.5px solid #C0C0C0",marginTop:"40px",paddingTop:"1.5vw",paddingLeft:"1.5vw",paddingBottom:"1.5vw"}} container spacing={0} xs={9}>
-            <Grid item xs={12}>
-            <p style={{fontSize:"1.1vw",opacity:"0.6",fontFamily:"'Segoe UI',Arial,sans-serif",fontWeight:"bold"}}>Host Online Events with </p>
-            <p style={{fontSize:"1.1vw",opacity:"0.6",fontFamily:"'Segoe UI',Arial,sans-serif",fontWeight:"bold"}}>Infilate</p>
-            </Grid>
-
-            <Grid item container spacing={1} xs={12}>
-            <Grid style={{paddingTop:"2.5vw"}} item xs={6}>
-             <p style={{fontSize:"1.1vw",opacity:"0.6",fontFamily:"'Segoe UI',Arial,sans-serif",fontWeight:"bold"}}>Learn More</p>   
-            </Grid>
-
-            <Grid item xs={6}>
-             <img src="https://townscript-common-resources.s3.ap-south-1.amazonaws.com/ListingsStatic/tslive-learn-eventpage.png" />   
-            </Grid>
-            </Grid>
-            </Grid>
-        </Grid>
-        </>
+        <div className = "webinar-details-lower">
+            <div className = "webinar-details-lower-card">
+                <div className =  "webinar-details-lower-card1-content">
+                    <p>₹{props.data.price ? props.data.price : "0"} /-</p>
+                    <span>*Exclusive of Taxes</span>
+                </div>
+                <div className = "webinar-details-lower-card1-actions">
+                    <button>Add to cart</button>
+                </div>
+            </div>
+            <div className = "webinar-details-lower-card">
+                <ul className =  "webinar-details-lower-card2-content">
+                    <li>
+                        <span>Have a question?</span>
+                        <p>Send your queries to the event organizer</p>
+                    </li>
+                    <li>
+                        <img src="https://s3.ap-south-1.amazonaws.com/townscript-production/images/dbf30228-8f17-4a3e-84cf-2e2962ca8460.jpg"  alt="" />  
+                    </li>
+                </ul>
+                <div className = "webinar-details-lower-card2-actions">
+                    <button>Contact Organizer</button>
+                </div>
+            </div>
+            <div className = "webinar-details-lower-card">
+                <ul className =  "webinar-details-lower-card3-content">
+                    <li>
+                        <p>Host Online Events with Infilate</p>
+                    </li>
+                    <li>
+                        <span>Learn More</span>
+                        <img src="https://townscript-common-resources.s3.ap-south-1.amazonaws.com/ListingsStatic/tslive-learn-eventpage.png"  alt="" />  
+                    </li>
+                </ul>
+            </div>
+        </div>
     )
 }
 
