@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     marginRight:'5px', 
     width:'50%',
     backgroundColor:'transparent',
-    color:'#009cb6',
+    // color:'#009cb6',
     boxShadow:'none',
     border:'1px solid rgba(0, 156, 156, 0.5)',
 

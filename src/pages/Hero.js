@@ -27,7 +27,7 @@ import { Card, Grid, Paper, TextField, Button, withWidth } from '@material-ui/co
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
 import doodle from '../digital-marketing.jpg'
-import doodle1 from '../4.png'
+import doodle1 from '../6.png'
 
 
 

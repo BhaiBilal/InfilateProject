@@ -10,7 +10,7 @@ import Header from "../headers/light.js";
 import axios from 'axios';
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
-
+import Grid from '@mui/material/Grid';
 import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
@@ -18,7 +18,8 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.sv
 import imagesrc2 from "../../images/webinar7.jpg";
 import imagesrc1 from "../../images/webinar5.jpg";
 import imagesrc from "../../images/webinar8.jpg";
-import Grid from '@material-ui/core/Grid';
+
+
 
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-4 flex-shrink-0 text-center lg:text-left`;
@@ -103,22 +104,14 @@ export default ({
   // console.log(webinar[0] && webinar[0].webinar_name)
 
   return (
-    <div className = "webinar-section">
       
-        <div className = "web-header">
-          <div className="web-image">
+      <Grid item md={6}>
 
-          </div>
-          <div className="web-offer" ></div>
-          {imageDecoratorBlob && <DecoratorBlob2 />}
-        </div>
-      
 
-     
-      
+    
       <div className = "webinar-section-footer">
 
-        <h3>{webinar[0] && webinar[0].webinar_name}</h3>
+        <h3 style={{width:'40%'}}>{webinar[0] && webinar[0].webinar_name}</h3>
         {/* <h6 style={{ display: "flex", fontSize: "20px", color: "white" }}>{description}</h6> */}
         {/* <h6 style={{ display: "flex", fontSize: "20px", marginBottom: "2rem", color: "white" }}>{description}</h6> */}
 
@@ -139,35 +132,12 @@ export default ({
            
             <div style = {{flex : 1}}>
             <button onClick={toggleModal} > <a href="#">Watch Video</a></button>
-            </div>
-            
-           
+            </div>    
             <div>
             <button onClick={WebinarList}><a href="#">view all webinar</a></button>  
-            </div>
-            
+            </div>        
           </div>
-    
-
-
       </div>
-
-      <DecoratorBlob1 />
-      <StyledModal
-        closeTimeoutMS={300}
-        className="mainHeroModal"
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        shouldCloseOnOverlayClick={true}
-      >
-        <CloseModalButton onClick={toggleModal}>
-          <CloseIcon tw="w-6 h-6" />
-        </CloseModalButton>
-        <div className="content">
-          <ResponsiveVideoEmbed url={watchVideoYoutubeUrl} tw="w-full" />
-        </div>
-      </StyledModal>
-
-    </div>
+      </Grid>
   );
 };

@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import tw from "twin.macro";
 import "./SimplePrimary.css"
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
-import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+// import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { ReactComponent as QuoteIconBase } from "images/quotes-l.svg"
@@ -21,6 +21,7 @@ import {
 import Axios from "axios"
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
@@ -173,9 +174,8 @@ const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
 }
   return (
-    <Grid container>
-
-
+    <Grid container style={{justifyContent:'center'}}>
+      <Grid item md={10}>
       <Grid item container style={{display:'flex',alignItems:'baseline'}}>
         <Grid item xs={2} className={classes.root}>
         <Heading style={{ fontSize: '2rem', fontWeight: '700', marginBottom: "20px", marginLeft: "",paddingTop:'50px'}}>
@@ -184,24 +184,16 @@ const handleCardClick=(item)=>{
               </Heading>
         </Grid>
 
-        <Grid className={classes.root2}  item xs={10}>
+        {/* <Grid className={classes.root2}  item xs={10}>
           <hr style={{paddingTop:'6px',borderTopWidth: '2.5px',borderColor:'#b4adad',opacity:'73%'}}/>
+        </Grid> */}
         </Grid>
-        </Grid>
-        
-   
 
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
 
-
         </HeadingContainer>
-      
-
-
-
-
-
+    
         <div className="card-head">
           <Slider {...setting} style={{ width: "100%"}}  >
             {
@@ -230,7 +222,7 @@ const handleCardClick=(item)=>{
         <Link to='/Mainblog'> View all blogs</Link>
         </Button>            
           </Grid>    
-        
+          </Grid>
     </Grid>
   );
 };
