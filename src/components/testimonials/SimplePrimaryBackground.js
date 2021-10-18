@@ -177,6 +177,10 @@ const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
 }
   return (
+
+    <>
+
+
     <Grid container style={{justifyContent:`${matches2 == true ? 'unset' : 'center'}`}}>
 
 
@@ -197,12 +201,13 @@ const handleCardClick=(item)=>{
 
 
         <div className="card-head" style = {{width:`${matches2 == true ? '90%' : '75%' }`}}> 
-        <Grid item xs={4} >
-        <Heading style={{ fontSize: '2rem', fontWeight: '700', marginBottom: "20px", marginLeft: "",paddingTop:'50px'}}>
-        <h1 className="service-head12" style={{ fontSize: "2rem", fontweight: "bold",textAlign:'initial' }} >
-              Latest Blogs</h1>
-              </Heading>
-        </Grid>
+        <Grid item xs={4}>
+
+<Heading style={{ fontSize: '2rem', fontWeight: '700', marginBottom: "20px", marginLeft: "",paddingTop:'50px'}}>
+<h1 className="service-head12" style={{ fontSize: "2rem", fontweight: "bold",textAlign:'initial' }} >
+      Latest Blogs</h1>
+      </Heading>
+</Grid>
           <Slider {...setting} style={{ width: "100%"}}  >
             {
               blogData.map((item,index) => ((
@@ -232,5 +237,6 @@ const handleCardClick=(item)=>{
           </Grid>    
         
     </Grid>
+    </>
   );
 };

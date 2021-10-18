@@ -106,7 +106,7 @@ function AllProducts() {
 
     return (
 
-           <Box display='flex'>
+           <Box display='flex' justifyContent='space-between'>
                 <MenuFilters  type={type} setType={setType} />
 
 

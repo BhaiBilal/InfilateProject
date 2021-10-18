@@ -105,10 +105,13 @@ export default ({
 
   return (
       
-      <Grid item md={12}>
+     <div>
+     
+      <Grid item md={4} >
 
+      </Grid>
 
-    
+     <Grid item md={6}>
       <div className = "webinar-section-footer">
 
         <h3>{webinar[0] && webinar[0].webinar_name}</h3>
@@ -139,5 +142,6 @@ export default ({
           </div>
       </div>
       </Grid>
+      </div>
   );
 };
