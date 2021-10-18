@@ -100,9 +100,7 @@ function CardDetails() {
                     <div className = "content-header">
                         <h6>{dataState.webinar_name} <CheckCircleIcon style = {{color : "#3FAEFF"}} /></h6>
                         <div className = "content-header-icons">
-                            <FavoriteBorderIcon />
                             <ShareIcon />
-                            <MoreVertIcon />
                         </div>
                     </div>
                     <ul className = "content-tags">

@@ -190,7 +190,7 @@ function RightContent(props) {
         <div className = "webinar-details-lower">
             <div className = "webinar-details-lower-card">
                 <div className =  "webinar-details-lower-card1-content">
-                    <p>₹{props.data.price ? props.data.price : "0"} /-</p>
+                    <p>Webinar Price: ₹{props.data.price ? props.data.price : "0"} /-</p>
                     <span>*Exclusive of Taxes</span>
                 </div>
                 <div className = "webinar-details-lower-card1-actions">
@@ -202,9 +202,6 @@ function RightContent(props) {
                     <li>
                         <span>Have a question?</span>
                         <p>Send your queries to the event organizer</p>
-                    </li>
-                    <li>
-                        <img src="https://s3.ap-south-1.amazonaws.com/townscript-production/images/dbf30228-8f17-4a3e-84cf-2e2962ca8460.jpg"  alt="" />  
                     </li>
                 </ul>
                 <div className = "webinar-details-lower-card2-actions">
