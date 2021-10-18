@@ -27,7 +27,7 @@ import { Card, Grid, Paper, TextField, Button, withWidth } from '@material-ui/co
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
 import doodle from '../digital-marketing.jpg'
-import doodle1 from '../iconbannercopy.png'
+import doodle1 from '../4.png'
 
 
 
@@ -273,13 +273,13 @@ export default ({
 
       return(
         <Container style={{ paddingTop: "9rem", marginBottom: "4rem", 
-        backgroundImage:`url(${doodle1})`,backgroundSize:'370px' 
+        backgroundImage:`url(${doodle1})`,backgroundSize:'contain' 
         }}>
 
         <HeadingContainer style={{ }}>
-          <HeadingRow style={{justifyContent:'center'}}>
+          {/* <HeadingRow style={{justifyContent:'center'}}>
             <Heading style={{ fontSize: '2rem', color:'white', fontWeight: '600', background:'#fffdfd4f',zIndex:'1',textShadow: '5px 3px 5px #312e2e',
-          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',padding:'6px',textDecoration:'underline overline'
+          boxShadow: '5px 10px 20px #817e7e inset',padding:'6px',textDecoration:'underline overline'
           }}>{heading}</Heading>
           </HeadingRow>
           <HeadingRow style={{justifyContent:'center'}}>
@@ -289,12 +289,12 @@ export default ({
           }}>Deals from your favourite Digital Brand.<br/>
             Try searching for Data Servers, Institutes & Agencies in worldwide.
             </Heading>
-          </HeadingRow>
-          {/* <HeadingRow style={{justifyContent:'center'}}>
-            <Heading style={{ fontSize: '18px', fontWeight: 'unset', background:'white'}}>Try searching for Data Servers, Institutes & Agencies in worldwide.</Heading>
           </HeadingRow> */}
-          {/* <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Deals from your favourite Digital Brand.</Text>
-          <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Try searching for Data Servers, Institutes & Agencies in worldwide.</Text> */}
+          <HeadingRow style={{justifyContent:'center'}}>
+            <Heading >{heading}</Heading>
+          </HeadingRow>
+          <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Deals from your favourite Digital Brand.</Text>
+          <Text style={{margin:"0",display:'flex', justifyContent:'center'}}>Try searching for Data Servers, Institutes & Agencies in worldwide.</Text>
     
         </HeadingContainer>
 

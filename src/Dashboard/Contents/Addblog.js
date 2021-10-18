@@ -10,6 +10,41 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import './styles.css'
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import { alpha, styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+
+
+
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: '#1976d2',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#1976d2',
+  },
+  '& .MuiOutlinedInput-root': {
+    marginBottom:'10px',
+    '& fieldset': {
+      borderColor: '#1976d2',
+      height:'60px',
+      
+    },
+    '&:hover fieldset': {
+      borderColor: '#1976d2',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#1976d2',
+    },
+  },
+});
+
+
+
+
+
+
 
 
 function Addblog() {
@@ -25,7 +60,6 @@ function Addblog() {
    
   
     const auth= (formData)=>{
-
         axios({
             method:'POST',
             url:"http://infilate.com/backend/public/api/corporate/blog/store",
@@ -79,16 +113,22 @@ function Addblog() {
     }
 
     return (
-        <div>
-        <form style={{display:'flex',flexDirection:'column'}} onSubmit={handleSubmit(onSubmit)}>
+      <div style={{display:'flex',justifyContent:'center'}}>
 
+       
+        <Grid item md={9} xs={12}>
+        <form style={{display:'flex',flexDirection:'column'}} onSubmit={handleSubmit(onSubmit)}>
+        <p style={{fontSize:'30px',color:'#ffc704',textAlign:'center',paddingBottom:'15px'}}> upload blog </p>
+
+        
+          
         <Controller
           name="title"
           control={control}
           rules={{required:'field is required'}}
           render={({ field: { onChange, value }, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
-            <TextField 
+            <CssTextField
             onChange={onChange} 
             value={value} 
             label={"Title"}  
@@ -106,7 +146,7 @@ function Addblog() {
           rules={{required:'field is required'}}
           render={({ field: { onChange, value }, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
-            <TextField 
+            <CssTextField
             onChange={onChange} 
             value={value} 
             label={"Title 1"}  
@@ -124,7 +164,7 @@ function Addblog() {
           rules={{required:'field is required'}}
           render={({ field: { onChange, value }, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
-            <TextField 
+            <CssTextField 
             onChange={onChange} 
             value={value} 
             label={"Title 2"}  
@@ -136,18 +176,25 @@ function Addblog() {
           )}
         />
 
-        
+<Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={{ xs: 1, sm: 2, md: 2 }}
+      >
+
+<Grid item md={4} sm={4}>
 <Controller
           name="category_ids"
           control={control}
           // rules={{required:'field is required'}}
           render={({ field, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
-          <MUImultiSelect field={field} /> 
+          <MUImultiSelect type={'addblog'} Blogfield={field} /> 
           )}
         />
+</Grid>
 
 
+<Grid item md={4} sm={4}>
 <Controller
           name="category_name"
           control={control}
@@ -157,6 +204,11 @@ function Addblog() {
           <MUIBasicSelect field={field} type='addblog' /> 
           )}
         />
+        </Grid>
+  
+  </Stack>
+
+
 
 
 <Controller
@@ -187,8 +239,9 @@ function Addblog() {
         />
 
         <Button type='submit'>Submit</Button>
-        <Button onClick={() => reset()} variant={"outlined"}>Reset</Button>
+        {/* <Button onClick={() => reset()} variant={"outlined"}>Reset</Button> */}
       </form>
+      </Grid>
       </div>
     )
 }
