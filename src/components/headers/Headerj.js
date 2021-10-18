@@ -215,6 +215,7 @@ function Headerj() {
                 <div >
                     <nav className="navbar" style={bears > 0 ? styles : styles2}>
                         <div className="nav-super">
+                            <div style = {{maxWidth : "1580px", margin : "0rem auto"}}>
                             <a href="/" className="navbar-brand">
                                 <div className={logobar ? "nav-logo active" : "nav-logo"}>
 
@@ -232,8 +233,9 @@ function Headerj() {
 
 
                             </a>
+                            </div>
                         </div>
-                        <div className={logobar ? "nav-sub active " : "nav-sub"}>
+                        <div style = {{maxWidth : "1580px", margin : "0rem auto"}} className={logobar ? "nav-sub active " : "nav-sub"}>
                             <ul className={icon ? "nav-menu active" : "nav-menu "}>
 
                                 <div style={{display:'flex',paddingLeft:'50px'}}> 

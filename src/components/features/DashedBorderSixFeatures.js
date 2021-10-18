@@ -144,6 +144,9 @@ export default ({index}) => {
   function conditionRender(){
       return(
         <div>
+          <div className = "home-coupons-view">
+            <Link to = "/Coupon">View all coupons</Link>
+          </div>
         <div className = "home-coupons">
           {couponData && couponData.slice(0,9).map((coupon, index) => {
             console.log(coupon)
@@ -161,9 +164,7 @@ export default ({index}) => {
           })}
       </div>
       
-      <div className = "home-coupons-view">
-            <Link to = "/Coupon">View all coupons</Link>
-          </div>
+      
       </div>
       )
   }

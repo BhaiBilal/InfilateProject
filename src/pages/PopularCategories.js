@@ -141,12 +141,13 @@ export default ({
 
   return (
     // <AnimationRevealPage>
+    <div style = {{backgroundColor : "#FEFEFE"}}>
     <div className = "categories">
       <div className = "categories-list">
         <h2>Popular Categories</h2>
         {
           data && data.slice(0,8).map((v,i)=>
-          <div key={i} className="category-name" onClick={()=>handleListItemClick(v.id)}>
+          <div key={i} className={v.id === selectedIndex ? "category-name-active" : "category-name"} onClick={()=>handleListItemClick(v.id)}>
             <span>{v.name}</span>
           </div>
           )
@@ -154,6 +155,7 @@ export default ({
         }
     </div>
     <Features index = {selectedIndex} />
+    </div>
     </div>
 
     // </AnimationRevealPage> 

@@ -69,8 +69,8 @@ export default ({
 
   return (
     <>
-      <div className="register-head" style = {{backgroundColor : "#F5F5F5", padding: "2rem 1rem", width : "100%"}}>
-          <TwoColumn style = {{ margin : "auto", maxWidth: "1000px"}}>
+      <div className="register-head" style = {{backgroundColor : "#FEFEFE", padding: "2rem 1rem", width : "100%"}}>
+          <TwoColumn style = {{ margin : "auto", maxWidth: "1260px"}}>
             < LeftColumn className = "register-head-left">
               <Title style = {{color : "#000"}}>{heading}</Title>
               <p style = {{color : "#000"}}>{description}</p>

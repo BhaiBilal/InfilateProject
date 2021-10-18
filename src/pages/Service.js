@@ -27,69 +27,129 @@ function Service() {
         return () => cancel()
       }, [])
 
-
-    //   console.log(list)
   
  
     return (
-        <>
-            <Container style={{ width: "100%", marginTop: "20px" }} >
-                <h1 className="service-head" style={{ fontSize: "1.625rem", fontweight: "bold" }} >Research popular software & services</h1>
-                <div className="service-container">
+        <div style = {{backgroundColor : "#FEFEFE"}}>
+            <div className = "services" >
+                <h1 >Our Services</h1>
+                <div className = "services-section">
+                <ul className="service-container">
 
-
-
-                    <div className="service-block">
-                         {
-                            list && list.slice(0,4).map((v,i)=>
-                            <div key={i}>
-                            <a  className="service-link" href="#">{v.category.map((v,i)=> v.name )}</a>
-                            <div className="link">
-                                <a href="#">{v.name}</a>
-                            </div>      
-                             </div>   
-                            )
-                        } 
-
-
-                    </div>
-
-                    <div className="service-block">
-
-
-
-                    {
-                            list && list.slice(4,8).map((v,i)=>
-                            <div key={i}>
-                            <a  className="service-link" href="#">{v.category.map((v,i)=> v.name )}</a>
-                            <div className="link">
-                                <a href="#">{v.name}</a>
-                            </div>      
-                             </div>   
+                    {list && list.length > 0?
+                    list.map((item, index) => {
+                        if(index < 4) {
+                            return (
+                                <li>
+                                    <h3>{item.name}</h3>
+                                    <ul>
+                                    {item.category ?
+                                    item.category.map((v, j) => {
+                                        return(
+                                            <li><span>{v.name}</span></li>
+                                        )
+                                    })
+                                    :
+                                    <></>
+                                    }
+                                    </ul>
+                                </li>
                             )
                         }
-                    </div>
+                    })
 
+                    :
+                    <></>
+                    }
+                </ul>
+                <ul className="service-container">
 
+                    {list && list.length > 4?
+                    list.map((item, index) => {
+                        if(index >= 4 && index <= 7) {
+                            return (
+                                <li>
+                                    <h3>{item.name}</h3>
+                                    <ul>
+                                    {item.category ?
+                                    item.category.map((v, j) => {
+                                        return(
+                                            <li><span>{v.name}</span></li>
+                                        )
+                                    })
+                                    :
+                                    <></>
+                                    }
+                                    </ul>
+                                </li>
+                            )
+                        }
+                    })
 
-                    <div className="service-block">
+                    :
+                    <></>
+                    }
+                </ul>
+                <ul className="service-container">
 
+                    {list && list.length > 8?
+                    list.map((item, index) => {
+                        if(index >= 8 && index <= 11) {
+                            return (
+                                <li>
+                                    <h3>{item.name}</h3>
+                                    <ul>
+                                    {item.category ?
+                                    item.category.map((v, j) => {
+                                        return(
+                                            <li><span>{v.name}</span></li>
+                                        )
+                                    })
+                                    :
+                                    <></>
+                                    }
+                                    </ul>
+                                </li>
+                            )
+                        }
+                    })
 
-                    </div>
+                    :
+                    <></>
+                    }
+                </ul>
+                <ul className="service-container">
 
+                    {list && list.length > 12?
+                    list.map((item, index) => {
+                        if(index >= 12 && index <= 15) {
+                            return (
+                                <li>
+                                    <h3>{item.name}</h3>
+                                    <ul>
+                                    {item.category ?
+                                    item.category.map((v, j) => {
+                                        return(
+                                            <li><span>{v.name}</span></li>
+                                        )
+                                    })
+                                    :
+                                    <></>
+                                    }
+                                    </ul>
+                                </li>
+                            )
+                        }
+                    })
 
-
-                    <div className="service-block">
-
-
-                    </div>
-
-
+                    :
+                    <></>
+                    }
+                </ul>
                 </div>
 
-
-            </Container>
-        </>
+            </div>
+        </div>
     )
 }
 
