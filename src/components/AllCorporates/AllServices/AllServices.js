@@ -99,7 +99,7 @@ function AllServices() {
 
     return (
 <>
-           <Box display='flex' style={{backgroundColor:"#F9F9F9"}} justifyContent='space-between'>
+           <Box display='flex' style={{}} justifyContent='space-between'>
                 <MenuFilters  type={type} setType={setType} />
 
 

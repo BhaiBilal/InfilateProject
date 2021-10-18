@@ -27,9 +27,6 @@ const ExpandMore = styled((props) => {
 
 
 
-
-
-
 function ProductCard({list,handleCompare}) {
 
     const classes = useStyles()
@@ -48,7 +45,7 @@ function ProductCard({list,handleCompare}) {
      {
       list && list.map((item,index) => 
 
-     <Card key={index} sx={{ width:'inherit' }}>
+     <Card key={index} sx={{ width:'inherit',marginBottom:'15px' }}>
 
      <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
@@ -63,7 +60,7 @@ function ProductCard({list,handleCompare}) {
      <p> {item.type} </p>
      </Grid>
      <Grid item xs={4} style={{display:'flex',flexDirection:'column'}}>
-     <Button variant="contained" color="secondary" style={{width:'98%'}}>
+     <Button variant="contained" color="primary" style={{width:'98%'}}>
      <Typography variant="button" display="block">
      Visit website
      </Typography>
