@@ -104,6 +104,7 @@ function Headerj() {
     const [isShown, setIsShown] = useState(false);
     const [webinar, setWebinar] = useState('')
     const [couponData,setCouponData] = useState('')
+    const [compareData,setCompareData] = useState('')
     const [open, setOpen] = React.useState(false);
     const [data,setData] = React.useState('')
     const selector = useSelector((state) => state);
@@ -157,6 +158,21 @@ function Headerj() {
   
         },[]);
 
+        React.useEffect(() => {
+            let cancel
+              axios('http://infilate.com/backend/public/api/app/products/product-list', {
+                method: 'POST',
+                cancelToken: new axios.CancelToken(c=>cancel=c)
+              }).then((res) => {
+                  console.log(res)
+                setCompareData(res.data.Data)
+              }).catch(e=>{
+                if(axios.isCancel(e)) return
+              })      
+              return ()=> cancel()
+            },[]);
+       
+
 
     const [logobar, setLogobar] = useState(false)
     const changeBackground = () => {
@@ -201,6 +217,12 @@ function Headerj() {
       
       }
 
+      const handleClickCompare = (post) => {
+  
+        history.push({pathname:`/AllBrands`});
+       
+      
+      }
 
       const handleProfile = () => {
           history.push({pathname:'/Dashboard'})
@@ -297,26 +319,25 @@ function Headerj() {
                                     <div className="dropdown-contents">
                                         <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#"></a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {compareData && compareData.slice(0,4).map((item,index)=>
+                                        <li key={index} onClick={()=>handleClickCompare(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>
+                                         
+                                        )}
 
                                             </div>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#">Lorem ispum</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {compareData && compareData.slice(4,8).map((item,index)=>
+                                            <li key={index} onClick={()=>handleClickCompare(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>)}
                                             </div>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#">Lorem ispum</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {compareData && compareData.slice(8,12).map((item,index)=>
+                                            <li key={index} onClick={()=>handleClickCompare(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>)}
                                             </div>
                                         </div>
                                     </div>

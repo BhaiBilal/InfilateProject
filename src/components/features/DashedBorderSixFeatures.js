@@ -146,7 +146,7 @@ export default ({index}) => {
         <div>
         <div className = "home-coupons">
           {couponData && couponData.slice(0,9).map((coupon, index) => {
-            console.log(coupon)
+         
             return (
               <div className = "home-coupons-card">
                 <div className = "img-wrapper">
