@@ -105,6 +105,7 @@ export default ({
       <Container className="webinar-head">
 
 
+        <div className = "webinar-conatainer">
         <Hero
           heading={<>Join A Webinar</>}
           descri="IT Infrastructure"
@@ -117,6 +118,7 @@ export default ({
           watchVideoButtonText="All Webinars"
           
         />
+        </div>
 
       </Container>
     </>

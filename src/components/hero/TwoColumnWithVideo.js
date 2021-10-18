@@ -104,8 +104,10 @@ export default ({
   // console.log(webinar[0] && webinar[0].webinar_name)
 
   return (
-      
-      <Grid item md={12}>
+      <>
+      <div className = "webinar-banner">
+          <img src = "/Assets/Images/webinar-banner.png" />
+      </div>
 
 
     
@@ -122,7 +124,7 @@ export default ({
           </div>
 
           <div className="web-book" >
-            <h1 > <span><i class="fas fa-rupee-sign"></i> {webinar[0] && webinar[0].price}/</span></h1>
+            {webinar[0] && webinar[0].price ? <h1 > <span><i class="fas fa-rupee-sign"></i> {webinar[0] && webinar[0].price}/</span></h1> : <h1>Free</h1>}
             <button > <a href="#">Book Now</a></button>
           </div>
           
@@ -138,6 +140,6 @@ export default ({
             </div>        
           </div>
       </div>
-      </Grid>
+      </>
   );
 };

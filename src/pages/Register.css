@@ -56,32 +56,35 @@
   align-items: center;
 }
 
-/*-----------------Register-----------*/
+/*-----------------Register-----------*/ 
 
 
 
 .section {
-  background-image: url("../Untitled-5.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 2rem 1rem;
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
-  height: 620px;
   display: flex;
   align-items: center;
 }
 
+.section1 {
+  display: none;
+}
+
 .section2{
-  margin-left: auto;
-  margin-right: 2rem;
   padding: 2rem 0rem;
   background-color: rgba(255,255,255,1);
-  width: 275px;
+  width: 350px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
+}
+
+.head-con {
+  padding: 2rem 1rem;
+  max-width: 1440px;
+  margin: 0rem auto;
 }
 
 .register-upper {
@@ -148,6 +151,24 @@
   color: #808080;
   text-align: center;
   font-weight: 700;
+}
+
+@media only screen and (min-width : 768px) {
+  .section1 {
+    display: block;
+    text-align: right;
+    max-height: 400px;
+  }
+  .section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width : 1024px) {
+  .head-con {
+    padding: 2rem 6rem;
+  }
 }
 
 

@@ -30,7 +30,7 @@
 .navbar-brand {
   position: relative;
   float: left;
-  margin-left: 160px;
+  margin-left: 16px;
   background-color: black;
   border-radius: 0 0 4px 4px;
   box-shadow: 0px 1px 15px 2px rgb(100 100 100 / 49%);
@@ -126,15 +126,14 @@
 
 .dropbtn {
   /* background-color: #139aaf; */
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   color: white;
-  margin-right: 200px;
+  margin-left: auto;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
   border: none;
+  margin-left: auto;
+  display: block;
   width: max-content;
   height: 40px;
   border-radius: 5px;
@@ -148,9 +147,8 @@
   justify-content: center;
   align-items: center;
   display: inline-block;
-  margin-right: 200px;
-  width: 160px;
-  height: 60px;
+  max-width: calc(100% - 2rem);
+  margin: 0rem auto;
   float: right;
   position: relative;
 }
@@ -159,9 +157,8 @@
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
-  width: 327px;
-  height: 245px;
+  max-width: calc(100% - 2rem);
+  margin: 0rem auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -215,13 +212,8 @@
 }
 
 .dropdown-contents-head {
-  width: 33%;
   height: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  text-align: left;
 }
 
 .dropdown-buttons {
@@ -406,4 +398,13 @@
   .btn333-three:hover::after {
     opacity: 1;
     transform: scale(1,1);
+  }
+
+  @media only screen and (min-width : 1024px) {
+    .dropdown {
+      margin-right: 6rem;
+    }
+    .navbar-brand {
+      margin-left: 6rem;
+    }
   }

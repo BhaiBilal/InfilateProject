@@ -250,9 +250,9 @@ function Headerj() {
     return (
         <>
             <Router>
-                <div >
+                <div > 
                     <nav className="navbar" style={bears > 0 ? styles : styles2}>
-                        <div className="nav-super">
+                        <div className="nav-super" style = {{margin : "0rem auto", maxWidth : "1440px"}}>
                             <a href="/" className="navbar-brand">
                                 <div className={logobar ? "nav-logo active" : "nav-logo"}>
 
@@ -271,7 +271,7 @@ function Headerj() {
 
                             </a>
                         </div>
-                        <div className={logobar ? "nav-sub active " : "nav-sub"}>
+                        <div className={logobar ? "nav-sub active " : "nav-sub"} style = {{margin : "0rem auto", maxWidth : "1440px"}}>
                             <ul className={icon ? "nav-menu active" : "nav-menu "}>
 
                                 <div style={{display:'flex',paddingLeft:'50px'}}> 
@@ -283,7 +283,7 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"> <a >WEBINAR</a></li>
                                     <div className="dropdown-contents">
-                  <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+                  <div>
 
                                         
                                         <div className="dropdown-contents-head">
@@ -333,7 +333,7 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"><a>COMPARE</a></li>
                                     <div className="dropdown-contents">
-                                        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+                                        <div>
                                             <div className="dropdown-contents-head">
                                             {compareData && compareData.slice(0,4).map((item,index)=>
                                         <li key={index} onClick={()=>handleClickCompare(item)} >
@@ -361,7 +361,7 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"><a>TOP STORES</a></li>
                                     <div className="dropdown-contents">
-                                        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+                                        <div>
                                             <div className="dropdown-contents-head">
                                             {organisationData && organisationData.slice(0,4).map((item,index)=>
                                             <li key={index} onClick={()=>handleClickOrg(item)} >
@@ -393,7 +393,7 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons" ><a>COUPONS</a></li>
                                     <div className="dropdown-contents">
-                                        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+                                        <div>
                                             <div className="dropdown-contents-head">
 
                                             {couponData && couponData.slice(0,4).map((item,index)=>

@@ -66,11 +66,12 @@ export default ({
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
   const matches = useMediaQuery('(max-width:1024px)');
+  const matches1 = useMediaQuery('(min-width:1024px)');
 
   return (
     <>
-      <div className="register-head" style = {{backgroundColor : "#FEFEFE", padding: "2rem 1rem", width : "100%"}}>
-          <TwoColumn style = {{ margin : "auto", maxWidth: "1260px"}}>
+      <div className="register-head" style = {matches1 ? {backgroundColor : "#f5f5f5", padding: "0rem 6rem", width : "100%"} : {backgroundColor : "#f5f5f5", padding: "0rem 1rem", width : "100%"}}>
+          <TwoColumn style = {{ margin : "0rem auto", maxWidth: "1440px"}}>
             < LeftColumn className = "register-head-left">
               <Title style = {{color : "#000"}}>{heading}</Title>
               <p style = {{color : "#000"}}>{description}</p>

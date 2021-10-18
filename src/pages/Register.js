@@ -102,8 +102,11 @@ export default ({
 
   return (
 
-    <Container className="head-con">
+    <Container className="head-con" style = {{backgroundColor : "#D8DEDF"}}>
       <div className="section">
+        <div className = "section1">
+          <img src = "/Assets/Images/register-home.png" />
+        </div>
         <div className="section2">
             <div className="register-upper">
               <h1>Register With</h1>

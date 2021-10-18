@@ -1,7 +1,7 @@
 .services {
-  margin: 2rem auto 0rem auto;
+  margin: 0rem auto;
   padding: 2rem 1rem;
-  max-width:1260px;
+  max-width:1440px;
 }
 
 .services h1 {
@@ -42,5 +42,9 @@
 @media only screen and (min-width : 1024px) {
   .services-section{
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .services {
+    padding: 2rem 6rem;
   }
 }
