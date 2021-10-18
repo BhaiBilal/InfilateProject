@@ -34,14 +34,6 @@ import doodle1 from '../6.png'
 
 
 
-
-
-
-
-
-
-
-
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 const Heading = tw(SectionHeading)``;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;

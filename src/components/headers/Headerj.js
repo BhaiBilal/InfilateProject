@@ -105,6 +105,7 @@ function Headerj() {
     const [webinar, setWebinar] = useState('')
     const [couponData,setCouponData] = useState('')
     const [compareData,setCompareData] = useState('')
+    const [organisationData,setOrganisationData] = useState('')
     const [open, setOpen] = React.useState(false);
     const [data,setData] = React.useState('')
     const selector = useSelector((state) => state);
@@ -173,6 +174,20 @@ function Headerj() {
             },[]);
        
 
+        React.useEffect(() => {
+                let cancel
+                  axios('http://infilate.com/backend/public/api/app/organisation/list', {
+                    method: 'POST',
+                    cancelToken: new axios.CancelToken(c=>cancel=c)
+                  }).then((res) => {
+                      console.log(res)
+                    setOrganisationData(res.data.Data)
+                  }).catch(e=>{
+                    if(axios.isCancel(e)) return
+                  })      
+                  return ()=> cancel()
+             },[]);
+
 
     const [logobar, setLogobar] = useState(false)
     const changeBackground = () => {
@@ -218,10 +233,11 @@ function Headerj() {
       }
 
       const handleClickCompare = (post) => {
-  
-        history.push({pathname:`/AllBrands`});
-       
-      
+        history.push({pathname:`/AllCorporates`});
+      }
+
+      const handleClickOrg = (post) => {
+        history.push({pathname:`/Brand/${post.id}`});
       }
 
       const handleProfile = () => {
@@ -237,7 +253,6 @@ function Headerj() {
                 <div >
                     <nav className="navbar" style={bears > 0 ? styles : styles2}>
                         <div className="nav-super">
-                            <div style = {{maxWidth : "1580px", margin : "0rem auto"}}>
                             <a href="/" className="navbar-brand">
                                 <div className={logobar ? "nav-logo active" : "nav-logo"}>
 
@@ -255,9 +270,8 @@ function Headerj() {
 
 
                             </a>
-                            </div>
                         </div>
-                        <div style = {{maxWidth : "1580px", margin : "0rem auto"}} className={logobar ? "nav-sub active " : "nav-sub"}>
+                        <div className={logobar ? "nav-sub active " : "nav-sub"}>
                             <ul className={icon ? "nav-menu active" : "nav-menu "}>
 
                                 <div style={{display:'flex',paddingLeft:'50px'}}> 
@@ -349,26 +363,23 @@ function Headerj() {
                                     <div className="dropdown-contents">
                                         <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#">Lorem ispum</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {organisationData && organisationData.slice(0,4).map((item,index)=>
+                                            <li key={index} onClick={()=>handleClickOrg(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>)}
 
                                             </div>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#">Lorem ispum</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {organisationData && organisationData.slice(0,4).map((item,index)=>
+                                            <li key={index} onClick={()=>handleClickOrg(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>)}
                                             </div>
                                             <div className="dropdown-contents-head">
-                                                <a style={{ fontSize: "20px", fontWeight: "600", borderBottom: "1px solid grey" }} href="#">Lorem ispum</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#" >lorem</a>
-                                                <a href="#">lorem</a>
-                                                <a href="#">lorem</a>
+                                            {organisationData && organisationData.slice(0,4).map((item,index)=>
+                                            <li key={index} onClick={()=>handleClickOrg(item)} >
+                                            <a href="#">{item.name}</a>
+                                            </li>)}
                                             </div>
                                         </div>
                                     </div>

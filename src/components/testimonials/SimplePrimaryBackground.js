@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import tw from "twin.macro";
 import "./SimplePrimary.css"
 import styled, { css } from "styled-components/macro"; //eslint-disable-line
-// import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { ReactComponent as QuoteIconBase } from "images/quotes-l.svg"
@@ -21,7 +21,6 @@ import {
 import Axios from "axios"
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
@@ -32,12 +31,13 @@ import Slider from "react-slick";
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     
      
         flexBasis:'unset',
-        maxWidth: '13.66667%',
+        maxWidth: '18.66667%',
         marginLeft:'10px'
  
   },
@@ -155,6 +155,9 @@ export default ({
 
   }
 
+  const matches2 = useMediaQuery('(max-width:1280px)');
+
+
 React.useEffect(() => {
 
   let cancel
@@ -174,27 +177,32 @@ const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
 }
   return (
-    <Grid container style={{justifyContent:'center'}}>
-      <Grid item md={10}>
+    <Grid container style={{justifyContent:`${matches2 == true ? 'unset' : 'center'}`}}>
+
+
       <Grid item container style={{display:'flex',alignItems:'baseline'}}>
-        <Grid item xs={2} className={classes.root}>
-        <Heading style={{ fontSize: '2rem', fontWeight: '700', marginBottom: "20px", marginLeft: "",paddingTop:'50px'}}>
-        <h1 className="service-head12" style={{ fontSize: "1.625rem", fontweight: "bold" }} >
-              Latest Blogs</h1>
-              </Heading>
-        </Grid>
+
 
         {/* <Grid className={classes.root2}  item xs={10}>
           <hr style={{paddingTop:'6px',borderTopWidth: '2.5px',borderColor:'#b4adad',opacity:'73%'}}/>
         </Grid> */}
         </Grid>
+        
+   
 
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
-
         </HeadingContainer>
-    
-        <div className="card-head">
+      
+
+
+        <div className="card-head" style = {{width:`${matches2 == true ? '90%' : '75%' }`}}> 
+        <Grid item xs={4} >
+        <Heading style={{ fontSize: '2rem', fontWeight: '700', marginBottom: "20px", marginLeft: "",paddingTop:'50px'}}>
+        <h1 className="service-head12" style={{ fontSize: "2rem", fontweight: "bold",textAlign:'initial' }} >
+              Latest Blogs</h1>
+              </Heading>
+        </Grid>
           <Slider {...setting} style={{ width: "100%"}}  >
             {
               blogData.map((item,index) => ((
@@ -222,7 +230,7 @@ const handleCardClick=(item)=>{
         <Link to='/Mainblog'> View all blogs</Link>
         </Button>            
           </Grid>    
-          </Grid>
+        
     </Grid>
   );
 };

@@ -61,14 +61,14 @@
 
 
 .section {
-  background-image: url("../images/register13.png");
+  background-image: url("../Untitled-5.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 2rem 1rem;
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
-  height: 500px;
+  height: 620px;
   display: flex;
   align-items: center;
 }

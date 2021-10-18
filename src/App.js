@@ -183,7 +183,7 @@ export default function App() {
         <Route path="/registerWebinar"> <ContactUsForm /> </Route>
         <Route path="/checkout"> <CheckOut /></Route>
         <Route path="/Brand/:id"> <Brand /></Route>
-        <Route path="/AllBrands"> <Tabs /></Route>
+        <Route path="/AllCorporates"> <Tabs /></Route>
         <Route path="/MainBlog"> <MainBlog /></Route>
         <Route path="/BlogDetail/:id"> <BlogHead /></Route>
          <Route path="/faQs"> <FAQs /></Route>
