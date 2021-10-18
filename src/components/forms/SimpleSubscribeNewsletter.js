@@ -25,7 +25,7 @@ const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none
 
 export default () => {
   return (
-    <div  style={{background:'#fff',padding: "30px 16px",display : "flex", justifyContent :"center", alignItems : "center"}}>
+    <div  style={{background:'#F5F5F5',padding: "30px 16px",display : "flex", justifyContent :"center", alignItems : "center"}}>
       <Content style={{paddingTop:'3rem',paddingBottom:'3rem'}}>
         <Row>
           <TextColumn>
