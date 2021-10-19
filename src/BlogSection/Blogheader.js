@@ -236,8 +236,8 @@ const useStyles = makeStyles((theme) => ({
           method: 'POST',
           cancelToken: new axios.CancelToken(c=>cancel=c)
         }).then((res) => {
-          setBlogData(res.data)
-          // console.log(res.data)
+          setBlogData(res.data.Data)
+          console.log(res.data.Data)
         }).catch(e=>{
           if(axios.isCancel(e)) return
         })   

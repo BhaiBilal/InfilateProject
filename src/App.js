@@ -239,7 +239,7 @@ export default function App() {
         <Route path="/reviewSubmit"><ReviewSubmit /></Route>
         <Route path="/product"><Product /></Route>
         <Route path="/Allwebinar"><AllWebinars /></Route>
-        <Route path="/SearchList"><SearchList /></Route>
+        <Route path="/SearchList/:id"><SearchList /></Route>
         {/* <Route path="/">
           <HotelTravelLandingPage />
         </Route> */}
