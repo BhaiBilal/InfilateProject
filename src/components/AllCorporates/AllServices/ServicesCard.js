@@ -48,7 +48,7 @@ function ServicesCard({list,handleCompare}) {
      {
       list && list.map((item,index) => 
 
-     <Card key={index} sx={{ width:'inherit' }}>
+     <Card key={index} sx={{ width:'inherit',marginBottom:'15px' }}>
 
      <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
@@ -65,7 +65,7 @@ function ServicesCard({list,handleCompare}) {
      <p> {item.type} </p>
      </Grid>
      <Grid item xs={4} style={{display:'flex',flexDirection:'column',padding:"10px"}}>
-     <Button variant="contained" color="secondary" style={{marginBottom:"10px"}} >
+     <Button variant="contained" color="primary" >
      <Typography variant="button" display="block">
      Visit website
      </Typography>

@@ -37,8 +37,16 @@ function Dashboard() {
             </Grid>
             
             <Container maxWidth='lg' style={{marginLeft:'0px',marginRight:'0px'}}>   
+
+
             <Switch>
             <Route path='/Dashboard/Home'> <Home /> </Route>
+            </Switch>
+
+
+
+            <Switch>
+            <Route path='/Dashboard/addProduct'> <AddProducts /> </Route>
             </Switch>
 
             <Switch>
@@ -50,10 +58,6 @@ function Dashboard() {
             <Route path='/Dashboard/addCoupon'> <AddCoupons /> </Route>
             </Switch>
 
-
-            <Switch>
-            <Route path='/Dashboard/addProduct'> <AddProducts /> </Route>
-            </Switch>
 
             <Switch>
             <Route path='/Dashboard/addService'> <AddServices /> </Route>
@@ -74,6 +78,8 @@ function Dashboard() {
             <Switch>
             <Route path='/Dashboard/updateBlog/:id'> <UpdateBlog /> </Route>
             </Switch>
+
+
 
             <Redirect to="/Dashboard/Home" />
             </Container>

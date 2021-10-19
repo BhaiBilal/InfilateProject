@@ -46,8 +46,6 @@ function AddProducts() {
             // console.log(err+' user already registered');
           });
       }
-
-
       
     const onSubmit = (data) => {
         const formdata = new FormData()

@@ -1,12 +1,9 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
+
+
 
 export default makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1), minWidth: 120, marginBottom: '30px',
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+
   loading: {
     height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center',
   },
@@ -24,7 +21,7 @@ export default makeStyles((theme) => ({
     marginRight:'5px', 
     width:'50%',
     backgroundColor:'transparent',
-    // color:'#009cb6',
+    color:'#009cb6',
     boxShadow:'none',
     border:'1px solid rgba(0, 156, 156, 0.5)',
 
