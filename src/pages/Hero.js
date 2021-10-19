@@ -272,6 +272,12 @@ export default ({
       setCategoryID(e.target.value)
     }
 
+    const handleSearchbtn = () => {
+      console.log('hit')
+      // history.push({pathname:'/SearchList'})
+      
+    }
+
 
   function compres(){
 
@@ -490,7 +496,7 @@ export default ({
                   <div >
                     <button  style={{ borderRadius: "10px",
                     //  width: `${matches == true ? '90px' : '160px'}`, 
-                    height: "50px" }} type="submit" className="search-btn"><a>Search</a></button>
+                    height: "50px" }}  onClick={() => handleSearchbtn} className="search-btn"><a>Search</a></button>
                   </div>
                 </div>
               </div>

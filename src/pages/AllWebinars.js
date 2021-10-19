@@ -222,27 +222,6 @@ const data = [
 
 export default ({
   headingText = "All Webinars",
-  posts = [
-
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost()
-  ]
 }) => {
   const [visible, setVisible] = useState(6);
 
@@ -341,8 +320,6 @@ export default ({
               <ButtonContainer>
                 <LoadMoreButton onClick={onLoadMoreClick}>Load More</LoadMoreButton>
               </ButtonContainer>
-             
-            
           </ContentWithPaddingXl>
         </Container>
 

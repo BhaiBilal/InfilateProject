@@ -208,7 +208,6 @@ console.log(dataState)
       </Container>
      
     </AnimationRevealPage>
-     <Footer />
      </div>
   );
 };
