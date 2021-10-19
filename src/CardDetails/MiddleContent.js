@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import ReactHtmlParser from 'react-html-parser'
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from '@material-ui/core/Grid';
@@ -235,7 +236,7 @@ function MiddleContent(props) {
                         <span>Event Information</span>
                     </div>
                     <div className = "event-card-content" id = "event-div">
-                        <p>{props.data.webinar_description}</p>
+                        {ReactHtmlParser(props.data.webinar_description)}
                     </div>
                 </div>
             </div>
