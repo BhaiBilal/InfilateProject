@@ -18,6 +18,7 @@ import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
 import Grid from '@mui/material/Grid';
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 
@@ -103,6 +104,8 @@ function SearchList() {
 
     const [visible, setVisible] = useState(6);
 
+    const { id } = useParams()
+    console.log(id)
     const onLoadMoreClick = () => {
       setVisible(v => v + 6);
     };
@@ -120,7 +123,7 @@ function SearchList() {
           axios('http://infilate.com/backend/public/api/search/all-search', {
             method: 'POST',
             data:{
-                name:'digital'
+                name:id
             },
             cancelToken: new axios.CancelToken(c=>cancel=c)
           }).then((res) => {
