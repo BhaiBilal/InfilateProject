@@ -19,6 +19,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useHistory } from "react-router-dom";
+import Section1 from 'Template/Section1';
  
 
 const useStyles = makeStyles((theme) => ({
@@ -79,6 +80,8 @@ function Static1() {
     
 
     return (
+      <>
+      <Section1 />
         <Grid container xs={11} style={{ paddingTop: "200px", paddingLeft: "200px" , paddingBottom:'50px' }} spacing={5}>
            
      {
@@ -90,7 +93,7 @@ function Static1() {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {item.pages.substring(0,1).toUpperCase()}
           </Avatar>
         }
         title={item.pages}
@@ -122,6 +125,7 @@ function Static1() {
                 )
        }    
         </Grid>
+        </>
     )
 }
 
