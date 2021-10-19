@@ -34,15 +34,8 @@
   margin: 0rem auto;
 }
 .webinar-head {
-<<<<<<< HEAD
-  /* background-image: url("../n1.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-=======
->>>>>>> 17c9c2fc406c25da62a66451c580447dae6da8b3
   width: 100%;
   overflow: hidden;
-  /* height: 600px; */
   background-color: #f5f5f5;
   padding: 0rem 1rem;
   position: relative;
@@ -120,12 +113,12 @@
 
 .web-book {
   background: linear-gradient(to right, #3d84b8 0%, #344fa1 100%);
-  /* width: 100%; */
+  /* / width: 100%; / */
   padding: 8px;
   max-width: 300px;
   width: 100%;
   display: flex;
-  /* margin: auto; */
+  /* / margin: auto; / */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

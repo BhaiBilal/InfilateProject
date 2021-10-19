@@ -102,6 +102,7 @@ export default ({
   return (
     <>
       {/* <h1 style={{ fontSize: "1.5rem", marginLeft: "2rem", fontStyle: "normal", fontWeight: "bold" }} >Webinars</h1> */}
+    
       <Container className="webinar-head">
 
 

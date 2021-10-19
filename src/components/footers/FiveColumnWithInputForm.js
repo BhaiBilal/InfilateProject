@@ -120,7 +120,7 @@ const footer = [
 
         </div>
         */}
-        <Content>
+        <Content className='footer-content-test'>
           <SixColumns>
             <SubscribeNewsletterColumn>
               <SubscribeNewsletterContainer>

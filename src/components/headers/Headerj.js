@@ -252,6 +252,7 @@ function Headerj() {
             <Router>
                 <div > 
                     <nav className="navbar" style={bears > 0 ? styles : styles2}>
+                        <div style={{background:'#a7bbc7',height:'50px'}}>
                         <div className="nav-super" style = {{margin : "0rem auto", maxWidth : "1440px"}}>
                             <a href="/" className="navbar-brand">
                                 <div className={logobar ? "nav-logo active" : "nav-logo"}>
@@ -270,6 +271,7 @@ function Headerj() {
 
 
                             </a>
+                        </div>
                         </div>
                         <div className={logobar ? "nav-sub active " : "nav-sub"} style = {{margin : "0rem auto", maxWidth : "1440px"}}>
                             <ul className={icon ? "nav-menu active" : "nav-menu "}>
