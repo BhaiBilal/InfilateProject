@@ -34,12 +34,6 @@
   margin: 0rem auto;
 }
 .webinar-head {
-<<<<<<< HEAD
-=======
-  /* background-image: url("../n1.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
->>>>>>> 9bd66defc18d63d575a5f6479be17512adcd18c4
   width: 100%;
   overflow: hidden;
   /* height: 600px; */
@@ -176,10 +170,6 @@
   }
   .web-feat, .web-book, .webinar-section-actions {
     margin-left: 2rem;
-  }
-
-  .web-feat{
-    /* margin-top: 5rem; */
   }
   .webinar-section-footer h3 {
     text-align: left;
