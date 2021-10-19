@@ -165,7 +165,7 @@ function Headerj() {
                 method: 'POST',
                 cancelToken: new axios.CancelToken(c=>cancel=c)
               }).then((res) => {
-                  console.log(res)
+                //   console.log(res)
                 setCompareData(res.data.Data)
               }).catch(e=>{
                 if(axios.isCancel(e)) return
@@ -180,7 +180,7 @@ function Headerj() {
                     method: 'POST',
                     cancelToken: new axios.CancelToken(c=>cancel=c)
                   }).then((res) => {
-                      console.log(res)
+                    //   console.log(res)
                     setOrganisationData(res.data.Data)
                   }).catch(e=>{
                     if(axios.isCancel(e)) return

@@ -9,6 +9,7 @@ import Headerj from "components/headers/Headerj";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import Coupon from "./couponMain/Coupon"
 import AllCoupon from './pages/AllCoupons'
+import './App.css'
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of
  * the prebuilt landing page components by uncommenting their import and export lines respectively.
@@ -144,6 +145,7 @@ import FAQs from './components/faqs/TwoColumnPrimaryBackground'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import DashBoard from './Dashboard/Dashboard'
+import SearchList from 'components/SearchList/SearchList' 
 
 
 
@@ -237,6 +239,7 @@ export default function App() {
         <Route path="/reviewSubmit"><ReviewSubmit /></Route>
         <Route path="/product"><Product /></Route>
         <Route path="/Allwebinar"><AllWebinars /></Route>
+        <Route path="/SearchList"><SearchList /></Route>
         {/* <Route path="/">
           <HotelTravelLandingPage />
         </Route> */}
