@@ -38,9 +38,9 @@ function Contact() {
             <Container maxWidth className="page-title-area2" 
             style={{display:'flex',justifyContent:'center',backgroundImage:`url(http://infilate.com/backend/public${data && data.banner && data.banner[0].image})`}}>
                 <div classname="_container">
-                    <p style={{color:'white',fontSize:'55px'}}>Contact</p>
+                    <p style={{color:'#30296c',fontSize:'55px'}}>Contact</p>
                     <Grid item style={{display:'flex',justifyContent:'center'}}>
-                    <p style={{color:'white',fontSize:'18px'}}>Home / </p>
+                    <p style={{color:'#30296c',fontSize:'18px'}}>Home / </p>
                     <p style={{color:'white',fontSize:'18px',color:'#f68820'}}>&nbsp;Contact</p>
                     </Grid>
                     </div>
@@ -108,7 +108,8 @@ function Contact() {
 
 
                 <div className='map-area' style={{marginTop:'126px'}}>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51502.37783677806!2d-115.24877995271797!3d36.21765914577005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8eaf574293f1b%3A0x8e720e5b03149745!2sLas%20Vegas%2C%20NV%2089108%2C%20USA!5e0!3m2!1sen!2sbd!4v1614418501725!5m2!1sen!2sbd"></iframe>
+                {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51502.37783677806!2d-115.24877995271797!3d36.21765914577005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8eaf574293f1b%3A0x8e720e5b03149745!2sLas%20Vegas%2C%20NV%2089108%2C%20USA!5e0!3m2!1sen!2sbd!4v1614418501725!5m2!1sen!2sbd"></iframe> */}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14000.462005173616!2d77.27499585!3d28.686191350000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1634631345087!5m2!1sen!2sin"></iframe>
                 </div>
                 </Box>
         </div>

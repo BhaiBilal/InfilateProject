@@ -45,14 +45,14 @@ function Aboutus() {
 
     const classes = useStyles()
     return (
-        <div style={{paddingTop:'160px'}}>
+        <div style={{paddingTop:'160px',paddingBottom:'60px'}}>
             <Box>
                 <Container maxWidth className="page-title-area" 
                 style={{display:'flex',justifyContent:'center',backgroundImage:`url(http://infilate.com/backend/public${data && data.banner && data.banner[0].image})`}}>
                     <div classname="_container">
-                        <p style={{color:'white',fontSize:'55px'}}>About</p>
+                        <p style={{color:'#30296c',fontSize:'55px'}}>About</p>
                         <Grid item style={{display:'flex',justifyContent:'center'}}>
-                        <p style={{color:'white',fontSize:'18px'}}>Home / </p>
+                        <p style={{color:'#30296c',fontSize:'18px'}}>Home / </p>
                         <p style={{color:'white',fontSize:'18px',color:'#f68820'}}>&nbsp;About</p>
                             </Grid>
                         
@@ -92,18 +92,18 @@ function Aboutus() {
 
                 {/* section 2 */}
 
-                {data &&  data.section_2 && data.section_2.map((v,i) => 
-                    <Box key={i} pt={10}>
+                    <Box pt={10}>
                         <Container style={{display:'flex',justifyContent:'center'}} maxWidth='lg'>
                             <Grid item>
-                            <p style={{color:'#f68820'}}>{v.title_1}</p>
+                            <p style={{color:'#f68820'}}>{data && data.section_2 && data.section_2[0].title}</p>
 
                             </Grid>
                         </Container>
 
                         <Container style={{display:'flex',justifyContent:'center'}} maxWidth='lg'>
                             <Grid item>
-                            <p style={{fontSize:'48px',color:'#30296c',fontWeight:'700'}}>We are a team of marketers</p>
+                            <p style={{fontSize:'48px',color:'#30296c',fontWeight:'700'}}>
+                            {data && data.section_2 && data.section_2[0].heading}</p>
                             <br/>
                             </Grid>
                         </Container>
@@ -112,22 +112,23 @@ function Aboutus() {
                         <Container style={{display:'flex',justifyContent:'center'}} maxWidth='lg'>
 
                             <Grid style={{paddingBottom:'37px'}} container spacing={3}>
-                             {
-                             [0,1,2].map((v,i) => 
+                             
+                             {data && data.section_2 && data.section_2.slice(1,4).map((v,i) => 
                              <Grid key={i} item>
-                             <img style={{height:'358px'}} src={sampleimg} alt='img' />
+                             <img style={{height:'358px'}} 
+                             src={`http://infilate.com/backend/public${v.image}`}
+                             alt='img' />
                              <br/>
-                             <p style={{fontSize:'24px'}}>Rachel Patrina</p>
-                             <p style={{fontSize:'15px',}}>Commercial director</p>       
+                             <p style={{fontSize:'24px'}}> {v.title_1} </p>
+                             <p style={{fontSize:'15px',}}> {v.title_2} </p>       
                              </Grid> 
                              )
-                             
-                             }     
+                            }   
                            </Grid>
 
                         </Container>
                     </Box>
-                )}
+                
 
             </Box>
 

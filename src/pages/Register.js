@@ -18,7 +18,7 @@ import register5 from "../images/register5.jpg"
 import { Link } from "react-router-dom"
 import Login from "Users/Login";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import registerImage from '../register.png'
 
 
 
@@ -106,7 +106,8 @@ export default ({
     <Container className="head-con" >
       <div className="section">
         <div className = "section1">
-          <img src = "/Assets/Images/register-home.png" />
+          {/* <img src = "/Assets/Images/register-home.png" /> */}
+          <img src = { registerImage } />
         </div>
         <div className="section2">
             <div className="register-upper">
