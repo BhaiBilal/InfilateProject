@@ -104,6 +104,7 @@ export default ({
   // console.log(webinar[0] && webinar[0].webinar_name)
 
   return (
+<<<<<<< HEAD
       
      <div>
      
@@ -112,6 +113,12 @@ export default ({
       </Grid>
 
      <Grid item md={6}>
+=======
+      <>
+      <div className = "webinar-banner">
+          <img src = "/Assets/Images/webinar-banner.png" />
+      </div>
+>>>>>>> 17c9c2fc406c25da62a66451c580447dae6da8b3
       <div className = "webinar-section-footer">
 
         <h3>{webinar[0] && webinar[0].webinar_name}</h3>
@@ -141,7 +148,11 @@ export default ({
             </div>        
           </div>
       </div>
+<<<<<<< HEAD
       </Grid>
       </div>
+=======
+      </>
+>>>>>>> 17c9c2fc406c25da62a66451c580447dae6da8b3
   );
 };

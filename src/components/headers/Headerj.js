@@ -283,7 +283,6 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"> <a >WEBINAR</a></li>
                                     <div className="dropdown-contents">
-                  <div>
 
                                         
                                         <div className="dropdown-contents-head">
@@ -325,15 +324,11 @@ function Headerj() {
                                         // <a href="#">lorem</a>
                                         )}
                                     </div>
-                                        </div>
-
-
                                     </div>
                                 </div>
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"><a>COMPARE</a></li>
                                     <div className="dropdown-contents">
-                                        <div>
                                             <div className="dropdown-contents-head">
                                             {compareData && compareData.slice(0,4).map((item,index)=>
                                         <li key={index} onClick={()=>handleClickCompare(item)} >
@@ -355,13 +350,11 @@ function Headerj() {
                                             <a href="#">{item.name}</a>
                                             </li>)}
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"><a>TOP STORES</a></li>
                                     <div className="dropdown-contents">
-                                        <div>
                                             <div className="dropdown-contents-head">
                                             {organisationData && organisationData.slice(0,4).map((item,index)=>
                                             <li key={index} onClick={()=>handleClickOrg(item)} >
@@ -381,7 +374,6 @@ function Headerj() {
                                             <a href="#">{item.name}</a>
                                             </li>)}
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -393,7 +385,6 @@ function Headerj() {
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons" ><a>COUPONS</a></li>
                                     <div className="dropdown-contents">
-                                        <div>
                                             <div className="dropdown-contents-head">
 
                                             {couponData && couponData.slice(0,4).map((item,index)=>
@@ -419,7 +410,6 @@ function Headerj() {
                                             </li>
                                          
                                         )}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
