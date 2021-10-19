@@ -104,17 +104,10 @@ export default ({
   // console.log(webinar[0] && webinar[0].webinar_name)
 
   return (
-<<<<<<< HEAD
-      <>
-      <div className = "webinar-banner">
-          <img src = "/Assets/Images/webinar-banner.png" />
-      </div>
-=======
       
      <div>
      
       <Grid item md={4} >
->>>>>>> 9bd66defc18d63d575a5f6479be17512adcd18c4
 
       </Grid>
 
@@ -148,11 +141,7 @@ export default ({
             </div>        
           </div>
       </div>
-<<<<<<< HEAD
-      </>
-=======
       </Grid>
       </div>
->>>>>>> 9bd66defc18d63d575a5f6479be17512adcd18c4
   );
 };
