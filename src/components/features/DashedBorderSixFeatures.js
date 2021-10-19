@@ -153,7 +153,7 @@ export default ({index}) => {
             return (
               <div className = "home-coupons-card">
                 <div className = "img-wrapper">
-                  <img src = {`http://infilate.com/backend/public/images/${coupon.media}`}/>
+                  <img src = {`http://infilate.com/backend/public/images/${coupon.media}`} onError = {(e) => e.target.src = "/Assets/Images/coupon.png"} />
                 </div>
                 <div className = "home-coupons-content">
                   <h6>{coupon.name}</h6>

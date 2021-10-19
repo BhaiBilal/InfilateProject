@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import TimeAgo from 'javascript-time-ago';
 import { Link } from 'react-router-dom'
+import en from 'javascript-time-ago/locale/en.json';
 import Axios from "axios"
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -20,6 +22,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useHistory } from "react-router-dom";
 import Section1 from 'Template/Section1';
+import "./Static.css";
  
 
 const useStyles = makeStyles((theme) => ({
@@ -73,59 +76,37 @@ function Static1() {
     }, [])
 
     const history = useHistory();
-    const handleClick = (post) => {
-      history.push(`/static/${post.id}`,{Post:post});
+    const handleClick = (id) => {
+      history.push(`/static/${id}`);
       // console.log(post.webinar_name)
     }
+
+
+    TimeAgo.addDefaultLocale(en);
+    const timeAgo = new TimeAgo('en-US')
     
 
     return (
-      <>
-      <Section1 />
-        <Grid container xs={11} style={{ paddingTop: "200px", paddingLeft: "200px" , paddingBottom:'50px' }} spacing={5}>
-           
-     {
-         data.map((item,index) => ((
-        <Grid key={index} item xs={2}>      
-
-
-     <Card className={classes.root} onClick={()=>handleClick(item)}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {item.pages.substring(0,1).toUpperCase()}
-          </Avatar>
-        }
-        title={item.pages}
-        subheader="September 14, 2016"
-      />
-      {
-           item.content.map((item2,index2)=>
-         
-
-            <CardMedia key={index2}        
-            className={classes.media}
-            image={`http://infilate.com/backend/public/images/${item2.media}`}
-            title="Paella dish">
-                {item2.heading}
-            </CardMedia>
-            
-          
-            ) 
-
-
-      }
-
-     
-
-    </Card>     
-                        {/* <Link to={`/Static/${item.id}`}>{item.pages}</Link>              */}
-                </Grid>
-                ))                   
-                )
-       }    
-        </Grid>
-        </>
+      
+      <div className = "static-container">
+        <ul className = "static-section">
+          {data && data.length > 0 ? 
+            data.map((page, index) => {
+              return (
+                <li key = {`static${index}`} onClick = {() => handleClick(page.id)}> 
+                  <h6>{page.pages.substring(0,1).toUpperCase()}</h6>
+                  <div className = "static-list-content">
+                    <span>{page.pages}</span>
+                    <p>Last updated: {timeAgo.format(new Date(page.updated_at))}</p>
+                  </div>
+                </li>
+              )
+            })
+            :
+            <></>
+            }
+          </ul>
+        </div>
     )
 }
 

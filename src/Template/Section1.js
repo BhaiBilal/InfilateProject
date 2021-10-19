@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 import "./Section1.css";
 
-export default function Section1() {
+const Section1 = (props) => {
+    useEffect(() => {
+        console.log(props.match.params.pageId)
+    }, [])
     return (
         <div className = "static-section1">
             <div className = "static-section1-banner">
-                <img src = "Assets/Images/section-banner.jpg"/>
+                <img src = "/Assets/Images/section-banner.jpg"/>
             </div>
             <div className = "static-section1-header">
                 <div className = "static-section1-header-img">
@@ -21,3 +26,5 @@ export default function Section1() {
         </div>
     )
 }
+
+export default (withRouter(Section1))

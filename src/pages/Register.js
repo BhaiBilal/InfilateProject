@@ -102,12 +102,11 @@ export default ({
 
   return (
 
-    <div style = {{backgroundColor : "#aadce5"}} >
+    <div style = {{backgroundColor : "#7EC5D9"}} >
     <Container className="head-con" >
       <div className="section">
         <div className = "section1">
-          {/* <img src = "/Assets/Images/register-home.png" /> */}
-          <img src = { registerImage } />
+          <img src = "/Assets/Images/register.png" />
         </div>
         <div className="section2">
             <div className="register-upper">

@@ -204,13 +204,7 @@ const handleCardClick=(item)=>{
                 <div class="card" key={index} onClick={() => handleCardClick(item)}>
                   <p style={{ fontSize: `${matches == true ? '11px' : '16px'}`, 
                   fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>
-
-                  <CardMedia
-                   className={classes.media}
-                   image={`http://infilate.com/backend/public/images/${item.image}`}
-                   title="Paella dish"
-              />
-          {/* <img style={{ width: "100%", borderRadius: "10px" }} src={`http://infilate.com/backend/public/images/${item.image}`} alt="John" /> */}
+          <img style={{ width: "100%", borderRadius: "4px" }} src={`http://infilate.com/backend/public/images/${item.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
 
                   <p style={{ fontSize: "18px", fontWeight: "600", paddingTop: "10px" }}>{item.title1}</p>
 
