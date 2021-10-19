@@ -178,8 +178,14 @@ const handleCardClick=(item)=>{
 }
   return (
     <Grid container style={matches1 ? {padding : "2rem 6rem", maxWidth : "1440px", margin : "2rem auto"} : {padding : "0rem 1rem"}}>
+
+      <div style={{display:'flex',justifyContent:'space-between',width:'inherit'}}>
     <h1 style = {{fontSize : "2rem", fontWeight : "700", marginBottom : "1.5rem"}}>Latest Blogs</h1>
 
+    <Button  variant="contained" color="primary" size="small" className={classes.button}>
+        <Link to='/Mainblog'> View all blogs</Link>
+        </Button> 
+        </div>
 
       <Grid item container style={{display:'flex',alignItems:'baseline'}}>
 
@@ -215,9 +221,7 @@ const handleCardClick=(item)=>{
         </div>
 
         <Grid style={{display: "flex", justifyContent:'center'}} item xs={12}>
-        <Button  variant="contained" color="primary" size="small" className={classes.button}>
-        <Link to='/Mainblog'> View all blogs</Link>
-        </Button>            
+             
           </Grid>    
         
     </Grid>

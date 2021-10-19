@@ -249,13 +249,13 @@ const footer = [
                 }
 
                 <LinkListItem>
-                  <Linki href="http://my.infilate.com/privacyPolicy"> Privacy </Linki>
+                  <Link to="/privacyPolicy"> Privacy </Link>
                 </LinkListItem>
                 <LinkListItem>
-                  <Linki href="http://my.infilate.com/terms&Conditions"> Terms & Condition </Linki>
+                  <Link to="/terms&Conditions"> Terms & Condition </Link>
                 </LinkListItem>
                 <LinkListItem>
-                  <Linki href="http://my.infilate.com/faQs">Brand Disclosure</Linki>
+                  <Link to="/faQs">FAQ's</Link>
                 </LinkListItem>
                 {/* <LinkListItem>
                   <Linki href="#">Lorem ipsum</Linki>

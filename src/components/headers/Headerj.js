@@ -132,7 +132,8 @@ function Headerj() {
           method: 'POST',
           cancelToken: new axios.CancelToken(c=>cancel=c)
         }).then((res) => {
-          setWebinar(res.data.Data)
+            // console.log(res.data.Data.data)
+          setWebinar(res.data.Data.data)
         }).catch(e=>{
           if(axios.isCancel(e)) return
         })
