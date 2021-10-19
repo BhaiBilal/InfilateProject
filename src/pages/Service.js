@@ -30,7 +30,7 @@ function Service() {
   
  
     return (
-        <div style = {{backgroundColor : "#f5f5f5"}}>
+        <div style = {{backgroundColor : "#f2f2f2"}}>
             <div className = "services" >
                 <h1 >Our Services</h1>
                 <div className = "services-section">

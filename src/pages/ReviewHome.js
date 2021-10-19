@@ -70,7 +70,7 @@ export default ({
 
   return (
     <>
-      <div className="register-head" style = {matches1 ? {backgroundColor : "#f5f5f5", padding: "0rem 6rem", width : "100%"} : {backgroundColor : "#f5f5f5", padding: "0rem 1rem", width : "100%"}}>
+      <div className="register-head" style = {matches1 ? {backgroundColor : "#f2f2f2", padding: "0rem 6rem", width : "100%"} : {backgroundColor : "#f5f5f5", padding: "0rem 1rem", width : "100%"}}>
           <TwoColumn style = {{ margin : "0rem auto", maxWidth: "1440px"}}>
             < LeftColumn className = "register-head-left">
               <Title style = {{color : "#000"}}>{heading}</Title>
