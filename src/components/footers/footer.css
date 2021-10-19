@@ -15,3 +15,9 @@
   margin: 0rem auto;
   
 }
+
+@media only screen and (min-width : 1024px) {
+  .footer-content-test {
+    padding: 0rem 4rem;
+  }
+}

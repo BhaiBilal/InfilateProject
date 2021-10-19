@@ -1,0 +1,59 @@
+/* Static1 component css start */
+
+
+.static-container {
+    padding-top: 9rem;
+}
+
+.static-section {
+    padding: 2rem 1rem;
+    margin: 0rem auto;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+}
+
+.static-section li {
+    display: flex;
+    align-items: center;
+    grid-gap: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3rem;
+    padding-right: 1rem;
+}
+
+.static-section li h6 {
+    width: 3rem;
+    height: 3rem;
+    background-color: #ff4032;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: 50%;
+}
+
+.static-list-content span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.static-list-content p {
+    font-size: 12px;
+    letter-spacing: 0.25px;
+    color: #888888;
+}
+
+@media only screen and (min-width: 1024px) {
+    .static-section {
+        padding: 2rem 6rem;
+    }
+}
+
+
+/* Static1 component css start */
