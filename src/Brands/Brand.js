@@ -1,43 +1,72 @@
-import React from 'react'
-// import Header from "../components/headers/Headerj"
-import Home from "./Home"
-import Domain from "./Domain"
-import Recommend from "./Recommend"
-import "./Brand.css"
-import Frequently from './Frequently'
-import Review from './Review'
-import Brandpage from './Brandpage'
-import {useLocation} from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios'
+import "./Brand.css";
+import home from "../images/home.mp4"
 
 
 
 
 
-function Brand() {
-    const [dataState,setDataState] = React.useState([])
-    const location= useLocation()
-  
-    React.useEffect(()=>{
-  
-      location.Post && setDataState(location.Post);
-  
-  },[location])
+function Brand(props) {
+
+    const [organizationDetails, setOrganizationDetails] = useState({});
+
+    useEffect(() => {
+        axios(`http://infilate.com/backend/public/api/app/organisation/detail/${props.match.params.id}`,{
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            method : "POST",
+            body : JSON.stringify({organization_id : props.match.params.id})
+        }).then(res => {
+            if(res && res.data && res.data.Data) {
+                setOrganizationDetails(res.data.Data[0][0]);
+            }
+        }).catch(err => {
+            setOrganizationDetails({});
+        })
+    },[])
 
 
-
+    console.log(organizationDetails)
+    if(Object.keys(organizationDetails).length > 0)
     return (
-        <>
-            {/* <Header /> */}
-            <Home />
-            <Brandpage data={dataState} />
-            <Domain />
-            <Recommend />
-            <Frequently />
-            <Review />
-
-        </>
+        <div className = "brand-container">
+            <div className = "brand-banner">
+                {
+                (organizationDetails.banner_media_type === 'jpg' || organizationDetails.banner_media_type === 'jpeg' || organizationDetails.banner_media_type === 'png') ?
+                <img src = {`http://infilate.com/backend/public/images/${organizationDetails.banner_media}`} />
+                :
+                <></>
+                }
+            </div>
+            <div className = "brand-section">
+                <div className = "brand-hero">
+                    <div className = "brand-image">
+                        <img src = {`http://infilate.com/backend/public/images/${organizationDetails.image}`} />
+                    </div>
+                    <div className = "brand-details">
+                        <h3>{organizationDetails.title}</h3>
+                        <ul className = "brand-creds">
+                            <li><i class="fas fa-map-marker-alt"></i> {organizationDetails.address_line_1 + (organizationDetails.address_line_2 ? (", " + organizationDetails.address_line_2) : "") + ", " + organizationDetails.city + ", " + organizationDetails.state + ", " + organizationDetails.country + " - " + organizationDetails.pincode}</li>
+                            <li><i class="fas fa-phone-alt"></i> {organizationDetails.contact_no}</li>
+                            <li><i class="far fa-envelope"></i> {organizationDetails.email}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div className = "brand-desc">
+                    <h6>About</h6>
+                    <p>{organizationDetails.description}</p>
+                    <a target = "_blank" href = {organizationDetails.url ? organizationDetails.url : ""}><i class="fas fa-globe"></i>  WEBSITE</a>
+                </div>
+            </div>
+        </div>
     )
+    else 
+    return <></>
 }
 
-export default Brand
+export default withRouter(Brand)
 
