@@ -146,6 +146,7 @@ import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import DashBoard from './Dashboard/Dashboard'
 import SearchList from 'components/SearchList/SearchList' 
+import Pressroom from "components/Pressroom/Pressroom";
 
 
 
@@ -182,6 +183,7 @@ export default function App() {
         </Route>
         {/* <Route path="/login"><Login /> </Route> */}
         <Route path="/blog"> <BlogIndexPage /> </Route>
+        <Route path="/pressRoom"> <Pressroom /> </Route>
         <Route path="/registerWebinar"> <ContactUsForm /> </Route>
         <Route path="/checkout"> <CheckOut /></Route>
         <Route path="/Brand/:id"> <Brand /></Route>

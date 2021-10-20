@@ -244,8 +244,17 @@ function Headerj() {
       const handleProfile = () => {
           history.push({pathname:'/Dashboard'})
       }
-  
+      const handleLoginbtn = () => {
+        history.push({pathname:'/Login'})
+    }
 
+    const handleSignupbtn = () => {
+        history.push({pathname:'/RegisterUser'})
+    }
+
+    const handleCorporateSignupbtn = () => {
+        history.push({pathname:'/RegisterCorporate'})
+    }
 
 
     return (
@@ -268,7 +277,9 @@ function Headerj() {
 
                             <a>
 
-                            <Profile handleProfile={handleProfile} />
+                            <Profile handleProfile={handleProfile} handlelogin={handleLoginbtn} handlesignup={handleSignupbtn}
+                            handlecorporatesignup={handleCorporateSignupbtn}
+                            />
 
 
                             </a>
