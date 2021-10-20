@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./Hero.css"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { motion } from "framer-motion";
@@ -105,22 +106,28 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 let hour = parseInt(new Date().getHours());
 let greet = "";
 if(hour >= 4 && hour < 12) {
-  greet = "Good Morning Marketers"
+  greet = "Good Morning "
 } else if(hour >=12 && hour < 16) {
-  greet = "Good Afternoon Marketers"
+  greet = "Good Afternoon "
 } else if(hour >=16 && hour < 22) {
-  greet = "Good Evening Marketers"
+  greet = "Good Evening "
 } else {
-  greet = "Good Night Marketers"
+  greet = "Good Night "
 }
 
 
 export default ({
   heading = greet,
 }) => {
+
+  
+  const state = useSelector(state => state.userLoginLogout);
+  console.log(state)
+  heading += (state.isUserLoggedIn ? state.FullName : "Marketers")
 
   const [searchItem,setSearchItem] = useState('')
   const [searchResult,setSearchResult] = useState([])
