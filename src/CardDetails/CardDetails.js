@@ -93,7 +93,7 @@ function CardDetails() {
             <div className = "webinar-details-upper">
             <div className = "webinar-profile">
                 <div className = "img-wrapper">
-                    <img src = {`http://infilate.com/backend/public/images/${dataState.image}`} />
+                    <img src = {`http://infilate.com/backend/public/images/${dataState.image}`} onError = {(e) => e.target.src = "/Assets/Images/webinar.png"} />
                 </div>
                 <div className = "webinar-profile-content">
                     <div className = "content-header">

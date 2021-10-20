@@ -1,0 +1,114 @@
+
+.webinars-container {
+    padding: 8rem 1rem 2rem 1rem;
+}
+
+.webinars-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    max-width: 1440px;
+    margin: 0rem auto;
+}
+
+.webinar-card {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 0.25rem;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.25);
+    transition: 0.5s;
+
+}
+
+.webinar-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+
+.webinar-car-image {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    height: 250px;
+}
+
+.webinar-car-image img {
+    width: 100%;
+    border-radius: 4px 4px 0rem 0rem;
+    height: 100%;
+    object-fit: cover;
+}
+
+.webinar-card-content {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    grid-gap: 0.5rem;
+}
+
+.webinar-card-content li:nth-child(2) span {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #888888;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 0%;
+    flex-wrap: wrap;
+}
+
+.webinar-card-content li h6 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+}
+.webinar-card-content li:nth-child(3) {
+    padding-top: 1rem;
+}
+.webinar-card-content li:nth-child(3) span:nth-child(1) {
+    font-size: 1.6rem;
+    color: #FF4032;
+    font-weight: 700;
+}
+
+.webinar-card-content li:nth-child(3) span:nth-child(2) {
+    font-size: 15px;
+    color: #888888;
+    margin-left: 0.25rem;
+    text-decoration: line-through;
+}
+
+.load-more-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.load-more-btn button {
+    background-color: #FF4032;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 4px;
+    outline-style: none;
+}
+
+
+
+@media only screen and (min-width : 768px) {
+    .webinars-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width : 1024px) {
+    .webinars-section {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .webinars-container {
+        padding: 8rem 6rem 2rem 6rem;
+    }
+}
