@@ -41,7 +41,7 @@ export default () => {
             {webinarsList.length > 0 ? 
             webinarsList.map((webinar, index) => {
               let date = new Date(webinar.webinar_date);
-              let start_time = (parseInt(webinar.webinar_start_time.substring(0,2)) % 12) + ":" + webinar.webinar_start_time.substring(3,5) + (parseInt(webinar.webinar_start_time.substring(0,2)) >= 12 ? " PM" : " AM");
+              let start_time = ((parseInt(webinar.webinar_start_time.substring(0,2)) % 12) < 10 ? "0" : "") + parseInt(webinar.webinar_start_time.substring(0,2)) % 12 + ":" + webinar.webinar_start_time.substring(3,5) + (parseInt(webinar.webinar_start_time.substring(0,2)) >= 12 ? " PM" : " AM");
               return (
                 <Link key = {`webinars${index}`} to = {`/webinarDetails/${webinar.id}`}>
                   <div className = "webinar-card">
