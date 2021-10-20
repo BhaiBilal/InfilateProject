@@ -2,39 +2,31 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import cashback from "../../images/cashback2.png"
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
-
-function Profile({handleProfile}) {
+function Profile({handleProfile,handlelogin,handlecorporatesignup,handlesignup}) {
 
     const selector = useSelector((state) => state);
     const dispatch = useDispatch()
 
     const handleLogout=() => {
-        dispatch(userLogoutRequest())
+        axios({
+            method: 'post',
+            url: 'http://infilate.com/backend/public/api/auth/logout',
+            headers:{
+                "token":selector.userLoginLogout.token,
+            }
+          }).then(res=> {
+             alert('successfullt logged out',res) 
+             dispatch(userLogoutRequest())
+          });
+        
     }
-
-
-    const handleClick = (e) => {
-        if (e == "Signup as user") {
-            window.location.href = 'http://infilate.com/RegisterUser'
-        }
-
-        else if (e == "Signup as corporate") {
-            window.location.href = 'http://infilate.com/RegisterCorporate'
-        }
-
-        else if(e=="contents"){
-            window.location.href = 'http://infilate.com/Static' 
-        }
-
-    }
-
-
 
     function CondtionalRender() {
-
-
+        
         if(selector.userLoginLogout.role_id=='3'){
 
           return(  <div style={{ zIndex: "999" }} className="dropdown">
@@ -128,14 +120,15 @@ function Profile({handleProfile}) {
                             <div className="menu10">
                                 <h2 className="menu-title10">Sign UP</h2>
                                 <ul className="menu-dropdown10">
-                                    <li onClick={() => handleClick("Signup as user")}>Signup as user</li>
-                                    <li onClick={() => handleClick("Signup as corporate")}>Signup as corporate</li>
+                                    <li onClick={ handlesignup }>Signup as user</li>
+                                    <li onClick={ handlecorporatesignup }>Signup as corporate</li>
                                 </ul>
                             </div>
                         </li>
 
                     </ul>
-                    <a href="http://my.infilate.com/Login">LOGIN</a>
+                    <a onClick={handlelogin}>LOGIN</a>
+                    
                 </div>
 
             </div>

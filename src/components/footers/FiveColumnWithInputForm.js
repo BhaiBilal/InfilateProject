@@ -160,7 +160,25 @@ const footer = [
                   <Link to="/contactUs">
                   <Linki href="">Contact us</Linki>
                   </Link>
-                </LinkListItem>                           
+                </LinkListItem>      
+
+                                  <LinkListItem>
+                  <Link to="/pressRoom">
+                  <Linki href="">Pressroom</Linki>
+                  </Link>
+                </LinkListItem> 
+
+                                  <LinkListItem>
+                  <Link to="/faQs">
+                  <Linki href="">FAQ's</Linki>
+                  </Link>
+                </LinkListItem> 
+
+                                  <LinkListItem>
+                  <Link to="/siteMap">
+                  <Linki href="">Sitemap</Linki>
+                  </Link>
+                </LinkListItem>                      
    
 
                   {/* <Linki href="#">About Us</Linki>
@@ -255,7 +273,7 @@ const footer = [
                   <Link to="/terms&Conditions"> Terms & Condition </Link>
                 </LinkListItem>
                 <LinkListItem>
-                  <Link to="/faQs">FAQ's</Link>
+                  <Link to="/">Brand Disclosure</Link>
                 </LinkListItem>
                 {/* <LinkListItem>
                   <Linki href="#">Lorem ipsum</Linki>

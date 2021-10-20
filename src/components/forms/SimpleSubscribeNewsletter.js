@@ -4,7 +4,7 @@ import {ReactComponent as EmailNewsletterIconBase } from "../../images/email-new
 import {Container as ContainerBase } from "components/misc/Layouts.js"
 import {SectionHeading} from "components/misc/Headings.js";
 import {PrimaryButton} from "components/misc/Buttons.js";
-
+import axios from 'axios'
 
 const Container = tw(ContainerBase)`bg-secondary-800 -mx-8`
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -24,6 +24,33 @@ const Button = tw(PrimaryButton)`w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none
 
 
 export default () => {
+
+  const [input,setInput] = React.useState('')
+  
+  const handleSubmit = () => {
+
+    axios({
+      method: 'post',
+      url: 'http://infilate.com/backend/public/api/app/newsletter/add',
+      data: {
+        email: input,
+      
+      }
+    }).then(res => {
+      if(res.data.Message="Email has already saved"){
+        alert('Email has already saved')
+      }
+      else {
+        alert('successfully subscribed')
+        console.log(res)
+        setInput('')
+      }
+
+    }).catch(err => 
+        alert('OOps something went wrong'+err)
+      )
+  }
+
   return (
     <div  style={{padding: "30px 16px",backgroundColor : "#FEFEFE"}}>
       <Content style={{paddingTop:'3rem',paddingBottom:'3rem'}}>
@@ -36,10 +63,10 @@ export default () => {
             </HeadingInfoContainer>
           </TextColumn>
           <FormColumn>
-          <Form>
-            <Input name="newsletter" type="email" placeholder="Your Email Address" style={{background:'white', outlineStyle : "none", borderColor : "#FF4032"}}/>
-            <Button type="submit" style={{backgroundColor: '#FF4032',borderWidth:'1px', borderColor : "#FF4032"}}>Subscribe Now</Button>
-          </Form>
+
+            <Input value={input} onChange={(e) => setInput(e.target.value) } name="newsletter" type="email" placeholder="Your Email Address" style={{color:'black',background:'white', outlineStyle : "none", borderColor : "#FF4032"}}/>
+            <Button onClick={handleSubmit} style={{backgroundColor: '#FF4032',borderWidth:'1px', borderColor : "#FF4032"}}>Subscribe Now</Button>
+
           </FormColumn>
         </Row>
       </Content>
