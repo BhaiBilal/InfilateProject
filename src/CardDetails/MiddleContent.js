@@ -36,10 +36,6 @@ import infilate from './inflate1.png'
 
 
 
-
-
-
-
 const useStyles = makeStyles((theme) => ({
 
     root: {

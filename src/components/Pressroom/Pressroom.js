@@ -71,7 +71,7 @@ function Pressroom() {
                     <Box px={20} pt={20} pb={20}>
                     <Grid container spacing={{ xs: 4, md: 3 }}>
                      {[1,1,1,1,1,1,1].map((v,i) => 
-                    <Grid key={i} item>
+                    <Grid key={i} item md={4} xs={12}>
                     <div className='card_view_3'>
                     <img src='https://www.rotary.org/sites/default/files/styles/w_700/public/rotary%20fact%20sheet_700x500.jpg?itok=v4152OOH' />
                     <div style={{display:'flex', flexDirection:'column'}}>

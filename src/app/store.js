@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage';
 import UserloginlogoutReducer from 'redux/UserloginlogoutSlice'
+import CartItemsReducer from 'redux/CartItemsSlice'
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
   userLoginLogout:UserloginlogoutReducer,
+  cartItemsReducer:CartItemsReducer,
 });
 
 
