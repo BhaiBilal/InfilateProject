@@ -149,8 +149,8 @@ export default ({index}) => {
           </div>
         <div className = "home-coupons">
           {couponData && couponData.slice(0,9).map((coupon, index) => {
-         
             return (
+              <Link to = {`/Brand/${coupon.id}`} key = {`coupon${index}`} >
               <div className = "home-coupons-card">
                 <div className = "img-wrapper">
                   <img src = {`http://infilate.com/backend/public/images/${coupon.media}`} onError = {(e) => e.target.src = "/Assets/Images/coupon.png"} />
@@ -160,6 +160,7 @@ export default ({index}) => {
                   <span>26 offers</span>
                 </div>
               </div>
+              </Link>
             )
           })}
       </div>
