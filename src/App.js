@@ -246,7 +246,10 @@ export default function App() {
         <Route path="/product"><Product /></Route>
         <Route path="/Allwebinar"><AllWebinars /></Route>
         <Route path="/SearchList/:id"><SearchList /></Route>
-        <Route path="/addToCart"><Cart cartItems={cartItems} /></Route>
+        {selector.userLoginLogout.isUserLoggedIn == true ? <Route path="/addToCart"><Cart cartItems={cartItems} /></Route> :
+        null
+        }
+        
         {/* <Route path="/">
           <HotelTravelLandingPage />
         </Route> */}
