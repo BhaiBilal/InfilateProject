@@ -130,7 +130,7 @@ function AllProducts({productList}) {
     return (
 
            <Box display='flex' justifyContent='space-between'>
-                <MenuFilters  type={type} setType={setType} />
+                <MenuFilters list={productList} type={type} setType={setType} />
 
 
                 <Grid item md={8}>

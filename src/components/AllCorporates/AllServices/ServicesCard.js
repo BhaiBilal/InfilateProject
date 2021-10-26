@@ -33,12 +33,21 @@ const ExpandMore = styled((props) => {
 function ServicesCard({list,handleCompare}) {
 
     const classes = useStyles()
-    const [expanded, setExpanded] = React.useState(false);
-    const [arr1,setArr1]= React.useState([])
+    const [expanded, setExpanded]= React.useState([])
     
     
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
+    const handleExpandClick = (index) => {
+
+        if(expanded.length == 0) {
+          setExpanded(p => [...p,index])
+        }
+        else if(expanded.length > 0 && expanded.includes(index)) {
+            setExpanded(p => p.filter(i=> i !== index))
+        }
+        
+        else {
+          setExpanded(p => [...p,index])
+        }
       };
 
 
@@ -54,7 +63,7 @@ function ServicesCard({list,handleCompare}) {
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
      <Grid style={{paddingLeft:'10px'}} item xs={8}>
 
-     <p 
+     <p className={classes.paraStyle} 
    //   className={classes.headingpara}
      >{item.name}</p>
 
@@ -64,7 +73,7 @@ function ServicesCard({list,handleCompare}) {
      <p>(477)</p>
      <p> {item.type} </p>
      </Grid>
-     <Grid item xs={4} style={{display:'flex',flexDirection:'column',padding:"10px"}}>
+     <Grid item xs={4} style={{display:'flex',flexDirection:'column',paddingTop:"10px", paddingRight:"10px" }}>
      <Button variant="contained" color="primary" >
      <Typography variant="button" display="block">
      Visit website
@@ -72,10 +81,10 @@ function ServicesCard({list,handleCompare}) {
      </Button>
      <Grid item style={{display:'flex',justifyContent:'center'}}>
      <Button
-             variant="outlined"
+             variant="text"
              color="primary"
              onClick={()=>handleCompare(item,index)}
-             className={classes.button1}
+             className={classes.button2}
              startIcon={<BlurOffOutlined />}
            >
                    <Typography style={{fontSize:'14px',textTransform:'lowercase'}} variant="button" display="block">
@@ -83,7 +92,7 @@ function ServicesCard({list,handleCompare}) {
                    </Typography>
            </Button>
 
-           <Button
+           {/* <Button
             variant="text"
              color="primary"
           
@@ -93,27 +102,27 @@ function ServicesCard({list,handleCompare}) {
                 <Typography style={{fontSize:'14px',textTransform:'lowercase'}} variant="button" display="block">
                      Save
                    </Typography>
-           </Button>      
+           </Button>       */}
      </Grid>      
      </Grid>
      </Grid>
 
    <CardActions disableSpacing>
    <ExpandMore
-       expand={expanded}
-       onClick={handleExpandClick}
-       aria-expanded={expanded}
+       expand={expanded.includes(index) ? true : false }
+       onClick={() => handleExpandClick(index) }
        aria-label="show more"
    >
        <ExpandMoreIcon />
    </ExpandMore>
    </CardActions>
-   <Collapse in={expanded} timeout="auto" unmountOnExit>
+   <Collapse in={expanded.includes(index) ? true : false } timeout="auto" unmountOnExit>
    <CardContent>
-       <Typography paragraph>Method:</Typography>
        <Typography paragraph>
-       Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-       aside for 10 minutes.
+       <Typography paragraph style={{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif'}} >Description:-</Typography>
+       <Typography paragraph style={{fontFamily:'"Helvetica Neue", Helvetica, Arial, sans-serif'}} >
+       { item.content_description }
+       </Typography>
        </Typography>
    </CardContent>
    </Collapse>
