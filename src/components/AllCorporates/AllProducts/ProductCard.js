@@ -55,7 +55,7 @@ function ProductCard({list,handleCompare}) {
    //   className={classes.headingpara}
      >{item.name}</p>
 
-     <Rating name="read-only" value={`${item.review.user_rating}`} readOnly style={{fontSize:'22px'}} />
+     <Rating name="read-only" value={`${item.review?.average_review}`} readOnly style={{fontSize:'22px'}} />
      <p>(477)</p>
      <p> {item.type} </p>
      </Grid>
