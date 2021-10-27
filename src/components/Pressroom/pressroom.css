@@ -35,17 +35,18 @@ p[target='inquiry_email'] {
  display: flex;
  flex-direction: column;
  justify-content: center;
- max-width:400px;   
+ max-width:300px;   
  transform:translateY(0px);
  transition: transform 200ms, box-shadow 200ms;
  box-shadow: none;
  align-items: center;
- margin: 10px;
+ padding: 15px;
  padding-bottom: 15px;
+ background: white;
 }
 
 
-#ist_line {
+#ist_line_1214 {
     font-size: 20px;
     padding-top: 15px;
 }
@@ -74,11 +75,12 @@ p[target='inquiry_email'] {
 .card_view_3 {
     display: flex;
     justify-content: center;
-    max-width:400px;   
+    /* max-width:400px;    */
     transform:translateY(0px);
     transition: transform 200ms, box-shadow 200ms, border 200ms;
     border: 1px solid #d5d0d0;
     padding:10px;
+    background: white;
    }
    
    .card_view_3:hover {
@@ -112,7 +114,60 @@ padding:20px;
 
 }
 
+p[target='date_style'] {
+    font-size: 14px;
+    
+}
+
 
 .inner_div_styles {
     margin: 10px;
 }
+
+.text-ellipsis--2{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+
+  @media screen and (max-width: 1265px) and (min-width: 1200px) {
+    p[target='date_style'] {
+        font-size: 12px;
+        
+    }
+    p[target='press_release'] {
+            font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+
+    #ist_line_1214 {
+      font-size: 13px;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    p[target='give_padding'] {
+        font-size: 14px;
+        padding:5px;   
+    }
+
+    .card_view_2 button {
+        font-size: 12px;
+    }
+  }
+  
+  @media screen and (max-width: 868px) and (min-width:801px) {
+
+
+    p[target='give_padding'] {
+        font-size: 13px;
+        padding:5px;   
+    }
+
+  }

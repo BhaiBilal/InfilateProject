@@ -16,9 +16,9 @@ import { useHistory } from "react-router-dom";
 
 
 
-function AllServices() {
+function AllServices({serviceList}) {
 
-    const [productList,setProductList] = React.useState([])
+    // const [productList,setProductList] = React.useState([])
     const [type,setType] = React.useState('Most Recent')
     const [loading,setLoading] = React.useState(false)
     const [currentPage,setCurrentPage]= React.useState(1)
@@ -26,40 +26,27 @@ function AllServices() {
     const [open,setOpen] = React.useState(false)
     const [arr1,setArr1]= React.useState([])
     const classes = useStyles()
+    let modifiedArray = []
+    serviceList.map((v,i) => modifiedArray.push(v))
 
-    React.useEffect(() => {
-        let cancel
-      
-        axios('http://infilate.com/backend/public/api/app/services/service-list', {
-          method: 'POST',
-          cancelToken: new axios.CancelToken(c=>cancel=c)
-        }).then((res) => 
-          {
-            if(type=='Most Recent'){
-              setProductList(res.data.Data)
-            }
-  
-            else if(type=='User Reviews') {
-                setProductList(res.data.Data.sort((a,b) => b.review.user_rating - a.review.user_rating ) )
-            }
-            else if(type=='Brands') {
-              setProductList(res.data.Data.filter((v,i) => v.organisation_type.organisation_type=='Brand' ))
-          }
-  
-          else if(type=='Institutes') {   
-            setProductList(res.data.Data.filter((v,i) => v.organisation_type.organisation_type=='Institute' ))
-          }
-  
-          else if(type=='Agencies') {   
-          setProductList(res.data.Data.filter((v,i) => v.organisation_type.organisation_type=='Agency' ))
-          }
-        }
-        ).catch(e=>{
-          if(axios.isCancel(e)) return
-        })   
-        return ()=> cancel()
 
-    },[type])
+    if(type=='Most Recent') {
+      serviceList.map((v,i) => modifiedArray.push(v))
+    }
+    else if(type=='User Reviews') {
+      modifiedArray.sort((a,b) => b.review.average_review - a.review.average_review )
+    }
+
+        else if(type=='Brands') {
+          modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Brand' )
+      }
+
+      else if(type=='Institutes') {   
+        modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Institute' )
+      }
+      else if(type=='Agencies') {  
+        modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Agency' )
+      }
     
 
 
@@ -90,7 +77,7 @@ function AllServices() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
     const indexOfLastPost=currentPage * postPerPage
     const indexOfFirstPost=indexOfLastPost - postPerPage
-    const currentPosts=productList.slice(indexOfFirstPost,indexOfLastPost)
+    const currentPosts=modifiedArray.slice(indexOfFirstPost,indexOfLastPost)
 
 
     // console.log(productList)
@@ -109,7 +96,7 @@ function AllServices() {
                 <ServicesCard list={currentPosts} handleCompare={handleCompare} />
 
                 </Stack>
-                <CustomPagination style={{marginTop:'10px'}} postPerPage={postPerPage} totalPost={productList.length} paginate={paginate} />
+                <CustomPagination style={{marginTop:'10px'}} postPerPage={postPerPage} totalPost={modifiedArray.length} paginate={paginate} />
                 </Grid>
 
 

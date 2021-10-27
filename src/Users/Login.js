@@ -126,9 +126,9 @@ export default ({
         password:password,
         cancelToken: new axios.CancelToken(c=>cancel=c)
     }).then((response)=>{
-        // console.log(response)
+        console.log(response)
         // console.log(response.data.token[1].email)
-        console.log(response.data.data)
+        console.log(response)
         const token=response.data.data.token
         const email=response.data.data.email
         const FullName=`${response.data.data.f_name}` + ` ${response.data.data.l_name}`

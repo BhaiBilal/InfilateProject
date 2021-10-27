@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AllProducts from './AllProducts/AllProducts'
 import AllServices from './AllServices/AllServices'
+import axios from 'axios';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,6 +43,26 @@ function a11yProps(index) {
 
 export default function ContentTabs() {
   const [value, setValue] = React.useState(0);
+  const [productList,setProductList] = React.useState([])
+  const [serviceList,setServiceList] = React.useState([])
+
+  React.useEffect(() => {
+    let cancel
+    axios({
+      method:'POST',
+      url:'http://infilate.com/backend/public/api/app/products/product-list',
+      cancelToken: new axios.CancelToken(c=>cancel=c)
+    }).then(res => setProductList(res.data.Data)).catch(err => { if(axios.isCancel(err)) return })
+    
+    axios({
+      method:'POST',
+      url:'http://infilate.com/backend/public/api/app/services/service-list',
+      cancelToken: new axios.CancelToken(c=>cancel=c)
+    }).then(res => setServiceList(res.data.Data)).catch(err => { if(axios.isCancel(err)) return })
+   
+    return ()=> cancel()
+  },[])
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -58,11 +79,11 @@ export default function ContentTabs() {
       </Box>
       <TabPanel value={value} index={0}>
 
-        <AllProducts />
+        <AllProducts productList={productList} />
 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AllServices />
+        <AllServices serviceList={serviceList} />
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three

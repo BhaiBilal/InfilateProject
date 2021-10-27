@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MiddleContent from './MiddleContent'
 import {useLocation} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import ScrollIntoView from 'react-scroll-into-view';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -68,6 +69,7 @@ function CardDetails() {
     const classes = useStyles();
     const {id} = useParams()
     const [dataState,setDataState] = React.useState('')
+    const selector = useSelector((state) => (state));
 
     React.useEffect(() => {
 
@@ -81,12 +83,27 @@ function CardDetails() {
           }).catch(e=>{
             if(axios.isCancel(e)) return
           })   
-          //  setBlogData(result.data.Data)
-        
+          //  setBlogData(result.data.Data) 
           return ()=> cancel()
-  
         },[id]);
     
+
+    const AddtoCart = (id) => {
+
+    const formdata = new FormData()
+    formdata.append('webinar_id',id)
+
+      axios({
+          method:'POST',
+          url:'http://infilate.com/backend/public/api/app/cart/add-to-cart',
+          headers:{
+             "token":selector.userLoginLogout.token,
+             "Content-Type":"multipart/form-data"
+          },
+          data:formdata
+      }).then(res => console.log(res))
+      .catch(err=> console.log(err))
+    }
 
     return (
         <div className = "webinar-details">
@@ -118,7 +135,7 @@ function CardDetails() {
                         <span>*Exclusive of Taxes</span>
                     </div>
                     <div className = "webinar-details-lower-card1-actions">
-                        <button>Add to cart</button>
+                        <button onClick={() => AddtoCart(dataState.id)}>Add to cart</button>
                     </div>
                 </div>
             </div>

@@ -147,25 +147,32 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import DashBoard from './Dashboard/Dashboard'
 import SearchList from 'components/SearchList/SearchList' 
 import Pressroom from "components/Pressroom/Pressroom";
+import Cart from 'components/cart/Cart'
+import { cartDispatch } from 'redux/CartItemsSlice';
+import axios from 'axios'
 
 
 
 export default function App() {
-  // return <AnimationRevealPage disabled></AnimationRevealPage>;
-
   const selector = useSelector((state) => (state));
-  const conditional_Registration = () => {
-
-    if(selector.userLoginLogout.role_id!=='3' || selector.userLoginLogout.role_id!=='2' ){
-
-      return (
-        <Switch>
-        
-        
-        </Switch>
-      )
-    }
+  const [cartItems,setCartitems] = React.useState([])
+  const dispatch = useDispatch()
+  const fetchTotalCartItems = () => {
+    axios({
+        method:'POST',
+        url:'http://infilate.com/backend/public/api/app/cart/items-in-cart',
+        headers:{
+            'token':selector.userLoginLogout.token
+        }
+    }).then(res => {
+        setCartitems(res.data.Data)
+        const count = res.data.Data.length
+        dispatch(cartDispatch({count}))
+    })
   }
+   
+  fetchTotalCartItems()
+ 
 
   
   return (
@@ -205,9 +212,7 @@ export default function App() {
         {
             selector.userLoginLogout.role_id=='2' ?   <Route path="/Dashboard"> <DashBoard /> </Route> : null 
         }
-        
-        
-        
+
         {
           selector.userLoginLogout.role_id!=='2' && selector.userLoginLogout.role_id!=='3'  ?  <Route path="/RegisterUser"> <Signup /></Route>  :
             null
@@ -219,8 +224,7 @@ export default function App() {
           }
 
          {
-          selector.userLoginLogout.role_id=="" ?  <Route path="/Login">  <Login/></Route> :
-            null
+          selector.userLoginLogout.role_id=="" ?  <Route path="/Login">  <Login/></Route> : null
           } 
 
 
@@ -242,6 +246,10 @@ export default function App() {
         <Route path="/product"><Product /></Route>
         <Route path="/Allwebinar"><AllWebinars /></Route>
         <Route path="/SearchList/:id"><SearchList /></Route>
+        {selector.userLoginLogout.isUserLoggedIn == true ? <Route path="/addToCart"><Cart cartItems={cartItems} /></Route> :
+        null
+        }
+        
         {/* <Route path="/">
           <HotelTravelLandingPage />
         </Route> */}

@@ -66,4 +66,12 @@ export default makeStyles((theme) => ({
 
   },
 
+  paraStyle:{
+    fontWeight:'bold',
+    '&:hover':{
+      cursor:'pointer',
+      textDecoration:'underline'
+    }
+  }
+
 }));

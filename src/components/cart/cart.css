@@ -1,0 +1,25 @@
+
+.cart_items_Heading {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.car_item_content {
+display: flex;
+padding-top: 10px;
+
+}
+
+p[target='web_name'] {
+font-size: 20px;
+flex-grow: 1;
+}
+
+.chip_container {
+        display: flex;
+        justify-content: center;
+        margin-top: -20px;
+        padding-bottom: 5px;
+    
+}

@@ -177,14 +177,18 @@ const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
 }
   return (
-    <Grid container style={matches1 ? {padding : "2rem 6rem", maxWidth : "1440px", margin : "2rem auto"} : {padding : "0rem 1rem"}}>
+    <Grid container style={matches1 ? {padding : "2rem 6rem", maxWidth : "1440px", margin : "2rem auto",display:'flex',justifyContent:'center'} : {padding : "0rem 1rem",}}>
 
       <div style={{display:'flex',justifyContent:'space-between',width:'inherit'}}>
     <h1 style = {{fontSize : "2rem", fontWeight : "700", marginBottom : "1.5rem"}}>Latest Blogs</h1>
 
-    <Button  variant="contained" color="primary" size="small" className={classes.button}>
+
+    <div className = "home-coupons-view">
+            <Link to = "/Mainblog">View all blogs</Link>
+          </div>
+    {/* <Button  variant="contained" color="primary" size="small" className={classes.button}>
         <Link to='/Mainblog'> View all blogs</Link>
-        </Button> 
+        </Button>  */}
         </div>
 
       <Grid item container style={{display:'flex',alignItems:'baseline'}}>

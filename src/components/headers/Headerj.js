@@ -256,6 +256,11 @@ function Headerj() {
         history.push({pathname:'/RegisterCorporate'})
     }
 
+    const handleCart = () => {
+        history.push({pathname:'/addToCart'})
+
+    }
+
 
     return (
         <>
@@ -278,8 +283,10 @@ function Headerj() {
                             <a>
 
                             <Profile handleProfile={handleProfile} handlelogin={handleLoginbtn} handlesignup={handleSignupbtn}
-                            handlecorporatesignup={handleCorporateSignupbtn}
+                            handlecorporatesignup={handleCorporateSignupbtn} handleCart={handleCart}
                             />
+
+                            
 
 
                             </a>
