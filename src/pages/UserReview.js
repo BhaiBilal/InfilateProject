@@ -11,6 +11,12 @@ import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7
 import {withStyles} from "@material-ui/core/styles";
 import StarIcon from '@material-ui/icons/Star'; 
 import {Divider, Grid} from "@material-ui/core";
+import Rating from '@mui/material/Rating';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import './userreview.css'
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -160,9 +166,9 @@ export default ({
                   {/* <img /> */}
                   <Grid container spacing={2}>
                       
-                    <Grid item md={4}><StarIcon/>{plan.review.user_rating} <br/> (2427)</Grid>
+                    <Grid item md={4}><StarIcon/>{ plan.review.average_review } <br/>( { plan.review.review_data.length } )</Grid>
                     <Grid item md={8}>
-                      <BorderLinearProgress variant="determinate" value={20} style={{marginTop:'5%'}}/>
+                    <BorderLinearProgress variant="determinate" value={20} style={{marginTop:'5%'}}/>
                     <BorderLinearProgress variant="determinate" value={50} style={{marginTop:'5%'}}/>
                     <BorderLinearProgress variant="determinate" value={70} style={{marginTop:'5%'}}/>
                     <BorderLinearProgress variant="determinate" value={30} style={{marginTop:'5%'}}/>
@@ -171,7 +177,7 @@ export default ({
                     
                   </Grid>
 
-                  <Grid container spacing={2} style={{marginTop:'10%'}}>
+                  {/* <Grid container spacing={2} style={{marginTop:'10%'}}>
                       
                       <Grid item md={6} >  <span className="mainFeature">Value for Money</span></Grid>
                       <Grid item md={6}> 
@@ -205,7 +211,7 @@ export default ({
                       <Grid item md={2} >  <span className="name">97%</span></Grid>
                       <Grid item md={10}> 
                       <span className="mainFeature">would recommend this app</span></Grid>
-                      </Grid>
+                      </Grid> */}
              
               {/* <span className="name">{plan.name}</span> */}
                 {/* <span className="priceAndDuration">
@@ -233,11 +239,42 @@ export default ({
                 ))}
               </PlanFeatures> */}
               <PlanFeatures>
-              <Subheading className="name">The point of using</Subheading>
+              {/* <Subheading className="name">The point of using</Subheading> */}
                 
                   <span key={index} className="feature">
-                    feature
+                    {/* { plan.review.review_data.map((v,i) => ) }  */}
                   </span>
+
+               <Grid>
+              { plan.review.review_data.map((v,i) => 
+            <Accordion key={i} style={{marginBottom:'10px'}}>
+            <AccordionSummary
+              // expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <div>
+              <div className='user_review_Container'>
+                     <img style={{ maxWidth: '30%' }} src='https://randomuser.me/api/portraits/men/77.jpg' />
+    
+                     <div style={{  }}>
+                     <p> {v.first_name} {v.last_name} </p>
+                     <Rating name="read-only" value={v.user_rating} readOnly size='small' />
+                     </div>
+    
+                     {/* <p> feedback </p> */}
+                     </div>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+            <p> feedback:- { v.feedback } </p>
+            <p> FAQ's </p>
+            <p> { v.questionsanswers } </p>
+            </AccordionDetails>
+          </Accordion>  
+              ) }
+               
+                 </Grid>  
                 
               </PlanFeatures>
               {/* <PlanAction>

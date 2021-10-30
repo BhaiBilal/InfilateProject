@@ -105,7 +105,7 @@ function SearchList() {
     const [visible, setVisible] = useState(6);
 
     const { id } = useParams()
-    console.log(id)
+    // console.log(id)
     const onLoadMoreClick = () => {
       setVisible(v => v + 6);
     };
@@ -140,8 +140,12 @@ function SearchList() {
 
     const history = useHistory();
     const handleClick = (post) => {
-  
-      history.push({pathname:`/webinarDetails/${post.id}`});
+        if( post.type == 'coupon') { history.push({pathname:`/Brand/${post.id}`}); }
+        else if( post.type == 'product') { history.push({pathname:`/AllCorporates`}); }
+        else if( post.type == 'service') { history.push({pathname:`/AllCorporates`}); }
+        else if( post.type == 'webinar') { history.push({pathname:`/webinarDetails/${post.id}`}); }
+        else if(post.type == 'blog') { history.push({pathname:`/blog-detail/${post.id}`}); }
+      // history.push({pathname:`/webinarDetails/${post.id}`});
       // console.log(post.webinar_name)
     }
 

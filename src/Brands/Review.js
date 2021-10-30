@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Grid from '@material-ui/core/Grid';
+
 import logo1 from "../images/logo7.png"
 import logo2 from "../images/logo8.png"
 import logo3 from "../images/logo10.png"
@@ -121,11 +121,7 @@ function Review() {
 
     return (
         <>
-            <h2 id='reviewID' className="top-heading-rev" style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "10px", marginLeft: "5rem" }}>Reviews </h2>
-            <Grid item style={{display: "flex",flexDirection: "row-reverse",marginTop: "-30px",paddingRight:'20px'}}>
-            <p>Write a Review</p>
-            </Grid>
-            
+            <h2 className="top-heading-rev" style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "10px", marginLeft: "5rem" }}>Reviews </h2>
             <Container style={{ width: "100%", backgroundColor: "#e1e5ea", padding: "50px" }}>
 
                 <div>

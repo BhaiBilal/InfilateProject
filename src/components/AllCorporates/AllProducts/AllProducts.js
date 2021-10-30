@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-function AllProducts({productList}) {
+function AllProducts({productList, arr2, setArr2, value}) {
 
     // const [productList,setProductList] = React.useState(products)
     const [type,setType] = React.useState('Most Recent')
@@ -25,6 +25,7 @@ function AllProducts({productList}) {
     const [postPerPage,setPostPerPage]= React.useState(10)
     const [open,setOpen] = React.useState(false)
     const [arr1,setArr1]= React.useState([])
+    
     const classes = useStyles()
     let modifiedArray = []
     productList.map((v,i) => modifiedArray.push(v))
@@ -115,7 +116,7 @@ function AllProducts({productList}) {
       // console.log(modifiedArray)
 
     const history = useHistory()
-    const passDatatoPage =(array) =>{
+    const passDatatoPage =(array) => {
         history.push({pathname:'/Comparison', Post:array});
         // console.log(array)
       }
@@ -130,7 +131,7 @@ function AllProducts({productList}) {
     return (
 
            <Box display='flex' justifyContent='space-between'>
-                <MenuFilters list={productList} type={type} setType={setType} />
+                <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
 
 
                 <Grid item md={8}>

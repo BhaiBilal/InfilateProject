@@ -31,10 +31,6 @@ import doodle from '../digital-marketing.jpg'
 import doodle1 from '../6.png'
 
 
-
-
-
-
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 const Heading = tw(SectionHeading)``;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
@@ -124,9 +120,10 @@ export default ({
   heading = greet,
 }) => {
 
+
   
   const state = useSelector(state => state.userLoginLogout);
-  console.log(state)
+  // console.log(state)
   heading += (state.isUserLoggedIn ? state.FullName : "Marketers")
 
   const [searchItem,setSearchItem] = useState('')
@@ -287,6 +284,7 @@ export default ({
 
 
   function compres(){
+
 
       return(
         <Container style={{ paddingTop: "9rem", marginBottom: "4rem", 

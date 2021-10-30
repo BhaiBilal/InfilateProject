@@ -104,7 +104,7 @@ const Data = [
     }
 ]
 
-function Domain() {
+function Domain({data}) {
 
     const [state, setState] = useState(Data)
     const handleBtn = (e) => {

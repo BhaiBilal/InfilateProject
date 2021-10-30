@@ -17,9 +17,10 @@ export default () => {
       axios(fetchUrl, {
         method: 'POST'
       }).then((res) => {
+        // console.log(res.data.Data)
         if(res && res.data && res.data.Data) {
           setWebinarsList(prevState => ([
-            ...prevState, ...res.data.Data.data
+            ...prevState, ...res.data.Data
           ]));
           setTotalWebinars(res.data.Data.total);
           setFetchUrl("" + res.data.Data.next_page_url)

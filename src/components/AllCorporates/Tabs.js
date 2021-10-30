@@ -43,30 +43,51 @@ function a11yProps(index) {
 
 export default function ContentTabs() {
   const [value, setValue] = React.useState(0);
+  const [arr2,setArr2]= React.useState([])
+  const [arr3,setArr3]= React.useState([])
   const [productList,setProductList] = React.useState([])
   const [serviceList,setServiceList] = React.useState([])
 
   React.useEffect(() => {
-    let cancel
+    const formdata = new FormData()
+    formdata.append('category_ids',`[${arr2}]`)
     axios({
       method:'POST',
       url:'http://infilate.com/backend/public/api/app/products/product-list',
-      cancelToken: new axios.CancelToken(c=>cancel=c)
-    }).then(res => setProductList(res.data.Data)).catch(err => { if(axios.isCancel(err)) return })
-    
+      headers: {
+        "Content-Type":"multipart/form-data"
+    },
+      data:formdata,
+    }).then(res => 
+      {
+        setProductList(res.data.Data)
+        console.log(res)
+      }
+       ).catch(err => { console.log(err)})
+  },[arr2])
+
+
+  React.useEffect(() => {
+       const formdata2 = new FormData()
+       formdata2.append('category_ids',`[${arr3}]`)
+
     axios({
       method:'POST',
       url:'http://infilate.com/backend/public/api/app/services/service-list',
-      cancelToken: new axios.CancelToken(c=>cancel=c)
-    }).then(res => setServiceList(res.data.Data)).catch(err => { if(axios.isCancel(err)) return })
+      headers: {
+        "Content-Type":"multipart/form-data"
+    },
+      data:formdata2,
+    }).then(res => setServiceList(res.data.Data)).catch(err => { console.log(err) })
    
-    return ()=> cancel()
-  },[])
+  },[arr3])
 
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  console.log(value)
 
   return (
     <Box sx={{ width: '100%' }} pt={22} px={45}>
@@ -79,11 +100,11 @@ export default function ContentTabs() {
       </Box>
       <TabPanel value={value} index={0}>
 
-        <AllProducts productList={productList} />
+        <AllProducts productList={productList} arr2={arr2} setArr2={setArr2} value={value} />
 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AllServices serviceList={serviceList} />
+        <AllServices serviceList={serviceList} arr3={arr3} setArr2={setArr3} />
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three

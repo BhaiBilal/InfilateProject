@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-function AllServices({serviceList}) {
+function AllServices({serviceList, arr3, setArr3}) {
 
     // const [productList,setProductList] = React.useState([])
     const [type,setType] = React.useState('Most Recent')
@@ -87,7 +87,7 @@ function AllServices({serviceList}) {
     return (
 <>
            <Box display='flex' style={{}} justifyContent='space-between'>
-                <MenuFilters  type={type} setType={setType} />
+                <MenuFilters  type={type} setType={setType} arr3={arr3} setArr3={setArr3} />
 
 
                 <Grid item md={8}>

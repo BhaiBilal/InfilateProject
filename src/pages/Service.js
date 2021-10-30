@@ -13,18 +13,21 @@ function Service() {
     const [customizedList,setCustomizedList] = React.useState([{}])
     
     React.useEffect(() => {
-        let cancel
+   
         axios({
           method: 'POST',
           url: 'http://infilate.com/backend/public/api/app/services/service-list',
-          cancelToken: new axios.CancelToken(c => cancel = c)
+          data:{
+              category_ids:`[]`
+          },
+   
         }).then(res => {
           setList(res.data.Data)
   
         }).catch(e => {
-          if (axios.isCancel(e)) return
+          console.log(e)
         })
-        return () => cancel()
+   
       }, [])
 
   

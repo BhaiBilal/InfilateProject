@@ -128,12 +128,12 @@ function Headerj() {
 
     useEffect(() => {
         let cancel
-        axios('http://infilate.com/backend/public/api/app/webinars/webinar-list', {
+        axios('http://infilate.com/backend/public/api/app/webinars/webinar-list-home', {
           method: 'POST',
           cancelToken: new axios.CancelToken(c=>cancel=c)
         }).then((res) => {
-            // console.log(res.data.Data.data)
-          setWebinar(res.data.Data.data)
+            // console.log(res)
+          setWebinar(res.data.Data)
         }).catch(e=>{
           if(axios.isCancel(e)) return
         })
@@ -161,17 +161,17 @@ function Headerj() {
         },[]);
 
         React.useEffect(() => {
-            let cancel
+     
               axios('http://infilate.com/backend/public/api/app/products/product-list', {
                 method: 'POST',
-                cancelToken: new axios.CancelToken(c=>cancel=c)
+                data:{
+                    "category_ids":'[]'
+                  },
               }).then((res) => {
-                //   console.log(res)
                 setCompareData(res.data.Data)
               }).catch(e=>{
-                if(axios.isCancel(e)) return
+                    console.log(e)
               })      
-              return ()=> cancel()
             },[]);
        
 
