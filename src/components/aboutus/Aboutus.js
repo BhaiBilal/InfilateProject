@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 function Aboutus() {
 
     const [data,setData] = React.useState([])
-    let content = ''
+    let content = '' 
 
     React.useEffect(() => {
         let cancel
