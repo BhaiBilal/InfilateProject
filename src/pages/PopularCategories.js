@@ -137,7 +137,7 @@ export default ({
     
   };
 
-
+// console.log(selectedIndex)
 
   return (
     // <AnimationRevealPage>

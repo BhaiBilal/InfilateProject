@@ -88,7 +88,7 @@ export default ({
       method: 'POST',
       cancelToken: new axios.CancelToken(c=>cancel=c)
     }).then((res) => {
-      console.log(res.data.Data.next_page_url)
+      // console.log(res.data.Data.next_page_url)
       setWebinar(res.data.Data.filter((v,i)=>v.is_featured==1))
     }).catch(e=>{
       if(axios.isCancel(e)) return

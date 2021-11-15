@@ -124,17 +124,17 @@ export default ({index}) => {
     
       axios(`http://infilate.com/backend/public/api/apps/coupon/coupon-list/${index}`, {
         method: 'POST',
-        cancelToken: new axios.CancelToken(c=>cancel=c)
+     
       }).then((res) => {
 
         // console.log(res.data.Data)
         setCouponData(res.data.Data)
       }).catch(e=>{
-        if(axios.isCancel(e)) return
+        console.log(e)
       })   
       //  setBlogData(result.data.Data)
     
-      return ()=> cancel()
+     
 
     },[index]);
 
@@ -153,7 +153,11 @@ export default ({index}) => {
               <Link to = {`/Brand/${coupon.id}`} key = {`coupon${index}`} >
               <div className = "home-coupons-card">
                 <div className = "img-wrapper">
-                  <img src = {`http://infilate.com/backend/public/images/${coupon.media}`} onError = {(e) => e.target.src = "/Assets/Images/coupon.png"} />
+
+                  
+                  <img src = {`http://infilate.com/backend/public/uploads/images/${coupon.media}`} onError = {(e) => e.target.src = "/Assets/Images/coupon.png"} /> 
+          
+                  
                 </div>
                 <div className = "home-coupons-content">
                   <h6>{coupon.name}</h6>

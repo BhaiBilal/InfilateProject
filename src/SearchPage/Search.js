@@ -159,7 +159,7 @@ function Search() {
     const [tab, setTab] = React.useState(1);
     const [places,setPlaces] = React.useState([])
     const [coordinates,setCoordinates] = React.useState({})
-    // const [bounds,setBounds] = React.useState({})
+    const [bounds,setBounds] = React.useState({})
     const [childClicked,setChildClicked] = React.useState(null)
     const [isLoading,setIsLoading] = React.useState(false)
     const [type, setType] = React.useState('restaurants')
@@ -188,12 +188,12 @@ function Search() {
     React.useEffect(()=> {
         setIsLoading(true)
         // console.log(coordinates.lat)
-        getPlacesData(coordinates.lat,coordinates.lng).then((data)=>{
+        getPlacesData(bounds.sw, bounds.ne).then((data)=> {
             
             setPlaces(data)
             setIsLoading(false)
         })
-    },[coordinates])
+    },[bounds])
 
 
     // let url='https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyAb080HceD21mYcPce8sUyS0guj5bYxSGU'
@@ -392,7 +392,7 @@ function Search() {
         <Grid item xs={12} md={8}>
             <Map 
                 setCoordinates={setCoordinates}
-                // setBounds={setBounds}
+                setBounds={setBounds}
                 coordinates={coordinates}
                 places={places}
                 setChildClicked={setChildClicked}
