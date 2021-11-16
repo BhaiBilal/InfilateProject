@@ -38,13 +38,13 @@ function Brandpage({data}) {
                             <a >Website</a>
                         </button>
                         </div>
-                        <div className="website-button1"><button>
+                        {/* <div className="website-button1"><button>
                             <div className="image-box">
                                 <img style={{ width: "30px", height: "30px", color: "white" }} src={globe} alt="image" />
                             </div>
                             <a >Compare</a>
                         </button>
-                        </div>
+                        </div> */}
 
                     </div>
                     </div>

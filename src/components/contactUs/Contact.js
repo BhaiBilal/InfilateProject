@@ -6,13 +6,42 @@ import { makeStyles,useTheme, } from '@material-ui/core/styles';
 // import sampleimg from './team-2.jpg'
 import './contactus.css'
 import axios from 'axios' 
-
-
+import { FormControl } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
 
     const [data,setData] = React.useState([])
+    const [inputs, setInputs] = React.useState({});
     let content = ''
+
+    const handleChange = (event) => {
+      const name = event.target.name;
+      // const name = event.target.email;
+      // const name = event.target.phone;
+      // const name = event.target.subject;
+      // const name = event.target.message;
+      const value = event.target.value;
+      setInputs(values => ({...values, [name]: value}))
+    }
+  
+
+    const notify = (message) => {   
+      toast(message);
+  }
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      axios({
+        method:'POST',
+        url:'http://infilate.com/backend/public/api/app/footer/contact-save',
+        data:inputs,
+      }).then(res => 
+        notify(res.data.Message)
+        )
+      .catch(err => console.log(err))
+    } 
     
     React.useEffect(() => {
         let cancel
@@ -50,35 +79,36 @@ function Contact() {
                 
                 
                 <Box mt={10} display='flex' justifyContent='center'>
-                <Grid container spacing={5} md={6} > 
+                <Grid container spacing={5} md={6}  > 
                    
                 <Grid item md={8}>
                 <p style={{fontSize:'40px',color:'#30296c',fontWeight:'700'}}>Drop us a line</p>
                     </Grid>
 
-                    <Grid item md={6}>
+                    <form onSubmit={handleSubmit}>
+                    <Grid item md={12}>
                     
-                    <input type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Name">
+                    <input onChange={handleChange} type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Name">
                     </input>
                     <br/>
                     <br/>
            
-                    <input type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Email Address">
-                    </input>     
-                    </Grid>
-
-                    <Grid item md={6}>
-                    <input type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Your Phone">
-                    </input>
-                    <br/>
-                    <br/>
-                 
-                    <input type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Subject">
+                    <input onChange={handleChange} type="text" name="email"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Email Address">
                     </input>     
                     </Grid>
 
                     <Grid item md={12}>
-                    <textarea style={{height:'168px'}} type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Message">
+                    <input onChange={handleChange} type="text" name="phone"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Your Phone">
+                    </input>
+                    <br/>
+                    <br/>
+                 
+                    <input onChange={handleChange} type="text" name="subject"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Subject">
+                    </input>     
+                    </Grid>
+
+                    <Grid item md={12}>
+                    <textarea onChange={handleChange} style={{height:'168px'}} type="text" name="message"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Message">
                     </textarea>
                     </Grid>
 
@@ -87,10 +117,11 @@ function Contact() {
                         <span>Send message</span>
                         </button>
                     </Grid>
-
+                    </form>
                 </Grid>
 
-            
+                <ToastContainer autoClose={4000}  />
+
                 {data && data.right_section && data.right_section.map((v,i) => 
                 <Grid style={{paddingLeft:'84px',paddingTop:'20px'}} key={i} item>
                 <p style={{color:'#f68820',display:'block',marginBottom:'5px'}}>{v.text_1}</p>

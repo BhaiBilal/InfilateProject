@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
         },
         paper: {
           backgroundColor: theme.palette.background.paper,
-          border: '2px solid #000',
+        //   border: '2px solid #000',
           boxShadow: theme.shadows[5],
           padding: theme.spacing(2, 4, 3),
           width:'300px',
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
         },
         paper2: {
             backgroundColor: theme.palette.background.paper,
-            border: '2px solid #000',
+            // border: '2px solid #000',
             boxShadow: theme.shadows[5],
             padding: theme.spacing(2, 4, 3),
             display:'flex',
@@ -244,9 +244,9 @@ function Domain({coupondata}) {
         }
     }
     const setting = {
-        dots: true,
+        // dots: true,
         infinite: true,
-        speed: 500,
+        speed: 200,
         slidesToShow: 4,
         slidesToScroll: 3,
         autoplay: true,
@@ -270,6 +270,8 @@ function Domain({coupondata}) {
         navigator.clipboard.writeText(data)   
         toast("code copied");
     }
+
+
     return (
         <>
         {/* <div style={{display:'flex',justifyContent:'center'}}>
@@ -354,22 +356,26 @@ function Domain({coupondata}) {
 
             <div className="domain-page" >
                 <div className="domain-button">
-                    <button style={{ paddingRight: "30px" }}>ALL (80)</button>
-                    <button value="All" onClick={handleBtn}>Hosting (40)</button>
+                    <button style={{ paddingRight: "30px" }}>ALL ({coupondata?.length})</button>
+                    {/* <button value="All" onClick={handleBtn}>Hosting (40)</button>
                     <button value="Domain" onClick={handleBtn}>Domain (30)</button>
 
-                    <button value="SSL" onClick={handleBtn}>SSL (10)</button>
+                    <button value="SSL" onClick={handleBtn}>SSL (10)</button> */}
                 </div>
-                <div className="couponcard-head">
+
+                { coupondata?.length > 0 ? <div className="couponcard-head">
                     <Slider {...setting} style={{ width: "80%" }}>
                         {
                             coupondata && coupondata.map((item,idx) => ((
                                 <div className="recommend-card" key={idx}>
                                     <div className="card-offer">{item.discount_amount}% off</div>
                                     <div className="card-logo">
-                                        <img src={`http://infilate.com/backend/public/uploads/images/${item.media}`} />
+                                        <img src={`http://infilate.com/backend/public/images/${item.media}`} />
                                     </div>
-                                    <div className="card-des"> 10% Off on Minimum Purchase of Rs. 399 (New User) </div>
+                                    <div className="card-des"> 
+                                    {/* 10% Off on Minimum Purchase of Rs. 399 (New User)  */}
+                                    { item.description }
+                                    </div>
                                     
                                     <div onClick={ () => handleGet(item)} className="card-coupon">Get Coupon </div>
                                     <div className="card-share" onClick={ () => handleCoupon(item)}><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div>
@@ -382,7 +388,14 @@ function Domain({coupondata}) {
                             )))
                         }
                     </Slider>
+                </div> 
+            :
+            <div >
+                <p style={{textAlign:'center'}}> No coupons found </p>
                 </div>
+                
+            }
+                
             </div>
         </>
     )

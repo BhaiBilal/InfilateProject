@@ -33,11 +33,11 @@ function Brand() {
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Home />
             <Brandpage data={data} />
             <Domain coupondata={data?.coupon} />
-            <Recommend />
+            <Recommend coupondata={data?.allcoupon && data.allcoupon[0]} />
             {/* <Frequently /> */}
             {/* <Review /> */}
 

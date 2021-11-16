@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { makeStyles, } from '@material-ui/core/styles';
 import banner from "../images/banner.png"
 import banner1 from "../images/banner1.png"
 import banner2 from "../images/banner2.png"
@@ -23,8 +24,102 @@ import logo8 from "../images/logo10.png"
 import logo9 from "../images/logo7.png"
 import logo10 from "../images/logo10.png"
 import { Container } from 'components/misc/Layouts';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import Input from '@mui/material/Input';
+import { Button } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        //   display: 'flex',
+        justifyContent: 'space-between',
+        width: 'inherit',
+
+        // '& .MuiCardMedia-root': {
+        //     backgroundSize: 'contain',
+
+        // },
+
+        '& .MuiAvatar-root': {
+            width: '47px',
+            height: '45px'
+        },
+    },
+    details: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    },
+    content: {
+        flex: '1 0 auto',
+    },
+    cover: {
+        height: '0',
+        paddingTop: '30.25%',
+
+    },
+    controls: {
+        display: 'flex',
+        alignItems: 'center',
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+    },
+    playIcon: {
+        height: 38,
+        width: 38,
+    },
+    avatar: {
 
 
+        fontSize: '14px',
+        backgroundColor: 'purple'
+    },
+
+
+    root2: {
+        position: 'absolute',
+        // border:'1px solid red',
+        top: '91px',
+        background: 'white'
+    },
+
+
+
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+      },
+  
+  
+      modal: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        paper: {
+          backgroundColor: theme.palette.background.paper,
+        //   border: '2px solid #000',
+          boxShadow: theme.shadows[5],
+          padding: theme.spacing(2, 4, 3),
+          width:'300px',
+          height:'max-content'
+        },
+        paper2: {
+            backgroundColor: theme.palette.background.paper,
+            // border: '2px solid #000',
+            boxShadow: theme.shadows[5],
+            padding: theme.spacing(2, 4, 3),
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'center',
+            width:'500px',
+            height:'300px',
+            gridGap:'55px'
+          },
+}));
 
 const Data = [
     {
@@ -126,41 +221,134 @@ const Data = [
     }
 ]
 
-function Recommend() {
-
+function Recommend({coupondata}) {
+    console.log(coupondata)
+    const classes = useStyles();
     const [recommend, setRecommend] = useState(Data)
+    const [open, setOpen] = React.useState(false);
+    const [open2, setOpen2] = React.useState(false);
+    const [data,setData] = React.useState('')
 
     const settings = {
 
         infinite: true,
-        speed: 500,
+        speed: 200,
         slidesToShow: 4,
         slidesToScroll: 3,
 
     };
 
+    const handleCoupon = (post) => {
+        handleOpen(post)
+        // history.push({pathname:'/CardDetails', Post:post});
+      
+      }
+
+      const handleOpen = (item) => {
+        setOpen(true);
+        setData(item)
+      };
+      const handleOpen2 = (item) => {
+        setOpen2(true);
+        setData(item)
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
+
+      const handleClose2 = () => {
+        setOpen2(false);
+      };
+
+      function handleGet(item) {
+        handleOpen2(item)
+        setData(item.code)
+      }
+    //   console.log(data)
+
+    const notify = () => {
+        navigator.clipboard.writeText(data)   
+        toast("code copied");
+    }
+
     return (
         <>
-            <h2 className="top-heading-rec" style={{ fontSize: "1.5rem", fontWeight: "600", marginLeft: "5rem" }}>Our Top Recommendations </h2>
-            <Container style={{ height: "60vh", padding: "40px 40px", backgroundColor: "#E0E0E0" }}>
-                <div>
+
+                                    <Modal 
+                                        aria-labelledby="transition-modal-title"
+                                        aria-describedby="transition-modal-description"
+                                        className={classes.modal}
+                                        open={open}
+                                        onClose={handleClose}
+                                        closeAfterTransition
+                                        BackdropComponent={Backdrop}
+                                        BackdropProps={{
+                                        timeout: 500,
+                                        }}
+                                    >
+                                        <Fade in={open}>
+                                           
+                                            <div className={classes.paper}>
+                                            <h2 id="transition-modal-title">{data.name}</h2>
+                                            <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
+                                            <p id='transition-modal-desc'>{data.description}</p>
+                                        </div>
+                                            
+                                        
+                                        </Fade>
+                                    </Modal>
+
+                                    <Modal 
+                                        aria-labelledby="transition-modal-title"
+                                        aria-describedby="transition-modal-description"
+                                        className={classes.modal}
+                                        open={open2}
+                                        onClose={handleClose2}
+                                        closeAfterTransition
+                                        BackdropComponent={Backdrop}
+                                        BackdropProps={{
+                                        timeout: 500,
+                                        }}
+                                    >
+                                        <Fade in={open2}>
+
+                                        <div className={classes.paper2}>
+                                        <Input defaultValue={data} readOnly  />
+                                        <Button onClick={() => notify()} variant="contained">Copy</Button>
+                                        <ToastContainer autoClose={1000}  />
+                                        </div>   
+                                        
+                                        </Fade>
+                                    </Modal>
+
+        <div className='top-heading-rec-container'>
+        <h2 className="top-heading-rec" style={{ fontSize: "1.5rem", fontWeight: "600",color:'#34495e' 
+        // marginLeft: "5rem"
+         }}>Our Top Recommendations </h2>
+        </div>
+            
+            <Container style={{ height: "60vh", 
+            // backgroundColor: "#E0E0E0"
+             }}>
+                <div style={{display:'flex',justifyContent:'center'}}>
 
                     <div className="recommend-head">
                         <Slider {...settings}>
                             {
-                                recommend.map((test) => ((
+                                coupondata?.map((item) => ((
                                     <div className="recommend-card">
                                        
                                         <div className="card-logo">
-                                            <img style={{ height: "130px", position: "relative" }} src={test.bannners} />
-                                            <div style={{ height: "45px",width:"170px",marginBottom:"140px",marginLeft:"170px", position:"absolute",backgroundColor:"white" }}>
-                                            <img style={{width:"100%",height:"100%"}} src={test.img} alt="image"/>
-                                            </div>
+                                            <img style={{ height: "130px", position: "relative" }} 
+                                            src={`http://infilate.com/backend/public/images/${item.media}`} 
+                                            />
+
                                         </div>
-                                        <div className="card-des"> 10% Off on Minimum Purchase of Rs. 399 (New User) </div>
+                                        <div className="card-des"> {item.description} </div>
                                         
-                                        <div className="card-coupon">Get Coupon </div>
-                                         <div className="card-share"><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div>
+                                        <div onClick={ () => handleGet(item)}  className="card-coupon">Get Coupon </div>
+                                         <div onClick={ () => handleCoupon(item)} className="card-share"><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div>
                                         <div className="card-price">
                                             
                                           
