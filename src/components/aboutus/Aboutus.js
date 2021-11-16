@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom:'140px',
         backgroundPosition:'center'
     }
-  }));
+  })); 
 
 
-
+ 
 function Aboutus() {
-
+  
     const [data,setData] = React.useState([])
-    let content = ''
+    let content = '' 
 
     React.useEffect(() => {
         let cancel
