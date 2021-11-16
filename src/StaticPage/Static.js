@@ -16,11 +16,8 @@ import Section1 from 'Template/Section1'
         <>
             <Router>
            <Switch>
-                     <Route exact path="/Static" component={Static1} />
-                     <Route exact path="/Static/:pageId" component={Section1} />
                     
-                 
-               
+    
                   
            </Switch>
        </Router>

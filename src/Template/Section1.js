@@ -1,26 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./Section1.css";
 
 const Section1 = (props) => {
     const [content, setContent] = React.useState([])
+    const { id } = useParams()
+   
 
     useEffect(() => {
         axios({
             method: 'POST',
             url: 'http://infilate.com/backend/public/api/app/footer/page-content',
             data:{
-                id:props.match.params.pageId
+                id:id
             },
      
           }).then(res => {
             setContent(res.data.Data)
+           
     
           }).catch(e => {
             console.log(e)
           })
-        // console.log(props.match.params.pageId)
+        console.log(id)
     }, [])
 
     console.log(content[0])

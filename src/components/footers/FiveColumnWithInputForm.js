@@ -252,6 +252,9 @@ const footer = [
                 <LinkListItem>
                   <Linki href="#">Help for Advertisers</Linki>
                 </LinkListItem>
+                <LinkListItem>
+                  <Link to='/other'>Others</Link>
+                </LinkListItem>
               </LinkList>
             </Column>
 

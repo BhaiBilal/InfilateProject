@@ -29,17 +29,17 @@ function Brand() {
           })
     },[])
 
-console.log(data?.coupon)
+// console.log(data?.coupon)
 
     return (
         <>
             <Header />
             <Home />
             <Brandpage data={data} />
-            <Domain data={data?.coupon} />
+            <Domain coupondata={data?.coupon} />
             <Recommend />
             <Frequently />
-            <Review />
+            {/* <Review /> */}
 
         </>
     )

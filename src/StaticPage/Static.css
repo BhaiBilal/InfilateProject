@@ -3,6 +3,7 @@
 
 .static-container {
     padding-top: 9rem;
+   
 }
 
 .static-section {
@@ -13,6 +14,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     grid-gap: 1rem;
+    
 }
 
 .static-section li {
@@ -22,6 +24,7 @@
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 3rem;
     padding-right: 1rem;
+    cursor: pointer;
 }
 
 .static-section li h6 {
