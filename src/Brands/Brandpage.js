@@ -13,7 +13,7 @@ function Brandpage({data}) {
 
     return (
         <>
-            <Container style={{  backgroundColor: "#E1E5EA" }}>
+            <Container style={{  backgroundColor: "white" }}>
 
                 <div>
                     <a href="#" className="brand-logo">
@@ -21,19 +21,13 @@ function Brandpage({data}) {
                             <img src={`http://infilate.com/backend/public/images/${data?.organisation && data.organisation[0].banner_media}` } />
                         </div>
                     </a>
+                    
+
+                    <div style={{display:'flex',justifyContent:'center'}}>
                     <div className="visit-button">
-                        <div style={{}}>
+                        <div style={{flexGrow:'0.4'}}>
                             <h1 style={{ fontSize: "2rem", fontWeight: "500", color: "#34495e" }}>{ data?.organisation && data.organisation[0].name }</h1>
-                            {/* <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span style={{ marginLeft: "10px", color: "#34495e" }}>4/5</span>
-                            </div> */}
-                           
-                           
+            
                         </div>
 
 
@@ -53,6 +47,10 @@ function Brandpage({data}) {
                         </div>
 
                     </div>
+                    </div>
+
+
+
                     <div>
                         <div className="review-buttons">
                                 <div className="review-buttonline">
@@ -71,45 +69,45 @@ function Brandpage({data}) {
                         : 
                         <div style={{ padding: "0px 10rem" }}>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> city: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].city } </p>
+                        <p> city: </p>
+                        <p style={{paddingLeft:'5px',fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].city } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> email: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].email } </p>
+                        <p > email: </p>
+                        <p style={{paddingLeft:'5px',fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].email } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> gstno: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].gst_no } </p>
+                        <p > gstno: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].gst_no } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> holdertype: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].holder_type } </p>
+                        <p > holdertype: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].holder_type } </p>
                         </div>
                         <div className='org_details_img'> 
-                        <p style={{fontWeight:'bold'}}> image: </p>
+                        <p> image: </p>
                         <img style={{}} src={`http://infilate.com/backend/public/images/${data?.organisation && data?.organisation[0].image}` } />
                         
                         </div>
                         <div className='org_details_img'> 
-                        <p style={{fontWeight:'bold'}}> aadhar: </p>
+                        <p> aadhar: </p>
                         <img style={{}} src={`http://infilate.com/backend/public/images/${data?.organisation && data?.organisation[0].aadhar}` } />
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> addressline1: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].address_line_1 } </p>
+                        <p> addressline1: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].address_line_1 } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> addressline2: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].address_line_2 } </p>
+                        <p> addressline2: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].address_line_2 } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> pincode: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].pincode } </p>
+                        <p> pincode: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].pincode } </p>
                         </div>
                         <div className='org_details'> 
-                        <p style={{fontWeight:'bold'}}> state: </p>
-                        <p style={{paddingLeft:'5px'}} >{ data?.organisation && data?.organisation[0].state } </p>
+                        <p> state: </p>
+                        <p style={{paddingLeft:'5px', fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].state } </p>
                         </div>
 
                    

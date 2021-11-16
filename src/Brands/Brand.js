@@ -38,7 +38,7 @@ function Brand() {
             <Brandpage data={data} />
             <Domain coupondata={data?.coupon} />
             <Recommend />
-            <Frequently />
+            {/* <Frequently /> */}
             {/* <Review /> */}
 
         </>

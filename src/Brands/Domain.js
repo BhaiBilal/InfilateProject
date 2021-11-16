@@ -16,7 +16,10 @@ import logo10 from "../images/logo8.png"
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
+import Input from '@mui/material/Input';
+import { Button } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -92,15 +95,19 @@ const useStyles = makeStyles((theme) => ({
           boxShadow: theme.shadows[5],
           padding: theme.spacing(2, 4, 3),
           width:'300px',
-          height:'300px'
+          height:'max-content'
         },
         paper2: {
             backgroundColor: theme.palette.background.paper,
             border: '2px solid #000',
             boxShadow: theme.shadows[5],
             padding: theme.spacing(2, 4, 3),
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'center',
             width:'500px',
-            height:'300px'
+            height:'300px',
+            gridGap:'55px'
           },
 }));
 
@@ -196,7 +203,6 @@ function Domain({coupondata}) {
 
     // console.log(coupondata)
     const classes = useStyles();
-    
     const [state, setState] = useState(Data)
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
@@ -258,17 +264,12 @@ function Domain({coupondata}) {
         handleOpen2(item)
         setData(item.code)
       }
-      console.log(data)
+    //   console.log(data)
 
-      function copyToClipboard(e) {
-        textAreaRef.current.select();
-        document.execCommand('copy');
-        // This is just personal preference.
-        // I prefer to not show the whole text area selected.
-        e.target.focus();
-        setCopySuccess('Copied!');
-      };
-
+    const notify = () => {
+        navigator.clipboard.writeText(data)   
+        toast("code copied");
+    }
     return (
         <>
         {/* <div style={{display:'flex',justifyContent:'center'}}>
@@ -316,7 +317,7 @@ function Domain({coupondata}) {
                                             <div className={classes.paper}>
                                             <h2 id="transition-modal-title">{data.name}</h2>
                                             <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
-                                            <p>{data.description}</p>
+                                            <p id='transition-modal-desc'>{data.description}</p>
                                         </div>
                                             
                                         
@@ -336,21 +337,12 @@ function Domain({coupondata}) {
                                         }}
                                     >
                                         <Fade in={open2}>
-                                           
-                                        {
-                                            document.queryCommandSupported('copy') &&
-                                                <div>
-                                                <button onClick={copyToClipboard}>Copy</button> 
-                                                {copySuccess}
-                                                </div>
-                                            }
-                                        <form>
-                                            <textarea
-                                            ref={textAreaRef}
-                                            value='Some text to copy'
-                                            />
-                                        </form>
-                                            
+
+                                        <div className={classes.paper2}>
+                                        <Input defaultValue={data} readOnly  />
+                                        <Button onClick={() => notify()} variant="contained">Copy</Button>
+                                        <ToastContainer autoClose={1000}  />
+                                        </div>   
                                         
                                         </Fade>
                                     </Modal>

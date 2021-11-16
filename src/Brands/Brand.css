@@ -140,10 +140,11 @@ justify-content: center;
   background-color: #ffffff;
   height: 90px;
   padding-top: 5px;
-  width: 100%;
+  width: 70%;
   display: flex;
-  
-  padding-left: 400px;
+  justify-content: flex-end;
+  align-items: center;
+  /* padding-left: 400px; */
 }
 
 
@@ -155,8 +156,8 @@ justify-content: center;
   width: 130px;
   height: 38px;
   border-radius: 30px;
-  margin-left: 450px;
-  margin-top: 20px;
+  /* margin-left: 450px; */
+  /* margin-top: 20px; */
 }
 .website-button button a {
   font-weight: bold;
@@ -174,9 +175,9 @@ justify-content: center;
   height: 38px;
   border-radius: 25px 5px 5px 25px;
   border-radius: 30px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   background-color: #1e62a7;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .website-button1 button a {
   font-weight: bold;
@@ -271,7 +272,7 @@ justify-content: center;
   border-radius: 3px;
   border: solid 1px #d9e0e2;
   background-color: #ffffff;
-
+  margin: 0rem auto;
   cursor: pointer;
 }
 
@@ -536,10 +537,20 @@ justify-content: center;
   padding: 5px;
 }
 
+.org_details p {
+  color: rgb(52, 73, 94);
+  font-weight: bold;
+}
+
 .org_details_img {
   display: flex;
   padding: 5px;
   align-items: center;
+}
+
+.org_details_img p {
+  color: rgb(52, 73, 94);
+  font-weight: bold;
 }
 
 .org_details_img img {
@@ -603,4 +614,16 @@ color: white;
 #coupon_card_btns2:hover {
   background-color: white;
   color: #d10610;
+}
+
+#transition-modal-title{
+  font-weight: bold;
+  margin-bottom: 7px;
+  color: rgb(52, 73, 94);
+}
+
+#transition-modal-desc{
+  margin-top: 7px;
+  font-size: 12px;
+  color: rgb(52, 73, 94);
 }
