@@ -77,7 +77,7 @@ function Static1() {
 
     const history = useHistory();
     const handleClick = (id) => {
-      history.push(`/static/${id}`);
+      history.push(`/others/${id}`);
       // console.log(post.webinar_name)
     }
 

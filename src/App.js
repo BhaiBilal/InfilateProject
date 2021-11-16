@@ -127,7 +127,6 @@ import CategoriesCheckBox from "components/CategoriesCheckBox/CategoriesChekBox"
 import ReviewBox from "components/CategoriesCheckBox/ReviewBox";
 import ReviewSubmit from "components/CategoriesCheckBox/ReviewSubmit";
 import AllWebinars from "pages/AllWebinars";
-import Static from "StaticPage/Static";
 import Static1 from "StaticPage/Static1"
 import Tabs from './components/AllCorporates/Tabs'
 import MainBlog from "BlogSection/MainBlog";
@@ -150,6 +149,7 @@ import Pressroom from "components/Pressroom/Pressroom";
 import Cart from 'components/cart/Cart'
 import { cartDispatch } from 'redux/CartItemsSlice';
 import axios from 'axios'
+import Section1 from "Template/Section1";
 
 
 
@@ -206,7 +206,8 @@ export default function App() {
             <Route path="/ReviewSelect"> <ReviewSelect /></Route>
             <Route path="/webinarDetails/:id"> <CardDetails /></Route>
             
-        <Route path="/Static"> <Static /> </Route> 
+        <Route path="/other"> <Static1 /> </Route> 
+        <Route path="/others/:id"> <Section1 /> </Route> 
         
 
         {

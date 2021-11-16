@@ -93,6 +93,11 @@
   width: 90%;
 }
 
+.couponcard-head {
+display: flex;
+justify-content: center;
+}
+
 .card {
   width: 255px;
   height: 305px;
@@ -235,6 +240,7 @@
   color: #34495e;
   font-family: "Barlow", sans-serif;
   transition: all 0.5 ease;
+  cursor: pointer;
 }
 .rev1:hover {
   border-bottom: 2px solid #34495e;
@@ -248,6 +254,7 @@
   color: #34495e;
   font-family: "Barlow", sans-serif;
   transition: all 0.5 ease;
+  cursor: pointer;
 }
 
 .rev2:hover {
@@ -466,7 +473,7 @@
   width: 100%;
   height: auto;
   background-color: white;
-  margin-right: ;
+  /* margin-right: ; */
 }
 
 .checked {
@@ -475,7 +482,7 @@
 
 /*----------------------------SLIDER--------------*/
 
-.slick-next {
+/* .slick-next {
   background-color: transparent;
   width: 45px;
   height: 45px;
@@ -508,7 +515,7 @@
 
 .slick-track {
   margin-top: 30px;
-}
+} */
 
 .review-more {
   display: flex;
@@ -539,4 +546,61 @@
   width: 150px;
   height: 95px;
   padding-left: 7px;
+}
+
+/* new coupon card */
+
+.brand-coupon-card {
+  width: 300px;
+  height: 260px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin: 0rem auto;
+  grid-gap: 5px;
+}
+
+#discount_para{
+  color: #159816;
+  font-weight: bold;
+  text-align: center;
+}
+
+#discount_para-desc {
+font-size: 12px;
+text-align: center;
+}
+
+.coupon_card_btns{
+display: flex;
+flex-direction: column;
+justify-content: center;
+grid-gap:12px;
+margin-top: 8px;
+}
+
+.coupon_card_btns p{
+  text-align: center;
+  }
+
+
+#coupon_card_btns1{
+background: white;
+color: #d10610;
+}
+
+#coupon_card_btns1:hover{
+background: #d10610;
+color: white;
+}
+
+#coupon_card_btns2{
+
+  background-color: #d10610;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+#coupon_card_btns2:hover {
+  background-color: white;
+  color: #d10610;
 }
