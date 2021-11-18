@@ -26,6 +26,12 @@
   font-size: 1rem;
   font-weight: 700;
   color: #ff4032;
+  cursor: pointer;
+  width: max-content;
+}
+
+.service-container li h3:hover {
+  text-decoration: underline;
 }
 
 .service-container li ul li span {

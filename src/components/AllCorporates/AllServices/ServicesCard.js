@@ -61,7 +61,7 @@ function ServicesCard({list,handleCompare}) {
 
      <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
-     <Grid style={{paddingLeft:'10px'}} item xs={8}>
+     <Grid style={{paddingLeft:'10px'}} item md={8}>
 
      <p className={classes.paraStyle} 
    //   className={classes.headingpara}
@@ -73,8 +73,8 @@ function ServicesCard({list,handleCompare}) {
      <p>(477)</p>
      <p> {item.type} </p>
      </Grid>
-     <Grid item xs={4} style={{display:'flex',flexDirection:'column',paddingTop:"10px", paddingRight:"10px" }}>
-     <Button variant="contained" color="primary" >
+     <Grid item md={3} style={{display:'flex',flexDirection:'column',paddingTop:"10px", paddingRight:"10px" }}>
+     <Button size='small' variant="contained" color="primary" >
      <Typography variant="button" display="block">
      Visit website
      </Typography>

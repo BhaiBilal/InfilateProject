@@ -275,7 +275,7 @@ export default ({
               ) }
                
                  </Grid>  
-                
+                <p id='see-more-reviews'>see more reviews</p>
               </PlanFeatures>
               {/* <PlanAction>
                 <BuyNowButton>{primaryButtonText}</BuyNowButton>

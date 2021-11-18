@@ -2,3 +2,13 @@
 
     display: flex;
 }
+
+#see-more-reviews {
+    cursor: pointer;
+    color: #243e63;
+    font-weight: 600;
+}
+
+#see-more-reviews:hover{
+    text-decoration: underline;
+}

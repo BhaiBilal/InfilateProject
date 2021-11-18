@@ -103,9 +103,11 @@ function Pressroom() {
                     <img src={`http://infilate.com/backend/public${v.image}`} />
                     <p id='ist_line_1214'> {v.title} </p>
                     <div className='text-ellipsis--2'>
-                    <p target='give_padding'> {v.description} </p>
+                    <p target='give_padding'>
+                    <div dangerouslySetInnerHTML={{__html: `${v.description}`}} />
+                     </p>
                     </div>
-                    <div style={{display:'flex',justifyContent:'center'}}>
+                    <div style={{display:'flex',justifyContent:'center',marginTop:'15px'}}>
                     <a href={`${v.url}`} >
                     <button>Learn more </button>
                     </a>
@@ -148,7 +150,7 @@ function Pressroom() {
                     
                         <div style={{display:'flex',justifyContent:'space-between'}}>
                         <p target='press_release'> {v.title} </p>
-                        <p target='date_style'> { v.created_at } </p>
+                        <p target='date_style'> { v.created_at.slice(0,10) } </p>
                         </div>
                         <div className="text-ellipsis--2">
                         <a href={`${v.url}`} >     

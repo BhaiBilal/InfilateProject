@@ -108,7 +108,7 @@ export default ({
 
 },[location])
 
-console.log(dataState)
+// console.log(dataState)
 
   const handleTab1 =()=>{
     setTab1(true)

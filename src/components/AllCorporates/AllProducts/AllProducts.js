@@ -1,6 +1,6 @@
 import React from 'react'
 import useStyles from './Styles.js';
-import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
+import { CircularProgress, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 import MenuFilters from './MenuFilters'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import CompareIcon from '@material-ui/icons/Compare';
 import IconButton from '@material-ui/core/IconButton';
 import { useHistory } from "react-router-dom";
-
+import {Typography,Grid} from '@mui/material';
 
 
 function AllProducts({productList, arr2, setArr2, value}) {

@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-function AllServices({serviceList, arr3, setArr3}) {
+function AllServices( { serviceList, arr3, setArr3 } ) {
 
     // const [productList,setProductList] = React.useState([])
     const [type,setType] = React.useState('Most Recent')

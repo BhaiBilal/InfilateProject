@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import AllProducts from './AllProducts/AllProducts'
 import AllServices from './AllServices/AllServices'
 import axios from 'axios';
+import {useLocation} from 'react-router-dom'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,6 +48,7 @@ export default function ContentTabs() {
   const [arr3,setArr3]= React.useState([])
   const [productList,setProductList] = React.useState([])
   const [serviceList,setServiceList] = React.useState([])
+  const location= useLocation()
 
   React.useEffect(() => {
     const formdata = new FormData()
@@ -83,6 +85,14 @@ export default function ContentTabs() {
   },[arr3])
 
 
+  React.useEffect(()=>{
+    if(location?.Post == 1){
+      setValue(location?.Post)
+    }
+    // console.log(location?.Post)
+
+},[location])
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -90,7 +100,7 @@ export default function ContentTabs() {
   console.log(value)
 
   return (
-    <Box sx={{ width: '100%' }} pt={22} px={45}>
+    <Box sx={{ width: '100%' }} pt={22} px={25}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Products" {...a11yProps(0)} />
@@ -104,7 +114,7 @@ export default function ContentTabs() {
 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AllServices serviceList={serviceList} arr3={arr3} setArr2={setArr3} />
+        <AllServices serviceList={serviceList} arr3={arr3} setArr3={setArr3} />
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three

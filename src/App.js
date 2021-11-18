@@ -150,7 +150,7 @@ import Cart from 'components/cart/Cart'
 import { cartDispatch } from 'redux/CartItemsSlice';
 import axios from 'axios'
 import Section1 from "Template/Section1";
-
+import Seemorereviews from "components/SeeMoreReviews/Seemorereviews";
 
 
 export default function App() {
@@ -202,6 +202,7 @@ export default function App() {
          <Route path="/terms&Conditions"> <TermsOfService /></Route>
           <Route path="/Coupon"> <Coupon /></Route>
           <Route path="/AllCoupons"> <AllCoupon /></Route>
+          <Route path="/SeeMoreReviews"> <Seemorereviews /></Route>
             <Route path="/Review/:id"> <Review /></Route>
             <Route path="/ReviewSelect"> <ReviewSelect /></Route>
             <Route path="/webinarDetails/:id"> <CardDetails /></Route>

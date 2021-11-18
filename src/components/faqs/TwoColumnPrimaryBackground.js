@@ -6,6 +6,7 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
+import axios from 'axios'
 
 const PrimaryBackgroundContainer = tw(Container)`-mx-8 px-8 bg-primary-900 text-gray-100`;
 
@@ -67,13 +68,28 @@ export default ({
   const faqCol1 = [];
   const faqCol2 = [];
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
+  const [faqsData,setFaqsData] = useState([])
+  const [headingData,setHeadingData] = useState([])
+
+  React.useEffect(()=> {
+    axios({
+      method:'POST',
+      url:'http://infilate.com/backend/public/api/app/footer/qa',
+    }).then(res => {
+      setHeadingData(res.data.Data.section_1)
+      setFaqsData(res.data.Data.section_2)})
+    .catch(err => console.log(err))
+  },[])
+  
 
   const toggleQuestion = questionIndex => {
     if (activeQuestionIndex === questionIndex) setActiveQuestionIndex(null);
     else setActiveQuestionIndex(questionIndex);
   };
 
-  faqs.map((faq, index) => {
+  // console.log(headingData[0])
+
+  faqsData.map((faq, index) => {
     const renderedFaq = (
       <Faq  key={index} onClick={() => toggleQuestion(index)}>
         <Question>
@@ -113,9 +129,9 @@ export default ({
     <PrimaryBackgroundContainer style={{paddingTop:'88px',backgroundColor:'white'}}>
       <ContentWithPaddingXl>
         <HeadingContainer style={{color:'black'}}>
-          {subheading && <Subheading style={{color:'black'}}>{subheading}</Subheading>}
-          <Heading style={{color:'black'}}>{heading}</Heading>
-          <Description style={{color:'black'}}>{description}</Description>
+          {/* { headingData[0]?.text_1 && <Subheading style={{color:'black'}}>{ headingData[0].text_1 }</Subheading>} */}
+          <Heading style={{color:'black'}}>{ headingData[0]?.text_1 }</Heading>
+          <Description style={{color:'black'}}>{ headingData[0]?.description_1 }</Description>
         </HeadingContainer>
         <FaqsContainer>
           <FaqsColumn style={{color:'black'}}>{faqCol1}</FaqsColumn>

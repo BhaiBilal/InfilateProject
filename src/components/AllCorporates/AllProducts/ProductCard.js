@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import useStyles from './Styles.js';
-import {Typography,Grid} from '@material-ui/core';
+  import {Typography,Grid} from '@mui/material';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -59,18 +59,18 @@ function ProductCard({list,handleCompare}) {
 
      <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
-     <Grid style={{paddingLeft:'10px'}} item xs={8}>
+     <Grid style={{paddingLeft:'10px'}} item md={8}>
 
      <p className={classes.paraStyle}
    //   className={classes.headingpara}
      >{item.name}</p>
 
      <Rating name="read-only" value={`${item.review?.average_review}`} readOnly style={{fontSize:'22px'}} />
-     <p>(477)</p>
+     <p>({ item.review?.review_data?.length })</p>
      <p> {item.type} </p>
      </Grid>
-     <Grid item xs={4} style={{display:'flex',flexDirection:'column', paddingTop:"10px", paddingRight:"10px" }}>
-     <Button variant="contained" color="primary" style={{width:'98%'}}>
+     <Grid item md={3} style={{display:'flex',flexDirection:'column', paddingTop:"10px", paddingRight:"10px" }}>
+     <Button variant="contained" color="primary" size='small'>
      <Typography variant="button" display="block">
      Visit website
      </Typography>

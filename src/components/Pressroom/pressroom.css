@@ -95,8 +95,9 @@ p[target='inquiry_email'] {
 }
 
 p[target='big_heading'] {
-    font-size: 20px;
-    padding: 10px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
@@ -110,7 +111,8 @@ p[target='press_release'] {
 
 
 p[target='give_padding'] {
-padding:20px;
+margin-top: 10px;
+margin-bottom: 10px;
 
 }
 
@@ -152,10 +154,10 @@ p[target='date_style'] {
       font-weight: bold;
     }
 
-    p[target='give_padding'] {
+    /* p[target='give_padding'] {
         font-size: 14px;
         padding:5px;   
-    }
+    } */
 
     .card_view_2 button {
         font-size: 12px;
@@ -165,9 +167,9 @@ p[target='date_style'] {
   @media screen and (max-width: 868px) and (min-width:801px) {
 
 
-    p[target='give_padding'] {
+    /* p[target='give_padding'] {
         font-size: 13px;
         padding:5px;   
-    }
+    } */
 
   }

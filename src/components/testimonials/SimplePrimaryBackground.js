@@ -163,13 +163,14 @@ React.useEffect(() => {
   let cancel
   Axios('http://infilate.com/backend/public/api/app/blog/category/test/', {
       method: 'POST',
-      cancelToken: new axios.CancelToken(c=>cancel=c)
-    }).then(res=>setBlogData(res.data.Data))
-    .catch(e=>{
-      if(axios.isCancel(e)) return
-    })  
-     
-    return ()=> cancel() 
+      // cancelToken: new axios.CancelToken(c=>cancel=c)
+    }).then(res=> {
+        setBlogData(res.data.data)
+        // console.log(res)
+      })
+    .catch(e=> {
+      console.log(e)
+    })   
     
 },[]);
  
@@ -210,7 +211,7 @@ const handleCardClick=(item)=>{
         <div className="card-head"> 
           <Slider {...setting} style={{ width: "100%"}}  >
             {
-              blogData.map((item,index) => ((
+              blogData?.map((item,index) => ((
                 <div class="card" key={index} onClick={() => handleCardClick(item)}>
                   <p style={{ fontSize: `${matches == true ? '11px' : '16px'}`, 
                   fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>

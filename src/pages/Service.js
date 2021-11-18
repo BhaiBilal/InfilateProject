@@ -2,6 +2,7 @@ import React from 'react'
 import "./Service.css"
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom'
 
 
 
@@ -11,6 +12,7 @@ function Service() {
 
     const [list,setList] = React.useState([])
     const [customizedList,setCustomizedList] = React.useState([{}])
+    const history = useHistory()
     
     React.useEffect(() => {
    
@@ -30,6 +32,9 @@ function Service() {
    
       }, [])
 
+      const handleClick = () => {
+        history.push( {pathname:'/AllCorporates', Post:1} );
+      }
   
  
     return (
@@ -44,7 +49,8 @@ function Service() {
                         if(index < 4) {
                             return (
                                 <li>
-                                    <h3>{item.name}</h3>
+                                    
+                                    <h3 onClick={handleClick}>{item.name}</h3>
                                     <ul>
                                     {item.category ?
                                     item.category.map((v, j) => {
@@ -72,7 +78,7 @@ function Service() {
                         if(index >= 4 && index <= 7) {
                             return (
                                 <li>
-                                    <h3>{item.name}</h3>
+                                <h3 onClick={handleClick}>{item.name}</h3>
                                     <ul>
                                     {item.category ?
                                     item.category.map((v, j) => {
@@ -100,7 +106,7 @@ function Service() {
                         if(index >= 8 && index <= 11) {
                             return (
                                 <li>
-                                    <h3>{item.name}</h3>
+                                <h3 onClick={handleClick}>{item.name}</h3>
                                     <ul>
                                     {item.category ?
                                     item.category.map((v, j) => {
@@ -128,7 +134,7 @@ function Service() {
                         if(index >= 12 && index <= 15) {
                             return (
                                 <li>
-                                    <h3>{item.name}</h3>
+                                <h3 onClick={handleClick}>{item.name}</h3>
                                     <ul>
                                     {item.category ?
                                     item.category.map((v, j) => {
