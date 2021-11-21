@@ -115,13 +115,18 @@ function AllProducts({productList, arr2, setArr2, value}) {
         }
       // console.log(modifiedArray)
 
+
+
+
     const history = useHistory()
     const passDatatoPage =(array) => {
-        history.push({pathname:'/Comparison', Post:array});
-        // console.log(array)
+        history.push({pathname:`/Comparison/${array.map(v => v.id)}`});
+        // array.map((v,i) => console.log(v.id))
       }
 
     
+
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
     const indexOfLastPost=currentPage * postPerPage
     const indexOfFirstPost=indexOfLastPost - postPerPage
@@ -149,9 +154,7 @@ function AllProducts({productList, arr2, setArr2, value}) {
                 <div className={classes.btn}>
                 <Button onClick={()=>setOpen(v=>!v)} color="secondary" startIcon={<CompareIcon />}>{arr1.length}</Button>
                 {
-
                open === true ? <Paper elevation={3} style={{}}>
-
                  {arr1 && arr1.map((v,i)=>
                <Grid key={i} style={{display:'flex',alignItems:'center'}} item>
                <img style={{width:'55px',height:'43px',padding:'5px'}} 
@@ -172,7 +175,6 @@ function AllProducts({productList, arr2, setArr2, value}) {
              </Paper> :
              null
             }
-
             </div>
                 
            </Box> 

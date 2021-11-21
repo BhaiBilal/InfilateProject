@@ -119,6 +119,7 @@ export default ({
   if (!plans) plans = defaultPlans;
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
+  // console.log(data)
 
   return (
     <Container>
@@ -137,10 +138,10 @@ export default ({
           {data.map((plan, index) => (
             <Plan key={index}  style={{marginTop:'1rem'}}>
               <PlanHeader>
-              <span className="name">{plan.name}</span>
+              <span className="name">{plan?.product[0].name}</span>
                 <span className="priceAndDuration">
                   {/* <span className="name">{plan.durationPrices[activeDurationIndex]}</span> */}
-                  <span className="name">{plan.price}</span>
+                  <span className="name">{plan?.product[0].price}</span>
                   <span className="slash"> / </span>
                   {/* <span className="duration">{planDurations[activeDurationIndex].text}</span> */}
                 </span>
@@ -150,7 +151,9 @@ export default ({
               <PlanFeatures>
                 
                   <span key={index} className="feature">
-                    feature
+                  <div className='changeToDefault'>
+                  <div dangerouslySetInnerHTML={ {__html: plan?.product[0].product_feature}} />
+                  </div>
                   </span>
                 
               </PlanFeatures>

@@ -34,6 +34,9 @@ import { ChangeHistoryOutlined } from '@material-ui/icons';
 import Header from '../components/headers/Headerj'
 import { useStore } from './zustand'
 import { Typography } from '@material-ui/core';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -239,9 +242,17 @@ function CategoryPage(props) {
             setId(item.id)
          }
 
+         const notify = (message) => {   
+          toast(message);
+        }
+
          const reviewSelectHandler = () => {
-           if(!selector.userLoginLogout.isUserLoggedIn) {
+
+           if(selector.userLoginLogout.isUserLoggedIn == true) {
              props.next(checkedState, checkedState2);
+           }
+           else if(selector.userLoginLogout.isUserLoggedIn == false) {
+             notify('please log in to review')
            }
          }
 
@@ -399,6 +410,7 @@ function CategoryPage(props) {
                     </Container>
                     
             </Box>
+            <ToastContainer autoClose={4000}  />
         </div>
     )
 }

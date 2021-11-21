@@ -83,14 +83,9 @@ function ReviewSelect() {
       {
           data && data.map((item,index)=>
           <Grid key={index} item md={4} xs={12}>
- 
             <Button onClick={()=>handleClick(item.id)} size="large" variant="outlined" color="black" className={classes.btn}>{item.name}</Button>
-
-          </Grid>          
-          
+          </Grid>           
           )
-
-
       }
 
 

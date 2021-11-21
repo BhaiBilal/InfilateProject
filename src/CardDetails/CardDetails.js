@@ -19,6 +19,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EventIcon from '@material-ui/icons/Event';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +73,10 @@ function CardDetails() {
     const [dataState,setDataState] = React.useState('')
     const selector = useSelector((state) => (state));
 
+    const notify = (message) => {   
+        toast(message);
+    }
+
     React.useEffect(() => {
 
         let cancel
@@ -101,7 +107,10 @@ function CardDetails() {
              "Content-Type":"multipart/form-data"
           },
           data:formdata
-      }).then(res => console.log(res))
+      }).then(res => {
+            notify(res.data.Message)
+            // console.log(res)
+        })
       .catch(err=> console.log(err))
     }
 
@@ -140,7 +149,8 @@ function CardDetails() {
                 </div>
             </div>
             </div>
-        <MiddleContent data={dataState} />      
+        <MiddleContent data={dataState} /> 
+        <ToastContainer autoClose={4000}  />     
         </div>
     )
 }

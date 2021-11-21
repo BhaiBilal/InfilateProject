@@ -25,10 +25,15 @@ function Profile({handleProfile,handlelogin,handlecorporatesignup,handlesignup,h
                 "token":selector.userLoginLogout.token,
             }
           }).then(res=> {
+              console.log(res)
              alert('successfullt logged out',res) 
              dispatch(userLogoutRequest())
              dispatch(cartReset())
-          });
+          }).catch(e =>{
+            alert('successfullt logged out') 
+            dispatch(userLogoutRequest())
+            dispatch(cartReset())
+          })
         
     }
 

@@ -6,7 +6,7 @@ function Coupon() {
     return (
         <>
             <CouponMain />
-            <Coupontrending/>
+            {/* <Coupontrending/> */}
         </>
     )
 }

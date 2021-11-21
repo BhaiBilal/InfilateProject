@@ -166,6 +166,9 @@ export default ({
     },
   ]
 }) => {
+ 
+  // console.log(data)
+
   return (
     <Container>
       <ContentWithPaddingXl style={{paddingTop:'0rem'}}>
@@ -177,7 +180,7 @@ export default ({
         <Cards>
           {data.map((card, index) => (
             <Card key={index}  style={{marginTop:'1rem'}}>
-              <CardImage imageSrc={`http://infilate.com/backend/public/images/${card.media}`}  />
+              <CardImage imageSrc={`http://infilate.com/backend/public/images/${card.product[0].media}`}  />
               <CardContent>
                 <span className="position">{card.position}</span>
                 <span className="name">{card.name}</span>

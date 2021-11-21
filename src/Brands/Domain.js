@@ -17,7 +17,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Input from '@mui/material/Input';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -210,7 +210,7 @@ function Domain({coupondata}) {
     const [open2, setOpen2] = React.useState(false);
     const [data,setData] = React.useState('')
 
-
+    console.log(data)
 
     const handleOpen = (item) => {
         setOpen(true);
@@ -262,7 +262,7 @@ function Domain({coupondata}) {
 
       function handleGet(item) {
         handleOpen2(item)
-        setData(item.code)
+        setData(item)
       }
     //   console.log(data)
 
@@ -341,8 +341,10 @@ function Domain({coupondata}) {
                                         <Fade in={open2}>
 
                                         <div className={classes.paper2}>
-                                        <Input defaultValue={data} readOnly  />
+    
+                                        <Typography style={{textAlign:'center'}}> { data.code } </Typography>
                                         <Button onClick={() => notify()} variant="contained">Copy</Button>
+                                        <a style={{textAlign:'center'}} href={`${data.url}`} > {data.url} </a>
                                         <ToastContainer autoClose={1000}  />
                                         </div>   
                                         
@@ -357,6 +359,9 @@ function Domain({coupondata}) {
             <div className="domain-page" >
                 <div className="domain-button">
                     <button style={{ paddingRight: "30px" }}>ALL ({coupondata?.length})</button>
+                    <button style={{ paddingRight: "30px" }}>Code ({coupondata?.length})</button>
+                    <button style={{ paddingRight: "30px" }}>Deal ({coupondata?.length})</button>
+                    <button style={{ paddingRight: "0px" }}>Printed ({coupondata?.length})</button>
                     {/* <button value="All" onClick={handleBtn}>Hosting (40)</button>
                     <button value="Domain" onClick={handleBtn}>Domain (30)</button>
 

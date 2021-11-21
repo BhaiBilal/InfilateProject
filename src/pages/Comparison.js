@@ -24,8 +24,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
-import {useLocation} from 'react-router-dom'
-
+import {useLocation, useParams,} from 'react-router-dom'
+import axios from 'axios'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -100,13 +100,25 @@ export default ({
   const [tab3,setTab3] = React.useState(false)
   const [tab4,setTab4] = React.useState(false)
   const [dataState,setDataState] = React.useState([])
-  const location= useLocation()
+  let arrayString = ``
+  const { id } = useParams()
+  arrayString = `[${id}]`
 
   React.useEffect(()=>{
 
-    location.Post && setDataState(location.Post);
+    axios({
+      method:"POST",
+      url:"http://infilate.com/backend/public/api/app/products/product-list-compare",
+      data:{
+        product_id: arrayString
+      }
+    }).then(res => {
+      setDataState(res.data.Data)
+      // console.log(res)
+    })
+    .catch(e => console.log(e))
 
-},[location])
+},[])
 
 // console.log(dataState)
 

@@ -139,6 +139,8 @@ import Login from "Users/Login"
 import ScrollToTop from "./ScrollToTop";
 import AboutUs from './components/aboutus/Aboutus'
 import { useSelector, useDispatch } from 'react-redux'
+import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import { cartReset } from 'redux/CartItemsSlice';
 import ContactUs from 'components/contactUs/Contact'
 import FAQs from './components/faqs/TwoColumnPrimaryBackground'
 import TermsOfService from './pages/TermsOfService'
@@ -165,12 +167,19 @@ export default function App() {
             'token':selector.userLoginLogout.token
         }
     }).then(res => {
+        // console.log(res)
         setCartitems(res.data.Data)
         const count = res.data.Data.length
         dispatch(cartDispatch({count}))
+    }).catch(e => {
+      if(e) {
+        // dispatch(userLogoutRequest())
+        // dispatch(cartReset())
+      }
     })
   }
    
+
   fetchTotalCartItems()
  
 
@@ -182,9 +191,9 @@ export default function App() {
       <ScrollToTop />
       <Headerj/>
       <Switch>
-        <Route path="/components/:type/:subtype/:name">
-          <ComponentRenderer />
-        </Route>
+      <Route path="/components/:type/:subtype/:name">
+      <ComponentRenderer />
+      </Route>
         <Route path="/components/:type/:name">
           <ComponentRenderer />
         </Route>
@@ -197,15 +206,15 @@ export default function App() {
         <Route path="/AllCorporates"> <Tabs /></Route>
         <Route path="/MainBlog"> <MainBlog /></Route>
         <Route path="/BlogDetail/:id"> <BlogHead /></Route>
-         <Route path="/faQs"> <FAQs /></Route>
-         <Route path="/privacyPolicy"> <PrivacyPolicy /></Route>
-         <Route path="/terms&Conditions"> <TermsOfService /></Route>
-          <Route path="/Coupon"> <Coupon /></Route>
-          <Route path="/AllCoupons"> <AllCoupon /></Route>
-          <Route path="/SeeMoreReviews"> <Seemorereviews /></Route>
-            <Route path="/Review/:id"> <Review /></Route>
-            <Route path="/ReviewSelect"> <ReviewSelect /></Route>
-            <Route path="/webinarDetails/:id"> <CardDetails /></Route>
+        <Route path="/faQs"> <FAQs /></Route>
+        <Route path="/privacyPolicy"> <PrivacyPolicy /></Route>
+        <Route path="/terms&Conditions"> <TermsOfService /></Route>
+        <Route path="/Coupon"> <Coupon /></Route>
+        <Route path="/AllCoupons"> <AllCoupon /></Route>
+        <Route path="/SeeMoreReviews"> <Seemorereviews /></Route>
+        <Route path="/Review/:id"> <Review /></Route>
+        <Route path="/ReviewSelect"> <ReviewSelect /></Route>
+        <Route path="/webinarDetails/:id"> <CardDetails /></Route>
             
         <Route path="/other"> <Static1 /> </Route> 
         <Route path="/others/:id"> <Section1 /> </Route> 
@@ -236,7 +245,7 @@ export default function App() {
         <Route path="/thankyou"><ThankYou /></Route>
         <Route path="/domain"><Domain /></Route>
         <Route path="/tools"><Tools /></Route>
-        <Route path="/Comparison"><Comparison /></Route>
+        <Route path="/Comparison/:id"><Comparison /></Route>
         <Route path="/institute"><Institute /></Route>
         {/* <Route path="/map"><Map /></Route> */}
         <Route path="/category"><CategoriesCheckBox /></Route>

@@ -100,6 +100,8 @@ export default ({
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
 
+  console.log(data)
+
   return (
     <Container>
       <ContentWithPaddingXl style={{paddingTop:'0rem'}}>
@@ -118,7 +120,7 @@ export default ({
             <Plan key={index}  style={{marginTop:'1rem'}}>
               <PlanHeader>
                   {/* <img /> */}
-              <span className="name">{plan.name}</span>
+              <span className="name">{plan.product[0].name}</span>
                 {/* <span className="priceAndDuration">
                   <span className="name">{plan.durationPrices[activeDurationIndex]}</span>
                   <span className="slash"> / </span>
@@ -128,6 +130,16 @@ export default ({
                 {/* <span className="mainFeature">{plan.mainFeature}</span> */}
               </PlanHeader>
               <PlanFeatures>
+              <Subheading className="name">
+                { plan.product[0].content_description }
+                </Subheading>
+                {data.map((feature, index) => (
+                  <span key={index} className="feature">
+                    {feature.name}
+                  </span>
+                ))}
+              </PlanFeatures>
+              {/* <PlanFeatures>
               <Subheading className="name">There are many</Subheading>
                 {data.map((feature, index) => (
                   <span key={index} className="feature">
@@ -135,22 +147,14 @@ export default ({
                   </span>
                 ))}
               </PlanFeatures>
-              <PlanFeatures>
-              <Subheading className="name">There are many</Subheading>
-                {data.map((feature, index) => (
+              <PlanFeatures> */}
+              {/* <Subheading className="name">There are many</Subheading> */}
+                {/* {data.map((feature, index) => (
                   <span key={index} className="feature">
                     {feature.name}
                   </span>
-                ))}
-              </PlanFeatures>
-              <PlanFeatures>
-              <Subheading className="name">There are many</Subheading>
-                {data.map((feature, index) => (
-                  <span key={index} className="feature">
-                    {feature.name}
-                  </span>
-                ))}
-              </PlanFeatures>
+                ))} */}
+              {/* </PlanFeatures> */}
               <PlanAction>
                 <BuyNowButton>{primaryButtonText}</BuyNowButton>
               </PlanAction>

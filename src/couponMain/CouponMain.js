@@ -20,8 +20,10 @@ import clsx from 'clsx';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom";
+import { Grid } from '@mui/material'
+import './viewallcoupon.css'    
+import CustomPagination from './CustomPagination';
 
 const Data = [
     {
@@ -146,10 +148,16 @@ const useStyles = makeStyles((theme) => ({
 function Domain() {
 
     const [state, setState] = useState(Data)
-    const [couponData,setCouponData] = useState('')
+    const [posts,setPosts] = useState('')
     const [open, setOpen] = React.useState(false);
     const [data,setData] = React.useState('')
     const classes = useStyles();
+
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [postsPerPage] = React.useState(8);
+
+
+
 
     const handleOpen = (item) => {
         setOpen(true);
@@ -185,19 +193,13 @@ function Domain() {
             method: 'GET',
             cancelToken: new axios.CancelToken(c=>cancel=c)
           }).then((res) => {
-            setCouponData(res.data.Data)
+            setPosts(res.data.Data)
           }).catch(e=>{
-            if(axios.isCancel(e)) return
+              console.log(e)
           })   
           //  setBlogData(result.data.Data)
-        
-          return ()=> cancel()
   
         },[]);
-
-
-
-console.log(couponData.length)
 
 
     const setting = {
@@ -210,23 +212,30 @@ console.log(couponData.length)
         autoplaySpeed: 3000,
         cssEase: "linear"
     }
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber)
+    
     return (
         <>
 
-            <div style={{paddingTop:"160px",marginBottom:"120px"}} className="domain-page" >
+            <div style={{paddingTop:"160px",marginBottom:"120px"}} className="domain-page2" >
                 <div className="domain-button">
                     <Link to='/searchAllCoupon'>
-                    <button style={{ paddingRight: "30px" }}>ALL ({couponData.length})</button>
+                    <button style={{ paddingRight: "30px" }}>ALL ({posts.length})</button>
                     </Link>
                     <button value="All" onClick={handleBtn}>Coupon</button>
                   
                 </div>
-
-                <div className="card-head" >
-                    <Slider {...setting} style={{ width: "100%" }}>
+                <div className="card-head2-parent">
+                <div className="card-head2" >
                         {
-                            couponData && couponData.map((item,index) => ((
-                                <div key={index} className="recommend-card" onClick={()=>handleOpen(item)}>
+                            currentPosts && currentPosts.map((item,index) => ((
+                                <Grid key={index} item md={3}>
+                                <div style={{marginBottom:'20px'}} className="recommend-card" onClick={()=>handleOpen(item)}> 
                                     <div className="card-offer">{item.discount_amount}% off</div>
                                     <CardMedia
                                         className={classes.media}
@@ -241,39 +250,38 @@ console.log(couponData.length)
                                         <div className="right">Final Price</div>
                                         <div className="left">Rs. 12000</div>
                                     </div> */}
+                                    
                                 </div>
-   
-
-
+                                </Grid>
                             )))
                         }
-                    </Slider>
-
-
-                                      <Modal 
-                                        aria-labelledby="transition-modal-title"
-                                        aria-describedby="transition-modal-description"
-                                        className={classes.modal}
-                                        open={open}
-                                        onClose={handleClose}
-                                        closeAfterTransition
-                                        BackdropComponent={Backdrop}
-                                        BackdropProps={{
-                                        timeout: 500,
-                                        }}
-                                    >
-                                        <Fade in={open}>
-                                           
-                                            <div className={classes.paper}>
-                                            <h2 id="transition-modal-title">{data.name}</h2>
-                                            <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
-                                        </div>
-                                            
-                                        
-                                        </Fade>
-                                    </Modal>
                 </div>
+                </div>
+
+
+                <Modal 
+                         aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className={classes.modal}
+                        open={open}
+                        onClose={handleClose}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                        timeout: 500,
+                        }}
+                        >
+                            <Fade in={open}>
+                                           
+                                <div className={classes.paper}>
+                                <h2 id="transition-modal-title">{data.name}</h2>
+                                <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
+                                </div>
+                            
+                                </Fade>
+                                </Modal>
             </div>
+            <CustomPagination style={{marginTop:'10px'}} postPerPage={postsPerPage} totalPost={posts.length} paginate={paginate} />
         </>
     )
 }

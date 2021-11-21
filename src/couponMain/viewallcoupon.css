@@ -1,0 +1,14 @@
+.domain_page2 {
+
+}
+
+.card-head2-parent{
+    display: flex;
+    justify-content: center;
+}
+
+.card-head2{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}

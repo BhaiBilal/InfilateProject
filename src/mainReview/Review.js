@@ -18,9 +18,10 @@ import PropTypes from 'prop-types';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useParams } from "react-router-dom"
-import Container from '@material-ui/core/Container';
+import { Container } from '@mui/material';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
+import { useSelector, useDispatch } from 'react-redux'
 import { Assistant } from "@material-ui/icons";
 import axios from 'axios'
 
@@ -156,7 +157,7 @@ const useStyles = makeStyles((theme) => ({
   const [checkedState,setCheckedState] = React.useState([])
   const [textVal, setTextVal] = React.useState('')
   const [testValue, settestValue] = React.useState({})
-
+  const selector = useSelector((state) => (state));
 
 
 
@@ -177,6 +178,9 @@ if(item.name in testValue){
 
   axios('http://infilate.com/backend/public/api/app/reviews/review-add', {
     method: 'POST',
+    headers:{
+      token:selector.userLoginLogout.token
+    },
     data:{
     questionsanswers:'sdd',
     applied_on: item.type == 'product' ? 'products' : 'services' ,
@@ -189,19 +193,14 @@ if(item.name in testValue){
       if(res.status==200){
         alert('successfully reviewd')
       }
-
       else {
         alert('oops something went wrong')
       }
-      
-
-    
   }).catch(e=>{
     console.log(e)
+    alert('oops something went wrong')
   })
-
 }
-
 }
 
 
@@ -214,7 +213,6 @@ if(item.name in testValue){
     return [
       " Select",
       " Leave a Review",
-      "  Share on LinkedIn",
        "Finished",
       
     ];
@@ -277,68 +275,12 @@ if(item.name in testValue){
       case 2:
         return (
           <React.Fragment>
-            <TextField
-              id="address1"
-              label="Address 1"
-              variant="outlined"
-              placeholder="Enter Your Address 1"
-              fullWidth
-              margin="normal"
-              name="address1"
-            />
-            <TextField
-              id="address2"
-              label="Address 2"
-              variant="outlined"
-              placeholder="Enter Your Address 2"
-              fullWidth
-              margin="normal"
-              name="address2"
-            />
-            <TextField
-              id="country"
-              label="Country"
-              variant="outlined"
-              placeholder="Enter Your Country Name"
-              fullWidth
-              margin="normal"
-              name="country"
-            />
+            <Container style={{display:'flex', justifyContent:'center'}} maxWidth='md'>
+              <p> you have successfully reviewd </p>
+            </Container>
           </React.Fragment>
         );
-      case 3:
-        return (
-          <React.Fragment>
-            <TextField
-              id="cardNumber"
-              label="Card Number"
-              variant="outlined"
-              placeholder="Enter Your Card Number"
-              fullWidth
-              margin="normal"
-              name="cardNumber"
-            />
-            <TextField
-              id="cardMonth"
-              label="Card Month"
-              variant="outlined"
-              placeholder="Enter Your Card Month"
-              fullWidth
-              margin="normal"
-              name="cardMonth"
-            />
-            <TextField
-              id="cardYear"
-              label="Card Year"
-              variant="outlined"
-              placeholder="Enter Your Card Year"
-              fullWidth
-              margin="normal"
-              name="cardYear"
-            />
-          </React.Fragment>
-        );
-   
+
             
       
       default:
@@ -449,9 +391,10 @@ const handleChangeRating = (e,item) => {
                 <Box className="main_big_box-cls">
                   <Box>
                 
-  
 
-  {activeStep === steps.length ? (
+
+  {
+  activeStep === steps.length ? (
     <Typography variant="h3" align="center">
       Thank You 
     </Typography>
@@ -482,7 +425,7 @@ const handleChangeRating = (e,item) => {
         onClick={handleNext2}
         className={classes.btn}  
       >
-        {activeStep === steps.length - 1 ? "Finish" : <ArrowForwardIcon />}
+        {activeStep === steps.length - 2 ? "Finish" : <ArrowForwardIcon />}
       </Button>
            {/* <ContainedButtons/> */}
 
@@ -490,14 +433,9 @@ const handleChangeRating = (e,item) => {
       </div>
       </div>
     </React.Fragment>
-  )}
-
- 
-                      
-                
+  )
+  }    
             </Box>
-
-
       </Box>
       </div>
       </React.Fragment>

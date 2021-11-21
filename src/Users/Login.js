@@ -18,6 +18,8 @@ import axios from "axios"
 import { useSelector, useDispatch } from 'react-redux'
 import { userLoginRequest } from "redux/UserloginlogoutSlice";
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -117,6 +119,9 @@ export default ({
   const selector = useSelector((state) => console.log(state))
   const dispatch = useDispatch()
 
+  const notify = (message) => {   
+    toast(message);
+}
   const loginTo= (e)=>{
 
     e.preventDefault();
@@ -124,19 +129,22 @@ export default ({
     Axios.post('http://infilate.com/backend/public/api/auth/login',{
         email:email,
         password:password,
-        cancelToken: new axios.CancelToken(c=>cancel=c)
     }).then((response)=>{
+      notify(response.data.message)
         console.log(response)
         // console.log(response.data.token[1].email)
-        console.log(response)
-        const token=response.data.data.token
-        const email=response.data.data.email
-        const FullName=`${response.data.data.f_name}` + ` ${response.data.data.l_name}`
-        const role_id=response.data.data.role_id.toString()
-        // console.log(FullName)
-        dispatch(userLoginRequest({token, email,FullName,role_id}))
+        if(response.data.data.role_id=='3'){
+          const token=response.data.data.token
+          const email=response.data.data.email
+          const FullName=`${response.data.data.f_name}` + ` ${response.data.data.l_name}`
+          const role_id=response.data.data.role_id.toString()
+          // console.log(FullName)
+          dispatch(userLoginRequest({token, email,FullName,role_id}))
+        }
+
     }).catch(e=>{
-      if(axios.isCancel(e)) return
+      console.log(e.message)
+      notify("please enter all fields properly")
     })
 
   }
@@ -190,6 +198,7 @@ export default ({
           <IllustrationImage imageSrc={illustrationImageSrc} />
         </IllustrationContainer> */}
       </Content>
+      <ToastContainer autoClose={4000}  />
     </Container>
   </AnimationRevealPage>)
 };

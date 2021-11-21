@@ -97,7 +97,7 @@ export default function ContentTabs() {
     setValue(newValue);
   };
 
-  console.log(value)
+  // console.log(value)
 
   return (
     <Box sx={{ width: '100%' }} pt={22} px={25}>

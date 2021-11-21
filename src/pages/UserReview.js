@@ -143,6 +143,10 @@ export default ({
   if (!plans) plans = defaultPlans;
 
   const [activeDurationIndex, setActiveDurationIndex] = useState(0);
+  const [ value, setValue ] = useState()
+
+  console.log(data)
+
 
   return (
     <Container>
@@ -160,128 +164,131 @@ export default ({
         </PlanDurationSwitcher> */}
         </HeaderContainer>
         <PlansContainer>
-          {data.map((plan, index) => (
+          {data.map((plan, index) => 
             <Plan key={index}  style={{marginTop:'1rem'}}>
-              <PlanHeader>
-                  {/* <img /> */}
-                  <Grid container spacing={2}>
-                      
-                    <Grid item md={4}><StarIcon/>{ plan.review.average_review } <br/>( { plan.review.review_data.length } )</Grid>
-                    <Grid item md={8}>
-                    <BorderLinearProgress variant="determinate" value={20} style={{marginTop:'5%'}}/>
-                    <BorderLinearProgress variant="determinate" value={50} style={{marginTop:'5%'}}/>
-                    <BorderLinearProgress variant="determinate" value={70} style={{marginTop:'5%'}}/>
-                    <BorderLinearProgress variant="determinate" value={30} style={{marginTop:'5%'}}/>
-                    {/* <BorderLinearProgress variant="determinate" value={50} style={{marginTop:'5%'}}/> */}
+            <PlanHeader>
+                {/* <img /> */}
+                <Grid container spacing={2}>
+                    
+                  <Grid item md={4}><StarIcon/>
+                  { plan.review.average_review } <br/>( { plan.review.reviews.length } )
+                  </Grid>
+                  <Grid item md={8}>
+                  <BorderLinearProgress variant="determinate" value={20} style={{marginTop:'5%'}}/>
+                  <BorderLinearProgress variant="determinate" value={50} style={{marginTop:'5%'}}/>
+                  <BorderLinearProgress variant="determinate" value={70} style={{marginTop:'5%'}}/>
+                  <BorderLinearProgress variant="determinate" value={30} style={{marginTop:'5%'}}/>
+                  {/* <BorderLinearProgress variant="determinate" value={50} style={{marginTop:'5%'}}/> */}
+                  </Grid>
+                  
+                </Grid>
+
+                {/* <Grid container spacing={2} style={{marginTop:'10%'}}>
+                    
+                    <Grid item md={6} >  <span className="mainFeature">Value for Money</span></Grid>
+                    <Grid item md={6}> 
+                    <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
+                    </Grid>
+                  
+                  
+                    <Grid container spacing={2}>
+                    
+                    <Grid item md={6} >  <span className="mainFeature">Ease of Use</span></Grid>
+                    <Grid item md={6}> 
+                    <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
+                    </Grid>
+                    <Grid container spacing={2}>
+                    
+                    <Grid item md={6} >  <span className="mainFeature">Features</span></Grid>
+                    <Grid item md={6}> 
+                    <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
                     </Grid>
                     
-                  </Grid>
+                    <Grid container spacing={2}>
+                    
+                    <Grid item md={6} >  <span className="mainFeature">Customer Support</span></Grid>
+                    <Grid item md={6}> 
+                    <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
+                    </Grid>
 
-                  {/* <Grid container spacing={2} style={{marginTop:'10%'}}>
-                      
-                      <Grid item md={6} >  <span className="mainFeature">Value for Money</span></Grid>
-                      <Grid item md={6}> 
-                      <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
-                      </Grid>
+                 
+                    <Grid container spacing={2} style={{marginTop:'6%'}}>
                     
-                    
-                      <Grid container spacing={2}>
-                      
-                      <Grid item md={6} >  <span className="mainFeature">Ease of Use</span></Grid>
-                      <Grid item md={6}> 
-                      <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
-                      </Grid>
-                      <Grid container spacing={2}>
-                      
-                      <Grid item md={6} >  <span className="mainFeature">Features</span></Grid>
-                      <Grid item md={6}> 
-                      <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
-                      </Grid>
-                      
-                      <Grid container spacing={2}>
-                      
-                      <Grid item md={6} >  <span className="mainFeature">Customer Support</span></Grid>
-                      <Grid item md={6}> 
-                      <StarIcon/>  <StarIcon/> <StarIcon/><StarIcon/>  <StarIcon/>   </Grid>
-                      </Grid>
- 
-                   
-                      <Grid container spacing={2} style={{marginTop:'6%'}}>
-                      
-                      <Grid item md={2} >  <span className="name">97%</span></Grid>
-                      <Grid item md={10}> 
-                      <span className="mainFeature">would recommend this app</span></Grid>
-                      </Grid> */}
+                    <Grid item md={2} >  <span className="name">97%</span></Grid>
+                    <Grid item md={10}> 
+                    <span className="mainFeature">would recommend this app</span></Grid>
+                    </Grid> */}
+           
+            {/* <span className="name">{plan.name}</span> */}
+              {/* <span className="priceAndDuration">
+                <span className="name">{plan.durationPrices[activeDurationIndex]}</span>
+                <span className="slash"> / </span>
+                <span className="duration">{planDurations[activeDurationIndex].text}</span>
+              </span> */}
              
-              {/* <span className="name">{plan.name}</span> */}
-                {/* <span className="priceAndDuration">
-                  <span className="name">{plan.durationPrices[activeDurationIndex]}</span>
-                  <span className="slash"> / </span>
-                  <span className="duration">{planDurations[activeDurationIndex].text}</span>
-                </span> */}
-               
-                {/* <span className="mainFeature">{plan.mainFeature}</span> */}
-              </PlanHeader>
-              {/* <PlanFeatures>
-              <Subheading className="name">There are many</Subheading>
-                {plan.features.map((feature, index) => (
-                  <span key={index} className="feature">
-                    {feature}
-                  </span>
-                ))}
-              </PlanFeatures>
-              <PlanFeatures>
-              <Subheading className="name">Contrary to Popular</Subheading>
-                {plan.features.map((feature, index) => (
-                  <span key={index} className="feature">
-                    {feature}
-                  </span>
-                ))}
-              </PlanFeatures> */}
-              <PlanFeatures>
-              {/* <Subheading className="name">The point of using</Subheading> */}
-                
-                  <span key={index} className="feature">
-                    {/* { plan.review.review_data.map((v,i) => ) }  */}
-                  </span>
+              {/* <span className="mainFeature">{plan.mainFeature}</span> */}
+            </PlanHeader>
+            {/* <PlanFeatures>
+            <Subheading className="name">There are many</Subheading>
+              {plan.features.map((feature, index) => (
+                <span key={index} className="feature">
+                  {feature}
+                </span>
+              ))}
+            </PlanFeatures>
+            <PlanFeatures>
+            <Subheading className="name">Contrary to Popular</Subheading>
+              {plan.features.map((feature, index) => (
+                <span key={index} className="feature">
+                  {feature}
+                </span>
+              ))}
+            </PlanFeatures> */}
+            <PlanFeatures>
+            {/* <Subheading className="name">The point of using</Subheading> */}
+              
+                <span key={index} className="feature">
+                  {/* { plan.review.review_data.map((v,i) => ) }  */}
+                </span>
 
-               <Grid>
-              { plan.review.review_data.map((v,i) => 
-            <Accordion key={i} style={{marginBottom:'10px'}}>
-            <AccordionSummary
-              // expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <div>
-              <div className='user_review_Container'>
-                     <img style={{ maxWidth: '30%' }} src='https://randomuser.me/api/portraits/men/77.jpg' />
-    
-                     <div style={{  }}>
-                     <p> {v.first_name} {v.last_name} </p>
-                     <Rating name="read-only" value={v.user_rating} readOnly size='small' />
-                     </div>
-    
-                     {/* <p> feedback </p> */}
-                     </div>
-              </div>
-            </AccordionSummary>
-            <AccordionDetails>
-            <p> feedback:- { v.feedback } </p>
-            <p> FAQ's </p>
-            <p> { v.questionsanswers } </p>
-            </AccordionDetails>
-          </Accordion>  
-              ) }
-               
-                 </Grid>  
-                <p id='see-more-reviews'>see more reviews</p>
-              </PlanFeatures>
-              {/* <PlanAction>
-                <BuyNowButton>{primaryButtonText}</BuyNowButton>
-              </PlanAction> */}
-            </Plan>
-          ))}
+             <Grid>
+            { plan.review.reviews.slice(0,3).map((v,i) =>
+
+           <Accordion key={i} style={{marginBottom:'10px'}}>
+           <AccordionSummary
+             // expandIcon={<ExpandMoreIcon />}
+             aria-controls="panel1a-content"
+             id="panel1a-header"
+           >
+             <div>
+             <div className='user_review_Container'>
+                    <img style={{ maxWidth: '30%' }} src='https://randomuser.me/api/portraits/men/77.jpg' />
+   
+                    <div style={{ paddingLeft:'7px' }}>
+                    <p style={{color:'#243e63'}}> {v.f_name} {v.l_name} </p>
+                    <Rating name="read-only" value={v.user_rating} readOnly size='small' />
+                    </div>
+   
+                    {/* <p> feedback </p> */}
+                    </div>
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                  <p style={{fontWeight:'bold', color:'#243e63',marginBottom:'0.5rem'}}> feedback:-  </p>
+                  <span style={{fontSize:'13px',color:'#243e63'}}> { v.feedback } </span>
+                  {/* <p> FAQ's </p> */}
+                  {/* <p> { v.questionsanswers } </p> */}
+                  </AccordionDetails>
+                   </Accordion>            
+                  )}
+               </Grid>  
+              <p id='see-more-reviews'> see more reviews </p>
+            </PlanFeatures>
+            {/* <PlanAction>
+              <BuyNowButton>{primaryButtonText}</BuyNowButton>
+            </PlanAction> */}
+          </Plan>
+          )}
         </PlansContainer>
       </ContentWithPaddingXl>
       <DecoratorBlob1 />

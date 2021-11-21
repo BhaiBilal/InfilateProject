@@ -340,6 +340,13 @@
 
 }
 
+.changeToDefault pre{
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0px;
+}
+
 @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
 .scanfcode
 {
