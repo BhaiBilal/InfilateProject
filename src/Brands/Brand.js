@@ -17,6 +17,8 @@ function Brand() {
 
     const { id } = useParams()
     const [data, setData] = React.useState([])
+    const [coupondata, setCouponData] = React.useState([])
+    const [couponLength, setCouponLength] = React.useState({all:0,code:0,deal:0,printed:0})
 
     React.useEffect(() => {
         axios({
@@ -24,10 +26,41 @@ function Brand() {
             url: `http://infilate.com/backend/public/api/app/organisation/detail/${id}`,
           }).then(res => {
             setData(res.data.Data[0])
+            setCouponLength(prevState => ({
+              ...prevState,
+              all : res.data.Data[0].coupon.length,
+              code : res.data.Data[0].coupon.filter(v => v.type == 'code').length,
+              deal : res.data.Data[0].coupon.filter(v => v.type == 'deal').length,
+              printed : res.data.Data[0].coupon.filter(v => v.type == 'printed').length,
+            }))
+            setCouponData(res.data.Data[0].coupon)
           }).catch(e => {
             console.log(e)
           })
     },[])
+
+    console.log(couponLength)
+
+    const handleBtn = (e) => {
+      let word = e.target.value;
+      if (word === "All") {
+          setCouponData(data?.coupon)
+      }
+
+      else if (word === "Code") {
+          const filtered = data?.coupon.filter(data => data?.type === "code");
+          setCouponData(filtered)
+      }
+      else if (word === "Deal") {
+        const filtered = data?.coupon.filter(data => data?.type === "deal");
+        setCouponData(filtered)
+      }
+
+      else if (word === "Printed") {
+        const filtered = data?.coupon.filter(data => data?.type === "printed");
+        setCouponData(filtered)
+      }
+  }
 
 // console.log(data?.coupon)
 
@@ -36,7 +69,7 @@ function Brand() {
             {/* <Header /> */}
             <Home />
             <Brandpage data={data} />
-            <Domain coupondata={data?.coupon} />
+            <Domain coupondata={coupondata} handleBtn={handleBtn} couponLength={couponLength} />
             <Recommend coupondata={data?.allcoupon && data.allcoupon[0]} />
             {/* <Frequently /> */}
             {/* <Review /> */}

@@ -59,7 +59,7 @@ function Contact() {
       }, [])
 
 
-      console.log(data)
+      // console.log(data)
 
     return (
         <div style={{paddingTop:'160px'}}>
@@ -85,7 +85,7 @@ function Contact() {
                 <p style={{fontSize:'40px',color:'#30296c',fontWeight:'700'}}>Drop us a line</p>
                     </Grid>
 
-                    <form onSubmit={handleSubmit}>
+                    {/* <form onSubmit={handleSubmit}> */}
                     <Grid item md={12}>
                     
                     <input onChange={handleChange} type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Name">
@@ -113,11 +113,11 @@ function Contact() {
                     </Grid>
 
                     <Grid item md={12}>
-                    <button type="submit" class="default-btn" >
+                    <button onClick={handleSubmit} type="submit" class="default-btn" >
                         <span>Send message</span>
                         </button>
                     </Grid>
-                    </form>
+                    {/* </form> */}
                 </Grid>
 
                 <ToastContainer autoClose={4000}  />

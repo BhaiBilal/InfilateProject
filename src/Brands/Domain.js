@@ -20,6 +20,7 @@ import Input from '@mui/material/Input';
 import { Button, Typography } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { handleBreakpoints } from '@mui/system';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -199,18 +200,18 @@ const Data = [
     }
 ]
 
-function Domain({coupondata}) {
+function Domain({ coupondata, handleBtn, couponLength }) {
 
     // console.log(coupondata)
     const classes = useStyles();
-    const [state, setState] = useState(Data)
+    const [state, setState] = useState([])
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [data,setData] = React.useState('')
 
-    console.log(data)
+    console.log(state)
 
     const handleOpen = (item) => {
         setOpen(true);
@@ -228,26 +229,13 @@ function Domain({coupondata}) {
       const handleClose2 = () => {
         setOpen2(false);
       };
-    const handleBtn = (e) => {
-        let word = e.target.value;
-        if (word === "All") {
-            setState(Data)
 
-        }
-        else if (word === "Domain") {
-            const filtered = Data.filter(data => data.name === "Domain");
-            setState(filtered)
-        }
-        else if (word === "SSL") {
-            const filtered = Data.filter(data => data.name === "SSL");
-            setState(filtered)
-        }
-    }
+
     const setting = {
         // dots: true,
         infinite: true,
         speed: 200,
-        slidesToShow: 4,
+        slidesToShow: coupondata.length == 3 ? 3 : 4,
         slidesToScroll: 3,
         autoplay: true,
         autoplaySpeed: 3000,
@@ -270,7 +258,6 @@ function Domain({coupondata}) {
         navigator.clipboard.writeText(data)   
         toast("code copied");
     }
-
 
     return (
         <>
@@ -358,10 +345,10 @@ function Domain({coupondata}) {
 
             <div className="domain-page" >
                 <div className="domain-button">
-                    <button style={{ paddingRight: "30px" }}>ALL ({coupondata?.length})</button>
-                    <button style={{ paddingRight: "30px" }}>Code ({coupondata?.length})</button>
-                    <button style={{ paddingRight: "30px" }}>Deal ({coupondata?.length})</button>
-                    <button style={{ paddingRight: "0px" }}>Printed ({coupondata?.length})</button>
+                    <button value='All' onClick={handleBtn} style={{ paddingRight: "30px" }}>ALL ({couponLength?.all})</button>
+                    <button value='Code' onClick={handleBtn} style={{ paddingRight: "30px" }}>Code ({couponLength?.code})</button>
+                    <button value='Deal' onClick={handleBtn} style={{ paddingRight: "30px" }}>Deal ({couponLength?.deal})</button>
+                    <button value='Printed' onClick={handleBtn} style={{ paddingRight: "0px" }}>Printed ({couponLength?.printed})</button>
                     {/* <button value="All" onClick={handleBtn}>Hosting (40)</button>
                     <button value="Domain" onClick={handleBtn}>Domain (30)</button>
 
