@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CardItem from './CardItem'
 import List from './List/List'
 import Map from './map/Map'
@@ -16,7 +17,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';  
 import { getPlacesData } from '../api/api'
 import { Autocomplete } from '@react-google-maps/api';
+import axios from 'axios'
 import useStyles2 from './styles'
+import './style.css'
 
 
 const CssTextField = withStyles({
@@ -82,7 +85,9 @@ const useStyles = makeStyles((theme) => ({
     box: {
         height: "max-content",
         display: "flex",
-        flexDirection: "column",
+        justifyContent:'center',
+        // flexDirection: "column",
+        justifyContent:'center',
         paddingTop: "140px",
         paddingLeft: "20px",
         paddingBottom: "20px",
@@ -158,13 +163,17 @@ const useStyles = makeStyles((theme) => ({
 function Search() {
     const [tab, setTab] = React.useState(1);
     const [places,setPlaces] = React.useState([])
+    const [org,setOrg] = React.useState([])
     const [coordinates,setCoordinates] = React.useState({})
     const [bounds,setBounds] = React.useState({})
+    const [searchResult,setSearchResult] = useState([])
+    const [searchFilters,setSearchFilters] = useState([])
     const [childClicked,setChildClicked] = React.useState(null)
     const [isLoading,setIsLoading] = React.useState(false)
     const [type, setType] = React.useState('restaurants')
     const [rating, setRating] = React.useState('')
     const [autocomplete,setAutoComplete] = React.useState(null)
+    const matches = useMediaQuery('(max-width:710px)');
 
     const onLoad = (autoC) => {setAutoComplete(autoC)}
     const onPlaceChanged =()=> {
@@ -185,15 +194,33 @@ function Search() {
     },[])
 
 
-    React.useEffect(()=> {
-        setIsLoading(true)
-        // console.log(coordinates.lat)
-        getPlacesData(bounds.sw, bounds.ne).then((data)=> {
+    React.useEffect(() => {
+        axios({
+            method:'POST',
+            url:'http://infilate.com/backend/public/api/app/organisation/list',
+        }).then(res => {
+            setOrg(res.data.Data)
+        }).catch(e => console.log(e)
+        ) 
+    },[])         
+
+    
+    // React.useEffect(()=> {
+    //     setIsLoading(true)
+    //     // console.log(coordinates.lat)
+    //     axios({
+    //         method:'POST',
+    //         url:'http://infilate.com/backend/public/api/app/organisation/list',
+    //     }).then(res => {
+    //         console.log(res)
+    //     }).catch(e => console.log(e)
+    //     )
+    //     getPlacesData(bounds.sw, bounds.ne).then((data)=> {
             
-            setPlaces(data)
-            setIsLoading(false)
-        })
-    },[bounds])
+    //         setPlaces(data)
+    //         setIsLoading(false)
+    //     })
+    // },[bounds])
 
 
     // let url='https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyAb080HceD21mYcPce8sUyS0guj5bYxSGU'
@@ -208,184 +235,176 @@ function Search() {
     //     })
     // },[coordinates,bounds])
 
-    console.log(places)
+    // console.log(places)
 
 
 
     return (
         <div>
             <Box
-                component="span"
+                component="div"
                 mx={0} //margin
-
                 className={` ${classes.box} ${classes.insideBox}`}
+                display='flex'
+                justifyContent='center'
             >
-                {/* <Button variant="contained" color="primary" style={{ height: 35, width: 100, fontSize: "14px", background: "#424b5a" }}>
-                    Institute
-                </Button> */}
-                <br />
+            <div style={{  }} className="form-hero"  >
+            <div className="form-cont" 
+            // onFocus={handleBlur} 
+            // onBlur={handleBlur}
+            >
+    
+              <div className="category">
+                <ul className="category-item">
+                  <li className="category-list">
+                    <a className={tab===1 ? "tabs active" :"tabs"} onClick={() => { toggleTab(1) }} >Tools</a>
+                    <a className={tab===2 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Institute') }}   >Institute</a>
+                    <a className={tab===3 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Agency') }} >Agency</a>
+                  </li>
+                </ul>
+              </div>
 
-                <Grid container spacing={3}>
-                    <Grid style={{ padding: "0px" }} item xs={12}>
-                        <Box maxWidth="inherit">
+              <div style={{ display: "flex", marginLeft: "20px", marginRight: "20px", justifyContent: "space-between", backgroundColor: "white", borderRadius: "0 15px 15px 15px", boxShadow: "2px 4px 16px #888888" }}>
+               
+                <div class="col-12" style={{display: "flex",flexDirection: "column",position:'relative',width:'126%'}}>
+                  {/* <label class="visually-hidden" for="inlineFormInputGroupUsername"></label> */}
+                 
+                  <div className="flex-item" style={{ height: "50px", borderRadius: "20px" }}>
+                    <input  
+                    // onKeyUp={myFunction} 
+                    style={{ width: `${matches == true ? '142px' : '402px'}`, height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
+                  </div>
 
-                            {/* <HeadingContainer style={{ marginBottom: '3%', paddingLeft: "10rem" }}>
-                                <HeadingRow>
-                                    <Heading style={{ fontSize: '2rem', fontWeight: '600' }}>{heading}</Heading>
-                                </HeadingRow>
-                                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  <div 
+                //   onMouseEnter={handleMouse} 
+                //   onMouseLeave={handleMouse} 
+                  className="search_result_container2" 
+                //   style={themeStyles}
+                  >
+                   
+                   <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Webinars</p>
+                  {
+                      searchResult && searchResult.filter((v,i)=>v.type=='Webinars').map((item,index)=>
+                     
+                      <>
+                        <p 
+                        // onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p> 
+                      </>
+                      )}    
 
-                            </HeadingContainer> */}
-                            <div style={{ width: "100%", height: "220px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "#f6f6f6" }}>
-                                <div style={{ backgroundColor: "#f5f5f6" }} className="form-hero">
-                                    <div className="form-cont">
+                <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Coupons</p>
+                  {
+                     searchResult && searchResult.filter((v,i) => v.type=='Coupons').map((item,index) => 
+                     <>
+                        <p 
+                        // onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p> 
+                   </>
+                     )}
 
-                                        <div className="category">
-                                            <ul className="category-item">
-                                                <li className="category-list">
-                                                    {/* <a className={tab === 1 ? "tabs active" : "tabs"} onClick={() => { toggleTab(1) }} >Tools</a> */}
-                                                    <a className={tab === 2 ? "tabs active" : "tabs"} onClick={() => { toggleTab(2) }}   >Institute</a>
-                                                    {/* <a className={tab === 3 ? "tabs active" : "tabs"} onClick={() => { toggleTab(3) }} >Agency</a> */}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div style={{ overflow: "hidden", display: "flex", marginLeft: "20px", marginRight: "20px", justifyContent: "space-around", alignItems: "center", backgroundColor: "white", borderRadius: "0 15px 15px 15px", boxShadow: "2px 4px 16px #888888" }}>
-                                            <div class="col-12">
-                                                <label class="visually-hidden" for="inlineFormInputGroupUsername"></label>
-                                                <div className="flex-item" style={{ width: "400px", height: "50px", borderRadius: "20px" }}>
+<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Blogs</p>
+                  {
+                     searchResult && searchResult.filter((v,i) => v.type=="Blogs").map((item,index) => 
+                     <>
+                         <p 
+                        //  onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p>
+                   </>
+                   )}
 
+<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Products</p>
+                  {
+                     searchResult && searchResult.filter((v,i) => v.type=='Products').map((item,index) => 
+                     <>
+                        <p 
+                        // onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p> 
+                   </>
+                     )}
 
-                                                {/* <Autocomplete onload={onLoad} onPlaceChanged={onPlaceChanged}> */}
-                                              
-                                                <input style={{ width: "415px", height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
-                                              
-                                                {/* </Autocomplete> */}
-                                                    
-                                                </div>
-                                            </div>
-                                            <div style={{ display: "flex", justifyContent: "center" }}>
-                                                <div >
-
-                                                    <select className="select-style" id="inlineFormSelectPref">
-                                                        <option selected>Choose...</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div >
-
-                                                    <select className="select-style" id="inlineFormSelectPref">
-                                                        <option selected>Choose...</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div >
-
-                                                    <select className="select-style" id="inlineFormSelectPref">
-                                                        <option selected>Choose...</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-
-
-
-                                                <div >
-                                                    <button style={{ borderRadius: "10px", width: "160px", height: "50px" }} type="submit" className="search-btn"><a>Search</a></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-<br/>
-
-                                <Grid container spacing={2} style={{justifyContent:"center"}} >
-
-                                    <Grid style={{justifyContent:"space-between"}} container item xs={2}>
-                                     <Grid item xs={2}>
-                                     <p>price</p> 
-                                     </Grid>   
-                                    
-                                     <Grid item xs={4}>
-                                     <p>₹44,000+</p> 
-                                     </Grid>
-                                    <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
-                                        {/* <Button variant="outlined" size="large" color="#6495ed" className={classes.padding} fullWidth="true"
-                                            endIcon={<span style={{ fontSize: "inherit" }}>$ 1400+</span>}
-                                        >Price
-                                        </Button> */}
-                                    </Grid>
-
-                                    <Grid item xs={2}>
-                                        <Button variant="outlined" size="large" color="#424b5a" className={classes.padding} fullWidth="true"
-                                        >Free Services
-                                        </Button>
-                                    </Grid>
-
-                                    <Grid item xs={2}>
-                                        <Button variant="outlined" size="large" color="#424b5a" className={classes.padding} fullWidth="true"
-                                        >More Filters
-                                        </Button>
-                                    </Grid>
-
-                                </Grid>
-
-
-
-                                {/* <div style={{ width: "100%", backgroundColor: "#f5f5f6" }}>
-                                    <div  ><h1 style={{ fontSize: "1.2rem", fontWeight: "700", marginLeft: "180px", marginBottom: "10px" }}>We Compare multiple deals here</h1></div>
-
-                                </div> */}
-                                {/* <Grid style={{ backgroundColor: "#f5f5f6", paddingLeft: "11rem" }} container  >
-                                    <Grid item xs={2}>
-                                        <img style={{ width: "120px" }} src={logo1} />
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <img style={{ width: "120px" }} src={logo2} />
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <img style={{ width: "120px" }} src={logo3} />
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <img style={{ width: "120px" }} src={logo2} />
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <img style={{ width: "120px" }} src={logo5} />
-                                    </Grid> */}
-                                {/* <Grid item xs={2}>
-  <img src={logo6}/>
-  </Grid> */}
-                                {/* </Grid> */}
-                            </div>
-                            {/* <div className="down-button" >
-                                <button><a>I-metric</a></button>
-                                <button><a>Server</a></button>
-                            </div> */}
-
-
-                            {/* <DecoratorBlob1 />
-<DecoratorBlob2 /> */}
-                        </Box >
-                    </Grid>
-                </Grid>
+<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Services</p>
+                  {
+                     searchResult && searchResult.filter((v,i) => v.type=='Services').map((item,index) => 
+                     <>
+                        <p 
+                        // onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p> 
+                      </>
+                     )}
+                    </div> 
+                 
+                </div>
+                
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                   <div >
+    
+                    <select className="select-style" id="inlineFormSelectPref" 
+                    // onChange={handleSelectChange}
+                    >
+                      <option selected>Select...</option>
+                      { 
+                          searchFilters && searchFilters.map((item,index) => 
+                      <option key={index} value={item.id} > { item.name } </option>   
+                      ) }
+                      {/* <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option> */}
+                    </select>
+                  </div> 
+                  {/* <div >
+    
+                    <select className="select-style" id="inlineFormSelectPref">
+                      <option selected>Choose...</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div> */}
+                  {/* <div >
+    
+                    <select className="select-style" id="inlineFormSelectPref">
+                      <option selected>Choose...</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div> */}
+    
+    
+    
+                  <div >
+                    <button  style={{ borderRadius: "10px",
+                    //  width: `${matches == true ? '90px' : '160px'}`, 
+                    height: "50px" }}  
+                    // onClick={() => handleSearchbtn()} 
+                    className="search-btn"><a>Search</a></button>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
 
             </Box>
             
     <Grid container spacing={3} style={{width: '100%',}}>
         <Grid item xs={12} md={4}>
             <List 
-            places={places}
+            // places={places}
+            places={org}
             childClicked={childClicked}
             isLoading={isLoading}
             type={type}
             setType={setType}
             rating={rating}
             setRating={setRating}
+            setCoordinates={setCoordinates}
             />
             </Grid>
 
@@ -394,7 +413,8 @@ function Search() {
                 setCoordinates={setCoordinates}
                 setBounds={setBounds}
                 coordinates={coordinates}
-                places={places}
+                // places={places}
+                places={org}
                 setChildClicked={setChildClicked}
             />
             </Grid>

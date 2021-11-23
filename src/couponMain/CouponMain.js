@@ -224,7 +224,7 @@ function Domain() {
 
             <div style={{paddingTop:"160px",marginBottom:"120px"}} className="domain-page2" >
                 <div className="domain-button">
-                    <Link to='/searchAllCoupon'>
+                    <Link to='/searchMap'>
                     <button style={{ paddingRight: "30px" }}>ALL ({posts.length})</button>
                     </Link>
                     <button value="All" onClick={handleBtn}>Coupon</button>
@@ -244,7 +244,7 @@ function Domain() {
                                     />
                                     <div className="card-des">{item.name}</div>
                                     
-                                    <div className="card-coupon">Get Coupon </div>
+                                    <div className="card-coupon"> Get Coupon </div>
                                     {/* <div className="card-share"><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div> */}
                                     {/* <div className="card-price">
                                         <div className="right">Final Price</div>

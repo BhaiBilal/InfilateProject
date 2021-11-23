@@ -4,7 +4,7 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './Styles.js';
 
-const List = ({places, childClicked, isLoading,}) => {
+const List = ({places, childClicked, isLoading, setCoordinates}) => {
   const [elRefs, setElRefs] = useState([]);
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('restaurants')
@@ -51,6 +51,7 @@ const List = ({places, childClicked, isLoading,}) => {
                 place={place}
                 selected={Number(childClicked) === i}
                 refProp={elRefs[i]}
+                setCoordinates={setCoordinates}
                 />
               </Grid>
             )}

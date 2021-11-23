@@ -1,6 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
+  card:{
+    '&.MuiCardMedia-root':{
+      backgroundSize:'contain'
+    }
+  },
+
+  hover:{
+    '&:hover':{
+      textDecoration:'underline',
+      cursor:'pointer'
+    }
+  },
+
   chip: {
     margin: '5px 5px 5px 0',
   },

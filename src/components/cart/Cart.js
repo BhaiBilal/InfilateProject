@@ -38,6 +38,7 @@ function Cart({cartItems}) {
                 }
             }).then(res => {
                 if(res){
+                    // console.log(res)
                     var options = {
                         "key": "rzp_test_CedHCtKjGq02On", // Enter the Key ID generated from the Dashboard
                         "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -46,7 +47,8 @@ function Cart({cartItems}) {
                         "description": "Test Transaction",
                         "image": "https://example.com/your_logo",
                         "order_id": `${res.data.data.razor_id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                        "handler": function (response){
+                        "handler": function (response,res){
+                            SaveDetails(response,res)
                             alert(response.razorpay_payment_id);
                             alert(response.razorpay_order_id);
                             alert(response.razorpay_signature)
@@ -83,6 +85,20 @@ function Cart({cartItems}) {
       }
 
 
+      function SaveDetails(response,res){
+        axios({
+            method:'POST',
+            url:'http://infilate.com/backend/public/api/order/verifyPayment',
+            headers: {
+                "token": "$2y$10$zPx9IZCKSVxyakQxzzKUZ.m7vmhjFQ/j34UX04i.PMdqTQHRsYFzi", 
+            },
+            data:{"razorpay_payment_id":`${response.razorpay_payment_id}`,
+            "razorpay_order_id":`${response.razorpay_order_id}`,
+            "razorpay_signature":`${response.razorpay_signature}`,
+            "order_id":"order_619b33c79236b"}
+        }).then(res => console.log(res))
+        .catch(e => console.log(e.message))
+      }
 
         
 

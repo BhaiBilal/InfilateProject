@@ -235,7 +235,7 @@ export default function App() {
           }
 
          {
-          selector.userLoginLogout.role_id=="" ?  <Route path="/Login">  <Login/></Route> : null
+          selector.userLoginLogout.role_id!=="2" && selector.userLoginLogout.role_id!== "3" ?  <Route path="/Login">  <Login/></Route> : null
           } 
 
 
@@ -249,7 +249,7 @@ export default function App() {
         <Route path="/institute"><Institute /></Route>
         {/* <Route path="/map"><Map /></Route> */}
         <Route path="/category"><CategoriesCheckBox /></Route>
-        <Route path="/searchAllCoupon"><SearchPage /></Route>
+        <Route path="/searchMap"><SearchPage /></Route>
         <Route path="/allList"><SearchPage2 /></Route>
         <Route path="/aboutUs"><AboutUs /></Route>
         <Route path="/contactUs"><ContactUs /></Route>

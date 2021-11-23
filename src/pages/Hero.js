@@ -133,6 +133,7 @@ export default ({
   const [categoryID,setCategoryID] = useState(0)
   const classes = useStyles();
   const [tab, setTab] = useState(1);
+  const history = useHistory();
   const [visible,setVisible] = React.useState(false)
   const [mouseEnter,setMouseEnter] = React.useState(false)
   let divRef = React.useRef()
@@ -145,7 +146,16 @@ export default ({
   }
 
   const toggleTab = (index) => {
-    setTab(index )
+    if(index == 'Institute'){
+      history.push('/searchMap')
+    }
+
+    else if(index == 'Agency') {
+      history.push('/searchMap')
+    }
+    else {
+    setTab(index )  
+    } 
   }
 
   function myFunction(e) {
@@ -238,7 +248,7 @@ export default ({
         }
     }
 
-    const history = useHistory();
+    
     const handleClick = (v) =>{
 
         if(v.type=='Blogs'){
@@ -259,12 +269,9 @@ export default ({
   //  searchResult && searchResult.map((v,i)=> console.log(v))
 
     const handleBlur=(e)=>{
-
             if(mouseEnter!=true){
               setVisible(prev=>!prev)
-            }      
-            
-        
+            }        
     }
 
     const handleMouse = () =>{  
@@ -352,8 +359,8 @@ export default ({
                 <ul className="category-item">
                   <li className="category-list">
                     <a className={tab===1 ? "tabs active" :"tabs"} onClick={() => { toggleTab(1) }} >Tools</a>
-                    <a className={tab===2 ? "tabs active" :"tabs"} onClick={() => { toggleTab(2) }}   >Institute</a>
-                    <a className={tab===3 ? "tabs active" :"tabs"} onClick={() => { toggleTab(3) }} >Agency</a>
+                    <a className={tab===2 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Institute') }}   >Institute</a>
+                    <a className={tab===3 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Agency') }} >Agency</a>
                   </li>
                 </ul>
               </div>
