@@ -152,6 +152,7 @@ import Cart from 'components/cart/Cart'
 import { cartDispatch } from 'redux/CartItemsSlice';
 import axios from 'axios'
 import Section1 from "Template/Section1";
+import MyOrders from 'components/MyOrders/MyOrders'
 import Seemorereviews from "components/SeeMoreReviews/Seemorereviews";
 
 
@@ -214,6 +215,7 @@ export default function App() {
         <Route path="/SeeMoreReviews"> <Seemorereviews /></Route>
         <Route path="/Review/:id"> <Review /></Route>
         <Route path="/ReviewSelect"> <ReviewSelect /></Route>
+        <Route path="/MyOrders"> <MyOrders /></Route>
         <Route path="/webinarDetails/:id"> <CardDetails /></Route>
             
         <Route path="/other"> <Static1 /> </Route> 

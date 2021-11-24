@@ -1,0 +1,32 @@
+.orders-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem auto 3rem auto;
+    /* overflow: hidden; */
+    /* width: max-content; */
+    overflow-x: auto;
+}
+.orders-log table {
+    border: 0.0625rem solid rgba(0,0,0,0.17);
+    width: 100%;
+    margin: 0rem 1rem;
+    max-width: max-content;
+}
+.orders-log td, .orders-log th {
+    padding: 4px 8px;
+    border-right:  0.0625rem solid rgba(0,0,0,0.17);
+}
+
+.orders-log table thead tr td {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.orders-log table tbody tr td {
+    font-size: 14px;
+}
+
+.orders-log tr {
+    border-bottom:  0.0625rem solid rgba(0,0,0,0.17);
+}

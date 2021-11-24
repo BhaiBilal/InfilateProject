@@ -128,7 +128,7 @@ function Cart({cartItems}) {
 
         
       const handlebtnClick = () => {
-            history.push('')
+            history.push('/MyOrders')
       }
         // window.onload = function() {
 
@@ -170,7 +170,8 @@ function Cart({cartItems}) {
                 </div>
                
             </Grid>
-            <ToastContainer autoClose={4000}  />  
+            <ToastContainer autoClose={4000}  /> 
+
             <Button onClick={handlebtnClick} size='small' className={classes.btn} endIcon={<HistoryIcon />}> My order history</Button>
         </Box>
     )

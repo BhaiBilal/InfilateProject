@@ -120,7 +120,7 @@ export default ({
   const dispatch = useDispatch()
 
   const notify = (message) => {   
-    toast(message);
+    toast.error(message);
 }
   const loginTo= (e)=>{
 
@@ -198,7 +198,7 @@ export default ({
           <IllustrationImage imageSrc={illustrationImageSrc} />
         </IllustrationContainer> */}
       </Content>
-      <ToastContainer autoClose={4000}  />
+      <ToastContainer theme='colored' autoClose={4000}  />
     </Container>
   </AnimationRevealPage>)
 };
