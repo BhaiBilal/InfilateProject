@@ -151,7 +151,7 @@ export default ({
     }
 
     else if(index == 'Agency') {
-      history.push('/searchMap')
+      history.push({pathname:'/searchMap', state: 3})
     }
     else {
     setTab(index )  
@@ -269,9 +269,9 @@ export default ({
   //  searchResult && searchResult.map((v,i)=> console.log(v))
 
     const handleBlur=(e)=>{
-            if(mouseEnter!=true){
-              setVisible(prev=>!prev)
-            }        
+        if(mouseEnter!=true){
+          setVisible(prev=>!prev)
+         }        
     }
 
     const handleMouse = () =>{  

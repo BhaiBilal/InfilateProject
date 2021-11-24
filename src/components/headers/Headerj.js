@@ -127,18 +127,18 @@ function Headerj() {
 
 
     useEffect(() => {
-        let cancel
+
         axios('http://infilate.com/backend/public/api/app/webinars/webinar-list-home', {
-          method: 'POST',
-          cancelToken: new axios.CancelToken(c=>cancel=c)
+          method: 'GET',
+       
         }).then((res) => {
-            // console.log(res)
-          setWebinar(res.data.Data)
+            console.log(res)
+          setWebinar(res.data.Data.data)
         }).catch(e=>{
-          if(axios.isCancel(e)) return
+          console.log(e)
         })
         // console.log("webssss", result.data.Data)
-        return ()=> cancel() 
+       
       }, []);
 
 

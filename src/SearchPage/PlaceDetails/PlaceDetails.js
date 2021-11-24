@@ -6,19 +6,24 @@ import Rating from '@material-ui/lab/Rating';
 import { Divider } from '@mui/material';
 import useStyles from './Styles.js';
 
-const PlaceDetails = ({ place, selected, refProp, setCoordinates }) => {
+const PlaceDetails = ({ place, selected, refProp, setCoordinates, index}) => {
 
   const classes = useStyles();
-  const get=(selected)=>{
-    if (selected) return  refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const get = () => {
+    return refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  
-  get(selected)
- 
+
+if(selected === true) {
+  get()
+}
+  console.log(index)
+
   const handleClick = () => {
     setCoordinates({lat: Number(place.latitude), lng: Number(place.longitude)})
-    console.log(place.latitude)
+    // console.log(place.latitude)
   }
+
+
 
   return (
         <>
@@ -104,4 +109,4 @@ const PlaceDetails = ({ place, selected, refProp, setCoordinates }) => {
   );
 };
 
-export default PlaceDetails;
+export default React.memo(PlaceDetails);

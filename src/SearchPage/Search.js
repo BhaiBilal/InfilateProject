@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 import { getPlacesData } from '../api/api'
 import { Autocomplete } from '@react-google-maps/api';
 import axios from 'axios'
+import { useHistory, useLocation } from 'react-router-dom'
 import useStyles2 from './styles'
 import './style.css'
 
@@ -161,18 +162,24 @@ const useStyles = makeStyles((theme) => ({
 ))
 
 function Search() {
-    const [tab, setTab] = React.useState(1);
+    const location = useLocation()
+    const [tab, setTab] = React.useState(location.state == 3 ? 3 : 2);
     const [places,setPlaces] = React.useState([])
     const [org,setOrg] = React.useState([])
+    const history = useHistory()
+    
     const [coordinates,setCoordinates] = React.useState({})
     const [bounds,setBounds] = React.useState({})
     const [searchResult,setSearchResult] = useState([])
+    const [searchItem,setSearchItem] = useState('')
     const [searchFilters,setSearchFilters] = useState([])
-    const [childClicked,setChildClicked] = React.useState(null)
+    const [childClicked,setChildClicked] = React.useState(false)
     const [isLoading,setIsLoading] = React.useState(false)
     const [type, setType] = React.useState('restaurants')
     const [rating, setRating] = React.useState('')
     const [autocomplete,setAutoComplete] = React.useState(null)
+    const [visible,setVisible] = React.useState(false)
+    const [mouseEnter,setMouseEnter] = React.useState(false)
     const matches = useMediaQuery('(max-width:710px)');
 
     const onLoad = (autoC) => {setAutoComplete(autoC)}
@@ -182,8 +189,17 @@ function Search() {
         setCoordinates({lat,lng})
     }
 
+    // if(location.state == 3) {
+    //   setTab(3)
+    // }
+
     const toggleTab = (index) => {
+      if(index === 1) {
+        history.push('/')
+      }
+      else {
         setTab(index)
+      }
     }
     const classes = useStyles();
     const classes2 = useStyles2();
@@ -193,18 +209,37 @@ function Search() {
         })
     },[])
 
+    const  themeStyles={
+      display: visible ? 'block' : 'none'
+    }
 
     React.useEffect(() => {
         axios({
             method:'POST',
             url:'http://infilate.com/backend/public/api/app/organisation/list',
         }).then(res => {
-            setOrg(res.data.Data)
+             setOrg(res.data.Data)
         }).catch(e => console.log(e)
         ) 
-    },[])         
-
+    },[])    
     
+    React.useEffect(() => {
+      axios({
+        method:'POST',
+        url:'http://infilate.com/backend/public/api/search/organisation_search',
+        data:{
+          organisation:searchItem,
+          type:tab == 3 ? 1 : 3
+        }
+      }).then(res => {
+        setSearchResult(res.data.data)
+      })
+      .catch(e => console.log(e))
+    },[searchItem,tab])
+
+    function myFunction(e) {
+      setSearchItem(e.target.value)
+    }
     // React.useEffect(()=> {
     //     setIsLoading(true)
     //     // console.log(coordinates.lat)
@@ -236,8 +271,19 @@ function Search() {
     // },[coordinates,bounds])
 
     // console.log(places)
+    const handleBlur=(e)=>{
+      if(mouseEnter!=true){
+        setVisible(prev=>!prev)
+      }        
+      }
 
+      const handleMouse = () =>{  
+      setMouseEnter(prev=>!prev)
+      }
 
+      const handleSearchResult = (item) => {
+        setCoordinates({ lat:Number(item.latitude), lng:Number(item.longitude) })
+    }
 
     return (
         <div>
@@ -250,16 +296,16 @@ function Search() {
             >
             <div style={{  }} className="form-hero"  >
             <div className="form-cont" 
-            // onFocus={handleBlur} 
-            // onBlur={handleBlur}
+            onFocus={handleBlur} 
+            onBlur={handleBlur}
             >
     
               <div className="category">
                 <ul className="category-item">
                   <li className="category-list">
                     <a className={tab===1 ? "tabs active" :"tabs"} onClick={() => { toggleTab(1) }} >Tools</a>
-                    <a className={tab===2 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Institute') }}   >Institute</a>
-                    <a className={tab===3 ? "tabs active" :"tabs"} onClick={() => { toggleTab('Agency') }} >Agency</a>
+                    <a className={tab===2 ? "tabs active" :"tabs"} onClick={() => { toggleTab(2) }} >Institute</a>
+                    <a className={tab===3 ? "tabs active" :"tabs"} onClick={() => { toggleTab(3) }} >Agency</a>
                   </li>
                 </ul>
               </div>
@@ -271,74 +317,28 @@ function Search() {
                  
                   <div className="flex-item" style={{ height: "50px", borderRadius: "20px" }}>
                     <input  
-                    // onKeyUp={myFunction} 
+                    onKeyUp={myFunction} 
                     style={{ width: `${matches == true ? '142px' : '402px'}`, height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
                   </div>
 
                   <div 
-                //   onMouseEnter={handleMouse} 
-                //   onMouseLeave={handleMouse} 
+                  onMouseEnter={handleMouse} 
+                  onMouseLeave={handleMouse} 
                   className="search_result_container2" 
-                //   style={themeStyles}
+                  style={themeStyles}
                   >
                    
                    <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Webinars</p>
                   {
-                      searchResult && searchResult.filter((v,i)=>v.type=='Webinars').map((item,index)=>
-                     
+                      searchResult && searchResult.map((item,index)=>
                       <>
                         <p 
-                        // onClick={()=>handleClick(item)} 
+                        onClick={()=> handleSearchResult(item)} 
                         style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
                         key={index}>{item.name}</p> 
                       </>
-                      )}    
-
-                <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Coupons</p>
-                  {
-                     searchResult && searchResult.filter((v,i) => v.type=='Coupons').map((item,index) => 
-                     <>
-                        <p 
-                        // onClick={()=>handleClick(item)} 
-                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
-                        key={index}>{item.name}</p> 
-                   </>
-                     )}
-
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Blogs</p>
-                  {
-                     searchResult && searchResult.filter((v,i) => v.type=="Blogs").map((item,index) => 
-                     <>
-                         <p 
-                        //  onClick={()=>handleClick(item)} 
-                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
-                        key={index}>{item.name}</p>
-                   </>
-                   )}
-
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Products</p>
-                  {
-                     searchResult && searchResult.filter((v,i) => v.type=='Products').map((item,index) => 
-                     <>
-                        <p 
-                        // onClick={()=>handleClick(item)} 
-                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
-                        key={index}>{item.name}</p> 
-                   </>
-                     )}
-
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Services</p>
-                  {
-                     searchResult && searchResult.filter((v,i) => v.type=='Services').map((item,index) => 
-                     <>
-                        <p 
-                        // onClick={()=>handleClick(item)} 
-                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
-                        key={index}>{item.name}</p> 
-                      </>
-                     )}
+                      )} 
                     </div> 
-                 
                 </div>
                 
                 <div style={{ display: "flex", justifyContent: "center" }}>

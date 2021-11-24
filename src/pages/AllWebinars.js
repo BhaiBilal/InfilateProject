@@ -36,6 +36,14 @@ export default () => {
 
     },[loading]);
 
+
+  // useEffect(() => {
+  //   axios({
+  //     method:'POST',
+  //     url:''
+  //   })
+  // })
+
   return (
     <div className = "webinars-container">
         <div className = "webinars-section">

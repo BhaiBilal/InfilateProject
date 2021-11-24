@@ -1,3 +1,15 @@
 .search_result_container2 {
-    display:none;
+    position: absolute;
+    top:53px;
+    left:4px;
+    width: inherit;
+    z-index: 1;
+    /* border: 1px solid red; */
+    overflow: auto;
+    justify-content: space-between;
+    border-radius: 20px;
+    color: #8e8d90;
+    max-height: 270px;
+    background: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
