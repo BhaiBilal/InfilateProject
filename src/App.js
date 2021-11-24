@@ -160,6 +160,10 @@ export default function App() {
   const selector = useSelector((state) => (state));
   const [cartItems,setCartitems] = React.useState([])
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    fetchTotalCartItems();
+  }, [])
   const fetchTotalCartItems = () => {
     axios({
         method:'POST',
@@ -179,9 +183,7 @@ export default function App() {
       }
     })
   }
-   
-
-  fetchTotalCartItems()
+  
  
 
   

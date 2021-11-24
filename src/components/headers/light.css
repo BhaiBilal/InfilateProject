@@ -4,7 +4,7 @@
   left: 0rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: 90px;
   background-color: #e1e5ea;
   z-index: 999;

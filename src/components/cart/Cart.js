@@ -2,11 +2,14 @@ import React from 'react'
 import {Box,Container,Grid,Paper,Divider,Stack,Chip} from '@mui/material';
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import { cartDispatch } from 'redux/CartItemsSlice';
 import { useHistory } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import './cart.css'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import IconButton from '@mui/material/IconButton';
 import infilatelogo from '../../infi-logo.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,7 +26,9 @@ function Cart({cartItems}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes = useStyles();
+    const theme = useTheme();
     const selector = useSelector((state) => (state)); 
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const notify = (message) => {   
         toast(message);
     }
@@ -172,7 +177,12 @@ function Cart({cartItems}) {
             </Grid>
             <ToastContainer autoClose={4000}  /> 
 
+            { matches == true ? <IconButton className={classes.btn} onClick={handlebtnClick} color="primary" aria-label="upload picture" component="span">
+            <HistoryIcon />
+            </IconButton> :
             <Button onClick={handlebtnClick} size='small' className={classes.btn} endIcon={<HistoryIcon />}> My order history</Button>
+             }
+            
         </Box>
     )
 }

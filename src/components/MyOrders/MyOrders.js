@@ -1,5 +1,8 @@
 import React from 'react'
 import './MyOrders.css'
+import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 const dummydata=[
     {ordername:'(webinar1,webinar2,webinar3)',
@@ -30,9 +33,31 @@ const dummydata=[
 
 
 function MyOrders() {
+    const selector = useSelector((state) => (state)); 
+    const [data, setData] = React.useState([])
+    const one = 1
 
+    React.useEffect(() => {
+        fetchData();
+    },[one])
+
+    const fetchData = async() =>{
+        await axios({
+            method:'POST',
+            url:'http://infilate.com/backend/public/api/order/allorders',
+            headers:{
+                'token':selector.userLoginLogout.token
+            },
+        }).then(res => {
+            setData(res.data.data)
+        }).catch(e => console.log(e))
+    }
+
+    console.log(data)
 
     return (
+        <div className='parent-cotainer'>
+
         <div className = "orders-log">
         <table>
             <thead>
@@ -44,14 +69,18 @@ function MyOrders() {
                 </tr>
             </thead>
             <tbody>
-                {dummydata.map((order) => {
+                {data && data.map((item,i) => {
                     return (
-                        <tr key= {`order${order.orderid}`}>
-                            <td>{order.ordername}</td>
-                            <td>{order.orderid}</td>
-                            <td>{order.payment}</td>
-                            <td>{order.orderDate}</td>
+
+                        <tr key= {i}>
+                            <td id='special'>{item?.webinar_name?.map(v => v.map(v => <p> {v.webinar_name}, </p>) )}</td>
+                            <td>{item?.order_id?.map(v => v.order_id)}</td>
+                            <td>{ item?.order_id?.map(v => v.amount) }</td>
+                            <td>{'date'}</td>
                         </tr>
+
+
+
                     )
                 })}
             </tbody>
@@ -101,7 +130,17 @@ function MyOrders() {
            </Paper>
             </Grid> */}
         </div>
+        </div>
     )
 }
 
 export default MyOrders
+
+
+                        
+                        //  <tr key= {`order${order.order_id}`}>
+                        //     <td>{order.ordername}</td>
+                        //     <td>{order.orderid}</td>
+                        //     <td>{order.payment}</td>
+                        //     <td>{order.orderDate}</td>
+                        // </tr> 

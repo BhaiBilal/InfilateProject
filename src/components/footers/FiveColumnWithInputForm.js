@@ -71,26 +71,15 @@ const footer = [
 
   const [data1,setData1] = React.useState([])
 
-  React.useEffect(() => {
-
-    let cancel
-    
+  React.useEffect(() => {    
       axios('http://infilate.com/backend/public/api/app/footer/page-list', {
         method: 'POST',
-        data:{
-          heading:'company'
-        },
-        cancelToken: new axios.CancelToken(c=>cancel=c)
       }).then((res) => {
         setData1(res.data.Data)
         // console.log(res)
       }).catch(e=>{
-        if(axios.isCancel(e)) return
+        console.log(e)
       })   
-      //  setBlogData(result.data.Data)
-    
-      return ()=> cancel()
-
     },[]);
 
     // console.log(data1);
@@ -98,7 +87,7 @@ const footer = [
   return (
     <>
 
-      <Container style={{ paddingBottom: '1rem', marginLeft: '0rem', marginRight: '0rem' }}>
+      <Container style={{ marginLeft: '0rem', marginRight: '0rem', height:'max-content' }}>
         {/*  <div style={{ marginBottom: "100px", borderRadius: "10px", backgroundColor: "#a7bbc7", width: "100%", height: "100px", top: "0px", display: "flex", justifyContent: "space-evenly", flexDirection: "row", alignItems: "center" }}>
           {
             footer.map((footers) =>
@@ -149,12 +138,6 @@ const footer = [
             <Column>
               <ColumnHeading>Company</ColumnHeading>
               <LinkList>
-          
-                  <LinkListItem>
-                  <Link to="/aboutUs">
-                  <Linki href="">About us</Linki>
-                  </Link>
-                </LinkListItem>
 
                   <LinkListItem>
                   <Link to="/contactUs">
@@ -201,7 +184,27 @@ const footer = [
 
             <Column>
               <ColumnHeading>Blog </ColumnHeading>
+             
               <LinkList>
+
+              <LinkListItem>
+              <Link to='/other'>
+                  <Linki href={`#`}> How to </Linki>
+                  </Link>
+              </LinkListItem> 
+
+              <LinkListItem>
+              <Link to='/other'>
+                  <Linki href={`#`}> Compare </Linki>
+                  </Link>
+              </LinkListItem> 
+    
+              <LinkListItem>
+              <Link to='/other'>
+                  <Linki href={`#`}> Blog </Linki>
+                  </Link>
+              </LinkListItem> 
+
               {
 
                   data1 && data1.filter((v,i)=>v.heading=="Blog").map((v,i)=>
@@ -231,30 +234,40 @@ const footer = [
             <Column>
               <ColumnHeading>Quick Links </ColumnHeading>
               <LinkList>
-                <LinkListItem>
-                  <Linki href="#">Affiliate</Linki>
+                { data1 && data1.map((v,i) => 
+                  <LinkListItem key={i}>
+                  <Link to="/other">
+                  <Linki href="">{v.pages}</Linki>
+                  </Link>
+                  </LinkListItem>
+                  ) }
+
+                  {/* <Linki href="#">Affiliate</Linki>
                 </LinkListItem>
+
                 <LinkListItem>
                   <Linki href="#">Bulbul</Linki>
                 </LinkListItem>
+                
                 <LinkListItem>
                   <Linki href="#">Sumbit your brand</Linki>
                 </LinkListItem>
+                
                 <LinkListItem>
                   <Linki href="#">Submit your Freelancing</Linki>
                 </LinkListItem>
-                <LinkListItem>
-                  <Linki href="#">Write a review</Linki>
-                </LinkListItem>
+
                 <LinkListItem>
                   <Linki href="#">Help for Digital Marketers</Linki>
                 </LinkListItem>
+                
                 <LinkListItem>
                   <Linki href="#">Help for Advertisers</Linki>
                 </LinkListItem>
+                
                 <LinkListItem>
-                  <Link to='/other'>Others</Link>
-                </LinkListItem>
+                  <Linki href="#">Write a review</Linki>
+                </LinkListItem> */}
               </LinkList>
             </Column>
 
