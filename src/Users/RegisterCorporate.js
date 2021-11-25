@@ -14,6 +14,7 @@ import StepConnector from '@material-ui/core/StepConnector';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Check from '@material-ui/icons/Check';
+import MUIBasicSelect from './MUIBasicSelect'
 import axios from 'axios'
 import { useForm, FormProvider, useFormContext, Controller } from "react-hook-form";
 import { ErrorSharp } from '@material-ui/icons';
@@ -130,14 +131,15 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='f_name'
-            rules={{ required:true }}
+            rules={{ required:"field is required", minLength:4 }}
             render={({field,formState}) => (
+            <>
               <TextField
               style={{background:"white"}}
               // autoComplete="fname"
               // name="firstName"
               variant="outlined"
-              required
+              // required
               fullWidth
               placeholder="Enter Your first Name"
               id="firstName"
@@ -152,7 +154,11 @@ const UserDetails = () => {
               // {fieldState}
               // {formState.errors.f_name && <p>This field is required</p>}
 
-            />)}  
+            />
+             <p style={{color:'red'}}>{formState.errors.f_name?.message}</p>
+             <p style={{color:'red'}}>{formState.errors.f_name?.type === "minLength" && "minimum characters should be 4"}</p>
+             </>
+            )}  
             />
             </div>
 
@@ -160,14 +166,15 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='l_name'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:"field is required", minLength:4 }}
+            render={({field,formState}) => (
+              <>
             <TextField
              style={{background:"white"}}
                 autoComplete="lname"
                 // name="lastName"
                 variant="outlined"
-                required
+                // required
                 fullWidth
                 placeholder="Enter Your last Name"
                 id="last-Name"
@@ -179,7 +186,11 @@ const UserDetails = () => {
                   style: {fontSize: 15} 
                 }}
                 {...field}
-                />)}  
+                />
+             <p style={{color:'red'}}>{formState.errors.l_name?.message}</p>
+             <p style={{color:'red'}}>{formState.errors.l_name?.type === "minLength" && "minimum characters should be 4"}</p>
+             </>
+                )}  
                 />
             </div>
 
@@ -187,14 +198,17 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='email'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:"field is required",
+            pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+             }}
+            render={({field, formState}) => (
+              <>
             <TextField
              style={{background:"white"}}
                 autoComplete="email"
                 // name="email"
                 variant="outlined"
-                required
+                // required
                 fullWidth
                 placeholder="Enter Your email"
                 id="email"
@@ -205,7 +219,12 @@ const UserDetails = () => {
                   style: {fontSize: 15} 
                 }}
                 {...field}
-                />)}  
+                />
+                
+              <p style={{color:'red'}}>{formState.errors.email?.message}</p>
+             <p style={{color:'red'}}>{formState.errors.email?.type === "pattern" && "enter valid email address"}</p>
+             </>
+                )}  
                 />
 
             </div>
@@ -213,14 +232,16 @@ const UserDetails = () => {
             <Controller 
             control={control}
             name='password'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:"field is required",
+            minLength:8 }}
+            render={({field, formState}) => (
+            <>
             <TextField
              style={{background:"white"}}
                 autoComplete="pword"
                 // name="password"
                 variant="outlined"
-                required
+                // required
              
                 fullWidth
                 placeholder="Enter Your password"
@@ -233,15 +254,20 @@ const UserDetails = () => {
                   style: {fontSize: 15} 
                 }}
                 {...field}
-                />)}  
+                />
+             <p style={{color:'red'}}>{formState.errors.password?.message}</p>
+             <p style={{color:'red'}}>{formState.errors.password?.type === "minLength" && "minimum characters should be 8"}</p>
+             </>
+                )}  
                 />
             </div>
               <div className="container">
             <Controller 
             control={control}
-            rules={{ required:true }}
+            rules={{ required:"field is required", minLength:8 }}
             name='password_confirmation'
-            render={({field}) => (
+            render={({field, formState}) => (
+              <>
               <TextField
                style={{background:"white"}}
                 id="Confirm Password"
@@ -249,14 +275,19 @@ const UserDetails = () => {
                 variant="outlined"
                 placeholder="Enter Your confirm password"
                 fullWidth
-                required
+                // required
                 margin="normal"
                 // name="Password"
                 inputProps={{
                   style: {fontSize: 15} 
                 }}
                 {...field}
-                />)}  
+                />
+             <p style={{color:'red'}}>{formState.errors.password_confirmation?.message}</p>
+             <p style={{color:'red'}}>{formState.errors.password_confirmation?.type === "minLength" && "minimum characters should be 8"}</p>
+             </>
+                
+                )}  
                 />
                 </div>
             </Grid>
@@ -276,8 +307,9 @@ return (
     <Controller 
             control={control}
             name='org_name'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:"field is required",minLength:5 }}
+            render={({field, formState}) => (
+              <>
       <TextField
          style={{background:"white"}}
         id="Organisation_Name"
@@ -285,22 +317,28 @@ return (
         variant="outlined"
         placeholder="Organisation Name"
         fullWidth
-        required
+        // required
         margin="normal"
         inputProps={{
           style: {fontSize: 15} 
         }}
         // name="Organisation Name"
         {...field}
-        />)}  
+        />
+        <p style={{color:'red'}}>{formState.errors.org_name?.message}</p>  
+        <p style={{color:'red'}}>{formState.errors.org_name?.type === "minLength" && "minimum characters should be 5"}</p>
+        </>
+        )}  
         /></div>
 
       <div className="container">
        <Controller 
         control={control}
         name='org_title'
-        rules={{ required:true }}
-        render={({field}) => (
+        rules={{ required:"field is required",
+        minLength:5 }}
+        render={({field,formState}) => (
+          <>
       <TextField
        style={{background:"white"}}
         id="Organisation Title"
@@ -315,7 +353,11 @@ return (
         }}
         // name="Organisation Title"
         {...field}
-        />)}  
+        />
+        <p style={{color:'red'}}>{formState.errors.org_title?.message}</p>  
+        <p style={{color:'red'}}>{formState.errors.org_title?.type === "minLength" && "minimum characters should be 5"}</p>
+        </>
+        )}  
         /></div>
 
 
@@ -323,8 +365,10 @@ return (
             <Controller 
             control={control}
             name='org_description'
-            rules={{ required:true }}
+            rules={{
+             }}
             render={({field}) => (  
+              <>
       <TextField
        style={{background:"white"}}
         id="Organisation Description"
@@ -340,7 +384,10 @@ return (
           style: {fontSize: 15} 
         }}
         {...field}
-        />)}  
+        />
+
+        </>
+        )}  
         /></div>
 
 
@@ -348,8 +395,10 @@ return (
             <Controller 
             control={control}
             name='org_email'
-            rules={{ required:true }}
-            render={({field}) => (        
+            rules={{ required:"field is required",
+            pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ }}
+            render={({field, formState}) => (     
+              <>   
       <TextField
        style={{background:"white"}}
         id="Organisation_Email"
@@ -364,7 +413,10 @@ return (
           style: {fontSize: 15} 
         }}
         {...field}
-        />)}  
+        />
+        <p style={{color:'red'}}>{formState.errors.org_email?.type === "pattern" && "please enter proper email"}</p>
+        </>
+        )}  
         /></div>
 
 
@@ -374,21 +426,25 @@ return (
             name='org_type'
             rules={{ required:true }}
             render={({field}) => (
-      <TextField
-       style={{background:"white"}}
-        id="Organisation Type"
-        label="Organisation Type"
-        variant="outlined"
-        placeholder="Organisation Type"
-        fullWidth
-        required
-        margin="normal"
-        // name="Organisation Type"
-        inputProps={{
-          style: {fontSize: 15} 
-        }}
-        {...field}
-        />)}  
+
+             <MUIBasicSelect field={field}/> 
+      // <TextField
+      //  style={{background:"white"}}
+      //   id="Organisation Type"
+      //   label="Organisation Type"
+      //   variant="outlined"
+      //   placeholder="Organisation Type"
+      //   fullWidth
+      //   required
+      //   margin="normal"
+      //   // name="Organisation Type"
+      //   inputProps={{
+      //     style: {fontSize: 15} 
+      //   }}
+      //   {...field}
+      //   />
+        
+        )}  
         /></div>
 
 

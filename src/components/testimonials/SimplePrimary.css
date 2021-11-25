@@ -20,6 +20,10 @@
   border:none !important; 
 }
 
+.card img {
+  height:180px;
+}
+
 
 .service-head12 {
   margin-left: 5px;

@@ -132,8 +132,8 @@ function Headerj() {
           method: 'GET',
        
         }).then((res) => {
-            console.log(res)
-          setWebinar(res.data.Data.data)
+            // console.log(res.data.Data)
+          setWebinar(res.data.Data)
         }).catch(e=>{
           console.log(e)
         })

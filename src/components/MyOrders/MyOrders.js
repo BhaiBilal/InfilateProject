@@ -39,10 +39,10 @@ function MyOrders() {
 
     React.useEffect(() => {
         fetchData();
-    },[one])
+    },[])
 
-    const fetchData = async() =>{
-        await axios({
+    const fetchData = () =>{
+          axios({
             method:'POST',
             url:'http://infilate.com/backend/public/api/order/allorders',
             headers:{
@@ -69,7 +69,19 @@ function MyOrders() {
                 </tr>
             </thead>
             <tbody>
-                {data && data.map((item,i) => {
+
+            { data?.map((order,i) => 
+                <tr key={i}>
+                            <td id='special'> {order.item_data.map(v => <p> { v.webinar_name}, </p> )} </td>
+                            <td> {order.order_id}  </td>
+                            <td> {order.amount} </td>
+                            <td> {order.created_at} </td>
+                        </tr>           
+            
+            ) }
+
+
+                {/* {data && data.map((item,i) => {
                     return (
 
                         <tr key= {i}>
@@ -82,7 +94,7 @@ function MyOrders() {
 
 
                     )
-                })}
+                })} */}
             </tbody>
             <tbody>
 

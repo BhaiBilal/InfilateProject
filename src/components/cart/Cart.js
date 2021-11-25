@@ -18,7 +18,9 @@ import HistoryIcon from '@mui/icons-material/History';
 
 const useStyles = makeStyles({
     btn:{
-        height:'fit-content'
+        height:'fit-content',
+        position:'sticky',
+        top:'100px',
     }
   });
 
@@ -146,8 +148,8 @@ function Cart({cartItems}) {
 
 
     return (
-        <Box pt={20} display='flex' justifyContent='center' style={{gap:'5px'}} pb={5} >
-            <Grid item md={4}>
+        <Box pt={22} display='flex' justifyContent='center' style={{gap:`${matches == true ? '0px' : '5px'}`}} pb={5} >
+            <Grid item md={4} sm={6} xs={10} lg={4} xl={4}>
             <Stack spacing={2}>
                 {cartItems && cartItems.map((item,index) => 
                <Paper key={index}>
