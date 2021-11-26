@@ -8,33 +8,50 @@ import "./allWebinar.css"
 
 export default () => {
   const [webinarsList, setWebinarsList] = useState([])
-  const [fetchUrl, setFetchUrl] = useState("http://infilate.com/backend/public/api/app/webinars/webinar-list");
   const [totalWebinars, setTotalWebinars] = useState(0);
   const [loading, setLoading] = useState(true);
+  const url = 'http://infilate.com/backend/public/api/app/webinars/webinar-list'
+
+
+
+  const fetchData = () => {
+    axios({
+      method:'POST',
+      url:url,
+      data:{
+        page_no:1
+      },
+    }).then(res => setWebinarsList(res.data.Data[0].webinar_data))
+    .catch(e => console.log(e))
+  }
+
+  // const fetchData = (pagenumber) => {
+  //   if(loading) {
+  //     axios(url, {
+  //       method: 'POST',
+  //       data:{
+  //         page_no:pagenumber
+  //       },
+  //     }).then((res) => {
+  //       // console.log(res.data.Data)
+  //       if(res && res.data && res.data.Data) {
+  //         setWebinarsList(prevState => ([
+  //           ...prevState, ...res.data.Data
+  //         ]));
+  //         setTotalWebinars(res.data.Data.count);
+  //         setLoading(false)
+  //       }
+  //     }).catch(e=>{
+  //         setWebinarsList([]);
+  //         setTotalWebinars(0);
+  //         setLoading(false)
+  //     }) 
+  //   }
+  // }
 
   useEffect(() => {
-    if(loading) {
-      axios(fetchUrl, {
-        method: 'POST'
-      }).then((res) => {
-        // console.log(res.data.Data)
-        if(res && res.data && res.data.Data) {
-          setWebinarsList(prevState => ([
-            ...prevState, ...res.data.Data
-          ]));
-          setTotalWebinars(res.data.Data.total);
-          setFetchUrl("" + res.data.Data.next_page_url)
-          setLoading(false)
-        }
-      }).catch(e=>{
-          setWebinarsList([]);
-          setTotalWebinars(0);
-          setFetchUrl("http://infilate.com/backend/public/api/app/webinars/webinar-list")
-          setLoading(false)
-      }) 
-    }
-
-    },[loading]);
+      fetchData(1)
+    },[]);
 
 
   // useEffect(() => {

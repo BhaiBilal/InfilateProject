@@ -30,7 +30,7 @@ const CardContent = styled.div`
   }
   .name {
     ${tw`mt-1 text-xl font-medium text-gray-900`}
-  9
+  }
 `
 
 const CardLinks = styled.div`
@@ -190,7 +190,7 @@ export default ({
                       <link.icon className="icon" />
                     </a>
                   ))} */}
-                   <ViewButton>View</ViewButton>
+                   {/* <ViewButton>View</ViewButton> */}
                 </CardLinks>
               </CardContent>
             </Card>

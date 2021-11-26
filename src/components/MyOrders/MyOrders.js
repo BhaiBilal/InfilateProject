@@ -75,7 +75,7 @@ function MyOrders() {
                             <td id='special'> {order.item_data.map(v => <p> { v.webinar_name}, </p> )} </td>
                             <td> {order.order_id}  </td>
                             <td> {order.amount} </td>
-                            <td> {order.created_at} </td>
+                            <td> {order.date} </td>
                         </tr>           
             
             ) }

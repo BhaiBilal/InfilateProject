@@ -155,9 +155,9 @@ export default ({
                   </span>
                 ))} */}
               {/* </PlanFeatures> */}
-              <PlanAction>
+              {/* <PlanAction>
                 <BuyNowButton>{primaryButtonText}</BuyNowButton>
-              </PlanAction>
+              </PlanAction> */}
             </Plan>
           ))}
         </PlansContainer>

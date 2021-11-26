@@ -135,7 +135,7 @@ export default ({
         </PlanDurationSwitcher> */}
         </HeaderContainer>
         <PlansContainer>
-          {data.map((plan, index) => (
+          {data?.map((plan, index) => (
             <Plan key={index}  style={{marginTop:'1rem'}}>
               <PlanHeader>
               <span className="name">{plan?.product[0].name}</span>
@@ -157,9 +157,9 @@ export default ({
                   </span>
                 
               </PlanFeatures>
-              <PlanAction>
+              {/* <PlanAction>
                 <BuyNowButton>{primaryButtonText}</BuyNowButton>
-              </PlanAction>
+              </PlanAction> */}
             </Plan>
           ))}
         </PlansContainer>
