@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {Box, Grid} from '@mui/material';
 import AllProducts from './AllProducts/AllProducts'
 import AllServices from './AllServices/AllServices'
 import axios from 'axios';
@@ -21,7 +21,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ pt: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -100,7 +100,14 @@ export default function ContentTabs() {
   // console.log(value)
 
   return (
-    <Box sx={{ width: '100%' }} pt={22} px={25}>
+    <div style={{display:'flex', justifyContent:'center', paddingTop:'160px'}}>
+    <Grid
+    md={10} 
+    sm={10}
+    xs={12}
+    lg={8}
+    // sx={{ width: '100%' }} pt={22} px={25}
+    >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Products" {...a11yProps(0)} />
@@ -119,6 +126,7 @@ export default function ContentTabs() {
       {/* <TabPanel value={value} index={2}>
         Item Three
       </TabPanel> */}
-    </Box>
+    </Grid>
+    </div>
   );
 }

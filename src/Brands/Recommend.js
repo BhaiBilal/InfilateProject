@@ -26,9 +26,10 @@ import logo10 from "../images/logo10.png"
 import { Container } from 'components/misc/Layouts';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Fade from '@material-ui/core/Fade';
 import Input from '@mui/material/Input';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -225,15 +226,33 @@ function Recommend({coupondata}) {
     console.log(coupondata)
     const classes = useStyles();
     const [recommend, setRecommend] = useState(Data)
+    const matches = useMediaQuery('(max-width:600px)');
+    const matches2 = useMediaQuery('(max-width:900px)');
+    const matches3 = useMediaQuery('(max-width:1280px)');
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [data,setData] = React.useState('')
+
+    const tum_tak_arzi_meri = () => {
+        if(matches == true) {
+            return 1
+        }
+        else if( matches2 == true ) {
+            return 2
+        }
+        else if(matches3 == true) {
+            return 3
+        }
+        else {
+            return 4
+        }
+    }
 
     const settings = {
 
         infinite: true,
         speed: 200,
-        slidesToShow: 4,
+        slidesToShow: tum_tak_arzi_meri(),
         slidesToScroll: 3,
 
     };
@@ -263,12 +282,11 @@ function Recommend({coupondata}) {
 
       function handleGet(item) {
         handleOpen2(item)
-        setData(item.code)
       }
     //   console.log(data)
 
     const notify = () => {
-        navigator.clipboard.writeText(data)   
+        navigator.clipboard.writeText(data.code)   
         toast("code copied");
     }
 
@@ -314,8 +332,10 @@ function Recommend({coupondata}) {
                                         <Fade in={open2}>
 
                                         <div className={classes.paper2}>
-                                        <Input defaultValue={data} readOnly  />
+                                        <Typography style={{textAlign:'center'}}> { data?.code } </Typography>
+                                        {/* <Input defaultValue={data} readOnly  /> */}
                                         <Button onClick={() => notify()} variant="contained">Copy</Button>
+                                        <a style={{textAlign:'center'}} href={`${data?.url}`} > {data.url} </a>
                                         <ToastContainer autoClose={1000}  />
                                         </div>   
                                         

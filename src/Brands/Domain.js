@@ -16,6 +16,7 @@ import logo10 from "../images/logo8.png"
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Input from '@mui/material/Input';
 import { Button, Typography } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
@@ -207,6 +208,9 @@ function Domain({ coupondata, handleBtn, couponLength }) {
     const [state, setState] = useState([])
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
+    const matches = useMediaQuery('(max-width:600px)');
+    const matches2 = useMediaQuery('(max-width:900px)');
+    const matches3 = useMediaQuery('(max-width:1280px)');
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [data,setData] = React.useState('')
@@ -230,13 +234,30 @@ function Domain({ coupondata, handleBtn, couponLength }) {
         setOpen2(false);
       };
 
+      const tum_tak_arzi_meri = () => {
+          if(matches == true) {
+              return 1
+          }
+          else if( matches2 == true ) {
+              return 2
+          }
+          else if(matches3 == true) {
+              return 3
+          }
+          else {
+              return 4
+          }
+      }
+
+      console.log(matches2)
 
     const setting = {
         // dots: true,
         infinite: true,
         speed: 200,
-        slidesToShow: coupondata.length == 3 ? 3 : 4,
-        slidesToScroll: 3,
+        // slidesToShow: coupondata.length <= 3 ? 1 : 4,
+        slidesToShow: tum_tak_arzi_meri(),
+        slidesToScroll: coupondata.length <= 3 ? 1 : 3,
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: "linear"
@@ -250,12 +271,12 @@ function Domain({ coupondata, handleBtn, couponLength }) {
 
       function handleGet(item) {
         handleOpen2(item)
-        setData(item)
+        // setData(item)
       }
-    //   console.log(data)
+      console.log(data)
 
     const notify = () => {
-        navigator.clipboard.writeText(data)   
+        navigator.clipboard.writeText(data?.code)   
         toast("code copied");
     }
 
@@ -329,7 +350,7 @@ function Domain({ coupondata, handleBtn, couponLength }) {
 
                                         <div className={classes.paper2}>
     
-                                        <Typography style={{textAlign:'center'}}> { data.code } </Typography>
+                                        <Typography style={{textAlign:'center'}}> { data?.code } </Typography>
                                         <Button onClick={() => notify()} variant="contained">Copy</Button>
                                         <a style={{textAlign:'center'}} href={`${data.url}`} > {data.url} </a>
                                         <ToastContainer autoClose={1000}  />

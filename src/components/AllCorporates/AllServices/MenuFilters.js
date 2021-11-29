@@ -2,11 +2,13 @@ import React from 'react'
 import useStyles from './Styles.js';
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 import {Checkbox, FormControlLabel} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import axios from 'axios'
 
 function MenuFilters({ type, setType, arr3, setArr3 }) {
     const classes = useStyles();
     const [list2, setList2] = React.useState([])
+    const matches = useMediaQuery('(max-width:800px)');
     let List2 = [] 
     // console.log(type)
 
@@ -58,7 +60,7 @@ function MenuFilters({ type, setType, arr3, setArr3 }) {
       }
 
     return (
-        <Grid item>
+        <Grid item style={{position:'sticky', top:'100px', height:'max-content'}}>
             <FormControl className={classes.formControl}>
             <InputLabel id="type">Type</InputLabel>
             <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>

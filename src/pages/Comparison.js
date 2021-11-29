@@ -164,7 +164,7 @@ console.log(dataState)
          // selected={selectedIndex === 0}
           onClick={handleTab1}
         >
-          <ListItemIcon>
+          <ListItemIcon style={{minWidth:'0px'}}>
             <InboxIcon />
           </ListItemIcon>
           <ListItemText primary="Pricing" />

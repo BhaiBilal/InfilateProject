@@ -4,13 +4,35 @@ import { CircularProgress, Grid, InputLabel, MenuItem, FormControl, Select } fro
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import {Checkbox, FormControlLabel} from '@mui/material';
+import {Checkbox, FormControlLabel,Typography} from '@mui/material';
 import axios from 'axios'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { makeStyles } from '@mui/styles';
+import Modal from '@mui/material/Modal';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
 
 
 function MenuFilters({ type, setType,arr2, setArr2, arr3, setArr3, value}) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
     const [list, setList] = React.useState([])
+    const matches = useMediaQuery('(max-width:800px)');
     
     const classes = useStyles();
     let List = [] 
@@ -81,7 +103,7 @@ function MenuFilters({ type, setType,arr2, setArr2, arr3, setArr3, value}) {
 
     return (
       <div>
-        <Grid item>
+        <Grid item style={{position:'sticky', top:'100px'}}>
             <FormControl className={classes.formControl}>
             <InputLabel id="type">Type</InputLabel>
             <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
@@ -96,12 +118,45 @@ function MenuFilters({ type, setType,arr2, setArr2, arr3, setArr3, value}) {
 
 
        
-          <div style={{display:'flex',flexDirection:'column',paddingTop:'25px'}}>
+       { matches == true ?    
+       <>
+        <div style={{display:'flex',flexDirection:'column',paddingTop:'25px'}}>
           {unique && unique.map((item,i) => 
               <FormControlLabel onClick={()=> handleClick(item.id)} key={i} control={<Checkbox />} label={item.name} /> 
                )}
               
           </div>
+
+       {/* <div>
+      <Button onClick={handleOpen}>Open modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+    </div>  */}
+    </>
+    :
+
+    <div style={{display:'flex',flexDirection:'column',paddingTop:'25px'}}>
+          {unique && unique.map((item,i) => 
+              <FormControlLabel onClick={()=> handleClick(item.id)} key={i} control={<Checkbox />} label={item.name} /> 
+               )}
+              
+          </div>
+    
+     }
+
         </Grid>
 </div>
     )

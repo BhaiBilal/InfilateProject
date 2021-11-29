@@ -9,7 +9,7 @@
   display: inline-block;
   content: "";
   border-top: 2px solid rgb(180, 173, 173);
-  width: 880px;
+  width: -webkit-fill-available;
   transform: translateY(-2.5rem);
   margin-left: 20rem;
 }
@@ -140,11 +140,12 @@ justify-content: center;
   background-color: #ffffff;
   height: 90px;
   padding-top: 5px;
-  width: 70%;
+  width: 80%;
   display: flex;
+  grid-gap:80px;
   justify-content: flex-end;
   align-items: center;
-  /* padding-left: 400px; */
+  padding-left: 216px;
 }
 
 
@@ -277,9 +278,10 @@ justify-content: center;
 }
 
 .top-heading-rec-container{
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  padding-left: 140px;
+  padding-left: 140px; */
+  padding-left: 10px;
 }
 
 .recommend-head{
@@ -647,3 +649,76 @@ color: white;
   color: rgb(52, 73, 94);
 }
 
+.unique-phurr{
+  margin-left: 160px;
+}
+
+.review-buttons{
+  padding:0px;
+}
+
+.visit-button-parent{
+  display: flex;
+  justify-content: center;
+}
+
+
+@media screen and (max-width:900px) {
+  .visit-button{
+    padding-left: 217px;
+  }
+  
+}
+
+@media screen and (max-width:949px) and (min-width:780px){
+  .visit-button{
+    grid-gap: 20px;
+  }
+}
+
+
+@media screen and (max-width:1155px) {
+  .brand-logo {
+    margin-left: 5px;
+  }
+  .unique-phurr{
+    margin-left: 5px;
+  }
+  .domain-button{
+    margin-left: 5px;
+  }
+}
+
+
+@media screen and (max-width:766px) {
+    .brand-logo{
+      margin-left: 5px;
+      top:-108px;
+    }
+
+    .visit-button{
+      padding-top: 100px;
+      /* width:100%; */
+      width: 100%;
+      padding-left: 5px;
+      justify-content: flex-start;
+      grid-gap: 15px;
+    }
+
+    .review-buttons{
+      padding:0px;
+      margin-left: 5px;
+      margin-top: 70px;
+    }
+
+    .common-two{
+      padding:0px;
+      margin-left: 5px;
+    }
+
+    .domain-button{
+      margin-top: 0px;
+      margin-left: 0px;
+      width: 100%;
+    }
+}

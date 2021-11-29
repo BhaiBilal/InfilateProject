@@ -8,6 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import IconButton from '@mui/material/IconButton';
 import useStyles from './Styles.js';
 import {Typography,Grid} from '@material-ui/core';
@@ -34,7 +35,7 @@ function ServicesCard({list,handleCompare}) {
 
     const classes = useStyles()
     const [expanded, setExpanded]= React.useState([])
-    
+    const matches = useMediaQuery('(max-width:432px)');
     
     const handleExpandClick = (index) => {
 
@@ -59,7 +60,7 @@ function ServicesCard({list,handleCompare}) {
 
      <Card key={index} sx={{ width:'inherit',marginBottom:'15px' }}>
 
-     <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
+     <Grid item style={{display: 'flex',paddingLeft:'10px', flexDirection:`${matches == true ? 'column' : 'row'}`}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
      <Grid style={{paddingLeft:'10px'}} item md={8}>
 

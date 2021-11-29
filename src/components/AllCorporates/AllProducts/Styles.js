@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 
@@ -72,6 +72,10 @@ export default makeStyles((theme) => ({
       cursor:'pointer',
       textDecoration:'underline'
     }
+  },
+
+  formControl:{
+    width:"70px"
   }
 
 }));

@@ -67,10 +67,13 @@ function Brand() {
     return (
         <>
             {/* <Header /> */}
+            <div style={{width:'100%'}}>
             <Home />
             <Brandpage data={data} />
             <Domain coupondata={coupondata} handleBtn={handleBtn} couponLength={couponLength} />
-            <Recommend coupondata={data?.allcoupon && data.allcoupon[0]} />
+            <Recommend coupondata={data?.allcoupon && data.allcoupon[0]} />              
+            </div>
+
             {/* <Frequently /> */}
             {/* <Review /> */}
 

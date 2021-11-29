@@ -23,9 +23,9 @@ function Brandpage({data}) {
                     </a>
                     
 
-                    <div style={{display:'flex',justifyContent:'center'}}>
+                    <div classname='visit-button-parent'>
                     <div className="visit-button">
-                        <div style={{flexGrow:'0.4'}}>
+                        <div>
                             <h1 style={{ fontSize: "2rem", fontWeight: "500", color: "#34495e" }}>{ data?.organisation && data.organisation[0].name }</h1>
             
                         </div>
@@ -51,7 +51,7 @@ function Brandpage({data}) {
 
 
 
-                    <div>
+                    <div className='unique-phurr'>
                         <div className="review-buttons">
                                 <div className="review-buttonline">
                                 <a onClick={() => setState('Description')} className="rev1" > Description </a>
@@ -60,14 +60,14 @@ function Brandpage({data}) {
                         </div>
 
                         {
-                            state == 'Description' ? <div style={{ padding: "0px 10rem" }}>
+                            state == 'Description' ? <div className='common-two'>
                      
                             <h1 style={{fontSize:"1.2rem",fontWeight:"bold",color:"#34495e",margin:"5px 0px"}}>What is { data?.organisation && data.organisation[0].name } </h1>
                             <p style={{fontSize:"1rem",fontWeight:"500",color:"#34495e"}} > {  data?.organisation && data.organisation[0].description } </p>
 
                         </div>
                         : 
-                        <div style={{ padding: "0px 10rem" }}>
+                        <div className='common-two'>
                         <div className='org_details'> 
                         <p> city: </p>
                         <p style={{paddingLeft:'5px',fontWeight:'100'}} >{ data?.organisation && data?.organisation[0].city } </p>

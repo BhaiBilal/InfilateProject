@@ -14,6 +14,7 @@ import CompareIcon from '@material-ui/icons/Compare';
 import IconButton from '@material-ui/core/IconButton';
 import { useHistory } from "react-router-dom";
 import {Typography,Grid} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 function AllProducts({productList, arr2, setArr2, value}) {
@@ -25,6 +26,7 @@ function AllProducts({productList, arr2, setArr2, value}) {
     const [postPerPage,setPostPerPage]= React.useState(10)
     const [open,setOpen] = React.useState(false)
     const [arr1,setArr1]= React.useState([])
+    const matches = useMediaQuery('(max-width:800px)');
     
     const classes = useStyles()
     let modifiedArray = []
@@ -136,10 +138,14 @@ function AllProducts({productList, arr2, setArr2, value}) {
     return (
 
            <Box display='flex' justifyContent='space-between'>
-                <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
+           {/* { matches == true ?  null : 
+            <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
+           } */}
+           
+           <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
+          
 
-
-                <Grid item md={8}>
+                <Grid item md={10} sm={10} xs={12} lg={8}>
                 <Stack spacing={3}>
 
                 <ProductCard list={currentPosts} handleCompare={handleCompare} />

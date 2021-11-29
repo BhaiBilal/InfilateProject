@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import useStyles from './Styles.js';
+import useMediaQuery from '@mui/material/useMediaQuery';
   import {Typography,Grid} from '@mui/material';
 
 const ExpandMore = styled((props) => {
@@ -31,6 +32,7 @@ function ProductCard({list,handleCompare}) {
 
     const classes = useStyles()
     const [expanded, setExpanded]= React.useState([])
+    const matches = useMediaQuery('(max-width:432px)');
     
     
     const handleExpandClick = (index) => {
@@ -57,9 +59,9 @@ function ProductCard({list,handleCompare}) {
 
      <Card key={index} sx={{ width:'inherit',marginBottom:'15px' }}>
 
-     <Grid item style={{display: 'flex',paddingLeft:'10px'}}>
+     <Grid item style={{display: 'flex',paddingLeft:'10px', flexDirection:`${matches == true ? 'column' : 'row'}`}}>
      <img style={{width:'100px',height:'100px'}} src={`http://infilate.com/backend/public/images/${item.media}`} alt='' />
-     <Grid style={{paddingLeft:'10px'}} item md={8}>
+     <Grid style={{paddingLeft:'10px'}} item md={8} sm={8} xs={12}>
 
      <p className={classes.paraStyle}
    //   className={classes.headingpara}
@@ -69,6 +71,7 @@ function ProductCard({list,handleCompare}) {
      <p>({ item.review?.review_data?.length })</p>
      <p> {item.type} </p>
      </Grid>
+
      <Grid item md={3} style={{display:'flex',flexDirection:'column', paddingTop:"10px", paddingRight:"10px" }}>
      <Button variant="contained" color="primary" size='small'>
      <Typography variant="button" display="block">
