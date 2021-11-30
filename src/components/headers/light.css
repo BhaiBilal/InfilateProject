@@ -249,19 +249,22 @@
 
 
 @media screen and (max-width: 960px) {
+
+
   .navbar {
     position: relative;
   }
   .nav-menu {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     top: 0px;
-    width: 50%;
+    /* width: 50%; */
 
-    height: 500px;
+    /* height: 500px; */
+    height:100vh;
     position: absolute;
-    top: 60px;
+    top: 0px;
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
@@ -269,7 +272,8 @@
 
   .nav-menu.active {
     background-color: #a7bbc7;
-    left: 25%;
+    /* left: 25%; */
+    left:0%;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
@@ -310,6 +314,10 @@
   }
 }
 
+.imp-nav-class{
+  display: flex;
+  padding-left: 50px;
+}
 
 
 /* dropdown */

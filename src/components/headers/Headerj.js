@@ -9,6 +9,8 @@ import { userLoginRequest } from '../../redux/UserloginlogoutSlice'
 import { Grid, Card, CardMedia, CardContent, CardHeader, CardActions, Avatar, Typography, Divider, Chip, Box, Container } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Profile from './Profile'
+import MobileProfile from './MobileProfile'
+import useMediaQuery from '@mui/material/useMediaQuery';    
 import { useHistory , withRouter } from "react-router-dom";
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
@@ -112,6 +114,7 @@ function Headerj() {
     const dispatch = useDispatch()
     // console.log(selector)
     const classes = useStyles();
+    const matches = useMediaQuery('(max-width:960px)');
     const liStyle = {
     }
 
@@ -264,7 +267,7 @@ function Headerj() {
 
     return (
         <>
-            <Router>
+            {/* <Router> */}
                 <div > 
                     <nav className="navbar" style={bears > 0 ? styles : styles2}>
                         <div style={{background:'#a7bbc7',height:'50px'}}>
@@ -282,12 +285,11 @@ function Headerj() {
 
                             <a>
 
-                            <Profile handleProfile={handleProfile} handlelogin={handleLoginbtn} handlesignup={handleSignupbtn}
+                            { matches == true ? null : 
+                                <Profile handleProfile={handleProfile} handlelogin={handleLoginbtn} handlesignup={handleSignupbtn}
                             handlecorporatesignup={handleCorporateSignupbtn} handleCart={handleCart}
                             />
-
-                            
-
+                            }
 
                             </a>
                         </div>
@@ -295,12 +297,12 @@ function Headerj() {
                         <div className={logobar ? "nav-sub active " : "nav-sub"} style = {{margin : "0rem auto", maxWidth : "1440px"}}>
                             <ul className={icon ? "nav-menu active" : "nav-menu "}>
 
-                                <div style={{display:'flex',paddingLeft:'50px'}}> 
-
-
-
-
-
+                           
+                           { matches == true ? 
+                                <MobileProfile />
+                           
+                           : 
+                            <div classnName='imp-nav-class'>
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons"> <a >WEBINAR</a></li>
                                     <div className="dropdown-contents">
@@ -399,10 +401,6 @@ function Headerj() {
                                 </div>
 
 
-
-
-
-
                                 <div className="dropdowns">
                                     <li className="dropdown-buttons" ><a>COUPONS</a></li>
                                     <div className="dropdown-contents">
@@ -434,109 +432,13 @@ function Headerj() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <Grid container spacing={1}>
-                                    
-                                                            
-                                <Grid item  style={{ position: 'relative' }} className="box-333"
-                                    onMouseEnter={() => setIsShown(true)}>
-                                    <div class="btn333 btn333-three">
-                                        <span>WEBINAR</span>
-                                    </div>
-                                </Grid>
 
-                                <Grid item  style={{ position: 'relative' }} className="box-333"
-                                    onMouseEnter={() => setIsShown(true)}>
-                                    <div class="btn333 btn333-three">
-                                        <span>COMPARE</span>
-                                    </div>
-                                </Grid>
+                                </div>
+                           
+                           
+                           
+                            }
 
-                                <Grid item  style={{ position: 'relative' }} className="box-333"
-                                    onMouseEnter={() => setIsShown(true)}>
-                                    <div class="btn333 btn333-three">
-                                        <span>TOPSTORES</span>
-                                    </div>
-                                </Grid>
-
-                                <Grid item  style={{ position: 'relative' }} className="box-333"
-                                    onMouseEnter={() => setIsShown(true)}>
-                                    <div class="btn333 btn333-three">
-                                        <span>COUPONS</span>
-                                    </div>
-                                </Grid>
-
-                                <Grid item  style={{ position: 'relative' }} className="box-333">
-                                    <div onClick={()=>handleClick('contents')} class="btn333 btn333-three">
-                                        <span>CONTENTS</span>
-                                    </div>
-                                </Grid>
-
-                                </Grid>     */}
-                        
-                                {/* {
-                                    isShown && (
-                                        <Grid container className={classes.root2} xs={5} spacing={1} onMouseLeave={() => setIsShown(false)}>
-                                            {webinar &&  webinar.slice(0,9).map((item, index) =>
-                                            
-
-
-                                            
-                                                <Grid key={index} item xs={3}>
-                                                    <Card className={classes.root} onClick={()=>handleClick2(item)}> 
-                                                        <CardMedia
-                                                            className={classes.cover}
-                                                            image={`http://infilate.com/backend/public/images/${item.image}`}
-                                                            title="Live from space album cover"
-                                                        />
-
-                                                        <CardHeader style={{ padding: '0px' }}
-                                                            title={item.webinar_date}
-                                                            subheader={item.webinar_name}
-                                                        />
-
-                                                    </Card>
-
-                                                </Grid>
-
-
-                                            )}
-                                            <button type="submit" className="">view all</button>
-                                            
-                                        </Grid>
-
-                                    )
-
-                                } */}
-
-
-                                {/* 
-                                        {
-                                        [0,1,2,3,4].map((item,index)=>
-                                        <Grid key={index} container xs={4} spacing={5}>
-                                        <Card className={classes.root}>
-                                            <CardMedia
-                                                className={classes.cover}
-                                                image='https://images.designtrends.com/wp-content/uploads/2016/01/04085621/A-Cold-Sunset-Background.jpg'
-                                                title="Live from space album cover"
-                                            />
-
-                                            <CardHeader
-                                                avatar={
-                                                    <Avatar  aria-label="recipe" className={classes.avatar}>
-                                                        ₹249/-
-                                                    </Avatar>
-                                                }
-                                                title={'date'}
-                                                subheader="Beyond Limits 2K21-Virtual Run"
-                                            />
-
-                                        </Card>
-
-                                    </Grid>
-                                        )
-                                        } */}
-
-</div>
                             </ul>
 
 
@@ -566,7 +468,7 @@ function Headerj() {
                                         </Fade>
                                     </Modal>
                 </div>
-            </Router>
+            {/* </Router> */}
         </>
     )
 }

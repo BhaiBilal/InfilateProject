@@ -122,31 +122,47 @@ export default ({
   // console.log(data)
 
   return (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <Container>
       <ContentWithPaddingXl style={{paddingTop:'0rem'}}>
         <HeaderContainer>
-          {/* {subheading && <Subheading>{subheading}</Subheading>} */}
           <Heading>{heading}</Heading>
-          {/* {description && <Description>{description}</Description>}
-        <PlanDurationSwitcher>
-          {planDurations.map((planDuration, index) => (
-            <SwitchButton active={activeDurationIndex === index} key={index} onClick={() => setActiveDurationIndex(index)}>{planDuration.switcherText}</SwitchButton>
-          ))}
-        </PlanDurationSwitcher> */}
+
         </HeaderContainer>
         <PlansContainer>
           {data?.map((plan, index) => (
-            <Plan key={index}  style={{marginTop:'1rem'}}>
-              <PlanHeader>
+            <Plan key={index}  style={{marginTop:'1rem'}} style={{paddingLeft:'0rem',paddingRight:'0rem', marginTop:'2rem'}}>
+              <PlanHeader style={{marginLeft:'0rem', marginRight:'0rem'}}>
               <span className="name">{plan?.product[0].name}</span>
                 <span className="priceAndDuration">
-                  {/* <span className="name">{plan.durationPrices[activeDurationIndex]}</span> */}
                   <span className="name">{plan?.product[0].price}</span>
                   <span className="slash"> / </span>
-                  {/* <span className="duration">{planDurations[activeDurationIndex].text}</span> */}
+
                 </span>
                
-                {/* <span className="mainFeature">{plan.mainFeature}</span> */}
               </PlanHeader>
               <PlanFeatures>
                 

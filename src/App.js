@@ -164,6 +164,7 @@ export default function App() {
   React.useEffect(() => {
     fetchTotalCartItems();
   }, [])
+
   const fetchTotalCartItems = () => {
     axios({
         method:'POST',
@@ -178,6 +179,7 @@ export default function App() {
         dispatch(cartDispatch({count}))
     }).catch(e => {
       if(e) {
+        console.log(e)
         // dispatch(userLogoutRequest())
         // dispatch(cartReset())
       }
@@ -229,17 +231,17 @@ export default function App() {
         }
 
         {
-          selector.userLoginLogout.role_id!=='2' && selector.userLoginLogout.role_id!=='3'  ?  <Route path="/RegisterUser"> <Signup /></Route>  :
+          selector.userLoginLogout.role_id!=='2' && selector.userLoginLogout.role_id!=='3'  ?  <Route exact path="/RegisterUser" component={Signup} />  :
             null
           }
 
           {
-           selector.userLoginLogout.role_id!=='3' &&  selector.userLoginLogout.role_id!=='2'  ?  <Route path="/RegisterCorporate"><RegisterCorporate/></Route> :
+           selector.userLoginLogout.role_id!=='3' &&  selector.userLoginLogout.role_id!=='2'  ?  <Route exact path="/RegisterCorporate" component={RegisterCorporate} /> :
             null
           }
 
          {
-          selector.userLoginLogout.role_id!=="2" && selector.userLoginLogout.role_id!== "3" ?  <Route path="/Login">  <Login/></Route> : null
+          selector.userLoginLogout.role_id!=="2" && selector.userLoginLogout.role_id!== "3" ?  <Route exact path="/Login" component={Login} /> : null
           } 
 
 

@@ -117,7 +117,7 @@ function Profile({handleProfile,handlelogin,handlecorporatesignup,handlesignup,h
 
 {selector.userLoginLogout.isUserLoggedIn == true ? 
     <div className='add_to_cart'>
-    <Badge onClick={handleCart} badgeContent={selector.cartItemsReducer.count} color="primary">
+    <Badge onClick={handleCart} badgeContent={selector.cartItemsReducer.count ? selector.cartItemsReducer.count : 0 } color="primary">
             <ShoppingCartIcon style={{color:'white',cursor:'pointer'}} />
         </Badge>
     </div>

@@ -22,6 +22,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import {useLocation, useParams,} from 'react-router-dom'
@@ -90,7 +91,7 @@ export default ({
 }) => {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
-
+  const matches = useMediaQuery('(max-width:444px)');
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
@@ -156,58 +157,57 @@ console.log(dataState)
         <ContentWithPaddingXl>
         <div className={classes.root}>
           <Grid container spacing={2}>
-            <Grid item md={2}>
-      <List component="nav" aria-label="main mailbox folders">
-        <ListItem 
-        className={classes.list}
-          button
-         // selected={selectedIndex === 0}
-          onClick={handleTab1}
-        >
-          <ListItemIcon style={{minWidth:'0px'}}>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Pricing" />
-        </ListItem>
-        <ListItem className={classes.list}
-          button
-         // selected={selectedIndex === 1}
-         onClick={handleTab2}
-        >
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Screenshots" />
-        </ListItem>
-        <ListItem 
-        className={classes.list}
-          button
-         // selected={selectedIndex === 0}
-         onClick={handleTab3}
-        >
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Overview" />
-        </ListItem>
+            <Grid item md={2} lg={2} style={{marginLeft:"-30px"}}>
+            <List component="nav" aria-label="main mailbox folders">
+              <ListItem 
+              className={classes.list}
+                button 
+              selected={selectedIndex === 0}
+                onClick={handleTab1}
+              >
+                <ListItemIcon >
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Pricing" />
+              </ListItem>
+              <ListItem className={classes.list}
+                button
+              selected={selectedIndex === 1}
+              onClick={handleTab2}
+              >
+                <ListItemIcon>
+                  <DraftsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Screenshots" />
+              </ListItem>
+              <ListItem 
+              className={classes.list}
+                button
+              selected={selectedIndex === 0}
+              onClick={handleTab3}
+              >
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Overview" />
+              </ListItem>
 
-        <ListItem 
-        className={classes.list}
-          button
-         // selected={selectedIndex === 0}
-         onClick={handleTab4}
-        >
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="UserReview" />
-        </ListItem>
-        
-        
-      </List>
+              <ListItem 
+              className={classes.list}
+                button
+              selected={selectedIndex === 0}
+              onClick={handleTab4}
+              >
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="UserReview" />
+              </ListItem>
+
+              </List>
      
       </Grid>
-      <Grid item md={10} style={{marginTop:"-100px"}}>
+      <Grid item md={10} style={{marginTop:`${matches == true ? '-18px' : '-100px'}`}}>
        {tab1 &&   <Pricing data={dataState} />}
        {tab2 &&   <Screenshots data={dataState} />}
        {tab3 && <Overview data={dataState} />}
@@ -223,5 +223,6 @@ console.log(dataState)
      </div>
   );
 };
+
 
 
