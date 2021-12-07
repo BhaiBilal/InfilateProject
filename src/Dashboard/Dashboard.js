@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link,  useRouteMatch } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -18,17 +18,16 @@ import { Redirect } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function Dashboard() {
-
+    let { path, url } = useRouteMatch();
     const matches = useMediaQuery('(min-width:900px)');
-    console.log(matches)
+    console.log(path)
 
     const styles ={
         flexDirection:`${matches == false ? 'column' : 'row'}`
     }
     return (
-
         <Router>
-        <Box component='div' pt={matches == false ? 12 : 22} display='flex'pb={10}
+        <Box component='div' pt={matches == false ? 12 : 22} display='flex' pb={10}
         style={styles}
         >
 
@@ -37,47 +36,6 @@ function Dashboard() {
             </Grid>
             
             <Container maxWidth='lg' style={{marginLeft:'0px',marginRight:'0px'}}>   
-
-
-            <Switch>
-            <Route path='/Dashboard/Home'> <Home /> </Route>
-            </Switch>
-
-
-
-            <Switch>
-            <Route path='/Dashboard/addProduct'> <AddProducts /> </Route>
-            </Switch>
-
-            <Switch>
-            <Route path='/Dashboard/addBlog'> <AddBlog /> </Route>
-            </Switch>
-
-
-            <Switch>
-            <Route path='/Dashboard/addCoupon'> <AddCoupons /> </Route>
-            </Switch>
-
-
-            <Switch>
-            <Route path='/Dashboard/addService'> <AddServices /> </Route>
-            </Switch>
-
-            <Switch>
-            <Route path='/Dashboard/updateService'> <UpdateService /> </Route>
-            </Switch>
-
-            <Switch>
-            <Route path='/Dashboard/updateProduct'> <UpdateProduct /> </Route>
-            </Switch>
-
-            <Switch>
-            <Route path='/Dashboard/updateCoupon'> <UpdateCoupon /> </Route>
-            </Switch>
-
-            <Switch>
-            <Route path='/Dashboard/updateBlog/:id'> <UpdateBlog /> </Route>
-            </Switch>
 
 
 

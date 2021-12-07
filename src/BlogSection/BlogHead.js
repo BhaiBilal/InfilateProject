@@ -220,7 +220,7 @@ function BlogHead() {
       </Container>
       <CardMedia
         className={classes.cover}
-        image={`http://infilate.com/backend/public/images/${blog && blog.media}`}
+        image={`http://infilate.com/backend/public/images/${blog && blog.media}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"}
         title="Live from space album cover"
       />
     </Card>        

@@ -70,6 +70,9 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
   props.buttonRounded && tw`rounded-full`
 ]);
 
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -136,7 +139,7 @@ export default ({
   const history = useHistory();
   const [visible,setVisible] = React.useState(false)
   const [mouseEnter,setMouseEnter] = React.useState(false)
-  let divRef = React.useRef()
+  let divRef = React.useRef(null)
   const matches = useMediaQuery('(max-width:710px)');
 
   // console.log(matches)
@@ -171,6 +174,8 @@ export default ({
     }).catch((e) => {
       console.log(e)
     })
+
+    console.log(divRef)
 
   },[])
 
@@ -252,6 +257,7 @@ export default ({
     const handleClick = (v) =>{
 
         if(v.type=='Blogs'){
+          // divRef.current.style.display = 'block'
           history.push(`/BlogDetail/${v.id}`);
         }
 
@@ -262,6 +268,18 @@ export default ({
         if(v.type=="Webinars"){
           history.push(`/webinarDetails/${v.id}`);
         }
+
+        if(v.type == 'Products'){
+          history.push(`/allCorporates`)
+        }
+
+        if(v.type == 'Services') {
+          history.push(`/allCorporates`)
+        }
+
+        if(v.type == 'Brands') {
+          history.push(`/Brand/${v.id}`)
+        }
         // console.log(post.webinar_name)
       // console.log(v)
     } 
@@ -269,13 +287,19 @@ export default ({
   //  searchResult && searchResult.map((v,i)=> console.log(v))
 
     const handleBlur=(e)=>{
-        if(mouseEnter!=true){
-          setVisible(prev=>!prev)
-         }        
+        divRef.current.style.display='none'
+        // if(mouseEnter!=true){
+        //   setVisible(prev=>!prev)
+        //  }        
+    }
+
+    const handleFocus = () => {
+      divRef.current.style.display='block'
     }
 
     const handleMouse = () =>{  
-      setMouseEnter(prev=>!prev)
+      
+      // setMouseEnter(prev=>!prev)
     }
 
 
@@ -289,8 +313,15 @@ export default ({
       
     }
 
+    // const handleRef = (e) => {
+    //   divRef.current.style.borderRadius= '0px'
+    // }
 
-  function compres(){
+  console.log(searchResult) 
+
+    
+
+  function compres() {
 
 
       return(
@@ -299,19 +330,6 @@ export default ({
         }}>
 
         <HeadingContainer style={{ }}>
-          {/* <HeadingRow style={{justifyContent:'center'}}>
-            <Heading style={{ fontSize: '2rem', color:'white', fontWeight: '600', background:'#fffdfd4f',zIndex:'1',textShadow: '5px 3px 5px #312e2e',
-          boxShadow: '5px 10px 20px #817e7e inset',padding:'6px',textDecoration:'underline overline'
-          }}>{heading}</Heading>
-          </HeadingRow>
-          <HeadingRow style={{justifyContent:'center'}}>
-            <Heading style={{ fontSize: '18px', fontWeight: 'unset',color:'white', background:'#fffefe47',padding:'6px',textShadow:'2px 2px 2px #000000',
-          // boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-          textDecoration:'underline'
-          }}>Deals from your favourite Digital Brand.<br/>
-            Try searching for Data Servers, Institutes & Agencies in worldwide.
-            </Heading>
-          </HeadingRow> */}
           <HeadingRow style={{justifyContent:'center'}}>
             <Heading >{heading}</Heading>
           </HeadingRow>
@@ -324,36 +342,12 @@ export default ({
         <div style={{ width: "100%", height: "220px", display: "flex", alignItems: "center", justifyContent:`${matches == true ? 'unset' : 'space-around'}`}}>
           
           
-          
-          
-          {/* <Grid item md={3} style={{paddingTop:'141px'}}>
 
-       
-          <Grid item style={{display:'flex',justifyContent:'space-around'}}>
-
-          <div className={classes.homeImage}  style={{marginTop:"-30px",width:'120px',}}>
-          <img style={{borderRadius:'20px'}} src={`http://infilate.com/backend/public/images/${homeImages[0] && homeImages[0].image}`} />
-          </div>
-
-          <div className={classes.homeImage} >
-          <img style={{borderRadius:'15px'}} src={`http://infilate.com/backend/public/images/${homeImages[1] && homeImages[1].image}`} />
-          </div> 
-
-          </Grid>
-
-          <Grid style={{display:'flex',justifyContent:'center',paddingTop:'47px'}} item>
-
-          <div className={classes.homeImage} style={{width:'143px'}} >
-          <img style={{borderRadius:'20px'}} src={`http://infilate.com/backend/public/images/${homeImages[2] && homeImages[2].image}`} />
-          </div>
-
-          </Grid>
-            </Grid> */}
           
           
           {/* seachbox start  */}
           <div style={{  }} className="form-hero"  >
-            <div className="form-cont" onFocus={handleBlur} onBlur={handleBlur}>
+            <div className="form-cont" onFocus={handleFocus} onBlur={handleBlur}>
     
               <div className="category">
                 <ul className="category-item">
@@ -365,33 +359,49 @@ export default ({
                 </ul>
               </div>
 
-              <div style={{ display: "flex", marginLeft: "20px", marginRight: "20px", justifyContent: "space-between", backgroundColor: "white", borderRadius: "0 15px 15px 15px", boxShadow: "2px 4px 16px #888888" }}>
-               
-                <div class="col-12" style={{display: "flex",flexDirection: "column",position:'relative',width:'126%'}}>
+              <div  
+              // style={{ display: "flex", marginLeft: "20px", marginRight: "20px", justifyContent: "space-between", backgroundColor: "white", borderRadius: "0 15px 15px 15px", boxShadow: "2px 4px 16px #888888" }}
+              id='searchBox-style'
+              tabindex="0"
+              // ref={divRef}
+              // onClick={handleRef}
+              >
+              
+                <div className="search-box-responsive-width" 
+                // style={{display: "flex",flexDirection: "column",position:'relative',width:'126%'}}
+                >
                   {/* <label class="visually-hidden" for="inlineFormInputGroupUsername"></label> */}
                  
-                  <div className="flex-item" style={{ height: "50px", borderRadius: "20px" }}>
+                  <div className="search-input-parent" >
     
 
 
 
-                    <input  onKeyUp={myFunction} style={{ width: `${matches == true ? '142px' : '402px'}`, height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
+                    <input  onKeyUp={myFunction} 
+                    //  style={{ width: `${matches == true ? '142px' : '402px'}`, height: "50px", borderRadius: "0 0 0 20px", outline: "none" }} 
+                    type="text" id="inlineFormInputGroupUsername" placeholder="What you looking for" />
 
-                
-                
-                  </div>
-                  
-                 
-                  <div onMouseEnter={handleMouse} onMouseLeave={handleMouse} className="search_result_container" 
-                  style={themeStyles}
+                    <div 
+                    onMouseEnter={handleMouse} onMouseLeave={handleMouse} 
+                    className="search_result_container" 
+                  // style={themeStyles}
+                    ref={divRef}
                   >
+
+                  {searchResult && searchResult.some(v => v.type=='Webinars' ) ? <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Webinars</p> 
+                  : null
+                  }
+
+{/*                   
+                  { searchResult && searchResult?.find(v => v.type === 'Webinars' ?
+                  
+                  : null )} */}
                    
-                   <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Webinars</p>
                   {
                       searchResult && searchResult.filter((v,i)=>v.type=='Webinars').map((item,index)=>
                      
                       <>
-                        <p onClick={()=>handleClick(item)} 
+                        <p onClick={()=> handleClick(item) } 
                         style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
                         key={index}>{item.name}</p> 
                       </>
@@ -408,8 +418,9 @@ export default ({
                     //  </>
                       )
                   }    
+                  {searchResult && searchResult.some(v => v.type=='Coupons' ) ? 
+                  <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Coupons</p> : null }
 
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Coupons</p>
                   {
                      searchResult && searchResult.filter((v,i) => v.type=='Coupons').map((item,index) => 
                      <>
@@ -422,8 +433,8 @@ export default ({
                      )
 
                   }
-
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Blogs</p>
+                  {searchResult && searchResult.some(v => v.type=='Blogs' ) ?
+<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}>Blogs</p> : null }
                   {
                      searchResult && searchResult.filter((v,i) => v.type=="Blogs").map((item,index) => 
                      <>
@@ -437,7 +448,10 @@ export default ({
 
                   }
 
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Products</p>
+                  {searchResult && searchResult.some(v => v.type=='Products' ) ? <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Products</p>
+                  : null }
+
+
                   {
                      searchResult && searchResult.filter((v,i) => v.type=='Products').map((item,index) => 
                      <>
@@ -451,7 +465,10 @@ export default ({
 
                   }
 
-<p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Services</p>
+                  
+                  {searchResult && searchResult.some(v => v.type=='Services' ) ? 
+                  <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Services</p>
+                  : null }
                   {
                      searchResult && searchResult.filter((v,i) => v.type=='Services').map((item,index) => 
                      <>
@@ -465,12 +482,27 @@ export default ({
 
                   }
 
+                  {searchResult && searchResult.some(v => v.type=='Brands' ) ? 
+                  <p id="shh" style={{fontSize:'20px',color:'rgb(246, 136, 32)',paddingLeft:'5px',fontFamily:'Hind Siliguri'}}> Brands</p>
+                  : null }
 
+                  {
+                     searchResult && searchResult.filter((v,i) => v.type=='Brands').map((item,index) => 
+                     <>
+                        <p onClick={()=>handleClick(item)} 
+                        style={{fontSize:'15px',paddingLeft:'8px',fontFamily:'Hind Siliguri',cursor:'pointer'}} 
+                        key={index}>{item.name}</p> 
+                      </>
+                     )}
+                    </div>      
+                
+                  </div>
+                  
+                 
 
-                    </div> 
                  
                 </div>
-                
+          
                 <div style={{ display: "flex", justifyContent: "center" }}>
                    <div >
     

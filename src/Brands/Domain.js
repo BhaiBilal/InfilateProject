@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
             justifyContent:'center',
             width:'500px',
             height:'300px',
-            gridGap:'55px'
+            gridGap:'25px'
           },
 }));
 
@@ -206,6 +206,7 @@ function Domain({ coupondata, handleBtn, couponLength }) {
     // console.log(coupondata)
     const classes = useStyles();
     const [state, setState] = useState([])
+    const [ellipses,setEllipses] = useState(false)
     const [copySuccess, setCopySuccess] = useState('');
     const textAreaRef = useRef(null);
     const matches = useMediaQuery('(max-width:600px)');
@@ -215,7 +216,7 @@ function Domain({ coupondata, handleBtn, couponLength }) {
     const [open2, setOpen2] = React.useState(false);
     const [data,setData] = React.useState('')
 
-    console.log(state)
+    // console.log(state)
 
     const handleOpen = (item) => {
         setOpen(true);
@@ -249,15 +250,15 @@ function Domain({ coupondata, handleBtn, couponLength }) {
           }
       }
 
-      console.log(matches2)
+    //   console.log(matches2)
 
     const setting = {
         // dots: true,
         infinite: true,
         speed: 200,
         // slidesToShow: coupondata.length <= 3 ? 1 : 4,
-        slidesToShow: tum_tak_arzi_meri(),
-        slidesToScroll: coupondata.length <= 3 ? 1 : 3,
+        slidesToShow: coupondata?.length <=3 ? 1 : tum_tak_arzi_meri(),
+        slidesToScroll: coupondata?.length <= 3 ? 1 : 3,
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: "linear"
@@ -273,11 +274,15 @@ function Domain({ coupondata, handleBtn, couponLength }) {
         handleOpen2(item)
         // setData(item)
       }
-      console.log(data)
+    //   console.log(data)
 
     const notify = () => {
         navigator.clipboard.writeText(data?.code)   
         toast("code copied");
+        setEllipses(true)
+        setTimeout(() => {
+            window.location.href = data?.url;
+        },1000)
     }
 
     return (
@@ -352,6 +357,12 @@ function Domain({ coupondata, handleBtn, couponLength }) {
     
                                         <Typography style={{textAlign:'center'}}> { data?.code } </Typography>
                                         <Button onClick={() => notify()} variant="contained">Copy</Button>
+                                        <div style={{display:'flex', justifyContent:'center'}}>
+                                        {ellipses == true ? <div className='dot-pulse'></div> : 
+                                        null
+                                          }
+                                        
+                                        </div>
                                         <a style={{textAlign:'center'}} href={`${data.url}`} > {data.url} </a>
                                         <ToastContainer autoClose={1000}  />
                                         </div>   

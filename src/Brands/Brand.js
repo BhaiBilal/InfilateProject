@@ -20,6 +20,9 @@ function Brand() {
     const [coupondata, setCouponData] = React.useState([])
     const [couponLength, setCouponLength] = React.useState({all:0,code:0,deal:0,printed:0})
 
+
+    
+
     React.useEffect(() => {
         axios({
             method: 'POST',
@@ -39,7 +42,6 @@ function Brand() {
           })
     },[])
 
-    console.log(couponLength)
 
     const handleBtn = (e) => {
       let word = e.target.value;
@@ -48,27 +50,27 @@ function Brand() {
       }
 
       else if (word === "Code") {
-          const filtered = data?.coupon.filter(data => data?.type === "code");
+          const filtered = data?.coupon?.filter(data => data?.type === "code");
           setCouponData(filtered)
       }
       else if (word === "Deal") {
-        const filtered = data?.coupon.filter(data => data?.type === "deal");
+        const filtered = data?.coupon?.filter(data => data?.type === "deal");
         setCouponData(filtered)
       }
 
       else if (word === "Printed") {
-        const filtered = data?.coupon.filter(data => data?.type === "printed");
+        const filtered = data?.coupon?.filter(data => data?.type === "printed");
         setCouponData(filtered)
       }
   }
 
-// console.log(data?.coupon)
+// console.log(data)
 
     return (
         <>
             {/* <Header /> */}
             <div style={{width:'100%'}}>
-            <Home />
+            <Home data={data?.organisation} />
             <Brandpage data={data} />
             <Domain coupondata={coupondata} handleBtn={handleBtn} couponLength={couponLength} />
             <Recommend coupondata={data?.allcoupon && data.allcoupon[0]} />              

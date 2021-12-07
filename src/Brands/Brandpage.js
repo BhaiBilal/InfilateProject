@@ -18,7 +18,7 @@ function Brandpage({data}) {
                 <div>
                     <a href="#" className="brand-logo">
                         <div className="brand-sublogo">
-                            <img src={`http://infilate.com/backend/public/images/${data?.organisation && data.organisation[0].banner_media}` } />
+                            <img src={`http://infilate.com/backend/public/images/${data?.organisation && data.organisation[0].image}` } />
                         </div>
                     </a>
                     
@@ -35,7 +35,9 @@ function Brandpage({data}) {
                             <div className="image-box">
                                 <img style={{ width: "30px", height: "30px", color: "white" }} src={globe} alt="image" />
                             </div>
-                            <a >Website</a>
+                            <a 
+                            // href={`${data?.organisation && data?.organisation[0].url}`}
+                            >Website</a>
                         </button>
                         </div>
                         {/* <div className="website-button1"><button>

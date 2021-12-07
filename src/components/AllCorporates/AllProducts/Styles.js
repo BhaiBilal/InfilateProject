@@ -51,7 +51,7 @@ export default makeStyles((theme) => ({
 
   btn:{
     marginLeft:'5px',
-    height:'100px',
+    height:'35px',
     position:'sticky',
     top:'100px',
 

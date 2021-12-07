@@ -118,7 +118,7 @@ export default ({
   const [userData,setUserData] = useState('');
   const selector = useSelector((state) => console.log(state))
   const dispatch = useDispatch()
-
+  const history = useHistory()
   const notify = (message) => {   
     toast.error(message);
 }
@@ -133,14 +133,17 @@ export default ({
       notify(response.data.message)
         console.log(response)
         // console.log(response.data.token[1].email)
-        if(response.data.data.role_id=='3'){
+        if(response.data.data.role_id=='3' || response.data.data.role_id=='2'){
           const token=response.data.data.token
           const email=response.data.data.email
           const FullName=`${response.data.data.f_name}` + ` ${response.data.data.l_name}`
           const role_id=response.data.data.role_id.toString()
           // console.log(FullName)
           dispatch(userLoginRequest({token, email,FullName,role_id}))
+          history.push('/')
         }
+
+        
 
     }).catch(e=>{
       console.log(e.message)

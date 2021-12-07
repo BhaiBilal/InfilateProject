@@ -182,14 +182,13 @@ function Headerj() {
                 let cancel
                   axios('http://infilate.com/backend/public/api/app/organisation/list', {
                     method: 'POST',
-                    cancelToken: new axios.CancelToken(c=>cancel=c)
                   }).then((res) => {
-                    //   console.log(res)
+                      console.log(res)
                     setOrganisationData(res.data.Data)
                   }).catch(e=>{
-                    if(axios.isCancel(e)) return
+                     console.log(e)
                   })      
-                  return ()=> cancel()
+                  
              },[]);
 
 
@@ -245,7 +244,7 @@ function Headerj() {
       }
 
       const handleProfile = () => {
-          history.push({pathname:'/Dashboard'})
+          history.push({pathname:'/DashboardHome'})
       }
       const handleLoginbtn = () => {
         history.push({pathname:'/Login'})

@@ -7,6 +7,7 @@ import { makeStyles,useTheme, } from '@material-ui/core/styles';
 import './contactus.css'
 import axios from 'axios' 
 import { FormControl } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +15,7 @@ function Contact() {
 
     const [data,setData] = React.useState([])
     const [inputs, setInputs] = React.useState({});
+    const matches = useMediaQuery('(max-width:600px)');
     let content = ''
 
     const handleChange = (event) => {
@@ -78,15 +80,15 @@ function Contact() {
 
                 
                 
-                <Box mt={10} display='flex' justifyContent='center'>
-                <Grid container spacing={5} md={6}  > 
+                <Box mt={10} display='flex' justifyContent='center' flexDirection={`${matches == true ? 'column' : 'row'}`}>
+                <Grid container spacing={5} md={6} xs={12} > 
                    
-                <Grid item md={8}>
+                <Grid item md={8} xs={12}>
                 <p style={{fontSize:'40px',color:'#30296c',fontWeight:'700'}}>Drop us a line</p>
                     </Grid>
 
                     {/* <form onSubmit={handleSubmit}> */}
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12}>
                     
                     <input onChange={handleChange} type="text" name="name"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Name">
                     </input>
@@ -97,7 +99,7 @@ function Contact() {
                     </input>     
                     </Grid>
 
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12}>
                     <input onChange={handleChange} type="text" name="phone"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Your Phone">
                     </input>
                     <br/>
@@ -107,12 +109,12 @@ function Contact() {
                     </input>     
                     </Grid>
 
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12} >
                     <textarea onChange={handleChange} style={{height:'168px'}} type="text" name="message"  className="form-controlpa" required="" data-error="Please enter your name" placeholder="Message">
                     </textarea>
                     </Grid>
 
-                    <Grid item md={12}>
+                    <Grid item md={12} sm={12} xs={12}>
                     <button onClick={handleSubmit} type="submit" class="default-btn" >
                         <span>Send message</span>
                         </button>
@@ -123,7 +125,7 @@ function Contact() {
                 <ToastContainer autoClose={4000}  />
 
                 {data && data.right_section && data.right_section.map((v,i) => 
-                <Grid style={{paddingLeft:'84px',paddingTop:'20px'}} key={i} item>
+                <Grid style={{paddingLeft:`${matches == true ? '20px' : '84px'}`,paddingTop:'20px'}} key={i} item>
                 <p style={{color:'#f68820',display:'block',marginBottom:'5px'}}>{v.text_1}</p>
                 <p style={{fontSize:'40px',marginBottom:'30px',color:'#30296c',fontWeight:'700'}} >{v.text_2}</p>
                 <div className='changeToDefault3'>

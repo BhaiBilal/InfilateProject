@@ -64,7 +64,7 @@ export default function PlaygroundSpeedDial({mediaQuery}) {
 
 
     if(action.name=='Home'){
-      history.push('/Dashboard/Home')
+      history.push('/Dashboard')
     }
 
     else if(action.name=='Blog'){

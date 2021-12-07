@@ -23,6 +23,9 @@ import Fade from '@material-ui/core/Fade';
 import { Link } from "react-router-dom";
 import { Grid } from '@mui/material'
 import './viewallcoupon.css'    
+import { Button, Typography } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CustomPagination from './CustomPagination';
 
 const Data = [
@@ -129,11 +132,11 @@ const useStyles = makeStyles((theme) => ({
       },
       paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        // border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         width:'300px',
-        height:'300px'
+        height:'max-content'
       },
   }));
 
@@ -152,7 +155,7 @@ function Domain() {
     const [open, setOpen] = React.useState(false);
     const [data,setData] = React.useState('')
     const classes = useStyles();
-
+    const [ellipses,setEllipses] = useState(false)
     const [currentPage, setCurrentPage] = React.useState(1);
     const [postsPerPage] = React.useState(8);
 
@@ -191,8 +194,9 @@ function Domain() {
         
           Axios('http://infilate.com/backend/public/api/apps/coupon/coupon-list', {
             method: 'GET',
-            cancelToken: new axios.CancelToken(c=>cancel=c)
+           
           }).then((res) => {
+              console.log(res)
             setPosts(res.data.Data)
           }).catch(e=>{
               console.log(e)
@@ -213,6 +217,15 @@ function Domain() {
         cssEase: "linear"
     }
 
+    const notify = () => {
+        navigator.clipboard.writeText(data?.code)   
+        toast("code copied");
+        setEllipses(true)
+        setTimeout(() => {
+            window.location.href = data?.url;
+        },1000)
+    }
+
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -222,11 +235,10 @@ function Domain() {
     return (
         <>
 
-            <div style={{paddingTop:"160px",marginBottom:"120px"}} className="domain-page2" >
-                <div className="domain-button">
-                    <Link to='/searchMap'>
+            <div style={{paddingTop:"160px",marginBottom:"23px"}} className="domain-page2" >
+                <div className="domain-button2">
+
                     <button style={{ paddingRight: "30px" }}>ALL ({posts.length})</button>
-                    </Link>
                     <button value="All" onClick={handleBtn}>Coupon</button>
                   
                 </div>
@@ -234,7 +246,7 @@ function Domain() {
                 <div className="card-head2" >
                         {
                             currentPosts && currentPosts.map((item,index) => ((
-                                <Grid key={index} item md={3}>
+                                <Grid key={index} item md={3} lg={3} xl={3} sm={4} xs={12}>
                                 <div style={{marginBottom:'20px'}} className="recommend-card" onClick={()=>handleOpen(item)}> 
                                     <div className="card-offer">{item.discount_amount}% off</div>
                                     <CardMedia
@@ -244,7 +256,7 @@ function Domain() {
                                     />
                                     <div className="card-des">{item.name}</div>
                                     
-                                    <div className="card-coupon"> Get Coupon </div>
+                                    <div className="card-coupon2"> Get Coupon </div>
                                     {/* <div className="card-share"><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div> */}
                                     {/* <div className="card-price">
                                         <div className="right">Final Price</div>
@@ -260,7 +272,7 @@ function Domain() {
 
 
                 <Modal 
-                         aria-labelledby="transition-modal-title"
+                        aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
                         className={classes.modal}
                         open={open}
@@ -274,14 +286,30 @@ function Domain() {
                             <Fade in={open}>
                                            
                                 <div className={classes.paper}>
-                                <h2 id="transition-modal-title">{data.name}</h2>
-                                <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
+                                <h2 id="transition-modal-title"> { data.name } &nbsp; { data.is_dmc_coupon ? <span className='dmc-coupon'> DMC </span> : null  }  </h2>
+                                <img src={`http://infilate.com/backend/public/images/${data.media}`}  onError = {(e) => e.target.src = "/Assets/Images/blog.png"} alt='' />
+                                <p> <span style={{fontWeight:'bold'}}>code:-</span> { data.code } </p>
+                                <p> <span style={{fontWeight:'bold'}}> discount:-</span> { data.discount_amount }% </p>
+                                <p> <span style={{fontWeight:'bold'}}> validity:-</span> { data.end_date } </p>
+                                <p> <span style={{fontWeight:'bold'}}> terms & conditions:-</span> { data.terms_and_condition } </p>
+                                <p> <span style={{fontWeight:'bold'}}> type:- </span> { data.type }</p>
+                                <Button onClick={() => notify()} >copy code</Button>
+                                        <div style={{display:'flex', justifyContent:'center'}}>
+                                        {ellipses == true ? <div className='dot-pulse'></div> : 
+                                        null
+                                          }
+                                        
+                                        </div>
+                                <ToastContainer autoClose={1000}  />
                                 </div>
                             
                                 </Fade>
                                 </Modal>
             </div>
+            <div style={{display:'flex', justifyContent:'center', marginBottom:'35px'}}>
             <CustomPagination style={{marginTop:'10px'}} postPerPage={postsPerPage} totalPost={posts.length} paginate={paginate} />
+            </div>
+            
         </>
     )
 }

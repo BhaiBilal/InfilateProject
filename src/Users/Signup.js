@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Axios from "axios"
 
 function Copyright() {
@@ -60,6 +62,13 @@ export default function SignUp() {
 
   const classes = useStyles();
 
+  const notify = (message) => { 
+    if(message == 'successfully registered') {
+      toast.success(message)
+    } 
+    toast.error(message);
+}
+
   const auth= ()=>{
 
 
@@ -75,12 +84,15 @@ export default function SignUp() {
     )
       .then(function (response) {
         //handle success
-        console.log(response);
+        notify('successfully registered')
         window.location.href='http://my.infilate.com/Login'
       })
       .catch(function (err) {
         //handle error
-        console.log(err+' user already registered');
+          notify(err?.response?.data?.replace(/[^a-zA-Z ]/g, ""))
+
+        
+        console.log();
       });
 
 
@@ -237,6 +249,7 @@ export default function SignUp() {
       <Grid data-aos="fade-left" data-aos-duration="500" data-aos-offset="0" item xs={12}>
         <img src="https://th.bing.com/th/id/R.51ae05a5f02b433235902fa22c6dd5bd?rik=JxyLilE4Vl1dCA&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fRcA%2fBG4%2fRcABG4eei.png&ehk=GI3zuXaBDZaLbzy9GdnXoGx6qelxCX5%2bewC6PCGQI%2fc%3d&risl=&pid=ImgRaw&r=0" alt=""/>
       </Grid>
+      <ToastContainer theme='colored' autoClose={4000}  />
     </Grid>
   );
 }

@@ -346,7 +346,7 @@ return (
         variant="outlined"
         placeholder="Organisation Title"
         fullWidth
-        required
+        // required
         margin="normal"
         inputProps={{
           style: {fontSize: 15} 
@@ -376,7 +376,7 @@ return (
         variant="outlined"
         placeholder="Organisation Description"
         fullWidth
-        required
+        // required
         margin="normal"
         // name="Organisation Description"
         margin="normal"
@@ -406,7 +406,7 @@ return (
         variant="outlined"
         placeholder="Organisation Email"
         fullWidth
-        required
+        // required
         margin="normal"
         // name="Organisation Email"
         inputProps={{
@@ -414,6 +414,7 @@ return (
         }}
         {...field}
         />
+        <p style={{color:'red'}}>{formState.errors.org_email?.message}</p>  
         <p style={{color:'red'}}>{formState.errors.org_email?.type === "pattern" && "please enter proper email"}</p>
         </>
         )}  
@@ -424,10 +425,12 @@ return (
                     <Controller 
             control={control}
             name='org_type'
-            rules={{ required:true }}
-            render={({field}) => (
-
+            rules={{ required:'please select' }}
+            render={({field,formState}) => (
+              <>
              <MUIBasicSelect field={field}/> 
+             <p style={{color:'red'}}>{formState.errors.org_type?.message}</p>  
+              </>
       // <TextField
       //  style={{background:"white"}}
       //   id="Organisation Type"
@@ -451,9 +454,11 @@ return (
       <div className="container">
                     <Controller 
             control={control}
-            rules={{ required:true }}
+            rules={{ required:'field is requried',
+            }}
             name='address_line_1'
-            render={({field}) => (
+            render={({field,formState}) => (
+              <>
       <TextField
        style={{background:"white"}}
         id="address_line_1"
@@ -461,14 +466,17 @@ return (
         variant="outlined"
         placeholder="Address line 1"
         fullWidth
-        required
+        // required
         margin="normal"
         // name="Address line 1"
         inputProps={{
           style: {fontSize: 15} 
         }}
         {...field}
-        />)}  
+        />
+        <p style={{color:'red'}}>{formState.errors.address_line_1?.message}</p>  
+        </>
+        )}  
         /></div>
 
 
@@ -476,8 +484,9 @@ return (
                     <Controller 
             control={control}
             name='address_line_2'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required' }}
+            render={({field, formState}) => (
+      <>
       <TextField
        style={{background:"white"}}
         id="address_line_2"
@@ -485,14 +494,17 @@ return (
         variant="outlined"
         placeholder="Address Line 2"
         fullWidth
-        required
+        // required
         margin="normal"
         // name="Address Line 2"
         inputProps={{
           style: {fontSize: 15} 
         }}
         {...field}
-        />)}  
+        />
+        <p style={{color:'red'}}>{formState.errors.address_line_2?.message}</p>  
+        </>
+        )}  
         /></div>
     </Grid>
     </Grid>
@@ -514,8 +526,9 @@ const ContactDetails = () => {
         <Controller 
             control={control}
             name='city'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required' }}
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="city"
@@ -530,15 +543,19 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.city?.message}</p>
+          </>
+          )}  
           /></div>
 
         <div className="container">
                       <Controller 
             control={control}
             name='pincode'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required', minLength: 6}}
+            render={({field,formState}) => (
+        <>
         <TextField
          style={{background:"white"}}
           id="pincode"
@@ -546,22 +563,27 @@ const ContactDetails = () => {
           variant="outlined"
           placeholder="Pincode"
           fullWidth
-          required
+          // required
           margin="normal"
           // name="Pincode"
           inputProps={{
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.pincode?.message}</p>
+          <p style={{color:'red'}}>{formState.errors.pincode?.type === "pattern" && "please enter proper pincode"}</p>
+          </>
+          )}  
           /></div>
 
         <div className="container">
                       <Controller 
             control={control}
-            rules={{ required:true }}
+            rules={{ required:'field is required' }}
             name='state'
-            render={({field}) => (
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="state"
@@ -576,7 +598,10 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.state?.message}</p>
+          </>
+          )}  
           /></div>
 
 
@@ -584,8 +609,9 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='country'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required' }}
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="country"
@@ -600,15 +626,19 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.country?.message}</p>
+          </>
+          )}  
           /></div>
         
         <div className="container">
                       <Controller 
             control={control}
             name='contact_no'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required' }}
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="Contact Number"
@@ -623,15 +653,19 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.contact_no?.message}</p>
+          </>
+          )}  
           /></div>
 
         <div className="container">
                       <Controller 
             control={control}
-            rules={{ required:true }}
+            rules={{ required:'field is required' }}
             name='gst_no'
-            render={({field}) => (
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="GST Number"
@@ -646,21 +680,25 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.gst_no?.message}</p>
+          </>
+          )}  
           /></div>
 
         <div className="container">
                       <Controller 
             control={control}
-            rules={{ required:true }}
+            rules={{ required:'field is required' }}
             name='latitude'
-            render={({field}) => (
+            render={({field, formState}) => (
+             <> 
         <TextField
          style={{background:"white"}}
           id="Latitudinal Position"
           label="Latitudinal Position"
           variant="outlined"
-          placeholder="Latitudinal Position"
+          placeholder="find your locations latitude from https://www.latlong.net/"
           fullWidth
           required
           margin="normal"
@@ -669,20 +707,26 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.latitude?.message}</p>
+          </>
+          )}  
           /></div>
+
+
         <div className="container">
                       <Controller 
             control={control}
             name='longitude'
-            rules={{ required:true }}
-            render={({field}) => (
+            rules={{ required:'field is required' }}
+            render={({field, formState}) => (
+              <>
         <TextField
          style={{background:"white"}}
           id="Longitudinal Position"
           label="Longitudinal Position"
           variant="outlined"
-          placeholder="Longitudinal Position"
+          placeholder="find your locations longitude from https://www.latlong.net/"
           fullWidth 
           required
           margin="normal"
@@ -691,7 +735,10 @@ const ContactDetails = () => {
             style: {fontSize: 15} 
           }}
           {...field}
-          />)}  
+          />
+          <p style={{color:'red'}}>{formState.errors.longitude?.message}</p>
+          </>
+          )}  
           /></div>
 
 
@@ -785,8 +832,9 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='holder_type'
-            rules={{required:true}}
+            rules={{}}
             render={({field,formState}) => (
+              <>
       <TextField
        style={{background:"white"}}
         id="holder_type"
@@ -800,7 +848,10 @@ const Uploads = () => {
           style: {fontSize: 15} 
         }}
           {...field}
-          />)}  
+          />
+          {/* <p style={{color:'red'}}>{formState.errors.organisation_media?.message}</p> */}
+          </>
+          )}  
           /></div>
 
 
@@ -958,10 +1009,10 @@ export default function HorizontalLabelPositionBelowStepper() {
         //handle success
         if(response){
           alert('account successfully created')
-          
+          console.log(response);
+          window.location.href='http://my.infilate.com/Login' 
         }
-        console.log(response);
-        window.location.href='http://my.infilate.com/Login'
+
       })
       .catch(function (err) {
         //handle error

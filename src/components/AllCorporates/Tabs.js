@@ -120,9 +120,11 @@ export default function ContentTabs() {
         <AllProducts productList={productList} arr2={arr2} setArr2={setArr2} value={value} />
 
       </TabPanel>
+
       <TabPanel value={value} index={1}>
         <AllServices serviceList={serviceList} arr3={arr3} setArr3={setArr3} />
       </TabPanel>
+      
       {/* <TabPanel value={value} index={2}>
         Item Three
       </TabPanel> */}

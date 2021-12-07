@@ -16,10 +16,9 @@ const PlaceDetails = ({ place, selected, refProp, setCoordinates, index}) => {
 if(selected === true) {
   get()
 }
-  console.log(index)
 
   const handleClick = () => {
-    setCoordinates({lat: Number(place.latitude), lng: Number(place.longitude)})
+    setCoordinates({lat: Number(place?.latitude), lng: Number(place?.longitude)})
     // console.log(place.latitude)
   }
 
@@ -32,11 +31,11 @@ if(selected === true) {
               className={classes.card}
               // style={{height:350}}
               style={{paddingTop:'200px'}}
-              image={place.banner_media ? `http://infilate.com/backend/public/images/${place.banner_media}` : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
-              title={place.name} />
+              image={place?.banner_media ? `http://infilate.com/backend/public/images/${place?.banner_media}` : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+              title={place?.name} />
 
               <CardContent>
-                <Typography onClick={() => handleClick()}  gutterBottom variant='h5' className={classes.hover}> { place.name } </Typography>
+                <Typography onClick={() => handleClick()}  gutterBottom variant='h5' className={classes.hover}> { place?.name } </Typography>
                 <Box display="flex" justifyContent="space-between" mt={2}>
                 {/* <Rating name="read-only" value={Number(place.rating)} readOnly /> */}
                 <Typography variant="subtitle1">Personal Information</Typography>
@@ -46,12 +45,12 @@ if(selected === true) {
                 <hr />
                 <Box display='flex ' justifyContent='space-between' mt={1}>
                 <Typography variant="subtitle2" color="textSecondary">Name</Typography>
-                <Typography gutterbottom variant="subtitle2" color="textSecondary"> { place.user_data } </Typography>
+                <Typography gutterbottom variant="subtitle2" color="textSecondary"> { place?.user_data } </Typography>
                 </Box>
 
                 <Box display='flex' justifyContent='space-between'>
                 <Typography variant="subtitle2" color="textSecondary">Email</Typography>
-                <Typography gutterbottom variant="subtitle2" color="textSecondary">{place.email}</Typography>
+                <Typography gutterbottom variant="subtitle2" color="textSecondary">{place?.email}</Typography>
                 </Box>
 
                 <Box my={1} display='flex' justifyContent='space-between' alignItems='center'>
@@ -62,19 +61,19 @@ if(selected === true) {
                  <Box my={1} display='flex' justifyContent='space-between'  flexDirection='column'>
                    
                    <Typography variant="subtitle2" color="textSecondary" className={classes.subtitle}> <Typography> Type: </Typography>
-                   <Typography> { place.organisation_type } </Typography> </Typography>
+                   <Typography> { place?.organisation_type?.organisation_type } </Typography> </Typography>
                    <Typography variant="subtitle2" color="textSecondary" className={classes.subtitle}> <Typography> Title: </Typography>
-                   <Typography> { place.title } </Typography> </Typography>
+                   <Typography> { place?.title } </Typography> </Typography>
                    <Typography variant  ="subtitle2" color="textSecondary" className={classes.subtitle}> <Typography> Description: </Typography>
-                   <Typography> { place.description }
+                   <Typography> { place?.description }
                    </Typography> </Typography>
                 </Box>   
 
                 <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
-                  <LocationOnIcon />{place.address_line_1}
+                  <LocationOnIcon />{place?.address_line_1}
                 </Typography>
                 <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
-                  <LocationOnIcon />{place.address_line_2}
+                  <LocationOnIcon />{place?.address_line_2}
                 </Typography>
                 {/* {place?.awards?.map((award)=>
                 <Box my={1} display='flex' justifyContent='space-between' alignItems='center'>

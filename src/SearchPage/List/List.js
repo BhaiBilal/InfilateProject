@@ -4,12 +4,13 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './Styles.js';
 
-const List = ({places, childClicked, isLoading, setCoordinates}) => {
+const List = ({ places, childClicked, isLoading, setCoordinates }) => {
   const [elRefs, setElRefs] = useState([]);
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('restaurants')
   const classes = useStyles();
-  // console.log(Number(childClicked))
+
+  // console.log(places)
 
   useEffect(() => {
      const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
@@ -45,8 +46,9 @@ const List = ({places, childClicked, isLoading, setCoordinates}) => {
           </FormControl> */}
 
           <Grid container spacing={3} className={classes.list}>
-            {places?.map((place,i)=>
-            <Grid key={i} item xs={12}>
+            {places?.map((place,i)=> {
+              return (
+                <Grid key={i} item xs={12}>
                 <PlaceDetails
                 place={place}
                 index={i}
@@ -55,11 +57,10 @@ const List = ({places, childClicked, isLoading, setCoordinates}) => {
                 setCoordinates={setCoordinates}
                 />
               </Grid>
-            )}
+              )
+            })}
 
           </Grid>
-
-
             </>
           )}
 

@@ -32,7 +32,7 @@ function CustomPagination({postPerPage,totalPost,paginate}) {
     return (
         <>
 
-            <Pagination style={{marginTop:'60px'}} onChange={handleChange} count={pageNumbers.length} color="secondary" />
+            <Pagination onChange={handleChange} count={pageNumbers.length} color="secondary" />
             
           
         </>

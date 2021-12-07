@@ -157,7 +157,7 @@ const useStyles = makeStyles((theme) => ({
                <h1 className="scanfcode">{item.category_name ? item.category_name : 'no data'}</h1>
              <CardMedia
                className={classes.media}
-               image={`http://infilate.com/backend/public/images/${item.media}`}
+               image={`http://infilate.com/backend/public/images/${item.media}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"}
              />
              <CardContent onClick={()=>handleClick(item)}>
                <Typography style={{display:'-webkit-box',webkitLineClamp:'3',webkitBoxOrient:'vertical',overflow:'hidden'}} className={classes.forTypo3} variant="body2" color="textSecondary" component="p">
@@ -167,7 +167,7 @@ const useStyles = makeStyles((theme) => ({
              <CardHeader style={{paddingTop:"0px",paddingLeft:"16px",paddingRight:"16px",paddingBottom:"16px"}}
                avatar={
                  <Avatar aria-label="recipe" className={classes.avatar}>
-                  <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} />
+                  <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
                  </Avatar>
                }
                title={item.title ? item.title1 : ""}
@@ -195,7 +195,7 @@ const useStyles = makeStyles((theme) => ({
                <h1 className="scanfcode">{item.category_name ? item.category_name : 'no data'}</h1>
              <CardMedia
                className={classes.media}
-               image={`http://infilate.com/backend/public/images/${item.media}`} />
+               image={`http://infilate.com/backend/public/images/${item.media}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
              <CardContent onClick={()=>handleClick(item)}>
                <Typography style={{display:'-webkit-box',webkitLineClamp:'3',webkitBoxOrient:'vertical',overflow:'hidden'}} className={classes.forTypo3} variant="body2" color="textSecondary" component="p">
                    {item.title}
@@ -204,7 +204,7 @@ const useStyles = makeStyles((theme) => ({
              <CardHeader style={{paddingTop:"0px",paddingLeft:"16px",paddingRight:"16px",paddingBottom:"16px"}}
                avatar={
                  <Avatar aria-label="recipe" className={classes.avatar}>
-                   <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} />
+                   <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
                  </Avatar>
                }
                title={item.title ? item.title1 : ""}
@@ -296,7 +296,7 @@ const useStyles = makeStyles((theme) => ({
       <CardHeader style={{paddingTop:"0px",paddingLeft:"16px",paddingRight:"16px",paddingBottom:"16px"}}
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            <img src={`http://infilate.com/backend/public${blogData[0]?.user[0]?.image}`} />
+            <img src={`http://infilate.com/backend/public${blogData[0]?.user[0]?.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
           </Avatar>
         }
         title={blogData && blogData[0] ? blogData[0].title1 : ""}
@@ -320,7 +320,7 @@ const useStyles = makeStyles((theme) => ({
             <h1 className="scanfcode">{item.category_name}</h1>
           <CardMedia
                className={classes.media2}
-               image={`http://infilate.com/backend/public/images/${item.media}`}
+               image={`http://infilate.com/backend/public/images/${item.media}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"}
              />
              <CardContent onClick={()=>handleClick(item)}>
                <Typography style={{fontSize:'2rem',display:'-webkit-box',webkitLineClamp:'3',webkitBoxOrient:'vertical',overflow:'hidden'}} className={classes.forTypo2} variant="body2" color="textSecondary" component="p">
@@ -330,7 +330,7 @@ const useStyles = makeStyles((theme) => ({
              <CardHeader
                avatar={
                  <Avatar aria-label="recipe" className={classes.avatar2}>
-                   <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} />
+                   <img src={`http://infilate.com/backend/public${item?.user[0]?.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
                  </Avatar>
                }
                title={item.title1 ? item.title1 : ""}

@@ -137,7 +137,10 @@ export default ({
   const history = useHistory();
   const [blogData,setBlogData]=useState([])
   const classes = useStyles();
-  const matches = useMediaQuery('(max-width:950px)');
+  const three = useMediaQuery('(max-width:950px)');
+  const two = useMediaQuery('(max-width:600px)')
+  const one = useMediaQuery('(max-width:399px)')
+  const last = useMediaQuery('(min-width:951px)')
   // const setting = {
   //   dots: true,
   //   infinite: true,
@@ -149,11 +152,15 @@ export default ({
   //   cssEase: "linear"
   // }
 
+
+
+
+
   const settings = {
     // dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: one && 1 || two && 2 || three && 3 || last && 4,
     slidesToScroll: 1
   };
 
@@ -182,7 +189,7 @@ React.useEffect(() => {
     
 },[]);
 
-console.log(blogData)
+// console.log(blogData)
  
 const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
@@ -225,11 +232,11 @@ const handleCardClick=(item)=>{
               blogData?.map((item,index) => 
                 
                 <div class="card" key={index} onClick = {() => handleCardClick(item)}>
-                  <p style={{ fontSize: `${matches == true ? '11px' : '16px'}`, 
+                  <p style={{ fontSize: `${two ? '12px' : '16px'}`, 
                   fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>
           <img style={{ width: "100%", borderRadius: "4px" }} src={`http://infilate.com/backend/public/images/${item.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
 
-                  <p style={{ fontSize: "18px", fontWeight: "600", paddingTop: "10px" }}>{item.title1}</p>
+                  <p style={{ fontSize: `${two ? '12px' : '16px'}`, fontWeight: "600", paddingTop: "10px" }}>{item.title1}</p>
 
                 </div>
               )}

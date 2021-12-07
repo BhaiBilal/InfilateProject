@@ -121,3 +121,21 @@ div.c{
     border-color: #f68820;
     outline: none;
  }
+
+.postion-fixed-div{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /* width:100px; */
+    background: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* height:100px; */
+    /* border:1px solid black; */
+}
+
+
+ @media (max-width:1280px){
+    .column_chabba {
+    width: 100%;
+    }
+ }

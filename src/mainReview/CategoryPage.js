@@ -36,6 +36,7 @@ import { useStore } from './zustand'
 import { Typography } from '@material-ui/core';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 
@@ -63,6 +64,8 @@ function CategoryPage(props) {
     const [checkedState2,setCheckedState2] = React.useState([])
     const [subSubCategoriesData, setSubSubCategoriesData] = React.useState([])
     const [subSubCategoriesData2, setSubSubCategoriesData2] = React.useState([]);
+    const matches = useMediaQuery('(max-width:1279px)');
+    const matches2 = useMediaQuery('(max-width:900px)');
 
     const selector = useSelector(state => state);
     console.log(selector)
@@ -196,7 +199,7 @@ function CategoryPage(props) {
                 <div className='row_chabba'>
                 {item.services.map((v,i)=>
 
-                <Grid md={6} key={i} item className='column_chabba'>
+                <Grid md={12} key={i} item className='column_chabba'>
                  
                  <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
                  <Grid item style={{display:'flex',alignItems:'center'}}>
@@ -212,6 +215,7 @@ function CategoryPage(props) {
                   
                 </Paper>  
                 </Grid>
+
                 )
                 }
                 {    
@@ -258,9 +262,11 @@ function CategoryPage(props) {
 
     return (
         <div>
-            <Box display='flex' ml={12}>
+            <Box display='flex' ml={matches == true ? 2 : 12}>
 
 
+          {matches2 == true ?  null : 
+            
             <Grid style={{display:'flex',flexDirection:'column'}} item md={1}>
             <p style={{ fontSize: "16px", fontWeight: "bold", cursor: "default",paddingBottom:'13px' }}>Categories</p>
             
@@ -270,6 +276,8 @@ function CategoryPage(props) {
             
 
             </Grid>
+             }
+
 
                 <Container maxWidth='md' style={{marginLeft:'0px',marginRight:'0px'}}>
                     <Paper elevation={3} style={{
@@ -320,81 +328,58 @@ function CategoryPage(props) {
                             }
                           </Grid>
 
-                            {/* {
-                              subSubCategoriesData && subSubCategoriesData.service_list && subSubCategoriesData.product_list.map((item,index)=>
-                             <>
-                              <p style={{fontWeight:'bold'}} key={index}> { item.name } </p>
- 
-                              </>  
-                            )
-
-                            }    
-                 */}
-                           
-
-                            {/* // {item.map((v,i)=>v[1].map((v,i)=>
-                            //    <p key={i}> {v.name} </p>
-                            //     )
-                            //     )
-                            
-                            // }
-
-
-                        //     <div key={index} className="myfirsttest">
-                        //     <img src={`http://infilate.com/backend/public/images/${item.media}`} alt="" />
-
-                        //     <div className="b">{item.name}</div>
-   
-                        // </div>  */}
                                 <br />
        
                     </Paper>
                     </Container>
 
-                    <Container maxWidth='sm' style={{margin:'0px'}}>
+
+                    {matches2==true  ? 
+                      checkedState2.length + checkedState.length > 0 &&  <div className='postion-fixed-div'>
+                      <Container maxWidth='sm' style={{margin:'0px',zIndex:'100'}}>
 
                         <Typography>You Use</Typography>
 
                         { checkedState && checkedState.map((v,i) => 
-                           <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
+                          <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
 
                             <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
                             <Grid item style={{display:'flex',alignItems:'center'}}>
-                           <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
-                           <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
+                          <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
+                          <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
                             </Grid>   
-                           
+                          
                               <Checkbox color="primary"
-                               checked={true}
-                               id={`custom-checkbox-${i}`}
+                              checked={true}
+                              id={`custom-checkbox-${i}`}
                             //    onClick={() => handleChangeService(v)}
-                               inputProps={{ 'aria-label': 'primary checkbox' }}/>
+                              inputProps={{ 'aria-label': 'primary checkbox' }}/>
                               </Paper>
                                 
-                               </Grid>
-                               
-                        
+                              </Grid>
+                              
+
                         ) }
 
                           { checkedState2 && checkedState2.map((v,i) => 
-                           <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
+                          <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
 
                             <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
                             <Grid item style={{display:'flex',alignItems:'center'}}>
-                           <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
-                           <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
+                          <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
+                          <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
                             </Grid>   
-                           
+                          
                               <Checkbox color="primary"
-                               checked={true}
-                               id={`custom-checkbox-${i}`}
+                              checked={true}
+                              id={`custom-checkbox-${i}`}
                             //    onClick={() => handleChangeProduct(v)}
-                               inputProps={{ 'aria-label': 'primary checkbox' }}/>
+                              inputProps={{ 'aria-label': 'primary checkbox' }}/>
                               </Paper>
                                 
-                               </Grid>
-                               
-                        
+                              </Grid>
+                              
+
                         ) }
 
                         <Grid style={{display:'flex',justifyContent:'space-between',alignItems:'center'}} item>
@@ -404,10 +389,73 @@ function CategoryPage(props) {
                         <Button onClick={()=> reviewSelectHandler() } variant="contained" color='primary'>Continue</Button> 
                         : <Button variant="contained" color='primary' disabled>Continue</Button>
                         }
-                        
+
                         </Grid>
 
-                    </Container>
+                        </Container> 
+                        </div>
+                        :
+                    
+                      <Container maxWidth='sm' style={{margin:'0px'}}>
+
+                        <Typography>You Use</Typography>
+
+                        { checkedState && checkedState.map((v,i) => 
+                          <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
+
+                            <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
+                            <Grid item style={{display:'flex',alignItems:'center'}}>
+                          <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
+                          <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
+                            </Grid>   
+                          
+                              <Checkbox color="primary"
+                              checked={true}
+                              id={`custom-checkbox-${i}`}
+                            //    onClick={() => handleChangeService(v)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}/>
+                              </Paper>
+                                
+                              </Grid>
+                              
+
+                        ) }
+
+                          { checkedState2 && checkedState2.map((v,i) => 
+                          <Grid md={12} key={i} item style={{paddingBottom:'14px'}}>
+
+                            <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
+                            <Grid item style={{display:'flex',alignItems:'center'}}>
+                          <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${v.media}`} />   
+                          <Typography style={{paddingLeft:'12px'}}> { v.name } </Typography>                     
+                            </Grid>   
+                          
+                              <Checkbox color="primary"
+                              checked={true}
+                              id={`custom-checkbox-${i}`}
+                            //    onClick={() => handleChangeProduct(v)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}/>
+                              </Paper>
+                                
+                              </Grid>
+                              
+
+                        ) }
+
+                        <Grid style={{display:'flex',justifyContent:'space-between',alignItems:'center'}} item>
+                        <Typography>You have selected { checkedState.length + checkedState2.length } products</Typography>
+
+                        { checkedState2.length + checkedState.length > 0 ?  
+                        <Button onClick={()=> reviewSelectHandler() } variant="contained" color='primary'>Continue</Button> 
+                        : <Button variant="contained" color='primary' disabled>Continue</Button>
+                        }
+
+                        </Grid>
+
+                        </Container>
+                    
+                    }
+
                     
             </Box>
             <ToastContainer autoClose={4000}  />

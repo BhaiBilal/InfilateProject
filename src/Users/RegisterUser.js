@@ -143,6 +143,7 @@ setUser({...user,[name]:value})
         result = await result.json()
     console.warn("result",result) ---*/}
     }
+
    
     const formData = new FormData()
     formData.append("f_name",user)
@@ -239,7 +240,7 @@ setUser({...user,[name]:value})
             </Grid>
             
           </div>
-            
+          
             </div>
             </>
     )

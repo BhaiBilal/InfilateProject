@@ -10,72 +10,7 @@ import Footer from "components/footers/FiveColumnWithInputForm.js";
 import Coupon from "./couponMain/Coupon"
 import AllCoupon from './pages/AllCoupons'
 import './App.css'
-/*
- * This is the entry point component of this project. You can change the below exported default App component to any of
- * the prebuilt landing page components by uncommenting their import and export lines respectively.
- * See one of the landing page components to better understand how to import and render different components (Always
- * make sure if you are building your own page, the root component should be the AnimationRevealPage component. You can
- * disable the animation by using the disabled prop.
- *
- * The App component below is using React router to render the landing page that you see on the live demo website
- * and the component previews.
- *
- */
 
-/* Use AnimationRevealPage as a wrapper component for your pages if you are custom building it */
-// import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-
-/*
- * Hero section is the top most section on the page. It contains the header as well.
- * So you dont need to import headers
- * separately
- */
-
-// import Hero from "components/hero/TwoColumnWithVideo.js";
-// import Hero from "components/hero/TwoColumnWithInput.js";
-// import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
-// import Hero from "components/hero/TwoColumnWithPrimaryBackground.js";
-// import Hero from "components/hero/FullWidthWithImage.js";
-// import Hero from "components/hero/BackgroundAsImage.js";
-// import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
-
-// import Features from "components/features/ThreeColSimple.js";
-// import Features from "components/features/ThreeColWithSideImage.js";
-// import Features from "components/features/ThreeColWithSideImageWithPrimaryBackground.js";
-// import Features from "components/features/VerticalWithAlternateImageAndText.js";
-// import Features from "components/features/DashedBorderSixFeatures";
-// import MainFeature from "components/features/TwoColWithButton.js";
-// import MainFeature from "components/features/TwoColSingleFeatureWithStats.js";
-// import MainFeature2 from "components/features/TwoColSingleFeatureWithStats2.js";
-// import MainFeature from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
-// import FeatureWithSteps from "components/features/TwoColWithSteps.js";
-// import FeatureStats from "components/features/ThreeColCenteredStatsPrimaryBackground.js";
-
-// import Pricing from "components/pricing/ThreePlans.js";
-// import Pricing from "components/pricing/ThreePlansWithHalfPrimaryBackground.js";
-// import Pricing from "components/pricing/TwoPlansWithDurationSwitcher.js";
-
-// import SliderCard from "components/cards/ThreeColSlider.js";
-// import TrendingCard from "components/cards/TwoTrendingPreviewCardsWithImage.js";
-// import Portfolio from "components/cards/PortfolioTwoCardsWithImage.js";
-// import TabGrid from "components/cards/TabCardGrid.js";
-
-// import Blog from "components/blogs/ThreeColSimpleWithImage.js";
-// import Blog from "components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
-// import Blog from "components/blogs/PopularAndRecentBlogPosts.js";
-// import Blog from "components/blogs/GridWithFeaturedPost.js";
-
-// import Testimonial from "components/testimonials/TwoColumnWithImage.js";
-// import Testimonial from "components/testimonials/TwoColumnWithImageAndProfilePictureReview.js";
-// import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
-// import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
-// import Testimonial from "components/testimonials/SimplePrimaryBackground.js";
-
-// import FAQ from "components/faqs/SimpleWithSideImage.js";
-// import FAQ from "components/faqs/SingleCol.js";
-// import FAQ from "components/faqs/TwoColumnPrimaryBackground.js";
-
-//import ContactUsForm from "components/forms/SimpleContactUs.js";
 import ContactUsForm from "components/forms/TwoColContactUsWithIllustrationFullForm.js";
 import CheckOut from "components/forms/Checkout";
 import Purchase from "components/Purchase/Purchase";
@@ -88,39 +23,15 @@ import Product from "pages/Product";
 import SearchPage from 'SearchPage/Search'
 import SearchPage2 from 'SearchPage2/Search2'
 import CardDetails from 'CardDetails/CardDetails'
-// import SubscribeNewsLetterForm from "components/forms/SimpleSubscribeNewsletter.js";
-//
-// import GetStarted from "components/cta/GetStarted.js";
-// import GetStarted from "components/cta/GetStartedLight.js";
-// import DownloadApp from "components/cta/DownloadApp.js";
-
-// import Footer from "components/footers/SimpleFiveColumn.js";
-// import Footer from "components/footers/FiveColumnWithInputForm.js";
-// import Footer from "components/footers/FiveColumnWithBackground.js";
-// import Footer from "components/footers/FiveColumnDark.js";
-// import Footer from "components/footers/MiniCenteredFooter.js";
-
-/* Ready Made Pages (from demos folder) */
-// import EventLandingPage from "demos/EventLandingPage.js";
-// import HotelTravelLandingPage from "demos/HotelTravelLandingPage.js";
-// import AgencyLandingPage from "demos/AgencyLandingPage.js";
-// import SaaSProductLandingPage from "demos/SaaSProductLandingPage.js";
-// import RestaurantLandingPage from "demos/RestaurantLandingPage.js";
-// import ServiceLandingPage from "demos/ServiceLandingPage.js";
-// import HostingCloudLandingPage from "demos/HostingCloudLandingPage.js";
-
-/* Inner Pages */
-
-// import SignupPage from "pages/Signup.js";
-// import PricingPage from "pages/Pricing.js";
-// import AboutUsPage from "pages/AboutUs.js";
-// import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
-// import TermsOfServicePage from "pages/TermsOfService.js";
-// import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
-
+import AddProducts from './Dashboard/Contents/AddProducts'
+import AddCoupons from './Dashboard/Contents/AddCoupons'
+import AddServices from './Dashboard/Contents/AddServices'
+import UpdateService from './Dashboard/Contents/UpdateService'
+import UpdateProduct from './Dashboard/Contents/UpdateProduct'
+import UpdateBlog from './Dashboard/Contents/Updateblog'
+import UpdateCoupon from './Dashboard/Contents/UpdateCoupon'
 import ComponentRenderer from "ComponentRenderer.js";
-import MainLandingPage from "MainLandingPage.js";
 
 import { BrowserRouter as Router, Switch, Route, Redirect, Link } from "react-router-dom";
 import CategoriesCheckBox from "components/CategoriesCheckBox/CategoriesChekBox";
@@ -145,7 +56,10 @@ import ContactUs from 'components/contactUs/Contact'
 import FAQs from './components/faqs/TwoColumnPrimaryBackground'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
-import DashBoard from './Dashboard/Dashboard'
+
+import DashBoardHome from './Dashboard/Contents/Home'
+import AddBlog from './Dashboard/Contents/Addblog'
+
 import SearchList from 'components/SearchList/SearchList' 
 import Pressroom from "components/Pressroom/Pressroom";
 import Cart from 'components/cart/Cart'
@@ -164,6 +78,7 @@ export default function App() {
   React.useEffect(() => {
     fetchTotalCartItems();
   }, [])
+
 
   const fetchTotalCartItems = () => {
     axios({
@@ -196,83 +111,94 @@ export default function App() {
       <ScrollToTop />
       <Headerj/>
       <Switch>
-      <Route path="/components/:type/:subtype/:name">
+      {/* <Route exact path="/components/:type/:subtype/:name">
       <ComponentRenderer />
       </Route>
-        <Route path="/components/:type/:name">
+        <Route exact path="/components/:type/:name">
           <ComponentRenderer />
-        </Route>
-        {/* <Route path="/login"><Login /> </Route> */}
-        <Route path="/blog"> <BlogIndexPage /> </Route>
-        <Route path="/pressRoom"> <Pressroom /> </Route>
-        <Route path="/registerWebinar"> <ContactUsForm /> </Route>
-        <Route path="/checkout"> <CheckOut /></Route>
-        <Route path="/Brand/:id"> <Brand /></Route>
-        <Route path="/AllCorporates"> <Tabs /></Route>
-        <Route path="/MainBlog"> <MainBlog /></Route>
-        <Route path="/BlogDetail/:id"> <BlogHead /></Route>
-        <Route path="/faQs"> <FAQs /></Route>
-        <Route path="/privacyPolicy"> <PrivacyPolicy /></Route>
-        <Route path="/terms&Conditions"> <TermsOfService /></Route>
-        <Route path="/Coupon"> <Coupon /></Route>
-        <Route path="/AllCoupons"> <AllCoupon /></Route>
-        <Route path="/SeeMoreReviews"> <Seemorereviews /></Route>
-        <Route path="/Review/:id"> <Review /></Route>
-        <Route path="/ReviewSelect"> <ReviewSelect /></Route>
-        <Route path="/MyOrders"> <MyOrders /></Route>
-        <Route path="/webinarDetails/:id"> <CardDetails /></Route>
+        </Route> */}
+        {/* <Route exact path="/login"><Login /> </Route> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/blog" component = {BlogIndexPage}/>
+        <Route exact path="/pressRoom" component = {Pressroom}/> 
+        <Route exact path="/registerWebinar"> <ContactUsForm /> </Route>
+        <Route exact path="/checkout"> <CheckOut /></Route>
+        <Route exact path="/Brand/:id"> <Brand /></Route>
+        <Route exact path="/AllCorporates"> <Tabs /></Route>
+        <Route exact path="/MainBlog"> <MainBlog /></Route>
+        <Route exact path="/BlogDetail/:id"> <BlogHead /></Route>
+        <Route exact path="/faQs"> <FAQs /></Route>
+        <Route exact path="/privacyPolicy"> <PrivacyPolicy /></Route>
+        <Route exact path="/terms&Conditions"> <TermsOfService /></Route>
+        <Route exact path="/Coupon"> <Coupon /></Route>
+        <Route exact path="/AllCoupons"> <AllCoupon /></Route>
+        <Route exact path="/SeeMoreReviews"> <Seemorereviews /></Route>
+        <Route exact path="/Review/:id"> <Review /></Route>
+        <Route exact path="/ReviewSelect"> <ReviewSelect /></Route>
+        <Route exact path="/MyOrders"> <MyOrders /></Route>
+        <Route exact path="/webinarDetails/:id"> <CardDetails /></Route>
             
-        <Route path="/other"> <Static1 /> </Route> 
-        <Route path="/others/:id"> <Section1 /> </Route> 
+        <Route exact path="/other"> <Static1 /> </Route> 
+        <Route exact path="/others/:id"> <Section1 /> </Route> 
         
+        <Route exact path='/DashboardHome' component={DashBoardHome} />
+
+        <Route exact path='/addProduct' component={AddProducts} />
+
+        <Route exact path= '/addBlog' component={AddBlog} />    
+
+        <Route exact path='/addCoupon' component={AddCoupons} />
+
+        <Route exact path='/addService' component={AddServices} />  
+
+        <Route exact path='/updateService' component={UpdateService} /> 
+
+        <Route exact path='/updateProduct' component={UpdateProduct} /> 
+
+        <Route exact path='/updateCoupon' component={UpdateCoupon} /> 
+
+        <Route exact path='/updateBlog' component={UpdateBlog} /> 
 
         {
-            selector.userLoginLogout.role_id=='2' ?   <Route path="/Dashboard"> <DashBoard /> </Route> : null 
-        }
-
-        {
-          selector.userLoginLogout.role_id!=='2' && selector.userLoginLogout.role_id!=='3'  ?  <Route exact path="/RegisterUser" component={Signup} />  :
-            null
+          selector.userLoginLogout.role_id=='2' || selector.userLoginLogout.role_id=='3'  ?  null  : <Route exact path="/RegisterUser" component={Signup} />
+            
           }
 
           {
-           selector.userLoginLogout.role_id!=='3' &&  selector.userLoginLogout.role_id!=='2'  ?  <Route exact path="/RegisterCorporate" component={RegisterCorporate} /> :
-            null
+           selector.userLoginLogout.role_id=='3' ||  selector.userLoginLogout.role_id=='2'  ? null  : <Route exact path="/RegisterCorporate" component={RegisterCorporate} />
+            
           }
 
          {
-          selector.userLoginLogout.role_id!=="2" && selector.userLoginLogout.role_id!== "3" ?  <Route exact path="/Login" component={Login} /> : null
+          selector.userLoginLogout.role_id=="2" || selector.userLoginLogout.role_id== "3" ? null : <Route exact path="/Login" component={Login} />
           } 
 
 
          
-          {/* <Route path="/Login">  <Login/></Route> */}
-        <Route path="/purchase"><Purchase /></Route>
-        <Route path="/thankyou"><ThankYou /></Route>
-        <Route path="/domain"><Domain /></Route>
-        <Route path="/tools"><Tools /></Route>
-        <Route path="/Comparison/:id"><Comparison /></Route>
-        <Route path="/institute"><Institute /></Route>
-        {/* <Route path="/map"><Map /></Route> */}
-        <Route path="/category"><CategoriesCheckBox /></Route>
-        <Route path="/searchMap"><SearchPage /></Route>
-        <Route path="/allList"><SearchPage2 /></Route>
-        <Route path="/aboutUs"><AboutUs /></Route>
-        <Route path="/contactUs"><ContactUs /></Route>
-        <Route path="/reviewSubmit"><ReviewSubmit /></Route>
-        <Route path="/product"><Product /></Route>
-        <Route path="/Allwebinar"><AllWebinars /></Route>
-        <Route path="/SearchList/:id"><SearchList /></Route>
-        {selector.userLoginLogout.isUserLoggedIn == true ? <Route path="/addToCart"><Cart cartItems={cartItems} /></Route> :
+          {/* <Route exact path="/Login">  <Login/></Route> */}
+        <Route exact path="/purchase"><Purchase /></Route>
+        <Route exact path="/thankyou"><ThankYou /></Route>
+        <Route exact path="/domain"><Domain /></Route>
+        <Route exact path="/tools"><Tools /></Route>
+        <Route exact path="/Comparison/:id"><Comparison /></Route>
+        <Route exact path="/institute"><Institute /></Route>
+        {/* <Route exact path="/map"><Map /></Route> */}
+        <Route exact path="/category"><CategoriesCheckBox /></Route>
+        <Route exact path="/searchMap"><SearchPage /></Route>
+        <Route exact path="/allList"><SearchPage2 /></Route>
+        <Route exact path="/aboutUs"><AboutUs /></Route>
+        <Route exact path="/contactUs"><ContactUs /></Route>
+        <Route exact path="/reviewSubmit"><ReviewSubmit /></Route>
+        <Route exact path="/product"><Product /></Route>
+        <Route exact path="/Allwebinar"><AllWebinars /></Route>
+        <Route exact path="/SearchList/:id"><SearchList /></Route>
+        {selector.userLoginLogout.isUserLoggedIn == true ? <Route exact path="/addToCart"><Cart cartItems={cartItems} /></Route> :
         null
         }
         
-        {/* <Route path="/">
+        {/* <Route exact path="/">
           <HotelTravelLandingPage />
         </Route> */}
-      <Route path="/">
-      <Home />
-      </Route>
         
 
         </Switch>

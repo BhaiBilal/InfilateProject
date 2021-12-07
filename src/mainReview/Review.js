@@ -23,6 +23,8 @@ import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { useSelector, useDispatch } from 'react-redux'
 import { Assistant } from "@material-ui/icons";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import ReplayIcon from '@mui/icons-material/Replay';
 import axios from 'axios'
 
 
@@ -158,6 +160,7 @@ const useStyles = makeStyles((theme) => ({
   const [textVal, setTextVal] = React.useState('')
   const [testValue, settestValue] = React.useState({})
   const selector = useSelector((state) => (state));
+  const matches = useMediaQuery('(max-width:465px)');
 
 
 
@@ -242,7 +245,7 @@ if(item.name in testValue){
            checkedState && checkedState.map((item,index) => 
            
              <Grid key={index} item md={6} xs={12}>
-                <Paper style={{display:'flex',alignItems:'center',justifyContent:'space-between',borderRadius:'0px'}}>
+                <Paper style={{ gap:'1rem', display:'flex', flexDirection:`${matches == true ? 'column' : 'row'}`, alignItems:`${matches == true ? 'Unset' : 'center'}`,justifyContent:'space-between',borderRadius:'0px'}}>
                <Grid item style={{display:'flex',alignItems:'center'}}>
                  <img style={{width:'34px',paddingLeft:'9px'}} src={`http://infilate.com/backend/public/images/${item.media}`} />   
                <Typography style={{paddingLeft:'12px'}}> { item.name } </Typography> 
@@ -276,7 +279,7 @@ if(item.name in testValue){
         return (
           <React.Fragment>
             <Container style={{display:'flex', justifyContent:'center'}} maxWidth='md'>
-              <p> you have successfully reviewd </p>
+              <p style={{color:'purple'}}> you have successfully reviewed, please <ReplayIcon sx={{fontSize:'1.2rem'}} /> reload your page </p>
             </Container>
           </React.Fragment>
         );

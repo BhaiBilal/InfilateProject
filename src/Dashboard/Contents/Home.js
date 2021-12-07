@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Select from '@mui/material/Select';
@@ -384,6 +385,7 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
         <CardContent >
         { 
             blogList && blogList.map((item,index) => 
+            <div>
             <div key={index} style={divStyle}>
             <Checkbox />
             <Typography variant="body2" color="text.secondary">
@@ -392,6 +394,9 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
             <div style={{display:'flex'}}>
             <LongMenu id={item.id} setdeleteState={setdeleteState} type={'blog'} />          
             </div>
+            
+            </div>
+            <Button variant="text">Add Blog</Button>
             </div>
             )
         }
@@ -568,8 +573,7 @@ function Home() {
 
     return (
         <>
-
-           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+           <Grid style={{ paddingTop:'160px' }} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
            <Grid item md={6} xs={12}>
             <CardView blogList={blogList} setdeleteState={setDeleteState} Blogs={'Blogs'} />
             </Grid>

@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
             justifyContent:'center',
             width:'500px',
             height:'300px',
-            gridGap:'55px'
+            gridGap:'25px'
           },
 }));
 
@@ -223,9 +223,10 @@ const Data = [
 ]
 
 function Recommend({coupondata}) {
-    console.log(coupondata)
+    // console.log(coupondata)
     const classes = useStyles();
     const [recommend, setRecommend] = useState(Data)
+    const [ellipses,setEllipses] = useState(false)
     const matches = useMediaQuery('(max-width:600px)');
     const matches2 = useMediaQuery('(max-width:900px)');
     const matches3 = useMediaQuery('(max-width:1280px)');
@@ -288,6 +289,10 @@ function Recommend({coupondata}) {
     const notify = () => {
         navigator.clipboard.writeText(data.code)   
         toast("code copied");
+        setEllipses(true)
+        setTimeout(() => {
+            window.location.href = data?.url;
+        },1000)
     }
 
     return (
@@ -335,7 +340,12 @@ function Recommend({coupondata}) {
                                         <Typography style={{textAlign:'center'}}> { data?.code } </Typography>
                                         {/* <Input defaultValue={data} readOnly  /> */}
                                         <Button onClick={() => notify()} variant="contained">Copy</Button>
-                                        <a style={{textAlign:'center'}} href={`${data?.url}`} > {data.url} </a>
+                                        <div style={{display:'flex', justifyContent:'center'}}>
+                                        {ellipses == true ? <div className='dot-pulse'></div> : 
+                                        null
+                                          }                                        
+                                        </div>
+                                        {/* <a style={{textAlign:'center'}} href={`${data?.url}`} > {data.url} </a> */}
                                         <ToastContainer autoClose={1000}  />
                                         </div>   
                                         

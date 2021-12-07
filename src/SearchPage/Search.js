@@ -213,15 +213,43 @@ function Search() {
       display: visible ? 'block' : 'none'
     }
 
+
+
     React.useEffect(() => {
-        axios({
-            method:'POST',
-            url:'http://infilate.com/backend/public/api/app/organisation/list',
-        }).then(res => {
-             setOrg(res.data.Data)
-        }).catch(e => console.log(e)
-        ) 
-    },[])    
+      getOrgData()
+  },[])
+
+
+    const getOrgData = async () => {
+      
+      try{
+        setIsLoading(true)
+          const res=await axios.post('http://infilate.com/backend/public/api/app/organisation/list',{
+            })
+            if(res.data.Data)
+         setOrg(res.data.Data)
+          setIsLoading(false)
+      }
+  
+      catch(err) { 
+           console.log(err)
+      }
+  
+  }
+
+
+
+
+    // React.useEffect(() => {
+    //     axios({
+    //         method:'POST',
+    //         url:'http://infilate.com/backend/public/api/app/organisation/list',
+    //     }).then(res => {
+    //          setOrg(res.data.Data)
+    //          console.log(res)
+    //     }).catch(e => console.log(e)
+    //     ) 
+    // },[])    
     
     React.useEffect(() => {
       axios({
@@ -232,6 +260,7 @@ function Search() {
           type:tab == 3 ? 1 : 3
         }
       }).then(res => {
+        // console.log(res)
         setSearchResult(res.data.data)
       })
       .catch(e => console.log(e))
@@ -284,6 +313,7 @@ function Search() {
       const handleSearchResult = (item) => {
         setCoordinates({ lat:Number(item.latitude), lng:Number(item.longitude) })
     }
+
 
     return (
         <div>
