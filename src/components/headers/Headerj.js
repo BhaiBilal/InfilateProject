@@ -17,7 +17,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
+import { Button, } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -90,11 +92,11 @@ const useStyles = makeStyles((theme) => ({
         },
         paper: {
           backgroundColor: theme.palette.background.paper,
-          border: '2px solid #000',
+        //   border: '2px solid #000',
           boxShadow: theme.shadows[5],
           padding: theme.spacing(2, 4, 3),
           width:'300px',
-          height:'300px'
+        //   height:'300px'
         },
 }));
 
@@ -109,6 +111,7 @@ function Headerj() {
     const [compareData,setCompareData] = useState('')
     const [organisationData,setOrganisationData] = useState('')
     const [open, setOpen] = React.useState(false);
+    const [ellipses,setEllipses] = useState(false)
     const [data,setData] = React.useState('')
     const selector = useSelector((state) => state);
     const dispatch = useDispatch()
@@ -261,6 +264,15 @@ function Headerj() {
     const handleCart = () => {
         history.push({pathname:'/addToCart'})
 
+    }
+
+    const notify = () => {
+        navigator.clipboard.writeText(data?.code)   
+        toast("code copied");
+        setEllipses(true)
+        setTimeout(() => {
+            window.location.href = data?.url;
+        },1000)
     }
 
 
@@ -454,18 +466,31 @@ function Headerj() {
                                         BackdropComponent={Backdrop}
                                         BackdropProps={{
                                         timeout: 500,
-                                        }}
-                                    >
+                                        }}>
                                         <Fade in={open}>
                                            
-                                            <div className={classes.paper}>
-                                            <h2 id="transition-modal-title">{data.name}</h2>
-                                            <img src={`http://infilate.com/backend/public/images/${data.media}`} alt='' />
+                                        <div className={classes.paper}>
+                                        <h2 id="transition-modal-title"> { data.name } &nbsp; { data.is_dmc_coupon ? <span className='dmc-coupon'> DMC </span> : null  }  </h2>
+                                        <img src={`http://infilate.com/backend/public/images/${data.media}`}  onError = {(e) => e.target.src = "/Assets/Images/blog.png"} alt='' />
+                                        <p> <span style={{fontWeight:'bold'}}>code:-</span> { data.code } </p>
+                                        <p> <span style={{fontWeight:'bold'}}> discount:-</span> <span style={{color:'purple',fontWeight:'bold'}}> { data.discount_amount }% </span>  </p>
+                                        <p> <span style={{fontWeight:'bold'}}> validity:-</span> { data.end_date } </p>
+                                        <p> <span style={{fontWeight:'bold'}}> terms & conditions:-</span> { data.terms_and_condition } </p>
+                                        <p> <span style={{fontWeight:'bold'}}> type:- </span> { data.type }</p>
+                                        <Button onClick={() => notify()} >copy code</Button>
+                                        <div style={{display:'flex', justifyContent:'center'}}>
+                                        {ellipses == true ? <div className='dot-pulse'></div> : 
+                                        null
+                                          }
+                                        
                                         </div>
+                                <ToastContainer autoClose={1000}  />
+                                </div>
                                             
                                         
                                         </Fade>
                                     </Modal>
+                                    <ToastContainer autoClose={1000}  />
                 </div>
             {/* </Router> */}
         </>

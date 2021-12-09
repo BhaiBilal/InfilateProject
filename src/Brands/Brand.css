@@ -669,7 +669,16 @@ color: white;
 }
 
 
+.waring-message{
+  display:flex;
+  align-items: center;
+  padding-top: 160px;
+  padding-bottom: 50px;
+}
 
+.waring-message img {
+  height:100px;
+}
 
 
 

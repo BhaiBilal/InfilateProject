@@ -148,5 +148,29 @@ else if(type=='coupon' && couponfield4) {
   );
 }
 
+else if(type == 'updateBlog') {
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={'1'}
+          label="Category"
+          onChange={couponfield4.onChange}
+        > 
+        {[1,2,3,4,5,6,9,8,9,10].map((item,i) =>
+        <MenuItem key={i} value={item}>{item}</MenuItem>
+        ) 
+        
+        }  
+        </Select>
+      </FormControl>
+    </Box>
+
+  )
+}
+
 
 }

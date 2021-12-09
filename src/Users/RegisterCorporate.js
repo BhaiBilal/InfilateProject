@@ -15,9 +15,13 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Check from '@material-ui/icons/Check';
 import MUIBasicSelect from './MUIBasicSelect'
+import MUIBasicSelect2 from './MUIBasicSelect2'
+import MultipleSelectChip from './MUIMultiSelect';
 import axios from 'axios'
 import { useForm, FormProvider, useFormContext, Controller } from "react-hook-form";
 import { ErrorSharp } from '@material-ui/icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const QontoConnector = withStyles({
   alternativeLabel: {
@@ -233,7 +237,7 @@ const UserDetails = () => {
             control={control}
             name='password'
             rules={{ required:"field is required",
-            minLength:8 }}
+            minLength:6 }}
             render={({field, formState}) => (
             <>
             <TextField
@@ -264,7 +268,7 @@ const UserDetails = () => {
               <div className="container">
             <Controller 
             control={control}
-            rules={{ required:"field is required", minLength:8 }}
+            rules={{ required:"field is required", minLength:6 }}
             name='password_confirmation'
             render={({field, formState}) => (
               <>
@@ -297,8 +301,8 @@ const UserDetails = () => {
 
 }
 
-const OrganisationDetails = () => {
-  const { control } = useFormContext()
+const OrganisationDetails = ({setOrganisationCategories}) => {
+  const { control, getValues, setValue } = useFormContext()
 return (
   <>
   <Grid data-aos="flip-left" data-aos-duration="500" data-aos-offset="0" style={{justifyContent: "center"}} container spacing={2}>
@@ -365,9 +369,10 @@ return (
             <Controller 
             control={control}
             name='org_description'
-            rules={{
+            rules={{required:'field is required',
+            minLength:5
              }}
-            render={({field}) => (  
+            render={({field, formState}) => (  
               <>
       <TextField
        style={{background:"white"}}
@@ -385,7 +390,8 @@ return (
         }}
         {...field}
         />
-
+        <p style={{color:'red'}}>{formState.errors.org_description?.message}</p>  
+        <p style={{color:'red'}}>{formState.errors.org_description?.type === "minLength" && "minimum characters should be 5"}</p>
         </>
         )}  
         /></div>
@@ -428,7 +434,7 @@ return (
             rules={{ required:'please select' }}
             render={({field,formState}) => (
               <>
-             <MUIBasicSelect field={field}/> 
+             <MUIBasicSelect field={field} setOrganisationCategories={setOrganisationCategories} /> 
              <p style={{color:'red'}}>{formState.errors.org_type?.message}</p>  
               </>
       // <TextField
@@ -455,6 +461,7 @@ return (
                     <Controller 
             control={control}
             rules={{ required:'field is requried',
+            minLength:'2'
             }}
             name='address_line_1'
             render={({field,formState}) => (
@@ -475,6 +482,7 @@ return (
         {...field}
         />
         <p style={{color:'red'}}>{formState.errors.address_line_1?.message}</p>  
+        <p style={{color:'red'}}>{formState.errors.address_line_1?.type === "minLength" && "minimum characters should be 2"}</p>
         </>
         )}  
         /></div>
@@ -484,7 +492,7 @@ return (
                     <Controller 
             control={control}
             name='address_line_2'
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required', minLength:2 }}
             render={({field, formState}) => (
       <>
       <TextField
@@ -503,6 +511,7 @@ return (
         {...field}
         />
         <p style={{color:'red'}}>{formState.errors.address_line_2?.message}</p>  
+        <p style={{color:'red'}}>{formState.errors.address_line_2?.type === "minLength" && "minimum characters should be 2"}</p>
         </>
         )}  
         /></div>
@@ -526,7 +535,7 @@ const ContactDetails = () => {
         <Controller 
             control={control}
             name='city'
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required', minLength:2 }}
             render={({field, formState}) => (
               <>
         <TextField
@@ -572,7 +581,7 @@ const ContactDetails = () => {
           {...field}
           />
           <p style={{color:'red'}}>{formState.errors.pincode?.message}</p>
-          <p style={{color:'red'}}>{formState.errors.pincode?.type === "pattern" && "please enter proper pincode"}</p>
+          <p style={{color:'red'}}>{formState.errors.pincode?.type === "minLength" && "please enter proper pincode"}</p>
           </>
           )}  
           /></div>
@@ -636,7 +645,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='contact_no'
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required',minLength:10 }}
             render={({field, formState}) => (
               <>
         <TextField
@@ -655,6 +664,7 @@ const ContactDetails = () => {
           {...field}
           />
           <p style={{color:'red'}}>{formState.errors.contact_no?.message}</p>
+          <p style={{color:'red'}}>{formState.errors.contact_no?.type === "minLength" && "please enter proper number"}</p>
           </>
           )}  
           /></div>
@@ -662,7 +672,7 @@ const ContactDetails = () => {
         <div className="container">
                       <Controller 
             control={control}
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required', minLength:2 }}
             name='gst_no'
             render={({field, formState}) => (
               <>
@@ -682,6 +692,7 @@ const ContactDetails = () => {
           {...field}
           />
           <p style={{color:'red'}}>{formState.errors.gst_no?.message}</p>
+          <p style={{color:'red'}}>{formState.errors.gst_no?.type === "minLength" && "please enter proper GST number"}</p>
           </>
           )}  
           /></div>
@@ -689,7 +700,7 @@ const ContactDetails = () => {
         <div className="container">
                       <Controller 
             control={control}
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required', minLength:2 }}
             name='latitude'
             render={({field, formState}) => (
              <> 
@@ -709,6 +720,7 @@ const ContactDetails = () => {
           {...field}
           />
           <p style={{color:'red'}}>{formState.errors.latitude?.message}</p>
+          <p style={{color:'red'}}>{formState.errors.latitude?.type === "minLength" && "minimum characters should be 2"}</p>
           </>
           )}  
           /></div>
@@ -718,7 +730,7 @@ const ContactDetails = () => {
                       <Controller 
             control={control}
             name='longitude'
-            rules={{ required:'field is required' }}
+            rules={{ required:'field is required', minLength:2 }}
             render={({field, formState}) => (
               <>
         <TextField
@@ -737,6 +749,7 @@ const ContactDetails = () => {
           {...field}
           />
           <p style={{color:'red'}}>{formState.errors.longitude?.message}</p>
+          <p style={{color:'red'}}>{formState.errors.longitude?.type === "minLength" && "minimum characters should be 2"}</p>
           </>
           )}  
           /></div>
@@ -748,7 +761,7 @@ const ContactDetails = () => {
   );
 }
 
-const Uploads = () => {
+const Uploads = ( { organisationCategories } ) => {
   const { control } = useFormContext()
   return (
     <>
@@ -807,22 +820,13 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='org_category'
-            rules={{required:true}}
-            render={({field}) => (
-      <TextField
-       style={{background:"white"}}
-        id="organisation_category"
-        label="Organisation category"
-        variant="outlined"
-        placeholder="Organisation category"
-        fullWidth
-        margin="normal"
-        required
-        inputProps={{
-          style: {fontSize: 15} 
-        }}
-        {...field}
-        />)}  
+            rules={{ required:'field is required' }}
+            render={({field,formState}) => (
+              <>
+              <MultipleSelectChip field={field} organisationCategories={organisationCategories} />
+              <p style={{color:'red'}}>{formState.errors.org_category?.message}</p>
+              </>
+           )}  
         /></div>
 
 
@@ -832,24 +836,12 @@ const Uploads = () => {
 <Controller 
             control={control}
             name='holder_type'
-            rules={{}}
+            rules={{required:'please select'}}
             render={({field,formState}) => (
               <>
-      <TextField
-       style={{background:"white"}}
-        id="holder_type"
-        label="Holder type"
-        variant="outlined"
-        placeholder="Holder type"
-        fullWidth
-        margin="normal"
-        required
-        inputProps={{
-          style: {fontSize: 15} 
-        }}
-          {...field}
-          />
-          {/* <p style={{color:'red'}}>{formState.errors.organisation_media?.message}</p> */}
+
+            <MUIBasicSelect2 field={field} />
+          <p style={{color:'red'}}>{formState.errors.holder_type?.message}</p>
           </>
           )}  
           /></div>
@@ -870,6 +862,23 @@ const Uploads = () => {
       )}  
       />
       </div>
+
+      {/* <div className="container">
+                    <Controller 
+            control={control}
+            name='organisation_media_type'
+            rules={{required:'please select'}}
+            render={({field,formState}) => (
+       <>       
+      <label for="myfile">Media type:- </label>
+      <input type="file" id="myfile4" multiple onChange={(e)=>field.onChange(e.target.files[0])} />
+      <p style={{color:'red'}}>{formState.errors.organisation_media?.message}</p>
+      </>
+      )}  
+      />
+      </div> */}
+
+
       </Grid>
       </Grid>
     </>
@@ -878,7 +887,9 @@ const Uploads = () => {
 
 
 
-function getStepContent(stepIndex,errors) {
+function getStepContent(stepIndex,errors, organisationCategories, setOrganisationCategories) {
+
+  
 
   const useStyles = makeStyles({
     customTextField: {
@@ -891,12 +902,12 @@ function getStepContent(stepIndex,errors) {
     case 0:
       return <UserDetails />
     case 1:
-      return <OrganisationDetails />
+      return <OrganisationDetails setOrganisationCategories={setOrganisationCategories} />
     case 2:
       return <ContactDetails />
 
       case 3:
-        return <Uploads />
+        return <Uploads organisationCategories={organisationCategories} />
 
         case 4:
           return (
@@ -919,10 +930,28 @@ function getStepContent(stepIndex,errors) {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default function HorizontalLabelPositionBelowStepper() {
 
   const classes = useStyles();
+  const [organisationCategories, setOrganisationCategories] = React.useState([])
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const notify = (message) => {   
+    toast.error(message);
+}
   
   const methods = useForm({
     defaultValues:{
@@ -949,7 +978,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       corporate_image:'',
       corporate_aadhar:'',
       corporate_pan:'',
-      org_category:['14','15','16'],
+      org_category:'',
       holder_type:'',
       organisation_media:'',
     
@@ -1016,7 +1045,10 @@ export default function HorizontalLabelPositionBelowStepper() {
       })
       .catch(function (err) {
         //handle error
-        alert('OOps'+err)
+        if(err.message == 'Request failed with status code 422') {
+          notify('email already exist')
+        }
+        // alert('OOps'+err)
         setErrors('you have not filled the credentails correctly')
         console.log(err.message);
       });
@@ -1061,7 +1093,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       formdata.append('corporate_image',data.corporate_image)
       formdata.append('corporate_aadhar',data.corporate_aadhar)
       formdata.append('corporate_pan',data.corporate_pan)
-      formdata.append('org_category',data.org_category)
+      formdata.append('org_category',`[${data.org_category}]`)
       formdata.append('holder_type',data.holder_type)
       formdata.append('organisation_media',data.organisation_media)
       auth(formdata)
@@ -1102,7 +1134,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         ) : (
           <div>
             <FormProvider {...methods}>
-            <form id='form1' onSubmit={methods.handleSubmit(handleNext)}>{getStepContent(activeStep,errors)}</form>
+            <form id='form1' onSubmit={methods.handleSubmit(handleNext)}>{getStepContent(activeStep,errors, organisationCategories, setOrganisationCategories)}</form>
             </FormProvider>
             <div style={{ display: "flex", justifyContent: "space-between", padding: "40px 100px" }}>
               <Button
@@ -1119,6 +1151,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           </div>
         )}
       </div>
+      <ToastContainer theme='colored' autoClose={4000}  />
     </div>
   );
 }

@@ -98,22 +98,26 @@ function Addblog() {
     }
 
     const onSubmit = (data) => {
+      let categories = [];
+      data.category_ids.filter(category => {
+        categories.push(`"${category}"`)
+      });
+
       const formData = new FormData()
       formData.append("title",data.title)
       formData.append("title1",data.title1)
       formData.append("title2",data.title2)
       formData.append("description",data.description)
-      formData.append("category_ids",data.category_ids)
+      formData.append("category_ids",`[${categories}]`)
       formData.append("media",data.media)
       formData.append("category_name",data.category_name)
 
         auth(formData)
-
         console.log(data)
     }
 
     return (
-      <div style={{display:'flex',justifyContent:'center'}}>
+      <div style={{display:'flex',justifyContent:'center', paddingTop:'160px'}}>
 
        
         <Grid item md={9} xs={12}>
@@ -185,10 +189,13 @@ function Addblog() {
 <Controller
           name="category_ids"
           control={control}
-          // rules={{required:'field is required'}}
+          rules={{required:'please select'}}
           render={({ field, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
+            <>
           <MUImultiSelect type={'addblog'} Blogfield={field} /> 
+          <p style={{color:'red'}}>{formState.errors.category_ids?.message}</p>  
+          </>
           )}
         />
 </Grid>
@@ -198,10 +205,13 @@ function Addblog() {
 <Controller
           name="category_name"
           control={control}
-          // rules={{required:'field is required'}}
+          rules={{required:'please select'}}
           render={({ field, formState }) => (
             // <TextField id="outlined-basic" label="Outlined"  />
+            <>
           <MUIBasicSelect field={field} type='addblog' /> 
+          <p style={{color:'red'}}>{formState.errors.category_name?.message}</p>  
+          </>
           )}
         />
         </Grid>
@@ -221,6 +231,7 @@ function Addblog() {
             <CKEditor editor = { ClassicEditor } 
             // data={addData} 
             onChange={handleChange} />
+            <p style={{color:'red'}}>{formState.errors.description?.message}</p>  
             </div>       
           )}
         />
@@ -230,10 +241,12 @@ function Addblog() {
         <Controller
           name="media"
           control={control}
-          render={({ field: { onChange, value } }) => (
+          rules={{required:'field is required'}}
+          render={({ field, formState }) => (
              <> 
             <label for="myfile">Select an Image:</label>
-            <input type="file" onChange={(e) => onChange(e.target.files[0])} />
+            <input type="file" onChange={(e) => field.onChange(e.target.files[0])} />
+            <p style={{color:'red'}}> { formState.errors.media?.message } </p>  
              </>
           )}
         />

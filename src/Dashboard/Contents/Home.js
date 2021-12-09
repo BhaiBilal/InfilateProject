@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -298,6 +298,10 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
     setExpanded(!expanded);
   };
 
+  const ViewBlogList = () => {
+
+  }
+
   return (
     <Card sx={{ width: 'inherit' }} 
     style={{margin:'0px 10px 10px 0px',height:'max-content',boxShadow:'none',
@@ -369,17 +373,49 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
       </div>) }
 
       </CardContent>
-      <CardActions disableSpacing style={{marginTop:'-61px'}}>
-        <ExpandMore
+      <CardActions disableSpacing style={{marginTop:'-61px',display:'flex', justifyContent:'end'}}>
+      {Blogs && 
+      <Link to='/blogListing'>
+      <div className='view-more-blog-btn'>
+      <button>view more</button>
+      </div>
+      </Link>
+       }
+
+       {Products && 
+        <Link to='/productListing'>
+      <div className='view-more-blog-btn'>
+      <button style={{color:'#ef5350'}}>view more</button>
+      </div>
+      </Link>
+       }
+
+
+       {Services && 
+      <div className='view-more-blog-btn'>
+      <button style={{color:'#66bb6a'}}>view more</button>
+      </div>
+       }
+
+
+       {Coupons && 
+      <div className='view-more-blog-btn'>
+      <button style={{color:'#26c6da'}}>view more</button>
+      </div>
+       }
+
+
+
+        {/* <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
           <ExpandMoreIcon style={{color:'white'}} />
-        </ExpandMore>
+        </ExpandMore> */}
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
       
       
         <CardContent >
@@ -450,7 +486,7 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
         }
 
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 }

@@ -1,11 +1,13 @@
 import React from 'react'
 import { Controller, useForm } from "react-hook-form"
 import TextField from "@material-ui/core/TextField";
-import MUIBasicSelect from '../MUIBasicSelect/BasicSelect'
+import AddProductBasicSelect from '../MUIBasicSelect/AddproductBasicList'
 import axios from 'axios'
+import Grid from '@mui/material/Grid';
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, Paper } from "@material-ui/core";
 import { userLogoutRequest } from "redux/UserloginlogoutSlice";
+import AddProductMultiSelect from '../MUImultiSelect/AddProductMultiSelect'
 
 
 function AddProducts() {
@@ -50,20 +52,23 @@ function AddProducts() {
     const onSubmit = (data) => {
         const formdata = new FormData()
         formdata.append('name',data.name)
-        formdata.append('category_id',[parseInt(data.category_id)])
+        // formdata.append('category_id',[parseInt(data.category_id)])
+        formdata.apppend('category_id',"['16','17']")
         formdata.append('type',data.type)
         formdata.append('content_description',data.content_description)
         formdata.append('price',parseInt(data.price))
         formdata.append('product_image',data.product_image)
         // console.log(...formdata)
-        auth(formdata)
+        console.log('aja',data)
+        // auth(formdata)
     }
 
 
 
     return (
         <div>
-        <form style={{display:'flex',flexDirection:'column'}} onSubmit={handleSubmit(onSubmit)}>
+        <Grid item md={9} xs={12} >
+        <form style={{display:'flex',flexDirection:'column',paddingTop:'160px'}} onSubmit={handleSubmit(onSubmit)}>
 
         <Controller
             name="name"
@@ -73,7 +78,7 @@ function AddProducts() {
             <TextField
             label="Product name"
             size='small'
-            required
+            // required
             variant="outlined"
             placeholder='Product name...'
             fullWidth
@@ -88,7 +93,9 @@ function AddProducts() {
             control={control}
             rules={{ required: "field is required" }}
             render={({ field,formState }) => 
-            <MUIBasicSelect field={field} />
+            <>
+            <AddProductMultiSelect />
+            </>
             }/>
 
 
@@ -100,7 +107,7 @@ function AddProducts() {
             <TextField
             label="Product type"
             size='small'
-            required
+            // required
             variant="outlined"
             placeholder='Product type...'
             fullWidth
@@ -120,7 +127,7 @@ function AddProducts() {
             <TextField
             label="Content description"
             size='small'
-            required
+            // required
             variant="outlined"
             placeholder='Content description...'
             fullWidth
@@ -139,7 +146,7 @@ function AddProducts() {
             <TextField
             label="Price"
             size='small'
-            required
+            // required
             variant="outlined"
             placeholder='Price...'
             fullWidth
@@ -149,21 +156,50 @@ function AddProducts() {
             />
             }/>
 
+
 <Controller
-            name="product_image"
+            name="product_feature"
             control={control}
             rules={{ required: "field is required" }}
             render={({ field,formState }) => 
+            <TextField
+            label="Product feature"
+            size='small'
+            // required
+            variant="outlined"
+            placeholder='Price...'
+            fullWidth
+            {...field}
+            helperText={formState.errors.coupon_name?.message}
+            error={formState.errors.coupon_name}
+            />
+            }/>
+
+
+            <Controller
+            name="corporate_type"
+            control={control}
+            rules={{ required: "field is required" }}
+            render={({ field,formState }) => 
+            <>
+            <AddProductBasicSelect  field={field} />
+            </>
+            }/>
+
+            <Controller
+            name="product_image"
+            control={control}
+            rules={{ required: "field is required" }}
+            render={({ field, formState }) => 
             <> 
             <label for="myfile">Select an Image:</label>
             <input type="file" onChange={(e) => field.onChange(e.target.files[0])} />
              </>
             }/>
-
-
             <Button type='submit'>Submit</Button>
 
             </form> 
+            </Grid>
         </div>
     )
 }

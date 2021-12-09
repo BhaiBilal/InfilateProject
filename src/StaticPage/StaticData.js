@@ -14,6 +14,7 @@ export const StaticData = (props) => {
       }
         );
         let run=result.data.Data
+        
 
     
        

@@ -73,6 +73,7 @@ function Profile({handleProfile,handlelogin,handlecorporatesignup,handlesignup,h
         </ul> */}
 
         <a style={{cursor:'pointer'}} onClick={handleLogout}>LOGOUT</a>
+        <a style={{cursor:'pointer'}} onClick={handleLogout}>Change password ?</a>
     </div>
 
 </div>
@@ -155,7 +156,7 @@ function Profile({handleProfile,handlelogin,handlecorporatesignup,handlesignup,h
                         </li>
 
                     </ul>
-                    <a className='classes-login' onClick={handlelogin}>LOGIN</a>
+                    <a id='classes-login' onClick={handlelogin}>LOGIN</a>
                     
                 </div>
 
