@@ -27,7 +27,7 @@ function createData(name, calories, fat, carbs, protein) {
     createData('Gingerbread', 356, 16.0, 49, 3.9),
   ];
 
-function BlogListing() {
+function ServiceListing() {
     const [productList, setProductList] = React.useState([])
     const selector = useSelector((state) => (state));
     const [arr1,setArr1]= React.useState([])
@@ -166,4 +166,4 @@ function BlogListing() {
       );
 }
 
-export default BlogListing
+export default ServiceListing

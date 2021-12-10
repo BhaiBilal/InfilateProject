@@ -392,16 +392,20 @@ function CardView({blogList,setdeleteState, productlist,servicelist,couponlist,B
 
 
        {Services && 
+       <Link to='/serviceListing'>
       <div className='view-more-blog-btn'>
       <button style={{color:'#66bb6a'}}>view more</button>
       </div>
+      </Link>
        }
 
 
        {Coupons && 
+        <Link to='/couponListing'>
       <div className='view-more-blog-btn'>
       <button style={{color:'#26c6da'}}>view more</button>
       </div>
+      </Link>
        }
 
 

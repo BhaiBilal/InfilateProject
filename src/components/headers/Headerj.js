@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import async from "async";
 import cashback from "../../images/cashback2.png"
 import { BrowserRouter as Router, Link } from "react-router-dom"
 import Home from 'pages/Home'

@@ -5,28 +5,42 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function BasicSelect({field}) {
+export default function BasicSelect({ getValues, setValue }) {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
+    setValue('corporate_type',event.target.value)
     setAge(event.target.value);
   };
 
-  field.onChange(age)
+  const renderDefault = () => {
+    if(age!=''){
+      return  age
+    }
+
+    else {
+      return(
+          <p> {getValues} </p>
+      )
+    }
+
+}
+
+
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">organisation type</InputLabel>
+      <FormControl variant='standard' fullWidth>
+        <InputLabel id="demo-simple-select-label">{ getValues!='' ? null :  'Corporate type' }</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          displayEmpty
           value={age}
           label="Age"
           onChange={handleChange}
+          renderValue={renderDefault}
         >
           <MenuItem value='Digital Brand'> Digital Brand </MenuItem>
-          <MenuItem value='Digital Marketing Institutes'> Digital Marketing Institutes </MenuItem>
+          <MenuItem value='Digital Marketing Institutes'> Digital Marketing Institute </MenuItem>
           <MenuItem value='Digital Agencies'> Digital Agencies </MenuItem>
         </Select>
       </FormControl>

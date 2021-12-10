@@ -61,6 +61,8 @@ import DashBoardHome from './Dashboard/Contents/Home'
 import AddBlog from './Dashboard/Contents/Addblog'
 import BlogListing from "Dashboard/Contents/Listings/BlogListing";
 import ProductListing from "Dashboard/Contents/Listings/ProductListing";
+import ServiceListing from "Dashboard/Contents/Listings/ServiceListing";
+import CouponListing from "Dashboard/Contents/Listings/CouponListing";
 
 import SearchList from 'components/SearchList/SearchList' 
 import Pressroom from "components/Pressroom/Pressroom";
@@ -157,7 +159,7 @@ export default function App() {
 
         <Route exact path='/updateService' component={UpdateService} /> 
 
-        <Route exact path='/updateProduct' component={UpdateProduct} /> 
+        <Route exact path='/updateProduct/:id' component={UpdateProduct} /> 
 
         <Route exact path='/updateCoupon' component={UpdateCoupon} /> 
 
@@ -166,6 +168,10 @@ export default function App() {
          <Route exact path='/blogListing' component={BlogListing} />
 
          <Route exact path='/productListing' component={ProductListing} />
+
+         <Route exact path='/serviceListing' component={ServiceListing} />
+
+         <Route exact path='/couponListing' component={CouponListing} />
 
         {
           selector.userLoginLogout.role_id=='2' || selector.userLoginLogout.role_id=='3'  ?  null  : <Route exact path="/RegisterUser" component={Signup} />

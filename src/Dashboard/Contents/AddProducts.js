@@ -1,7 +1,7 @@
 import React from 'react'
 import { Controller, useForm } from "react-hook-form"
 import TextField from "@material-ui/core/TextField";
-import AddProductBasicSelect from '../MUIBasicSelect/AddproductBasicList'
+import AddProductBasicSelect from '../MUIBasicSelect/AddproductBasicSelect'
 import axios from 'axios'
 import Grid from '@mui/material/Grid';
 import { useSelector, useDispatch } from 'react-redux'
@@ -53,14 +53,16 @@ function AddProducts() {
         const formdata = new FormData()
         formdata.append('name',data.name)
         // formdata.append('category_id',[parseInt(data.category_id)])
-        formdata.apppend('category_id',"['16','17']")
+        formdata.append('category_id',"['16','17']")
         formdata.append('type',data.type)
         formdata.append('content_description',data.content_description)
         formdata.append('price',parseInt(data.price))
         formdata.append('product_image',data.product_image)
+        formdata.append('product_feature', data.product_feature)
+        formdata.append('corporate_type', data.corporate_type)
         // console.log(...formdata)
         console.log('aja',data)
-        // auth(formdata)
+        auth(formdata)
     }
 
 
@@ -75,6 +77,7 @@ function AddProducts() {
             control={control}
             rules={{ required: "field is required" }}
             render={({ field,formState }) => 
+            <>
             <TextField
             label="Product name"
             size='small'
@@ -83,9 +86,11 @@ function AddProducts() {
             placeholder='Product name...'
             fullWidth
             {...field}
-            helperText={formState.errors.coupon_name?.message}
-            error={formState.errors.coupon_name}
+            helperText={formState.errors.name?.message}
+            error={formState.errors.name}
             />
+           
+            </>
             }/>
 
 <Controller
@@ -94,7 +99,8 @@ function AddProducts() {
             rules={{ required: "field is required" }}
             render={({ field,formState }) => 
             <>
-            <AddProductMultiSelect />
+            <AddProductMultiSelect field={field} />
+             <p style={{color:'red'}}>{formState.errors.category_id?.message}</p>  
             </>
             }/>
 
@@ -112,8 +118,8 @@ function AddProducts() {
             placeholder='Product type...'
             fullWidth
             {...field}
-            helperText={formState.errors.coupon_name?.message}
-            error={formState.errors.coupon_name}
+            helperText={formState.errors.type?.message}
+            error={formState.errors.type}
             />
             }/>
 
@@ -132,8 +138,8 @@ function AddProducts() {
             placeholder='Content description...'
             fullWidth
             {...field}
-            helperText={formState.errors.coupon_name?.message}
-            error={formState.errors.coupon_name}
+            helperText={formState.errors.content_description?.message}
+            error={formState.errors.content_description}
             />
             }/>
 
@@ -151,8 +157,8 @@ function AddProducts() {
             placeholder='Price...'
             fullWidth
             {...field}
-            helperText={formState.errors.coupon_name?.message}
-            error={formState.errors.coupon_name}
+            helperText={formState.errors.price?.message}
+            error={formState.errors.price}
             />
             }/>
 
@@ -170,8 +176,8 @@ function AddProducts() {
             placeholder='Price...'
             fullWidth
             {...field}
-            helperText={formState.errors.coupon_name?.message}
-            error={formState.errors.coupon_name}
+            helperText={formState.errors.product_feature?.message}
+            error={formState.errors.product_feature}
             />
             }/>
 
@@ -183,6 +189,7 @@ function AddProducts() {
             render={({ field,formState }) => 
             <>
             <AddProductBasicSelect  field={field} />
+             <p style={{color:'red'}}>{formState.errors.corporate_type?.message}</p>  
             </>
             }/>
 
@@ -194,8 +201,10 @@ function AddProducts() {
             <> 
             <label for="myfile">Select an Image:</label>
             <input type="file" onChange={(e) => field.onChange(e.target.files[0])} />
+             <p style={{color:'red'}}>{formState.errors.product_image?.message}</p>  
              </>
             }/>
+            
             <Button type='submit'>Submit</Button>
 
             </form> 

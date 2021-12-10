@@ -224,11 +224,13 @@ function Search() {
       
       try{
         setIsLoading(true)
-          const res=await axios.post('http://infilate.com/backend/public/api/app/organisation/list',{
+          const res=await axios.post('http://infilate.com/backend/public/api/app/organisation/list', {
             })
-            if(res.data.Data)
-         setOrg(res.data.Data)
-          setIsLoading(false)
+            console.log(res)
+            if(res.data.Data){
+              setOrg(res.data.Data)
+              setIsLoading(false)
+            }
       }
   
       catch(err) { 

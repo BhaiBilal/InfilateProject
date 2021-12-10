@@ -9,7 +9,7 @@ import { userLogoutRequest } from "redux/UserloginlogoutSlice";
 
 
 
-function AddServices() {
+function UpadateServices() {
 
     const selector = useSelector((state) => (state));
     const dispatch = useDispatch()
@@ -171,4 +171,4 @@ function AddServices() {
     )
 }
 
-export default AddServices
+export default UpadateServices
