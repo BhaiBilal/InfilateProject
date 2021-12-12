@@ -176,7 +176,7 @@ export default ({
 React.useEffect(() => {
 
   let cancel
-  Axios('http://infilate.com/backend/public/api/app/blog/category/test/', {
+  Axios('http://infilate.com/backend/public/api/app/blog/blog-list', {
       method: 'POST',
       // cancelToken: new axios.CancelToken(c=>cancel=c)
     }).then(res=> {
@@ -189,7 +189,7 @@ React.useEffect(() => {
     
 },[]);
 
-// console.log(blogData)
+console.log(blogData)
  
 const handleCardClick=(item)=>{
   history.push(`/BlogDetail/${item.id}`,{Post:item});
@@ -234,7 +234,7 @@ const handleCardClick=(item)=>{
                 <div class="card" key={index} onClick = {() => handleCardClick(item)}>
                   <p style={{ fontSize: `${two ? '12px' : '16px'}`, 
                   fontWeight: "600", lineHeight: "33px", marginLeft: "5px" }} class="title">{item.title}</p>
-          <img style={{ width: "100%", borderRadius: "4px" }} src={`http://infilate.com/backend/public/images/${item.image}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
+          <img style={{ width: "100%", borderRadius: "4px", objectFit:'cover' }} src={`http://infilate.com/backend/public/images/${item.media}`} onError = {(e) => e.target.src = "/Assets/Images/blog.png"} />
 
                   <p style={{ fontSize: `${two ? '12px' : '16px'}`, fontWeight: "600", paddingTop: "10px" }}>{item.title1}</p>
 

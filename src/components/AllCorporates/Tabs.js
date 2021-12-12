@@ -100,7 +100,7 @@ export default function ContentTabs() {
   // console.log(value)
 
   return (
-    <div style={{display:'flex', justifyContent:'center', paddingTop:'160px'}}>
+    <div style={{display:'flex', justifyContent:'center', paddingTop:'160px', paddingBottom:'40px'}}>
     <Grid
     md={10} 
     sm={10}
@@ -108,7 +108,7 @@ export default function ContentTabs() {
     lg={8}
     // sx={{ width: '100%' }} pt={22} px={25}
     >
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Products" {...a11yProps(0)} />
           <Tab label="Services" {...a11yProps(1)} />

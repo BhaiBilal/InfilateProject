@@ -54,7 +54,7 @@ export default makeStyles((theme) => ({
     height:'35px',
     position:'sticky',
     top:'100px',
-
+    backgroundColor:'transparent'
 
   },
 
@@ -75,7 +75,7 @@ export default makeStyles((theme) => ({
   },
 
   formControl:{
-    width:"70px"
+    // width:"70px"
   }
 
 }));

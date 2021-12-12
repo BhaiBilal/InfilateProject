@@ -451,7 +451,7 @@
     transform: scale(1,1);
   }
 
-  @media only screen and (min-width : 1024px) {
+  @media only screen and (min-width : 961px) {
     .dropdown {
       margin-right: 6rem;
     }

@@ -8,10 +8,12 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios'
 import ServicesCard from './ServicesCard.js';
 import CustomPagination from '../CustomPagination.js';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import CloseIcon from '@material-ui/icons/Close';
 import Button from '@mui/material/Button';
 import CompareIcon from '@material-ui/icons/Compare';
 import IconButton from '@material-ui/core/IconButton';
+import ServiceModal from './ServiceModal'
 import { useHistory } from "react-router-dom";
 
 
@@ -26,6 +28,7 @@ function AllServices( { serviceList, arr3, setArr3 } ) {
     const [open,setOpen] = React.useState(false)
     const [arr1,setArr1]= React.useState([])
     const classes = useStyles()
+    const matches2 = useMediaQuery('(max-width:600px)');
     let modifiedArray = []
     serviceList.map((v,i) => modifiedArray.push(v))
 
@@ -34,18 +37,18 @@ function AllServices( { serviceList, arr3, setArr3 } ) {
       serviceList.map((v,i) => modifiedArray.push(v))
     }
     else if(type=='User Reviews') {
-      modifiedArray.sort((a,b) => b.review.average_review - a.review.average_review )
+      modifiedArray.sort((a,b) => b?.review?.average_review - a?.review?.average_review )
     }
 
         else if(type=='Brands') {
-          modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Brand' )
+          modifiedArray = serviceList.filter((v,i) => v?.organisation_type?.name=='Digital Brand' )
       }
 
       else if(type=='Institutes') {   
-        modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Institute' )
+        modifiedArray = serviceList.filter((v,i) => v?.organisation_type?.name=='Digital Marketing Institute' )
       }
       else if(type=='Agencies') {  
-        modifiedArray = serviceList.filter((v,i) => v.organisation_type.name=='Agency' )
+        modifiedArray = serviceList.filter((v,i) => v?.organisation_type?.name=='Digital Agencies' )
       }
     
 
@@ -87,7 +90,11 @@ function AllServices( { serviceList, arr3, setArr3 } ) {
     return (
 <>
            <Box display='flex' style={{}} justifyContent='space-between'>
-                <MenuFilters  type={type} setType={setType} arr3={arr3} setArr3={setArr3} />
+
+           { matches2 == true ?  <ServiceModal type={type} setType={setType} arr3={arr3} setArr3={setArr3}  />
+             : <MenuFilters type={type} setType={setType} arr3={arr3} setArr3={setArr3}  /> 
+            }
+                
 
 
                 <Grid item md={8}>
@@ -96,7 +103,10 @@ function AllServices( { serviceList, arr3, setArr3 } ) {
                 <ServicesCard list={currentPosts} handleCompare={handleCompare} />
 
                 </Stack>
+                <div style={{display:'flex', justifyContent:'center'}}>
                 <CustomPagination style={{marginTop:'10px'}} postPerPage={postPerPage} totalPost={modifiedArray.length} paginate={paginate} />
+                </div>
+                
                 </Grid>
 
 

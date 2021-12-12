@@ -30,7 +30,7 @@ function Brand() {
             url: `http://infilate.com/backend/public/api/app/organisation/detail/${id}`,
           }).then(res => {
             console.log(res)
-            if(res.data.length > 0) {
+            if(res.data.Data.length > 0) {
               setData(res.data.Data[0])
               setCouponLength(prevState => ({
                 ...prevState,

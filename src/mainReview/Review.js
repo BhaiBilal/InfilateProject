@@ -106,6 +106,10 @@ QontoStepIcon.propTypes = {
 
 
 const useStyles = makeStyles((theme) => ({
+
+  root:{
+    paddingBottom:'50px'
+  },
  
   button: {
     marginRight: theme.spacing(1),

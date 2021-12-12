@@ -173,15 +173,19 @@ function ReviewSelect() {
 
 
   return (
+    <div style={{display:'flex', justifyContent:'center', background:"#f2f2f2"}}>
+    <Grid item lg={10} >
+
+    
     <Container style={{width: "100%",paddingTop:"200px",paddingLeft:"50px",paddingRight:"50px",background:"#f2f2f2",paddingBottom:"50px"}} maxWidth>
       <Grid style={{border:"1px solid 	#DCDCDC",paddingLeft:"20px",paddingTop:"40px",height:"max-content",background:"#fafafa"}} container xs={12} spacing={1}>
 
-        <Grid item xs={9}>
-          <p style={{fontSize:"2.3vw",fontWeight: "bold",opacity:"0.8"}}>Let's find the software and services you use at work.</p>
+        <Grid item xs={12}>
+          <p style={{fontSize:"2rem",fontWeight: "bold",opacity:"0.8"}}>Let's find the software and services you use at work.</p>
         </Grid>
 
         <Grid item xs={9}>
-          <p style={{fontSize:"1vw",opacity:"0.8"}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+          <p style={{fontSize:"14px",opacity:"0.8"}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
             the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
             type and scrambled it to make a type specimen book</p>
         </Grid>
@@ -191,7 +195,7 @@ function ReviewSelect() {
         <br/>
         <br/>
         <Grid item xs={12}>
-          <p  style={{fontSize:"1.7vw",fontWeight: "bold",opacity:"0.8"}}>Pick a role and we'll show you related products and services to review.</p>
+          <p  style={{fontSize:"12px",fontWeight: "bold",opacity:"0.8"}}>Pick a role and we'll show you related products and services to review.</p>
           <br/>
         </Grid>
 
@@ -240,8 +244,8 @@ function ReviewSelect() {
 
 
     </Container>
-
-
+    </Grid>
+</div>
   )
 }
 

@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { useHistory } from "react-router-dom";
 import {Typography,Grid} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import ProductModal from './ProductModal'
 
 
 function AllProducts({productList, arr2, setArr2, value}) {
@@ -27,6 +28,7 @@ function AllProducts({productList, arr2, setArr2, value}) {
     const [open,setOpen] = React.useState(false)
     const [arr1,setArr1]= React.useState([])
     const matches = useMediaQuery('(max-width:800px)');
+    const matches2 = useMediaQuery('(max-width:600px)');
     
     const classes = useStyles()
     let modifiedArray = []
@@ -106,14 +108,14 @@ function AllProducts({productList, arr2, setArr2, value}) {
       }
 
           else if(type=='Brands') {
-            modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Brand' )
+            modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Digital Brand' )
         }
 
         else if(type=='Institutes') {   
-          modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Institute' )
+          modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Digital Marketing Institute' )
         }
         else if(type=='Agencies') {  
-          modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Agency' )
+          modifiedArray = productList.filter((v,i) => v.organisation_type.name=='Digital Agencies' )
         }
       // console.log(modifiedArray)
 
@@ -141,8 +143,14 @@ function AllProducts({productList, arr2, setArr2, value}) {
            {/* { matches == true ?  null : 
             <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
            } */}
+
+           { matches2 == true ?  <ProductModal list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
+             : <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} /> 
+            }
+
            
-           <MenuFilters list={productList} type={type} setType={setType} arr2={arr2} setArr2={setArr2} value={value} />
+           
+           
           
 
                 <Grid item md={10} sm={10} xs={12} lg={8}>
@@ -151,7 +159,9 @@ function AllProducts({productList, arr2, setArr2, value}) {
                 <ProductCard list={currentPosts} handleCompare={handleCompare} />
 
                 </Stack>
+                <div style={{display:'flex', justifyContent:'center'}}>
                 <CustomPagination style={{marginTop:'10px'}} postPerPage={postPerPage} totalPost={modifiedArray.length} paginate={paginate} />
+                </div>
                 </Grid>
 
 

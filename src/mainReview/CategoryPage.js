@@ -262,7 +262,7 @@ function CategoryPage(props) {
 
     return (
         <div>
-            <Box display='flex' ml={matches == true ? 2 : 12}>
+            <Box display='flex' ml={matches == true ? 2 : 12} style={{gap:'1rem'}} justifyContent='center'>
 
 
           {matches2 == true ?  null : 
@@ -279,7 +279,7 @@ function CategoryPage(props) {
              }
 
 
-                <Container maxWidth='md' style={{marginLeft:'0px',marginRight:'0px'}}>
+                <Grid item lg={5} md={5} style={{marginLeft:'0px',marginRight:'0px'}}>
                     <Paper elevation={3} style={{
                         padding: "10px",
                         height: 'max-content'
@@ -331,7 +331,7 @@ function CategoryPage(props) {
                                 <br />
        
                     </Paper>
-                    </Container>
+                    </Grid>
 
 
                     {matches2==true  ? 
@@ -396,7 +396,7 @@ function CategoryPage(props) {
                         </div>
                         :
                     
-                      <Container maxWidth='sm' style={{margin:'0px'}}>
+                      <Grid lg={3} md={3} style={{margin:'0px'}}>
 
                         <Typography>You Use</Typography>
 
@@ -452,7 +452,7 @@ function CategoryPage(props) {
 
                         </Grid>
 
-                        </Container>
+                        </Grid>
                     
                     }
 

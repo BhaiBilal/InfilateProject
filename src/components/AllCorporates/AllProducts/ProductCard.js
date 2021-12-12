@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import {BlurOffOutlined, FavoriteBorderOutlined} from '@material-ui/icons';
+import { makeStyles } from '@mui/styles';
 import Rating from '@mui/material/Rating';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +10,7 @@ import Collapse from '@mui/material/Collapse';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import useStyles from './Styles.js';
+// import useStyles from './Styles.js';
 import useMediaQuery from '@mui/material/useMediaQuery';
   import {Typography,Grid} from '@mui/material';
 
@@ -23,6 +24,84 @@ const ExpandMore = styled((props) => {
       duration: theme.transitions.duration.shortest,
     }),
   }));
+
+
+
+  const useStyles = makeStyles({
+
+    loading: {
+      height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center',
+    },
+    container: {
+      padding: '25px',
+    },
+    marginBottom: {
+      marginBottom: '30px',
+    },
+    list: {
+      height: '75vh', overflow: 'auto',
+    },
+    button1: {
+      marginTop:'15px',
+      marginRight:'5px', 
+      width:'50%',
+      backgroundColor:'transparent',
+      color:'#009cb6',
+      boxShadow:'none',
+      border:'1px solid rgba(0, 156, 156, 0.5)',
+  
+      '&:hover':{
+        background:'rgb(0 156 156 / 4%)',
+        boxShadow:'none'
+  
+      }
+    },
+  
+    button2: {
+      marginTop:'15px',
+      marginRight:'5px', 
+      width:'50%',
+      backgroundColor:'transparent',
+      color:'#009cb6',
+      boxShadow:'none',
+      border:'none',
+  
+      '&:hover':{
+        background:'rgb(0 156 156 / 4%)',
+        boxShadow:'none'
+  
+      }
+    },
+  
+    btn:{
+      marginLeft:'5px',
+      height:'35px',
+      position:'sticky',
+      top:'100px',
+  
+  
+    },
+  
+    closeicon:{
+      padding:'5px',
+      '& .MuiIconButton-root':{
+        padding:'0px',
+      },
+  
+    },
+  
+    paraStyle:{
+      fontWeight:'bold',
+      '&:hover':{
+        cursor:'pointer',
+        textDecoration:'underline'
+      }
+    },
+  
+    formControl:{
+      width:"70px"
+    }
+  });
 
 
 
@@ -124,10 +203,7 @@ function ProductCard({list,handleCompare}) {
        </Typography>
    </CardContent>
    </Collapse>
-   </Card> 
-     
-     
-     )
+   </Card>)
      }       
 
         </div>

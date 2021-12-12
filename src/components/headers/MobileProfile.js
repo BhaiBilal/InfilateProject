@@ -34,7 +34,7 @@ function MobileProfile() {
     
     return (
         <>
-        {selector.userLoginLogout.role_id=='3' ? 
+        { selector.userLoginLogout.role_id=='3' || selector.userLoginLogout.role_id == '2' ? 
         <div className='mobile-profile-logged-in'>
             <div className='mobile-profile-username'> { selector.userLoginLogout.FullName } </div>
 
@@ -65,12 +65,6 @@ function MobileProfile() {
         </div>
 
          }
-
-
-
-
-
-
 
         </>
     )

@@ -256,7 +256,10 @@ function Domain() {
                                     />
                                     <div className="card-des">{item.name}</div>
                                     
+                                    <div className='card-coupon2-container'>
                                     <div className="card-coupon2"> Get Coupon </div>
+                                    </div>
+                                    
                                     {/* <div className="card-share"><h1>Get Quotation</h1> <i style={{marginTop:"5px"}} class="fas fa-share-alt"></i></div> */}
                                     {/* <div className="card-price">
                                         <div className="right">Final Price</div>

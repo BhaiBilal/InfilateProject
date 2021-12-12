@@ -36,7 +36,7 @@ function Brandpage({data}) {
                                 <img style={{ width: "30px", height: "30px", color: "white" }} src={globe} alt="image" />
                             </div>
                             <a 
-                            // href={`${data?.organisation && data?.organisation[0].url}`}
+                            href={`${data?.organisation && data?.organisation[0].url}`}
                             >Website</a>
                         </button>
                         </div>

@@ -521,6 +521,7 @@ function Home() {
   })
     .then(function (response) {
       //handle success
+      console.log(response)
       setBlogList(response.data.Data)
       // console.log(response);
       // window.location.href='http://my.infilate.com/Login'
@@ -528,7 +529,7 @@ function Home() {
     .catch(function (err) {
       //handle error
       console.log(err)
-      dispatch(userLogoutRequest())
+      // dispatch(userLogoutRequest())
       // setErrors('error')
       // console.log(err+' user already registered');
     });
@@ -553,7 +554,7 @@ function Home() {
     .catch(function (err) {
       //handle error
       console.log(err)
-      dispatch(userLogoutRequest())
+      // dispatch(userLogoutRequest())
       // setErrors('error')
       // console.log(err+' user already registered');
     });
@@ -578,7 +579,7 @@ function Home() {
     .catch(function (err) {
       //handle error
       console.log(err)
-      dispatch(userLogoutRequest())
+      // dispatch(userLogoutRequest())
       // setErrors('error')
       // console.log(err+' user already registered');
     });
@@ -603,7 +604,7 @@ function Home() {
     .catch(function (err) {
       //handle error
       console.log(err)
-      dispatch(userLogoutRequest())
+      // dispatch(userLogoutRequest())
       // setErrors('error')
       // console.log(err+' user already registered');
     });
